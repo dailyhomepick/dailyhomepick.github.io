@@ -1,4 +1,4 @@
-// Daily Home Picks static site generator.
+// Daily Home Pick static site generator.
 // Reads data/*.json and writes every HTML page, sitemap, robots and search index.
 // Usage: node scripts/build.mjs   (no dependencies)
 

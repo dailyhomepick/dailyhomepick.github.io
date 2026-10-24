@@ -1,4 +1,4 @@
-// Daily Home Picks — sort, search and image fallback. No dependencies.
+// Daily Home Pick — sort, search and image fallback. No dependencies.
 (function () {
   // Broken hotlinked images: keep the layout, show a neutral pattern.
   document.addEventListener('error', function (e) {

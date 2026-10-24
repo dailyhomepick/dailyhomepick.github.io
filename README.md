@@ -1,6 +1,6 @@
-# Daily Home Picks
+# Daily Home Pick
 
-매일 가격을 확인한 생활 할인 상품을 모아 보여주는 GitHub Pages 사이트입니다. https://songkisong.github.io
+매일 가격을 확인한 생활 할인 상품을 모아 보여주는 GitHub Pages 사이트입니다. https://dailyhomepick.github.io
 
 - 데이터: `data/*.json` (상품, 글, 카테고리, 사이트 설정)
 - 생성기: `node scripts/build.mjs` (Node 18+, 의존성 없음)
