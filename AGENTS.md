@@ -1,39 +1,147 @@
-# 운영 규칙 (사람·에이전트 공통)
+# Daily Home Pick 운영 규칙 (Hermes·사람 공통)
 
-이 사이트의 HTML은 **전부 생성물**입니다. `index.html`, `posts/`, `categories/`, `tags/`, `p/`, `search.html`, `404.html`, `sitemap.xml`, `robots.txt`, `assets/search.json`을 직접 고치지 마세요. 다음 빌드 때 덮어써집니다.
+사이트: https://dailyhomepick.github.io · 저장소: `dailyhomepick/dailyhomepick.github.io`
+목표: **할인율이 높고 제휴 링크(쿠팡 파트너스 우선, 그다음 링크프라이스)가 있는 상품**을 매일 많이 올려 검색 노출과 클릭을 늘린다.
 
-## 매일 업데이트 순서
+## 0. 절대 규칙
 
-1. `data/products.json`에 상품을 추가하거나 가격을 고칩니다.
-2. `data/posts.json` 맨 앞에 그날 글을 추가합니다. (`kind: "deals"`는 카드 목록형, `kind: "guide"`는 상품별 설명형)
-3. `node scripts/build.mjs` 실행 → 경고(파트너스 링크 없음 등)를 확인합니다.
-4. 커밋·푸시합니다.
+1. **HTML을 직접 만들거나 고치지 않는다.** `index.html`, `today.html`, `posts/`, `categories/`, `tags/`, `k/`, `p/`, `search.html`, `review.html`, `404.html`, `sitemap.xml`, `rss.xml`, `robots.txt`, `assets/search.json`은 전부 `node scripts/build.mjs`의 생성물이다.
+2. **상품은 `data/products.json`에 손으로 넣지 않는다.** 후보 파일을 `data/inbox/`에 만들고 `node scripts/import.mjs`로 가져온다. 이 스크립트가 자동 검수·중복 제거·제휴 링크 변환·가격 기록을 한다.
+3. **API 키·비밀번호·토큰을 저장소, 커밋, 로그, 채팅에 절대 쓰지 않는다.** 이 저장소는 공개다. (아래 "키 보관")
+4. `node scripts/build.mjs`가 오류로 멈추면 **오류를 고치고** 다시 빌드한다. 검사를 끄거나 우회하지 않는다.
+5. 셸 heredoc이나 `echo`로 JSON을 쓸 때 `$`가 사라지는 사고가 있었다(`$3.79` → `.79`). JSON 파일은 Node나 파일 쓰기 도구로 만든다.
 
-디자인을 바꾸려면 `assets/styles.css`, 페이지 구조는 `scripts/build.mjs`만 수정합니다.
+## 1. 매일 순서
 
-## 상품 필드 (`data/products.json`)
+```bash
+git pull --ff-only
+node scripts/coupang.mjs goldbox          # 쿠팡 골드박스 (최종 승인 후 사용 가능)
+node scripts/coupang.mjs best             # 쿠팡 카테고리 베스트
+#   + 링크프라이스 핫딜/딥링크로 만든 후보 파일 → data/inbox/linkprice-*.json (2장)
+node scripts/import.mjs                   # 자동 검수 후 가져오기 (inbox 파일은 data/inbox/done/으로 이동)
+node scripts/coupang.mjs deeplink         # 일반 쿠팡 링크 → 파트너스 링크 일괄 변환
+node scripts/build.mjs                    # 사이트 생성 (규칙 위반 시 중단)
+git add -A && git commit -m "Daily deals YYYY-MM-DD" && git push
+```
 
-| 필드 | 필수 | 설명 |
-|---|---|---|
-| `id` | ✓ | 영문 소문자·하이픈. 상품 페이지 주소 `/p/{id}.html`이 됨. 한번 정하면 바꾸지 않음 |
-| `title` | ✓ | 판매 페이지와 같은 실제 상품명 |
-| `categories` | ✓ | `data/categories.json`의 slug 배열. 첫 번째가 대표 카테고리 |
-| `tags` |  | 한글 태그 배열. 상품이 1개 이상 붙은 태그만 페이지가 생성됨 |
-| `store` |  | 판매처 이름 (버튼 문구 "OO에서 보기") |
-| `image` | ✓ | 상품 이미지 URL |
-| `link` |  | 판매처 원본 링크 |
-| `affiliateLink` |  | **쿠팡 파트너스 등 수익 링크. 있으면 버튼이 이 링크로 연결됨.** 비어 있으면 수익 없음 |
-| `price` | ✓ | `{ "min": 19750, "max": 24480 }` 또는 `{ "min": 51900, "text": "51,900원 전후" }`. 달러는 `"currency": "USD"` |
-| `originalPrice` |  | 정가. 넣으면 할인율 배지가 자동 계산됨. **실제 확인한 정가만** 넣기 |
-| `checkedAt` | ✓ | 가격 확인 날짜 `YYYY-MM-DD` |
-| `summary` |  | 한 줄 평 |
-| `specs` |  | `[["항목", "값"], ...]` |
-| `caution` |  | 구매 전 체크 문구 |
+- 하루 1~2회 실행. 같은 상품이 다시 들어오면 새로 만들지 않고 **가격·확인일만 갱신**되며 가격 기록(`priceHistory`)이 쌓인다.
+- `site.json`의 `publish.staleDays`(3일)보다 오래 확인 안 된 상품은 오늘의 할인에서 빠지고, `expireDays`(21일)가 지나면 목록·사이트맵에서 빠진다(상품 페이지는 "지난 할인"으로 남음). **살아있는 상품은 매일 다시 확인해 checkedAt을 갱신**하는 게 노출에 유리하다.
 
-## 지킬 것
+### 검수 단계 (지금은 수동 → 나중에 자동)
 
-- 별점·리뷰 수·"로켓배송/내일도착" 같은 배송 문구는 **실제로 확인한 경우에만** `specs`에 출처와 함께 적습니다. 임의 수치 금지(표시광고법 위반 소지).
-- 쿠팡 파트너스 링크를 쓰기 시작하면 `data/site.json`의 `disclosure`를 쿠팡 지정 문구로 바꿉니다:
-  "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
-- 방문자에게 보이는 문구에 내부 메모("~처럼 보이게", "링크 적용 필요" 등)를 쓰지 않습니다.
-- 링크는 모두 `/`로 시작하는 루트 경로를 씁니다(빌드가 처리).
+- 현재 `data/site.json` → `publish.autoApprove: false`. 가져온 상품은 `pending` 상태가 되고 https://dailyhomepick.github.io/review.html 에 모인다.
+- 사람이 확인 후: `node scripts/review.mjs approve all` 또는 `approve ID ...`, 문제 상품은 `node scripts/review.mjs reject ID "사유"`(다시 안 들어옴), 게시된 상품 내리기는 `hide ID`.
+- 사용자가 자동 전환을 지시하면 `autoApprove: true`로 바꾼다. 그 뒤로는 자동 검수를 통과한 상품이 바로 게시된다.
+
+## 2. 상품 소스와 우선순위
+
+같은 상품이 여러 곳에 있으면 **쿠팡 파트너스 링크가 있는 쪽**을 쓴다. 그다음 링크프라이스.
+
+### 쿠팡 파트너스 (1순위)
+- `scripts/coupang.mjs`가 Open API를 호출한다. API는 **누적 판매 15만 원 이상 "최종 승인" 후**에만 열린다. 승인 전에는 401/403이 나므로 `node scripts/coupang.mjs check`로 상태를 확인한다.
+- 승인 전: 사람이 파트너스 대시보드 "링크 생성"으로 만든 `https://link.coupang.com/a/...` 링크를 후보 파일의 `affiliateLink`에 넣는다.
+- 골드박스가 할인율이 있어 가장 좋다. 검색 API(`search`)는 호출 한도가 작으니 하루 몇 개 키워드만.
+- API가 주는 `productUrl`은 이미 파트너스 링크다. `productImage`가 그 상품의 공식 이미지다(썸네일 일치 보장).
+
+### 링크프라이스 (2순위)
+- 머천트 제휴가 승인된 쇼핑몰만 `data/merchants.json`에 `id`를 채우고 `enabled: true`로 바꾼다. 승인 안 된 머천트 링크는 실적이 잡히지 않는다.
+- `merchants.json`의 `template`은 어필리에이트 센터에서 만든 실제 딥링크와 같은 형식인지 확인 후 `verified: true`로 바꾼다. 형식이 다르면 템플릿을 실제 형식에 맞게 고친다(`{merchant}`, `{affiliateId}`, `{subId}`, `{url}` 자리표시자).
+- 어필리에이트 ID는 환경변수 `LINKPRICE_AFFILIATE_ID`. 후보에 `affiliateLink`가 없고 판매처가 승인 머천트면 import가 딥링크를 자동으로 만든다.
+- 핫딜 API(머천트별 인기·최저가 상품)를 쓸 수 있으면 그 결과를 아래 후보 형식으로 바꿔 `data/inbox/linkprice-hotdeal-YYYYMMDD.json`으로 저장한다. API가 클릭 URL을 주면 그대로 `affiliateLink`에 넣는다.
+
+### 그 밖의 출처
+- 핫딜 모음 사이트·커뮤니티는 **상품을 찾는 참고용**일 뿐, 링크·이미지는 반드시 **판매처 상품 페이지의 것**을 쓴다. 판매처 아닌 사이트(다나와·에누리·핫딜 모음·커뮤니티·중고장터) 링크는 자동 탈락한다.
+- 다른 사이트의 이미지 프록시 주소(`/_next/image?url=...`)는 import가 원본 주소로 되돌린다.
+
+## 3. 후보 파일 형식 (`data/inbox/*.json`)
+
+JSON 배열. 한 항목:
+
+```json
+{
+  "source": "linkprice-hotdeal",
+  "sourceId": "11st-7019152500",
+  "title": "판매 페이지와 같은 실제 상품명",
+  "image": "https://판매처 CDN의 상품 대표 이미지",
+  "price": 51900,
+  "originalPrice": 82000,
+  "link": "https://www.11st.co.kr/products/7019152500",
+  "affiliateLink": "",
+  "store": "11번가",
+  "categories": ["pet"],
+  "tags": ["반려동물", "자동급식기"],
+  "badges": ["무료배송"],
+  "summary": "",
+  "specs": [["용량", "3.5L"]],
+  "caution": ""
+}
+```
+
+- `price`·`originalPrice`는 숫자(원). 달러는 `"$3.49"`처럼 문자열 가능. **정가는 판매 페이지에 표시된 값만** 쓴다. 정가를 모르면 `discountRate`(숫자)만 넣어도 된다.
+- `sourceId`는 출처별 고유 ID(중복 판별에 사용). 쿠팡은 `coupang-상품번호`.
+- `categories`: `living, kitchen, solo-living, pet, baby, electronics, food, overseas` 중에서. 비우면 상품명으로 자동 분류.
+- `summary`는 비워도 된다(판매처·가격·할인율로 자동 문장 생성). 쓸 경우 **상품마다 다른 한 문장**.
+- `specs`·`summary`·`caution`에 HTML, `[...필요]` 같은 메모, "미확인" 금지.
+
+## 4. 자동 검수 규칙 (scripts/lib/rules.mjs)
+
+import가 아래 중 하나라도 걸리면 탈락시키고 `data/rejected.json`에 남긴다(같은 상품 재수집 방지).
+
+| 항목 | 기준 |
+|---|---|
+| 썸네일 | https 절대경로, 실제로 열리는 이미지(image/*), 아이콘·로고·배지·플레이스홀더 아님. **반드시 그 상품 페이지의 대표 이미지** |
+| 가격 | 숫자, 0원 아님, 100원~2천만 원, 정가 ≥ 판매가, 할인율 95% 이하 |
+| 할인율 | `publish.minDiscount`(10%) 미만 탈락. 할인율 모르는 상품은 `allowUnknownDiscount`가 true일 때만 통과 |
+| 금지 품목 | 성인용품, 담배·전자담배, 주류, 의약품, 무기·위험물, 가품, 도박 (`PROHIBITED` 목록). 와인잔·맥주컵 같은 용품은 예외 |
+| 링크 | 판매처 **상품 페이지**(첫 화면 X). 비교·핫딜·커뮤니티·중고 사이트 X |
+| 문구 | HTML 태그, 내부 메모 금지 |
+| 제휴 링크 | `publish.requireAffiliate`가 true면 제휴 링크 없는 상품 탈락(쿠팡/링크프라이스 연동이 안정되면 true로) |
+
+금지 단어가 새로 필요하면 `PROHIBITED`에 추가한다. 빌드도 같은 규칙으로 게시 상품을 다시 검사한다.
+
+## 5. 검색 노출(SEO)을 위해 할 일
+
+생성기가 자동으로 하는 것: 페이지별 제목·설명, canonical, Open Graph, 상품 구조화 데이터(Product/Offer), 목록(ItemList), 경로(BreadcrumbList), 사이트 검색(SearchAction), `sitemap.xml`(lastmod 포함), `rss.xml`, 오래된 상품 noindex, 인기 검색어 랜딩 페이지(`/k/키워드.html`).
+
+Hermes가 할 일:
+- **인기 검색어 갱신(주 1~2회)**: `data/site.json`의 `trending`(16개 안팎)을 네이버 데이터랩 쇼핑인사이트·쿠팡 검색 추이 등에서 생활용품 위주로 고른다. 상품이 1개 이상 매칭되는 키워드만 `/k/` 페이지가 생긴다. 키워드에 맞는 상품을 `coupang.mjs search 키워드`로 보충한다.
+- **태그**: 사람들이 검색할 단어(예: "고양이모래", "물티슈", "가습기")를 2~4개. 너무 넓은 태그("오늘할인")만 달지 않는다.
+- **상품명**: 판매처 상품명 그대로(브랜드+모델+용량). 꾸밈말 추가 금지.
+- **매일 갱신**: 같은 상품이라도 가격을 다시 확인해 import하면 확인일·가격 기록이 쌓여 페이지가 "살아있는" 상태로 유지된다.
+- 검색엔진 등록용 인증값은 `site.json`의 `verification.naver` / `verification.google`에 넣는다(값만, 태그 전체 X).
+
+## 6. 지킬 것 (광고·표시)
+
+- 별점·리뷰 수·배송 문구는 **판매처에 실제 표시된 것만**. 임의 수치 금지(표시광고법).
+- 쿠팡 링크가 있는 페이지에는 쿠팡 지정 문구가 자동으로 표시된다(`coupangDisclosure`). 문구를 지우거나 바꾸지 않는다.
+- 클릭 유도용 가짜 타이머·"마감 임박" 같은 허위 문구 금지.
+
+## 7. 키 보관
+
+환경변수 또는 저장소 밖 파일 `~/.config/dailyhomepick/env`(스크립트가 자동으로 읽음, 권한 600):
+
+```
+COUPANG_ACCESS_KEY=...
+COUPANG_SECRET_KEY=...
+COUPANG_SUB_ID=dailyhomepick
+LINKPRICE_AFFILIATE_ID=A100...
+```
+
+`.env`, `.env.*`, `data/inbox/`는 `.gitignore`에 있다. 그래도 커밋 전 `git diff --cached`에 키가 없는지 확인한다.
+
+## 8. 파일 지도
+
+| 파일 | 역할 |
+|---|---|
+| `data/site.json` | 사이트 설정, 게시 규칙(`publish`), 인기 검색어(`trending`), 고지 문구, 검색엔진 인증값 |
+| `data/products.json` | 상품 (import/review 스크립트가 관리). `status`: published / pending / hidden |
+| `data/posts.json` | 날짜별 글. import·approve가 그날 `YYYY-MM-DD-deals` 글에 자동 추가 |
+| `data/categories.json` | 카테고리 8개 |
+| `data/merchants.json` | 링크프라이스 머천트·딥링크 형식 |
+| `data/rejected.json` | 탈락·반려 기록 |
+| `scripts/coupang.mjs` | 쿠팡 수집·딥링크 |
+| `scripts/import.mjs` | 후보 가져오기 + 자동 검수 |
+| `scripts/review.mjs` | 승인·반려·내리기 |
+| `scripts/build.mjs` | 사이트 생성 |
+| `scripts/lib/rules.mjs` | 검수 규칙(금지 품목, 판매처, 이미지, 가격) |
+| `assets/styles.css`, `assets/app.js` | 디자인·검색·정렬·필터 |

@@ -13,19 +13,35 @@
   var q = (params.get('q') || '').trim();
   document.querySelectorAll('.search input[name="q"]').forEach(function (input) { input.value = q; });
 
-  // Sorting on category / tag / deals grids.
+  // Sorting and category filter on product grids.
   document.querySelectorAll('select[data-sort]').forEach(function (select) {
-    var grid = select.closest('.wrap').querySelector('[data-sortable]');
+    var scope = select.closest('.wrap');
+    var grid = scope.querySelector('[data-sortable]');
     if (!grid) return;
     select.addEventListener('change', function () {
       var key = select.value;
       var cards = Array.prototype.slice.call(grid.children);
       cards.sort(function (a, b) {
+        if (key === 'rate-desc') return b.dataset.rate - a.dataset.rate || a.dataset.order - b.dataset.order;
         if (key === 'price-asc') return a.dataset.price - b.dataset.price;
         if (key === 'price-desc') return b.dataset.price - a.dataset.price;
         return a.dataset.order - b.dataset.order;
       });
       cards.forEach(function (c) { grid.appendChild(c); });
+    });
+    var count = scope.querySelector('[data-count]');
+    scope.querySelectorAll('[data-filter]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var cat = btn.dataset.filter;
+        scope.querySelectorAll('[data-filter]').forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        var shown = 0;
+        Array.prototype.forEach.call(grid.children, function (c) {
+          var on = !cat || c.dataset.cat === cat;
+          c.hidden = !on;
+          if (on) shown++;
+        });
+        if (count) count.textContent = shown;
+      });
     });
   });
 

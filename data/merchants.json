@@ -1,0 +1,19 @@
+{
+  "_comment": "링크프라이스 머천트 목록. id는 어필리에이트 센터의 머천트 ID(예: 11st). 제휴 승인된 곳만 id를 채우고 enabled=true. template은 센터에서 만든 실제 딥링크와 같은 형식인지 확인 후 verified=true로 바꿀 것.",
+  "verified": false,
+  "template": "https://click.linkprice.com/click.php?m={merchant}&a={affiliateId}&l=9999&l_cd1=3&l_cd2=0&u_id={subId}&tu={url}",
+  "merchants": [
+    { "name": "11번가", "id": "", "hosts": ["11st.co.kr"], "enabled": false },
+    { "name": "G마켓", "id": "", "hosts": ["gmarket.co.kr"], "enabled": false },
+    { "name": "옥션", "id": "", "hosts": ["auction.co.kr"], "enabled": false },
+    { "name": "SSG", "id": "", "hosts": ["ssg.com"], "enabled": false },
+    { "name": "롯데ON", "id": "", "hosts": ["lotteon.com"], "enabled": false },
+    { "name": "롯데하이마트", "id": "", "hosts": ["e-himart.co.kr"], "enabled": false },
+    { "name": "알리익스프레스", "id": "", "hosts": ["aliexpress.com"], "enabled": false },
+    { "name": "GS SHOP", "id": "", "hosts": ["gsshop.com"], "enabled": false },
+    { "name": "CJ온스타일", "id": "", "hosts": ["cjonstyle.com"], "enabled": false },
+    { "name": "현대Hmall", "id": "", "hosts": ["hmall.com"], "enabled": false },
+    { "name": "인터파크", "id": "", "hosts": ["interpark.com"], "enabled": false },
+    { "name": "오늘의집", "id": "", "hosts": ["ohou.se"], "enabled": false }
+  ]
+}

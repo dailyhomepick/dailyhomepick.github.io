@@ -1,0 +1,6 @@
+data/inbox/
+.env
+.env.*
+*.local
+node_modules/
+.DS_Store

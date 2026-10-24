@@ -1,54 +1,93 @@
 // Daily Home Pick static site generator.
-// Reads data/*.json and writes every HTML page, sitemap, robots and search index.
+// Reads data/*.json and writes every HTML page, sitemap, RSS, robots and search index.
 // Usage: node scripts/build.mjs   (no dependencies)
+// The build stops with a list of problems when a published product breaks the rules in AGENTS.md.
 
-import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const readJson = (p) => JSON.parse(readFileSync(join(ROOT, p), 'utf8'));
+import { writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
+import { dirname } from 'node:path';
+import { readJson, path } from './lib/store.mjs';
+import {
+  textProblem, isBlockedLink, isProductUrl, prohibitedReason, discountOf, networkOf, today, daysBetween, imageProblem,
+} from './lib/rules.mjs';
 
 const site = readJson('data/site.json');
 const categories = readJson('data/categories.json');
-const products = readJson('data/products.json');
-const posts = readJson('data/posts.json').sort((a, b) => b.date.localeCompare(a.date));
+const allProducts = readJson('data/products.json');
+const allPosts = readJson('data/posts.json').sort((a, b) => b.date.localeCompare(a.date));
+const rules = site.publish;
+const TODAY = today();
 
 const ASSET_VERSION = Date.now().toString(36);
-const GENERATED_DIRS = ['posts', 'categories', 'tags', 'p'];
+const GENERATED_DIRS = ['posts', 'categories', 'tags', 'p', 'k'];
 const warnings = [];
+const errors = [];
 
 // ---------- validation ----------
-const productById = new Map();
 const categoryBySlug = new Map(categories.map((c) => [c.slug, c]));
-for (const p of products) {
-  if (productById.has(p.id)) throw new Error(`중복 상품 id: ${p.id}`);
-  for (const key of ['id', 'title', 'categories', 'image', 'price', 'checkedAt']) {
-    if (p[key] === undefined) throw new Error(`상품 ${p.id ?? '?'}에 ${key} 없음`);
-  }
-  for (const c of p.categories) if (!categoryBySlug.has(c)) throw new Error(`상품 ${p.id}: 없는 카테고리 ${c}`);
-  if (!p.affiliateLink) warnings.push(`파트너스 링크 없음: ${p.id}${p.link ? '' : ' (판매처 링크도 없음)'}`);
+const productById = new Map();
+for (const p of allProducts) {
+  if (productById.has(p.id)) errors.push(`중복 상품 id: ${p.id}`);
+  p.status ??= 'published';
   p.tags ??= [];
   p.specs ??= [];
   productById.set(p.id, p);
-}
-for (const post of posts) {
-  for (const item of post.items) {
-    if (!productById.has(item.product)) throw new Error(`글 ${post.slug}: 없는 상품 ${item.product}`);
+  if (p.status !== 'published' && p.status !== 'pending') continue;
+
+  const where = `${p.id}`;
+  for (const key of ['id', 'title', 'categories', 'image', 'price', 'checkedAt']) {
+    if (p[key] === undefined || p[key] === '') errors.push(`${where}: ${key} 없음`);
   }
-  if (post.featured && !productById.has(post.featured)) throw new Error(`글 ${post.slug}: 없는 대표 상품 ${post.featured}`);
+  if (!(typeof p.price?.min === 'number' && p.price.min > 0)) errors.push(`${where}: price.min 숫자 없음`);
+  const imgBad = imageProblem(p.image);
+  if (imgBad) errors.push(`${where}: ${imgBad}`);
+  for (const c of p.categories || []) if (!categoryBySlug.has(c)) errors.push(`${where}: 없는 카테고리 ${c}`);
+  if (!p.link && !p.affiliateLink) errors.push(`${where}: 판매 링크 없음`);
+  if (p.link && (isBlockedLink(p.link) || !isProductUrl(p.link))) errors.push(`${where}: 판매처 상품 페이지가 아닌 링크 ${p.link}`);
+  const bad = prohibitedReason(p.title, ...(p.tags || []));
+  if (bad) errors.push(`${where}: 금지 품목 ${bad}`);
+  for (const t of [p.title, p.summary, p.caution, p.price?.text, ...p.specs.flat()]) {
+    const prob = textProblem(t);
+    if (prob) errors.push(`${where}: ${prob}`);
+  }
+  if (p.originalPrice && p.originalPrice < p.price?.min) errors.push(`${where}: 정가가 판매가보다 낮음`);
+  if (!p.affiliateLink) warnings.push(p.id);
+  p.network ||= networkOf(p.affiliateLink || '');
+  p.discountRate ||= discountOf(p.price?.min, p.originalPrice) || undefined;
 }
+if (errors.length) {
+  console.error(`빌드 중단: 규칙 위반 ${errors.length}건 (AGENTS.md 참고)`);
+  for (const e of errors.slice(0, 80)) console.error(`  - ${e}`);
+  process.exit(1);
+}
+
+const age = (p) => daysBetween(p.checkedAt, TODAY);
+const isLive = (p) => p.status === 'published';
+const isFresh = (p) => isLive(p) && age(p) <= rules.staleDays;
+const isListed = (p) => isLive(p) && age(p) <= rules.expireDays;
+const products = allProducts.filter(isLive);
+const listed = products.filter(isListed);
+const pending = allProducts.filter((p) => p.status === 'pending');
+
+// Posts only show products that are still live; empty posts are skipped.
+const posts = allPosts
+  .map((post) => ({ ...post, items: post.items.filter((i) => productById.get(i.product) && isLive(productById.get(i.product))) }))
+  .filter((post) => post.items.length);
 
 // ---------- helpers ----------
 const esc = (s = '') => String(s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 const won = (n) => `${Math.round(n).toLocaleString('ko-KR')}원`;
-const tagHref = (t) => `/tags/${encodeURIComponent(t)}.html`;
+const money = (n, cur) => (cur === 'USD' ? `$${n.toFixed(2)}` : won(n));
+const enc = (s) => encodeURIComponent(s);
+const tagHref = (t) => `/tags/${enc(t)}.html`;
+const kwSlug = (k) => k.replace(/\s+/g, '-');
+const kwHref = (k) => `/k/${enc(kwSlug(k))}.html`;
 const productHref = (p) => `/p/${p.id}.html`;
 const catHref = (slug) => `/categories/${slug}.html`;
 const postHref = (post) => `/posts/${post.slug}.html`;
 const buyHref = (p) => p.affiliateLink || p.link || '';
+const jsonLd = (obj) => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
 
 function shortDate(iso) {
   const [, m, d] = iso.split('-').map(Number);
@@ -63,15 +102,20 @@ function longDate(iso) {
 function priceParts(p) {
   const pr = p.price;
   if (pr.text) return { main: pr.text, sub: '' };
-  if (pr.max && pr.max !== pr.min) return { main: won(pr.min), sub: `~ ${won(pr.max)}` };
-  return { main: won(pr.min), sub: '' };
+  if (pr.max && pr.max !== pr.min) return { main: money(pr.min, pr.currency), sub: `~ ${money(pr.max, pr.currency)}` };
+  return { main: money(pr.min, pr.currency), sub: '' };
 }
-function discountRate(p) {
-  if (!p.originalPrice || !p.price.min || p.originalPrice <= p.price.min) return 0;
-  return Math.round(((p.originalPrice - p.price.min) / p.originalPrice) * 100);
-}
-// Sort key in KRW; overseas USD prices are roughly converted only for ordering.
+// Sort key in KRW; USD prices are roughly converted only for ordering.
 const priceKey = (p) => (p.price.currency === 'USD' ? p.price.min * 1400 : p.price.min);
+const lowestOf = (p) => Math.min(...(p.priceHistory || []).map((h) => h.price), p.price.min);
+
+function autoSummary(p) {
+  if (p.summary) return p.summary;
+  const parts = [`${p.store || '판매처'}에서 ${priceParts(p).main}`];
+  if (p.discountRate) parts.push(`정가 대비 ${p.discountRate}% 할인`);
+  if (p.badges?.length) parts.push(p.badges.join('·'));
+  return `${parts.join(', ')}에 판매 중입니다.`;
+}
 
 const img = (p, cls = '', eager = false) =>
   `<img class="${cls}" src="${esc(p.image)}" alt="${esc(p.title)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" referrerpolicy="no-referrer">`;
@@ -84,20 +128,19 @@ function buyButton(p, cls = 'btn btn-buy') {
 
 function priceBlock(p, cls = 'price') {
   const { main, sub } = priceParts(p);
-  const rate = discountRate(p);
-  return `<div class="${cls}">${rate ? `<span class="rate">${rate}%</span>` : ''}<strong>${esc(main)}</strong>${sub ? `<span class="price-sub">${esc(sub)}</span>` : ''}${p.originalPrice ? `<del>${won(p.originalPrice)}</del>` : ''}</div>`;
+  return `<div class="${cls}">${p.discountRate ? `<span class="rate">${p.discountRate}%</span>` : ''}<strong>${esc(main)}</strong>${sub ? `<span class="price-sub">${esc(sub)}</span>` : ''}${p.originalPrice ? `<del>${money(p.originalPrice, p.price.currency)}</del>` : ''}</div>`;
 }
 
 function card(p, order = 0) {
   const cat = categoryBySlug.get(p.categories[0]);
-  return `<article class="card" data-price="${priceKey(p)}" data-order="${order}">
-  <a class="card-media" href="${productHref(p)}" tabindex="-1" aria-hidden="true">${img(p)}${p.store ? `<span class="chip-store">${esc(p.store)}</span>` : ''}</a>
+  const stale = age(p) > rules.staleDays;
+  return `<article class="card" data-price="${priceKey(p)}" data-rate="${p.discountRate || 0}" data-order="${order}" data-cat="${cat.slug}">
+  <a class="card-media" href="${productHref(p)}" tabindex="-1" aria-hidden="true">${img(p)}${p.discountRate ? `<span class="chip-rate">${p.discountRate}%</span>` : ''}</a>
   <div class="card-body">
-    <a class="card-cat" href="${catHref(cat.slug)}">${esc(cat.name)}</a>
+    <p class="card-meta"><a class="card-cat" href="${catHref(cat.slug)}">${esc(cat.name)}</a>${p.store ? `<span>${esc(p.store)}</span>` : ''}</p>
     <h3 class="card-title"><a href="${productHref(p)}">${esc(p.title)}</a></h3>
     ${priceBlock(p)}
-    <p class="card-note">${esc(p.summary || '')}</p>
-    <div class="card-foot"><span class="checked">${shortDate(p.checkedAt)} 가격 확인</span></div>
+    <div class="card-foot">${(p.badges || []).slice(0, 2).map((b) => `<span class="pill">${esc(b)}</span>`).join('')}<span class="checked${stale ? ' is-stale' : ''}">${shortDate(p.checkedAt)} 확인</span></div>
     ${buyButton(p, 'btn btn-buy btn-sm')}
   </div>
 </article>`;
@@ -106,16 +149,38 @@ function card(p, order = 0) {
 const grid = (list, attrs = '') =>
   `<div class="grid"${attrs}>${list.map((p, i) => card(p, i)).join('\n')}</div>`;
 
-const disclosure = () =>
-  `<aside class="disclosure"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4M8 4.6v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><p>${esc(site.disclosure)} ${esc(site.priceNotice)}</p></aside>`;
+function disclosure(list = []) {
+  const coupang = list.some((p) => p.network === 'coupang');
+  const text = [coupang ? site.coupangDisclosure : '', site.disclosure, site.priceNotice].filter(Boolean).join(' ');
+  return `<aside class="disclosure"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 7v4M8 4.6v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><p>${esc(text)}</p></aside>`;
+}
 
 const searchIcon = '<svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 
-function layout({ title, description, path, body, active = '', image = '', bodyClass = '' }) {
-  const fullTitle = title ? `${title} | ${site.name}` : `${site.name} · ${site.tagline}`;
-  const url = site.url + path;
-  const nav = categories.map((c) =>
-    `<a href="${catHref(c.slug)}"${active === c.slug ? ' aria-current="page"' : ''}>${esc(c.name)}</a>`).join('');
+function breadcrumb(items) {
+  const html = `<nav class="crumb" aria-label="위치">${items.map(([name, href], i) =>
+    (href && i < items.length - 1 ? `<a href="${href}">${esc(name)}</a>` : `<span>${esc(name)}</span>`)).join('<span>/</span>')}</nav>`;
+  const ld = jsonLd({
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: items.map(([name, href], i) => ({ '@type': 'ListItem', position: i + 1, name, ...(href ? { item: site.url + href } : {}) })),
+  });
+  return html + ld;
+}
+
+const itemListLd = (list) => jsonLd({
+  '@context': 'https://schema.org', '@type': 'ItemList',
+  itemListElement: list.slice(0, 30).map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: site.url + productHref(p), name: p.title })),
+});
+
+function layout({ title, description, path: pagePath, body, active = '', image = '', bodyClass = '', noindex = false, head = '' }) {
+  const fullTitle = title ? `${title} | ${site.name}` : `${site.name} · 오늘의 할인 상품 모음`;
+  const url = site.url + pagePath;
+  const nav = [
+    `<a class="nav-today" href="/today.html"${active === 'today' ? ' aria-current="page"' : ''}><span class="dot" aria-hidden="true"></span>오늘의 할인</a>`,
+    ...categories.map((c) => `<a href="${catHref(c.slug)}"${active === c.slug ? ' aria-current="page"' : ''}>${esc(c.name)}</a>`),
+    `<a href="/tags/"${active === 'tags' ? ' aria-current="page"' : ''}>태그</a>`,
+  ].join('');
+  const v = site.verification || {};
   return `<!doctype html>
 <html lang="ko">
 <head>
@@ -123,20 +188,23 @@ function layout({ title, description, path, body, active = '', image = '', bodyC
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(description || site.description)}">
-<link rel="canonical" href="${esc(url)}">
-<meta property="og:type" content="website">
+${noindex ? '<meta name="robots" content="noindex, follow">' : `<link rel="canonical" href="${esc(url)}">`}
+${v.naver ? `<meta name="naver-site-verification" content="${esc(v.naver)}">\n` : ''}${v.google ? `<meta name="google-site-verification" content="${esc(v.google)}">\n` : ''}<meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(site.name)}">
+<meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="${esc(title || site.name)}">
 <meta property="og:description" content="${esc(description || site.description)}">
 <meta property="og:url" content="${esc(url)}">
-${image ? `<meta property="og:image" content="${esc(image)}">\n` : ''}<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+${image ? `<meta property="og:image" content="${esc(image)}">\n` : ''}<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#111318" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="${esc(site.name)}" href="/rss.xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/assets/styles.css?v=${ASSET_VERSION}">
 <script src="/assets/app.js?v=${ASSET_VERSION}" defer></script>
-</head>
+${head}</head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 <header class="site-header">
@@ -150,7 +218,7 @@ ${image ? `<meta property="og:image" content="${esc(image)}">\n` : ''}<meta name
       <input type="search" name="q" placeholder="상품, 브랜드, 태그 검색" aria-label="상품 검색" autocomplete="off" enterkeyhint="search">
     </form>
   </div>
-  <nav class="wrap cat-nav" aria-label="카테고리">${nav}<a href="/tags/"${active === 'tags' ? ' aria-current="page"' : ''}>태그</a></nav>
+  <nav class="wrap cat-nav" aria-label="메뉴">${nav}</nav>
 </header>
 <main id="main">
 ${body}
@@ -159,16 +227,19 @@ ${body}
   <div class="wrap footer-grid">
     <div>
       <a class="logo logo-sm" href="/"><span>${esc(site.name)}</span></a>
-      <p class="muted">${esc(site.tagline)}. 매일 가격을 다시 확인하고, 이미지와 실제 상품명이 맞는 상품만 올립니다.</p>
+      <p class="muted">${esc(site.tagline)}. 매일 판매처 가격을 다시 확인하고, 할인율이 높은 상품부터 보여줍니다.</p>
     </div>
     <div class="footer-links">
+      <a href="/today.html">오늘의 할인</a>
       ${categories.map((c) => `<a href="${catHref(c.slug)}">${esc(c.title)}</a>`).join('')}
+      <a href="/tags/">태그</a>
+      <a href="/rss.xml">RSS</a>
     </div>
   </div>
   <div class="wrap footer-legal">
-    <p>${esc(site.disclosure)}</p>
-    <p>${esc(site.priceNotice)}</p>
-    <p>© ${new Date().getFullYear()} ${esc(site.name)}</p>
+    <p>${esc(site.coupangDisclosure)}</p>
+    <p>${esc(site.disclosure)} ${esc(site.priceNotice)}</p>
+    <p>© ${TODAY.slice(0, 4)} ${esc(site.name)}</p>
   </div>
 </footer>
 </body>
@@ -177,9 +248,11 @@ ${body}
 }
 
 // ---------- derived indexes ----------
+const byRate = (a, b) => (b.discountRate || 0) - (a.discountRate || 0) || b.checkedAt.localeCompare(a.checkedAt);
+const byNewest = (a, b) => b.checkedAt.localeCompare(a.checkedAt) || (b.discountRate || 0) - (a.discountRate || 0);
 const productsByCategory = new Map(categories.map((c) => [c.slug, []]));
 const productsByTag = new Map();
-for (const p of products) {
+for (const p of listed) {
   for (const c of p.categories) productsByCategory.get(c).push(p);
   for (const t of p.tags) {
     if (!productsByTag.has(t)) productsByTag.set(t, []);
@@ -193,14 +266,28 @@ for (const post of posts) {
     postsByProduct.get(item.product).push(post);
   }
 }
-// Newest first: products appearing in newer posts come earlier.
-const productDate = (p) => (postsByProduct.get(p.id)?.[0]?.date) || p.checkedAt;
-const byNewest = (a, b) => productDate(b).localeCompare(productDate(a));
 const tagsSorted = [...productsByTag.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'ko'));
+const todayList = listed.filter(isFresh).sort(byRate).slice(0, rules.todayMax);
+const todayDeals = todayList.length ? todayList : [...listed].sort(byNewest).slice(0, 40);
+const lastChecked = listed.reduce((m, p) => (p.checkedAt > m ? p.checkedAt : m), '2000-01-01');
+
+// Keyword landing pages: trending terms + popular tags, only when they match products.
+const keywordPages = new Map();
+for (const kw of site.trending || []) {
+  const words = kw.toLowerCase().split(/\s+/);
+  const hits = listed.filter((p) => {
+    const hay = `${p.title} ${p.tags.join(' ')}`.toLowerCase().replace(/\s+/g, '');
+    return words.every((w) => hay.includes(w));
+  });
+  if (hits.length) keywordPages.set(kw, hits.sort(byRate));
+}
+const kwLink = (k) => (keywordPages.has(k) ? kwHref(k) : `/search.html?q=${enc(k)}`);
 
 function tagChips(list, cls = 'tags') {
   return `<div class="${cls}">${list.map((t) => `<a href="${tagHref(t)}">#${esc(t)}</a>`).join('')}</div>`;
 }
+const trendingChips = () => `<ol class="trending">${(site.trending || []).map((k, i) =>
+  `<li><a href="${kwLink(k)}"><span class="rank">${i + 1}</span>${esc(k)}</a></li>`).join('')}</ol>`;
 
 function postCard(post) {
   const items = post.items.map((i) => productById.get(i.product));
@@ -216,97 +303,145 @@ function postCard(post) {
 </a>`;
 }
 
-const sortBar = (count, label = '상품') => `<div class="toolbar">
-  <p class="count"><strong>${count}</strong>개 ${label}</p>
+const sortBar = (count, { def = 'order', filters = null } = {}) => `<div class="toolbar">
+  <p class="count"><strong data-count>${count}</strong>개 상품</p>
   <label class="sort"><span class="sr-only">정렬</span>
     <select data-sort>
-      <option value="order">추천순</option>
+      <option value="order"${def === 'order' ? ' selected' : ''}>추천순</option>
+      <option value="rate-desc"${def === 'rate-desc' ? ' selected' : ''}>할인율 높은순</option>
       <option value="price-asc">낮은 가격순</option>
       <option value="price-desc">높은 가격순</option>
     </select>
   </label>
-</div>`;
+</div>${filters ? `<div class="filter-chips" role="group" aria-label="카테고리 필터"><button type="button" data-filter="" aria-pressed="true">전체</button>${filters.map(([slug, name, n]) =>
+  `<button type="button" data-filter="${slug}" aria-pressed="false">${esc(name)}<span>${n}</span></button>`).join('')}</div>` : ''}`;
+
+function specTable(specs = []) {
+  if (!specs.length) return '';
+  return `<dl class="specs">${specs.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
+}
+function listBox({ title, items }, tone) {
+  return `<div class="box box-${tone}"><strong>${esc(title)}</strong><ul>${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul></div>`;
+}
 
 // ---------- pages ----------
 const pages = new Map();
+const lastmod = new Map();
+const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(file, mod); };
 
 // Home
 {
-  const latest = posts.find((p) => p.kind === 'deals') || posts[0];
-  const latestItems = latest.items.map((i) => productById.get(i.product));
-  const lead = productById.get(latest.featured) || latestItems[0];
-  const mosaic = latestItems.filter((p) => p !== lead).slice(0, 4);
-  const catTiles = categories.map((c) => {
-    const list = productsByCategory.get(c.slug);
-    const cover = list[0];
-    return `<a class="cat-tile" href="${catHref(c.slug)}">
-  <span class="cat-img">${cover ? img(cover) : ''}</span>
-  <span class="cat-text"><strong>${esc(c.title)}</strong><span>${list.length}개 상품</span></span>
-</a>`;
+  const top = todayDeals.slice(0, 12);
+  const lead = top[0];
+  const mosaic = top.slice(1, 5);
+  const catRows = categories.map((c) => {
+    const list = [...productsByCategory.get(c.slug)].sort(byRate).slice(0, 4);
+    if (!list.length) return '';
+    return `<section class="cat-row">
+  <div class="section-head"><div><h3>${esc(c.title)}</h3></div><a class="link-more" href="${catHref(c.slug)}">${productsByCategory.get(c.slug).length}개 전체 →</a></div>
+  ${grid(list)}
+</section>`;
   }).join('\n');
 
-  const body = `
+  const body = lead ? `
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="kicker"><span class="dot" aria-hidden="true"></span>${longDate(latest.date)} 업데이트</p>
-      <h1>${esc(latest.title)}</h1>
-      <p class="lead">${esc(latest.description)}</p>
+      <p class="kicker"><span class="dot" aria-hidden="true"></span>${longDate(lastChecked)} 가격 확인</p>
+      <h1>오늘의 할인 상품 ${todayDeals.length}개,<br>할인율 높은 순으로</h1>
+      <p class="lead">쿠팡 골드박스와 주요 쇼핑몰 특가를 매일 다시 확인해서, 지금 할인 중인 생활용품만 모았습니다.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="${postHref(latest)}">오늘의 할인 보기</a>
-        <a class="btn btn-ghost" href="#categories">카테고리 둘러보기</a>
+        <a class="btn btn-primary" href="/today.html">오늘의 할인 전체 보기</a>
+        <a class="btn btn-ghost" href="#trending">인기 검색어</a>
       </div>
       <ul class="hero-points">
         <li>매일 판매처 가격 재확인</li>
-        <li>이미지·상품명 일치 검수</li>
-        <li>구매 전 주의점 함께 표기</li>
+        <li>할인율·최근 최저가 표시</li>
+        <li>성인·주류 등 제외</li>
       </ul>
     </div>
     <div class="hero-visual">
       <a class="hero-lead" href="${productHref(lead)}">
         <span class="hero-lead-img">${img(lead, '', true)}</span>
         <span class="hero-lead-body">
-          <span class="badge">오늘의 대표 상품</span>
+          <span class="badge">오늘 할인율 1위</span>
           <strong>${esc(lead.title)}</strong>
           ${priceBlock(lead)}
         </span>
       </a>
-      <div class="hero-mosaic">${mosaic.map((p) => `<a href="${productHref(p)}" title="${esc(p.title)}">${img(p)}</a>`).join('')}</div>
+      <div class="hero-mosaic">${mosaic.map((p) => `<a href="${productHref(p)}" title="${esc(p.title)}">${img(p)}${p.discountRate ? `<span class="chip-rate">${p.discountRate}%</span>` : ''}</a>`).join('')}</div>
     </div>
+  </div>
+</section>
+
+<section class="section section-tight-top" id="trending">
+  <div class="wrap">
+    <div class="section-head"><div><h2>인기 검색어</h2></div></div>
+    ${trendingChips()}
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <div><p class="kicker">${shortDate(latest.date)} 가격 확인</p><h2>오늘 확인한 상품</h2></div>
-      <a class="link-more" href="${postHref(latest)}">전체 보기 →</a>
+      <div><p class="kicker">할인율 높은 순</p><h2>오늘의 할인 TOP ${top.length}</h2></div>
+      <a class="link-more" href="/today.html">${todayDeals.length}개 전체 →</a>
     </div>
-    ${grid(latestItems.slice(0, 8))}
+    ${grid(top)}
   </div>
 </section>
 
-<section class="section section-alt" id="categories">
+<section class="section section-alt">
   <div class="wrap">
-    <div class="section-head"><div><h2>카테고리</h2></div></div>
-    <div class="cat-grid">${catTiles}</div>
+    <div class="section-head"><div><h2>카테고리별 할인</h2></div></div>
+    <div class="cat-chips">${categories.map((c) => `<a href="${catHref(c.slug)}">${esc(c.title)}<span>${productsByCategory.get(c.slug).length}</span></a>`).join('')}</div>
+    ${catRows}
   </div>
 </section>
 
-<section class="section">
+${posts.length ? `<section class="section">
   <div class="wrap">
-    <div class="section-head"><div><h2>최근 글</h2></div></div>
+    <div class="section-head"><div><h2>날짜별 할인 모음</h2></div></div>
     <div class="post-list">${posts.slice(0, 6).map(postCard).join('\n')}</div>
   </div>
-</section>
+</section>` : ''}
 
 <section class="section">
   <div class="wrap">
     <div class="section-head"><div><h2>많이 찾는 태그</h2></div><a class="link-more" href="/tags/">전체 태그 →</a></div>
-    ${tagChips(tagsSorted.slice(0, 16).map(([t]) => t))}
+    ${tagChips(tagsSorted.slice(0, 20).map(([t]) => t))}
+    ${disclosure(top)}
   </div>
-</section>`;
-  pages.set('index.html', layout({ title: '', path: '/', body, image: lead.image }));
+</section>` : '<div class="wrap"><p class="empty">곧 첫 할인 상품이 올라옵니다.</p></div>';
+  const head = jsonLd({
+    '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: `${site.url}/`,
+    potentialAction: { '@type': 'SearchAction', target: `${site.url}/search.html?q={search_term_string}`, 'query-input': 'required name=search_term_string' },
+  });
+  add('index.html', layout({ title: '', path: '/', body, image: lead?.image, head }), lastChecked);
+}
+
+// Today's deals
+{
+  const counts = new Map();
+  for (const p of todayDeals) counts.set(p.categories[0], (counts.get(p.categories[0]) || 0) + 1);
+  const filters = categories.filter((c) => counts.get(c.slug)).map((c) => [c.slug, c.name, counts.get(c.slug)]);
+  const body = `
+<div class="wrap">
+  ${breadcrumb([['홈', '/'], ['오늘의 할인', '/today.html']])}
+  <header class="page-head">
+    <p class="kicker"><span class="dot" aria-hidden="true"></span>${longDate(lastChecked)} 업데이트</p>
+    <h1>오늘의 할인</h1>
+    <p class="lead">최근 ${rules.staleDays}일 안에 가격을 다시 확인한 할인 상품입니다. 할인율이 높은 순서로 보여드려요.</p>
+  </header>
+  ${sortBar(todayDeals.length, { def: 'rate-desc', filters })}
+  ${grid(todayDeals, ' data-sortable')}
+  ${disclosure(todayDeals)}
+</div>`;
+  add('today.html', layout({
+    title: `오늘의 할인 ${todayDeals.length}개 (${shortDate(lastChecked)})`,
+    description: `${longDate(lastChecked)} 기준 할인 상품 ${todayDeals.length}개. 쿠팡 골드박스·오늘의 특가 등 할인율 높은 순으로 정리했습니다.`,
+    path: '/today.html', body, active: 'today', image: todayDeals[0]?.image, head: itemListLd(todayDeals),
+  }), lastChecked);
 }
 
 // Posts
@@ -330,7 +465,7 @@ for (const post of posts) {
   <div class="guide-body">
     <p class="kicker">${String(i + 1).padStart(2, '0')} · ${esc(categoryBySlug.get(p.categories[0]).name)}</p>
     <h2><a href="${productHref(p)}">${esc(p.title)}</a></h2>
-    <p class="verdict">${esc(p.summary)}</p>
+    <p class="verdict">${esc(autoSummary(p))}</p>
     ${body ? `<p>${esc(body)}</p>` : ''}
     <div class="buy-box">
       <div>${priceBlock(p, 'price price-lg')}<p class="muted small">${esc(priceNote || '')}${priceNote ? ' · ' : ''}${shortDate(p.checkedAt)} 확인</p></div>
@@ -342,7 +477,8 @@ for (const post of posts) {
 </section>`).join('\n');
     content = `${toc}${sections}`;
   } else {
-    const lead = productById.get(post.featured) || items[0].p;
+    const lead = (post.featured && productById.get(post.featured) && isLive(productById.get(post.featured)))
+      ? productById.get(post.featured) : items[0].p;
     const rest = items.map((i) => i.p).filter((p) => p !== lead);
     content = `
 <section class="feature">
@@ -350,7 +486,7 @@ for (const post of posts) {
   <div class="feature-body">
     <span class="badge">대표 상품</span>
     <h2><a href="${productHref(lead)}">${esc(lead.title)}</a></h2>
-    <p class="verdict">${esc(lead.summary)}</p>
+    <p class="verdict">${esc(autoSummary(lead))}</p>
     ${priceBlock(lead, 'price price-lg')}
     <p class="muted small">${shortDate(lead.checkedAt)} 가격 확인 · ${esc(lead.store || '')}</p>
     ${specTable(lead.specs)}
@@ -358,179 +494,237 @@ for (const post of posts) {
     ${buyButton(lead)}
   </div>
 </section>
-${sortBar(rest.length)}
-${grid(rest, ' data-sortable')}`;
+${rest.length ? `${sortBar(rest.length)}${grid(rest, ' data-sortable')}` : ''}`;
   }
 
+  const list = items.map((i) => i.p);
   const body = `
 <div class="wrap${post.kind === 'guide' ? ' narrow-head' : ''}">
-  <nav class="crumb" aria-label="위치"><a href="/">홈</a><span>/</span><span>${post.kind === 'guide' ? '구매 가이드' : '오늘의 할인'}</span></nav>
+  ${breadcrumb([['홈', '/'], [post.kind === 'guide' ? '구매 가이드' : '날짜별 할인', post.kind === 'guide' ? null : '/today.html'], [post.title, postHref(post)]])}
   <header class="page-head">
     <p class="kicker">${longDate(post.date)}</p>
     <h1>${esc(post.title)}</h1>
     <p class="lead">${esc(post.intro || post.description)}</p>
     ${summary}
   </header>
-  ${disclosure()}
+  ${disclosure(list)}
 </div>
 <div class="wrap${post.kind === 'guide' ? ' guide' : ''}">
 ${content}
 </div>`;
-  pages.set(`posts/${post.slug}.html`, layout({
+  add(`posts/${post.slug}.html`, layout({
     title: post.title, description: post.description, path: postHref(post), body,
-    image: productById.get(post.featured || post.items[0].product).image,
-  }));
-}
-
-function specTable(specs = []) {
-  if (!specs.length) return '';
-  return `<dl class="specs">${specs.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
-}
-function listBox({ title, items }, tone) {
-  return `<div class="box box-${tone}"><strong>${esc(title)}</strong><ul>${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul></div>`;
+    image: (productById.get(post.featured) || list[0]).image, head: itemListLd(list),
+  }), post.date);
 }
 
 // Categories
 for (const c of categories) {
-  const list = [...productsByCategory.get(c.slug)].sort(byNewest);
+  const list = [...productsByCategory.get(c.slug)].sort(byRate);
   const related = posts.filter((post) => post.items.some((i) => productById.get(i.product).categories.includes(c.slug)));
   const body = `
 <div class="wrap">
-  <nav class="crumb" aria-label="위치"><a href="/">홈</a><span>/</span><span>${esc(c.title)}</span></nav>
-  <header class="page-head page-head-row">
-    <div>
-      <p class="kicker">카테고리</p>
-      <h1>${esc(c.title)}</h1>
-      <p class="lead">${esc(c.description)}</p>
-    </div>
+  ${breadcrumb([['홈', '/'], [c.title, catHref(c.slug)]])}
+  <header class="page-head">
+    <p class="kicker">카테고리</p>
+    <h1>${esc(c.title)} 할인</h1>
+    <p class="lead">${esc(c.description)}. 할인율이 높은 순서로 정리했습니다.</p>
   </header>
-  ${list.length ? `${sortBar(list.length)}${grid(list, ' data-sortable')}` : '<p class="empty">아직 등록된 상품이 없습니다. 곧 업데이트됩니다.</p>'}
-  ${disclosure()}
-  ${related.length ? `<section class="section-tight"><h2 class="h3">이 카테고리가 포함된 글</h2><div class="post-list">${related.slice(0, 4).map(postCard).join('')}</div></section>` : ''}
+  ${list.length ? `${sortBar(list.length, { def: 'rate-desc' })}${grid(list, ' data-sortable')}` : '<p class="empty">아직 등록된 상품이 없습니다. 곧 업데이트됩니다.</p>'}
+  ${disclosure(list)}
+  ${related.length ? `<section class="section-tight"><h2 class="h3">${esc(c.title)} 상품이 포함된 글</h2><div class="post-list">${related.slice(0, 4).map(postCard).join('')}</div></section>` : ''}
 </div>`;
-  pages.set(`categories/${c.slug}.html`, layout({
-    title: c.title, description: `${c.title} 할인 상품 모음 · ${c.description}`, path: catHref(c.slug), body, active: c.slug,
-    image: list[0]?.image,
-  }));
+  add(`categories/${c.slug}.html`, layout({
+    title: `${c.title} 할인 ${list.length}개`, description: `${c.title} 할인 상품 ${list.length}개 · ${c.description}. 매일 가격 확인, 할인율 높은 순.`,
+    path: catHref(c.slug), body, active: c.slug, image: list[0]?.image, head: itemListLd(list),
+  }), list[0]?.checkedAt);
 }
 
 // Tags
-pages.set('tags/index.html', layout({
-  title: '태그', description: '용도와 상황별로 상품을 다시 찾을 수 있는 태그 목록입니다.', path: '/tags/', active: 'tags',
+add('tags/index.html', layout({
+  title: '태그', description: '용도와 상황별로 할인 상품을 다시 찾을 수 있는 태그 목록입니다.', path: '/tags/', active: 'tags',
   body: `
 <div class="wrap">
-  <nav class="crumb" aria-label="위치"><a href="/">홈</a><span>/</span><span>태그</span></nav>
+  ${breadcrumb([['홈', '/'], ['태그', '/tags/']])}
   <header class="page-head"><h1>태그</h1><p class="lead">용도와 상황별로 상품을 다시 찾아보세요.</p></header>
   <div class="tags tags-lg">${tagsSorted.map(([t, list]) => `<a href="${tagHref(t)}">#${esc(t)}<span>${list.length}</span></a>`).join('')}</div>
 </div>`,
 }));
 for (const [t, list] of productsByTag) {
-  const sorted = [...list].sort(byNewest);
-  pages.set(`tags/${t}.html`, layout({
-    title: `#${t}`, description: `#${t} 태그가 붙은 상품 ${list.length}개`, path: tagHref(t), active: 'tags',
+  const sorted = [...list].sort(byRate);
+  add(`tags/${t}.html`, layout({
+    title: `${t} 할인 상품 ${list.length}개`, description: `#${t} 할인 상품 ${list.length}개를 할인율 높은 순으로 모았습니다.`, path: tagHref(t), active: 'tags',
     body: `
 <div class="wrap">
-  <nav class="crumb" aria-label="위치"><a href="/">홈</a><span>/</span><a href="/tags/">태그</a><span>/</span><span>#${esc(t)}</span></nav>
+  ${breadcrumb([['홈', '/'], ['태그', '/tags/'], [`#${t}`, tagHref(t)]])}
   <header class="page-head"><p class="kicker">태그</p><h1>#${esc(t)}</h1></header>
-  ${sortBar(sorted.length)}${grid(sorted, ' data-sortable')}
-  ${disclosure()}
+  ${sortBar(sorted.length, { def: 'rate-desc' })}${grid(sorted, ' data-sortable')}
+  ${disclosure(sorted)}
 </div>`,
-    image: sorted[0].image,
-  }));
+    image: sorted[0].image, head: itemListLd(sorted),
+  }), sorted[0].checkedAt);
 }
 
-// Product pages
+// Keyword landing pages
+for (const [kw, list] of keywordPages) {
+  add(`k/${kwSlug(kw)}.html`, layout({
+    title: `${kw} 할인 최저가 모음 (${shortDate(lastChecked)})`,
+    description: `${kw} 할인 상품 ${list.length}개를 할인율 높은 순으로 정리했습니다. ${longDate(lastChecked)} 가격 확인.`,
+    path: kwHref(kw),
+    body: `
+<div class="wrap">
+  ${breadcrumb([['홈', '/'], ['인기 검색어', '/#trending'], [kw, kwHref(kw)]])}
+  <header class="page-head"><p class="kicker">인기 검색어</p><h1>${esc(kw)} 할인</h1><p class="lead">${longDate(lastChecked)} 기준으로 가격을 확인한 ${esc(kw)} 할인 상품입니다.</p></header>
+  ${sortBar(list.length, { def: 'rate-desc' })}${grid(list, ' data-sortable')}
+  ${disclosure(list)}
+  <section class="section-tight"><h2 class="h3">다른 인기 검색어</h2>${trendingChips()}</section>
+</div>`,
+    image: list[0].image, head: itemListLd(list),
+  }), list[0].checkedAt);
+}
+
+// Product pages (every live product, including expired ones which are noindexed)
 for (const p of products) {
   const cat = categoryBySlug.get(p.categories[0]);
   const inPosts = postsByProduct.get(p.id) || [];
-  const similar = productsByCategory.get(cat.slug).filter((x) => x !== p).slice(0, 4);
+  const similar = [...productsByCategory.get(cat.slug)].filter((x) => x !== p).sort(byRate).slice(0, 4);
+  const expired = !isListed(p);
+  const stale = age(p) > rules.staleDays;
+  const history = (p.priceHistory || []).slice(-8).reverse();
+  const lowest = lowestOf(p);
   const body = `
 <div class="wrap">
-  <nav class="crumb" aria-label="위치"><a href="/">홈</a><span>/</span><a href="${catHref(cat.slug)}">${esc(cat.title)}</a></nav>
+  ${breadcrumb([['홈', '/'], [cat.title, catHref(cat.slug)], [p.title, productHref(p)]])}
   <section class="product">
-    <div class="product-media">${img(p, '', true)}</div>
+    <div class="product-media">${img(p, '', true)}${p.discountRate ? `<span class="chip-rate chip-rate-lg">${p.discountRate}%</span>` : ''}</div>
     <div class="product-info">
       <p class="kicker">${p.categories.map((c) => `<a href="${catHref(c)}">${esc(categoryBySlug.get(c).name)}</a>`).join(' · ')}${p.store ? ` · ${esc(p.store)}` : ''}</p>
       <h1>${esc(p.title)}</h1>
-      <p class="verdict">${esc(p.summary || '')}</p>
+      <p class="verdict">${esc(autoSummary(p))}</p>
+      ${stale ? `<p class="caution"><strong>${expired ? '지난 할인' : '가격 확인 필요'}</strong> ${longDate(p.checkedAt)}에 확인한 가격입니다. 지금은 달라졌을 수 있어요.</p>` : ''}
       <div class="buy-box buy-box-col">
         ${priceBlock(p, 'price price-xl')}
-        <p class="muted small">${longDate(p.checkedAt)} 가격 확인 · 판매처 가격은 수시로 바뀝니다</p>
+        <p class="muted small">${longDate(p.checkedAt)} 가격 확인${history.length > 1 ? ` · 최근 기록 중 최저 ${money(lowest, p.price.currency)}` : ''}</p>
+        ${(p.badges || []).length ? `<p class="pills">${p.badges.map((b) => `<span class="pill">${esc(b)}</span>`).join('')}</p>` : ''}
         ${buyButton(p, 'btn btn-buy btn-lg')}
       </div>
       ${specTable(p.specs)}
+      ${history.length > 1 ? `<details class="history"><summary>가격 기록 ${history.length}건</summary><dl class="specs">${history.map((h) => `<div><dt>${shortDate(h.date)}</dt><dd>${money(h.price, p.price.currency)}</dd></div>`).join('')}</dl></details>` : ''}
       ${p.caution ? `<p class="caution"><strong>구매 전 체크</strong> ${esc(p.caution)}</p>` : ''}
       ${p.tags.length ? tagChips(p.tags) : ''}
     </div>
   </section>
-  ${disclosure()}
-  ${inPosts.length ? `<section class="section-tight"><h2 class="h3">이 상품이 소개된 글</h2><div class="post-list">${inPosts.map(postCard).join('')}</div></section>` : ''}
-  ${similar.length ? `<section class="section-tight"><h2 class="h3">${esc(cat.title)} 다른 상품</h2>${grid(similar)}</section>` : ''}
+  ${disclosure([p])}
+  ${inPosts.length ? `<section class="section-tight"><h2 class="h3">이 상품이 소개된 글</h2><div class="post-list">${inPosts.slice(0, 4).map(postCard).join('')}</div></section>` : ''}
+  ${similar.length ? `<section class="section-tight"><h2 class="h3">${esc(cat.title)} 할인 더 보기</h2>${grid(similar)}</section>` : ''}
 </div>
 <div class="sticky-buy" aria-hidden="true">
   ${priceBlock(p)}
   ${buyButton(p, 'btn btn-buy')}
 </div>`;
-  pages.set(`p/${p.id}.html`, layout({
-    title: p.title, description: `${p.summary || p.title} · ${priceParts(p).main}`, path: productHref(p), body,
-    image: p.image, bodyClass: 'has-sticky-buy',
-  }));
+  const offerValid = new Date(Date.parse(p.checkedAt) + 7 * 86400e3).toISOString().slice(0, 10);
+  const head = jsonLd({
+    '@context': 'https://schema.org', '@type': 'Product', name: p.title, image: [p.image],
+    description: autoSummary(p), category: cat.title,
+    offers: {
+      '@type': 'Offer', url: site.url + productHref(p), priceCurrency: p.price.currency || 'KRW', price: p.price.min,
+      priceValidUntil: offerValid, availability: expired ? 'https://schema.org/LimitedAvailability' : 'https://schema.org/InStock',
+      ...(p.store ? { seller: { '@type': 'Organization', name: p.store } } : {}),
+    },
+  });
+  const pr = priceParts(p).main;
+  add(`p/${p.id}.html`, layout({
+    title: `${p.title}${p.discountRate ? ` ${p.discountRate}% 할인` : ''} ${pr}`,
+    description: `${autoSummary(p)} ${longDate(p.checkedAt)} 가격 확인.`.slice(0, 155),
+    path: productHref(p), body, image: p.image, bodyClass: 'has-sticky-buy', noindex: expired, head,
+  }), expired ? null : p.checkedAt);
 }
 
 // Search
-pages.set('search.html', layout({
-  title: '검색', description: '상품 검색', path: '/search.html',
+add('search.html', layout({
+  title: '검색', description: '할인 상품 검색', path: '/search.html', noindex: true,
   body: `
 <div class="wrap">
   <header class="page-head"><h1 data-search-title>검색</h1><p class="lead" data-search-status>상품명, 브랜드, 카테고리, 태그로 찾을 수 있어요.</p></header>
   <div class="grid" data-search-results></div>
   <div data-search-empty hidden>
-    <p class="empty">검색 결과가 없습니다. 다른 단어로 찾아보거나 아래 태그를 눌러보세요.</p>
-    ${tagChips(tagsSorted.slice(0, 12).map(([t]) => t))}
+    <p class="empty">검색 결과가 없습니다. 인기 검색어나 태그를 눌러보세요.</p>
+    ${trendingChips()}
   </div>
 </div>`,
 }));
 
+// Review queue (not linked, not indexed)
+add('review.html', layout({
+  title: `검수 대기 ${pending.length}개`, path: '/review.html', noindex: true,
+  body: `
+<div class="wrap">
+  <header class="page-head"><h1>검수 대기 ${pending.length}개</h1>
+  <p class="lead">썸네일과 상품명이 같은 상품인지, 가격이 맞는지, 금지 품목이 아닌지만 보세요. 승인: <code>node scripts/review.mjs approve all</code> · 반려: <code>node scripts/review.mjs reject ID 사유</code></p></header>
+  <div class="review-list">${pending.map((p) => `<article class="review-item">
+    <a class="review-img" href="${esc(p.link)}" target="_blank" rel="noopener">${img(p)}</a>
+    <div>
+      <p class="kicker">${esc(p.store || '')} · ${esc(p.source || '')} · ${esc(categoryBySlug.get(p.categories[0])?.name || '')}</p>
+      <h3>${esc(p.title)}</h3>
+      ${priceBlock(p, 'price price-lg')}
+      <p class="muted small">${p.affiliateLink ? `제휴 링크 ✓ (${esc(p.network || '')})` : '<b>제휴 링크 없음</b>'} · ${shortDate(p.checkedAt)}</p>
+      <p><code class="review-id">${esc(p.id)}</code></p>
+    </div>
+  </article>`).join('')}</div>
+</div>`,
+}));
+
 // 404
-pages.set('404.html', layout({
-  title: '페이지를 찾을 수 없습니다', path: '/404.html',
+add('404.html', layout({
+  title: '페이지를 찾을 수 없습니다', path: '/404.html', noindex: true,
   body: `
 <div class="wrap">
   <header class="page-head center">
     <p class="kicker">404</p>
-    <h1>페이지를 찾을 수 없습니다</h1>
-    <p class="lead">상품이 내려갔거나 주소가 바뀌었을 수 있어요.</p>
-    <div class="actions center"><a class="btn btn-primary" href="/">홈으로</a><a class="btn btn-ghost" href="/search.html">검색하기</a></div>
+    <h1>할인이 끝났거나 없는 페이지예요</h1>
+    <p class="lead">오늘의 할인에서 지금 할인 중인 상품을 확인해 보세요.</p>
+    <div class="actions center"><a class="btn btn-primary" href="/today.html">오늘의 할인</a><a class="btn btn-ghost" href="/">홈으로</a></div>
   </header>
 </div>`,
 }));
 
 // ---------- write ----------
 for (const d of GENERATED_DIRS) {
-  const dir = join(ROOT, d);
+  const dir = path(d);
   if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
 }
 for (const [rel, html] of pages) {
-  const file = join(ROOT, rel);
+  const file = path(rel);
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, html);
 }
 
-const searchIndex = products.map((p) => ({
+const searchIndex = listed.map((p) => ({
   t: [p.title, p.store, ...p.tags, ...p.categories.map((c) => categoryBySlug.get(c).title)].join(' ').toLowerCase(),
-  d: productDate(p),
+  r: p.discountRate || 0,
   html: card(p),
-})).sort((a, b) => b.d.localeCompare(a.d));
-writeFileSync(join(ROOT, 'assets/search.json'), JSON.stringify(searchIndex));
+})).sort((a, b) => b.r - a.r);
+writeFileSync(path('assets/search.json'), JSON.stringify(searchIndex));
 
-const urls = [...pages.keys()].filter((k) => k !== '404.html' && k !== 'search.html')
-  .map((k) => k === 'index.html' ? '/' : k === 'tags/index.html' ? '/tags/' : `/${k.split('/').map(encodeURIComponent).join('/')}`);
-writeFileSync(join(ROOT, 'sitemap.xml'),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${site.url}${u}</loc></url>`).join('\n')}\n</urlset>\n`);
-writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
+const NOT_IN_SITEMAP = new Set(['404.html', 'search.html', 'review.html']);
+const urlOf = (k) => (k === 'index.html' ? '/' : k === 'tags/index.html' ? '/tags/' : `/${k.split('/').map(enc).join('/')}`);
+const sitemapKeys = [...pages.keys()].filter((k) => !NOT_IN_SITEMAP.has(k) && !(k.startsWith('p/') && !lastmod.has(k)));
+writeFileSync(path('sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapKeys.map((k) =>
+    `  <url><loc>${site.url}${urlOf(k)}</loc>${lastmod.get(k) ? `<lastmod>${lastmod.get(k)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`);
+writeFileSync(path('robots.txt'), `User-agent: *\nAllow: /\nDisallow: /review.html\nDisallow: /search.html\nSitemap: ${site.url}/sitemap.xml\n`);
 
-console.log(`생성 완료: 페이지 ${pages.size}개, 상품 ${products.length}개, 글 ${posts.length}개, 태그 ${productsByTag.size}개`);
-if (warnings.length) {
-  console.log(`\n경고 ${warnings.length}건 (수익이 나지 않는 링크):`);
-  for (const w of warnings) console.log(`  - ${w}`);
-}
+const rssItems = [...listed].sort((a, b) => (b.addedAt || b.checkedAt).localeCompare(a.addedAt || a.checkedAt)).slice(0, 50);
+const rfc822 = (d) => new Date(`${d}T09:00:00+09:00`).toUTCString();
+writeFileSync(path('rss.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>${esc(site.name)}</title><link>${site.url}/</link><description>${esc(site.description)}</description><language>ko</language>
+<lastBuildDate>${rfc822(lastChecked)}</lastBuildDate>
+${rssItems.map((p) => `<item><title>${esc(`${p.title}${p.discountRate ? ` ${p.discountRate}% 할인` : ''}`)}</title><link>${site.url}${productHref(p)}</link><guid>${site.url}${productHref(p)}</guid><pubDate>${rfc822(p.addedAt || p.checkedAt)}</pubDate><description>${esc(autoSummary(p))}</description></item>`).join('\n')}
+</channel></rss>
+`);
+
+console.log(`생성 완료: 페이지 ${pages.size}개 · 게시 ${products.length} (목록 노출 ${listed.length}, 오늘의 할인 ${todayDeals.length}) · 검수 대기 ${pending.length} · 키워드 페이지 ${keywordPages.size}`);
+const coupang = products.filter((p) => p.network === 'coupang').length;
+const lp = products.filter((p) => p.network === 'linkprice').length;
+console.log(`제휴 링크: 쿠팡 ${coupang} · 링크프라이스 ${lp} · 없음 ${warnings.length}`);

@@ -39,7 +39,9 @@
         "11.8kg"
       ]
     ],
-    "caution": "설치 공간과 문 열림 방향을 먼저 확인하세요."
+    "caution": "설치 공간과 문 열림 방향을 먼저 확인하세요.",
+    "status": "published",
+    "addedAt": "2026-10-21"
   },
   {
     "id": "jmw-dryer-mg1800",
@@ -67,7 +69,10 @@
         "BLDC 항공모터"
       ]
     ],
-    "caution": "판매처마다 구성(노즐·디퓨저)이 다를 수 있습니다."
+    "caution": "판매처마다 구성(노즐·디퓨저)이 다를 수 있습니다.",
+    "status": "hidden",
+    "addedAt": "2026-10-21",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "homeplanet-massage-gun-hsj229",
@@ -91,7 +96,9 @@
     "checkedAt": "2026-10-21",
     "summary": "3만원 이하 예산에서 바로 고르기 쉬운 미니 마사지건입니다.",
     "specs": [],
-    "caution": ""
+    "caution": "",
+    "status": "published",
+    "addedAt": "2026-10-21"
   },
   {
     "id": "ottogi-rice-210g-24",
@@ -129,7 +136,10 @@
         "305kcal"
       ]
     ],
-    "caution": "소비기한과 보관 공간을 확인하세요."
+    "caution": "소비기한과 보관 공간을 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-21",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "bibigo-wanggyoja-1-4kg-2",
@@ -161,7 +171,10 @@
         "냉동"
       ]
     ],
-    "caution": "냉동실 여유 공간을 먼저 확인하세요."
+    "caution": "냉동실 여유 공간을 먼저 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-21",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "pebblepet-feeder-ipf-w100",
@@ -198,7 +211,9 @@
         "강아지·고양이 겸용"
       ]
     ],
-    "caution": "세척 방법과 앱 안정성 후기를 같이 확인하세요."
+    "caution": "세척 방법과 앱 안정성 후기를 같이 확인하세요.",
+    "status": "published",
+    "addedAt": "2026-10-21"
   },
   {
     "id": "petsmoa-pad-large-50",
@@ -236,7 +251,9 @@
         "탈취 / 미끄럼방지"
       ]
     ],
-    "caution": "사이즈(대형/특대형)를 혼동하지 마세요."
+    "caution": "사이즈(대형/특대형)를 혼동하지 마세요.",
+    "status": "published",
+    "addedAt": "2026-10-21"
   },
   {
     "id": "penelope-wipes-cap",
@@ -274,7 +291,9 @@
         "캡형"
       ]
     ],
-    "caution": "묶음 구성에 따라 장당 단가가 달라집니다."
+    "caution": "묶음 구성에 따라 장당 단가가 달라집니다.",
+    "status": "published",
+    "addedAt": "2026-10-21"
   },
   {
     "id": "motherk-bottle-dryer",
@@ -305,7 +324,9 @@
         "외출·여행용"
       ]
     ],
-    "caution": "접었을 때 크기와 세척 편의성을 확인하세요."
+    "caution": "접었을 때 크기와 세척 편의성을 확인하세요.",
+    "status": "published",
+    "addedAt": "2026-10-21"
   },
   {
     "id": "ali-fridge-drawer-organizer",
@@ -345,7 +366,9 @@
         "Blue / Green / Pink / White 등"
       ]
     ],
-    "caution": "선반 두께·깊이를 실측하고, 배송 기간과 반품 난이도를 확인하세요."
+    "caution": "선반 두께·깊이를 실측하고, 배송 기간과 반품 난이도를 확인하세요.",
+    "status": "published",
+    "addedAt": "2026-10-21"
   },
   {
     "id": "gibone-kitchen-tissue-80x10",
@@ -380,7 +403,9 @@
         "식탁, 싱크대, 조리대 청소"
       ]
     ],
-    "caution": "특수 코팅 상판은 사용 전 확인하세요."
+    "caution": "특수 코팅 상판은 사용 전 확인하세요.",
+    "status": "published",
+    "addedAt": "2026-10-20"
   },
   {
     "id": "happycall-ih-titanium-pan-28",
@@ -417,7 +442,10 @@
         "IH·인덕션 사용 가능"
       ]
     ],
-    "caution": "손잡이 포함 보관 길이와 인덕션 화구 지름을 확인하세요."
+    "caution": "손잡이 포함 보관 길이와 인덕션 화구 지름을 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-20",
+    "hiddenReason": "링크 없음"
   },
   {
     "id": "cleanwrap-rollbag-25x35-500",
@@ -459,7 +487,9 @@
         "120℃ / -60℃"
       ]
     ],
-    "caution": "단품인지 12개 박스 구성인지 꼭 확인하세요."
+    "caution": "단품인지 12개 박스 구성인지 꼭 확인하세요.",
+    "status": "published",
+    "addedAt": "2026-10-20"
   },
   {
     "id": "cleanwrap-double-zipper-bag",
@@ -497,7 +527,9 @@
         "100℃ / -60℃"
       ]
     ],
-    "caution": "대·중·소 사이즈를 혼동하지 마세요."
+    "caution": "대·중·소 사이즈를 혼동하지 마세요.",
+    "status": "published",
+    "addedAt": "2026-10-20"
   },
   {
     "id": "nanudam-iceball-tray",
@@ -528,7 +560,10 @@
         "투명블랙"
       ]
     ],
-    "caution": "냉동실 높이와 얼음통 보관 공간을 확인하세요."
+    "caution": "냉동실 높이와 얼음통 보관 공간을 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-20",
+    "hiddenReason": "링크 없음"
   },
   {
     "id": "coupang-basic-roll-tissue-3ply",
@@ -543,20 +578,15 @@
       "청소용품"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail9.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F515679525385799-751eee87-4f8c-4bcc-9784-4e2403f5c115.jpg&w=3840&q=75",
+    "image": "https://thumbnail9.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/515679525385799-751eee87-4f8c-4bcc-9784-4e2403f5c115.jpg",
     "link": "https://www.coupang.com/np/categories/465073",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "11,890원"
+      "min": 11890
     },
     "checkedAt": "2026-10-24",
     "summary": "매일 쓰는 소모품이라 가격 이력이 역대 최저가로 표시될 때 장바구니 후보로 두기 좋음.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "11,890원"
-      ],
       [
         "할인/쿠폰",
         "역대 최저가 표시 / 쿠팡 골드박스 가격이력 검증"
@@ -572,13 +602,11 @@
       [
         "추천 대상",
         "화장지 재고를 채워야 하는 1~4인 가구"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "총 롤 수·매수·겹수, 무형광 여부, 배송비/와우 조건 확인."
+    "caution": "총 롤 수·매수·겹수, 무형광 여부, 배송비/와우 조건 확인.",
+    "status": "published",
+    "addedAt": "2026-10-24"
   },
   {
     "id": "lechatra1802-peony-softener-refill",
@@ -593,20 +621,15 @@
       "세탁용품"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail1.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F634635959411553-3d0b19cf-3236-4081-95ce-10eb3b12aa37.png&w=3840&q=75",
+    "image": "https://thumbnail1.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/634635959411553-3d0b19cf-3236-4081-95ce-10eb3b12aa37.png",
     "link": "https://pages.coupang.com/m/69849",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "15,900원"
+      "min": 15900
     },
     "checkedAt": "2026-10-24",
     "summary": "세탁 소모품은 단가가 낮을 때 묶어두기 좋고, 오늘 골드박스 기반 가격이력 목록에서 확인됨.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "15,900원"
-      ],
       [
         "할인/쿠폰",
         "쿠팡 골드박스/가격이력 검증 목록 노출"
@@ -622,13 +645,11 @@
       [
         "추천 대상",
         "세탁 빈도가 높은 집, 실내건조 비중이 높은 가구"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "향 민감도와 리필 용량·개수 확인."
+    "caution": "향 민감도와 리필 용량·개수 확인.",
+    "status": "published",
+    "addedAt": "2026-10-24"
   },
   {
     "id": "persil-disc-power-capsule-pouch",
@@ -643,20 +664,15 @@
       "세탁용품"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail10.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F2026%2F04%2F17%2F12%2F5%2F4d308eb5-422a-4d45-93ea-8cf75a5c366b.jpg&w=3840&q=75",
+    "image": "https://thumbnail10.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/2026/04/17/12/5/4d308eb5-422a-4d45-93ea-8cf75a5c366b.jpg",
     "link": "https://www.persil.co.kr/products/predosed/discs-power.html",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "15,300원"
+      "min": 15300
     },
     "checkedAt": "2026-10-24",
     "summary": "브랜드 세제는 가격차가 커서 가격이력 검증 목록에 떴을 때 확인 가치가 있음.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "15,300원"
-      ],
       [
         "할인/쿠폰",
         "쿠팡 골드박스 가격이력 검증 목록 / 핫딜 페이지 9,940원 기록도 별도 확인"
@@ -672,13 +688,11 @@
       [
         "추천 대상",
         "세제 계량을 줄이고 싶은 가구"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "정확한 캡슐 수, 드럼/일반 세탁기 호환, 어린이 접근 방지 보관 필요."
+    "caution": "정확한 캡슐 수, 드럼/일반 세탁기 호환, 어린이 접근 방지 보관 필요.",
+    "status": "published",
+    "addedAt": "2026-10-24"
   },
   {
     "id": "comet-kitchen-towel-150",
@@ -693,20 +707,16 @@
       "청소용품"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Ft3a.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F69970827641992-1b777347-fb0b-4501-a8bd-e316bd8d793d.jpg&w=3840&q=75",
+    "image": "https://t3a.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/69970827641992-1b777347-fb0b-4501-a8bd-e316bd8d793d.jpg",
     "link": "https://rankingbox.kr/products/169280610",
     "affiliateLink": "",
     "price": {
-      "min": 0,
+      "min": 13560,
       "text": "13,560원 · 1매당 91원"
     },
     "checkedAt": "2026-10-24",
     "summary": "매당 단가가 같이 표시되어 주방 소모품 가격 판단이 쉬움.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "13,560원 · 1매당 91원"
-      ],
       [
         "할인/쿠폰",
         "쿠팡 골드박스 가격이력 검증 목록 / 단가 표시"
@@ -722,13 +732,12 @@
       [
         "추천 대상",
         "키친타월 사용량이 많은 주방, 사무실 탕비실"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "총 팩 수와 매수, 무형광·식품용 여부, 보관 공간 확인."
+    "caution": "총 팩 수와 매수, 무형광·식품용 여부, 보관 공간 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-24",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "haepycall-solaris-pan-28",
@@ -743,20 +752,15 @@
       "조리도구"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail14.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fvendor_inventory%2F1670%2F0025108b267ef7ad842fad0528c9e8914e119e94413289739d4f7f17dcfa.jpg&w=3840&q=75",
+    "image": "https://thumbnail14.coupangcdn.com/thumbnails/remote/512x512ex/image/vendor_inventory/1670/0025108b267ef7ad842fad0528c9e8914e119e94413289739d4f7f17dcfa.jpg",
     "link": "https://honeydeal.ai/product/zFzgl91",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "21,860원"
+      "min": 21860
     },
     "checkedAt": "2026-10-24",
     "summary": "인덕션 호환 팬은 모델·지름만 맞으면 교체 수요가 꾸준함.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "21,860원"
-      ],
       [
         "할인/쿠폰",
         "역대 최저가 표시"
@@ -772,13 +776,12 @@
       [
         "추천 대상",
         "낡은 프라이팬을 교체하려는 인덕션 사용자"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "정확한 사이즈, 코팅 관리법, 인덕션 화구 크기 호환 확인."
+    "caution": "정확한 사이즈, 코팅 관리법, 인덕션 화구 크기 호환 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-24",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "ezn-double-zipper-bag",
@@ -793,20 +796,15 @@
       "정리수납"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail11.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F67498303642682-5b3d997d-b1e1-4679-986b-b8bad2db494d.jpg&w=3840&q=75",
+    "image": "https://thumbnail11.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/67498303642682-5b3d997d-b1e1-4679-986b-b8bad2db494d.jpg",
     "link": "https://shop.coupang.com/A00340030/224831?locale=ko_KR&platform=m&source",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "10,090원"
+      "min": 10090
     },
     "checkedAt": "2026-10-24",
     "summary": "지퍼백은 사이즈만 맞으면 재구매가 쉬운 소모품이고, 역대 최저가 표시가 확인됨.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "10,090원"
-      ],
       [
         "할인/쿠폰",
         "역대 최저가 표시"
@@ -822,13 +820,11 @@
       [
         "추천 대상",
         "식재료 소분 보관이 잦은 자취·가족 가구"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "소형/중형/대형 옵션, 총 매수, 냉동 가능 여부 확인."
+    "caution": "소형/중형/대형 옵션, 총 매수, 냉동 가능 여부 확인.",
+    "status": "published",
+    "addedAt": "2026-10-24"
   },
   {
     "id": "portmeirion-botanic-garden-mugs-4",
@@ -843,20 +839,15 @@
       "선물"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Ft2c.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F2472762538576064-69cab7ca-3904-4681-9a6a-924f7e57d052.jpg&w=3840&q=75",
+    "image": "https://t2c.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/2472762538576064-69cab7ca-3904-4681-9a6a-924f7e57d052.jpg",
     "link": "https://m.bunjang.co.kr/products/424286264",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "24,100원"
+      "min": 24100
     },
     "checkedAt": "2026-10-24",
     "summary": "선물·홈카페 수요가 있는 브랜드 테이블웨어이고, 역대 최저가 표시가 있어 가격 확인 가치가 있음.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "24,100원"
-      ],
       [
         "할인/쿠폰",
         "역대 최저가 표시"
@@ -872,13 +863,12 @@
       [
         "추천 대상",
         "홈카페용 컵 교체, 집들이 선물 후보"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "정품 여부, 파손 교환 조건, 식세기/전자레인지 가능 여부 확인."
+    "caution": "정품 여부, 파손 교환 조건, 식세기/전자레인지 가능 여부 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-24",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "kipnos-folding-storage-box",
@@ -893,20 +883,15 @@
       "수납"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Ft2c.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fvendor_inventory%2F8e28%2F10b3fbcd5eb469388b7f2448ddb4ac2f053c1966ecda1185c56388f93ba2.png&w=3840&q=75",
+    "image": "https://t2c.coupangcdn.com/thumbnails/remote/512x512ex/image/vendor_inventory/8e28/10b3fbcd5eb469388b7f2448ddb4ac2f053c1966ecda1185c56388f93ba2.png",
     "link": "https://honeydeal.ai/product/v18zXZ8",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "31,500원"
+      "min": 31500
     },
     "checkedAt": "2026-10-24",
     "summary": "계절옷·잡화 정리에 바로 쓰기 좋은 품목이고 30일 최저가 표시가 확인됨.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "31,500원"
-      ],
       [
         "할인/쿠폰",
         "30일 최저가 표시"
@@ -922,13 +907,12 @@
       [
         "추천 대상",
         "원룸·오피스텔 수납 공간이 부족한 사람"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "단수·개수·하중, 접이부 내구성, 조립 방식 확인."
+    "caution": "단수·개수·하중, 접이부 내구성, 조립 방식 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-24",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "promade-80l-sorting-bin-2tier",
@@ -947,16 +931,12 @@
     "link": "https://store.ohou.se/goods/265127",
     "affiliateLink": "",
     "price": {
-      "min": 0,
+      "min": 36382,
       "text": "36,382원 외"
     },
     "checkedAt": "2026-10-24",
     "summary": "오늘의집 스페셜딜에서 오늘만 60%가 확인된 대용량 정리템.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "36,382원 외"
-      ],
       [
         "할인/쿠폰",
         "오늘만 60% / 쿠폰+카카오페이 할인가 / 무료배송"
@@ -972,13 +952,12 @@
       [
         "추천 대상",
         "분리수거 공간과 수납을 같이 정리하려는 자취방"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "실제 최종가가 결제수단 조건을 타는지, 2단 구성 포함 여부 확인."
+    "caution": "실제 최종가가 결제수단 조건을 타는지, 2단 구성 포함 여부 확인.",
+    "status": "published",
+    "addedAt": "2026-10-24",
+    "discountRate": 60
   },
   {
     "id": "bas-deodorizer-set",
@@ -997,16 +976,12 @@
     "link": "https://market.ddanzi.com/shop/view.php?index_no=184204102&cate=0B&con_pc=Y&con_pc=Y",
     "affiliateLink": "",
     "price": {
-      "min": 0,
+      "min": 20417,
       "text": "20,417원 외"
     },
     "checkedAt": "2026-10-24",
     "summary": "원룸은 음식·화장실·신발장 냄새 관리 수요가 커서 할인 폭이 클 때 체크할 만함.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "20,417원 외"
-      ],
       [
         "할인/쿠폰",
         "오늘만 65% / 쿠폰 할인가 / 무료배송"
@@ -1022,13 +997,13 @@
       [
         "추천 대상",
         "원룸·화장실·신발장 냄새 관리가 필요한 사람"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "향 선택, 구성 수량, 탈취 성분과 사용 공간 적합성 확인."
+    "caution": "향 선택, 구성 수량, 탈취 성분과 사용 공간 적합성 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-24",
+    "discountRate": 65,
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "petoria-litterlocker-airseal-bags",
@@ -1047,16 +1022,12 @@
     "link": "https://m.petoria.co.kr/product/list.html?cate_no=798",
     "affiliateLink": "",
     "price": {
-      "min": 0,
+      "min": 35879,
       "text": "35,879원 외"
     },
     "checkedAt": "2026-10-24",
     "summary": "고양이 배변 처리 소모품은 호환 모델만 맞으면 할인 때 쟁여두기 좋음.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "35,879원 외"
-      ],
       [
         "할인/쿠폰",
         "오늘만 45% / 쿠폰+카카오페이 할인가 / 무료배송"
@@ -1072,13 +1043,12 @@
       [
         "추천 대상",
         "리터락커를 이미 쓰는 고양이 보호자"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "리터락커 모델 호환성, 봉투 개수, 반품 가능 여부 확인."
+    "caution": "리터락커 모델 호환성, 봉투 개수, 반품 가능 여부 확인.",
+    "status": "published",
+    "addedAt": "2026-10-24",
+    "discountRate": 45
   },
   {
     "id": "bebesup-origin-wipes-cap",
@@ -1093,20 +1063,15 @@
       "소모품"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail7.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2F1025_amir_coupang_oct_80k%2Fca12%2F9b88a0325a006bc9b76a6d37ced4db41f68d8e9a785b938f18ec4e261202.jpg&w=3840&q=75",
+    "image": "https://thumbnail7.coupangcdn.com/thumbnails/remote/512x512ex/image/1025_amir_coupang_oct_80k/ca12/9b88a0325a006bc9b76a6d37ced4db41f68d8e9a785b938f18ec4e261202.jpg",
     "link": "https://www.bebesup.co.kr/goods/view?no=463",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "13,400원"
+      "min": 13400
     },
     "checkedAt": "2026-10-24",
     "summary": "사용 빈도가 높은 유아 위생 소모품이며 역대 최저가 표시가 확인됨.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "13,400원"
-      ],
       [
         "할인/쿠폰",
         "역대 최저가 표시"
@@ -1122,13 +1087,11 @@
       [
         "추천 대상",
         "물티슈를 꾸준히 쓰는 육아 가정"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "성분, 평량, 제조일·유통기한, 아이 피부 반응, 캡형 팩 수 확인."
+    "caution": "성분, 평량, 제조일·유통기한, 아이 피부 반응, 캡형 팩 수 확인.",
+    "status": "published",
+    "addedAt": "2026-10-24"
   },
   {
     "id": "greenfinger-hs-moisture-lotion",
@@ -1143,20 +1106,15 @@
       "보습"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail15.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F2024%2F06%2F13%2F15%2F4%2Fd1ded41e-ebb1-4e98-9d48-a9cd68b71314.png&w=3840&q=75",
+    "image": "https://thumbnail15.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/2024/06/13/15/4/d1ded41e-ebb1-4e98-9d48-a9cd68b71314.png",
     "link": "https://prod.danawa.com/info/?pcode=89518436",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "11,200원"
+      "min": 11200
     },
     "checkedAt": "2026-10-24",
     "summary": "유아 보습제는 계절 수요가 있고 오늘 가격이 확인된 브랜드 제품.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "11,200원"
-      ],
       [
         "할인/쿠폰",
         "쿠팡 골드박스 가격이력 검증 목록"
@@ -1172,13 +1130,12 @@
       [
         "추천 대상",
         "겨울철 유아 보습제를 미리 준비하려는 가정"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "전성분, 향료 유무, 사용 연령, 개봉 후 사용기한 확인."
+    "caution": "전성분, 향료 유무, 사용 연령, 개봉 후 사용기한 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-24",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "poled-hugbear-baby-bidet",
@@ -1197,16 +1154,11 @@
     "link": "https://www.11st.co.kr/products/8447837855",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "56,222원"
+      "min": 56222
     },
     "checkedAt": "2026-10-24",
     "summary": "부피 있는 육아템은 할인폭이 클 때 비교 가치가 크고 오늘만 51%가 확인됨.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "56,222원"
-      ],
       [
         "할인/쿠폰",
         "오늘만 51% / 쿠폰+카카오페이 할인가 / 무료배송"
@@ -1222,13 +1174,12 @@
       [
         "추천 대상",
         "목욕·기저귀 케어 보조용품이 필요한 영유아 가정"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "아이 월령·체중 제한, 욕실 설치 공간, 미끄럼 방지와 반품 조건 확인."
+    "caution": "아이 월령·체중 제한, 욕실 설치 공간, 미끄럼 방지와 반품 조건 확인.",
+    "status": "published",
+    "addedAt": "2026-10-24",
+    "discountRate": 51
   },
   {
     "id": "clapa-bldc-vacuum-bvc-s185",
@@ -1243,20 +1194,15 @@
       "가격비교"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail15.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F4168965072624-13372bd8-72e4-402e-b5b1-87833d3eaf3d.jpg&w=3840&q=75",
+    "image": "https://thumbnail15.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/4168965072624-13372bd8-72e4-402e-b5b1-87833d3eaf3d.jpg",
     "link": "https://www.e-himart.co.kr/app/goods/goodsDetail?goodsNo=0048338056",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "168,000원"
+      "min": 168000
     },
     "checkedAt": "2026-10-24",
     "summary": "모델명과 구성품이 명확하고 역대 최저가 표시가 확인됨.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "168,000원"
-      ],
       [
         "할인/쿠폰",
         "역대 최저가 표시"
@@ -1272,13 +1218,11 @@
       [
         "추천 대상",
         "원룸·소형 가구에서 청소기 교체를 고려하는 사람"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "흡입력, 배터리 사용시간, 필터·먼지봉투 소모품 가격, AS/보증/KC 인증 확인."
+    "caution": "흡입력, 배터리 사용시간, 필터·먼지봉투 소모품 가격, AS/보증/KC 인증 확인.",
+    "status": "published",
+    "addedAt": "2026-10-24"
   },
   {
     "id": "samsung-galaxy-tab-s10-fe-8-128",
@@ -1297,16 +1241,12 @@
     "link": "https://price.enuri.com/catalog/133371570",
     "affiliateLink": "",
     "price": {
-      "min": 0,
+      "min": 644070,
       "text": "644,070원 / 혜택 최저가 599,000원"
     },
     "checkedAt": "2026-10-24",
     "summary": "모델명·램·저장공간·판매처 혜택가가 명확해 전자제품 후보로 검수하기 좋음.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "644,070원 / 혜택 최저가 599,000원"
-      ],
       [
         "할인/쿠폰",
         "다나와 태블릿 특가 41% / G마켓 삼성카드 혜택 최저가 표기"
@@ -1322,13 +1262,13 @@
       [
         "추천 대상",
         "필기·영상용 태블릿을 가격비교로 찾는 사람"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "정품/국내 AS, 카드 조건, 펜 포함 여부, Wi‑Fi/LTE 모델 구분, KC 인증 확인."
+    "caution": "정품/국내 AS, 카드 조건, 펜 포함 여부, Wi‑Fi/LTE 모델 구분, KC 인증 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-24",
+    "discountRate": 41,
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "pulmuone-steamcook-airfryer-12l",
@@ -1347,16 +1287,11 @@
     "link": "https://shop.pulmuone.co.kr/shop/goodsView/42228",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "89,900원"
+      "min": 89900
     },
     "checkedAt": "2026-10-24",
     "summary": "12L 용량과 89,900원 가격이 확인된 주방가전 후보.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "89,900원"
-      ],
       [
         "할인/쿠폰",
         "핫딜 페이지 골드박스 표기 / 배송 무료"
@@ -1372,13 +1307,11 @@
       [
         "추천 대상",
         "냉동식품·간편식 조리가 많은 가구"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "정격전력, 설치 공간, 내부 코팅, AS/보증, KC 인증, 실제 상품 URL 재확인 필요."
+    "caution": "정격전력, 설치 공간, 내부 코팅, AS/보증, KC 인증, 실제 상품 URL 재확인 필요.",
+    "status": "published",
+    "addedAt": "2026-10-24"
   },
   {
     "id": "oreo-wafer-stick-choco",
@@ -1393,20 +1326,15 @@
       "상온보관"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail7.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F983889761555206-bc10601f-3b3e-4879-9ae0-d8c5214104a6.jpg&w=3840&q=75",
+    "image": "https://thumbnail7.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/983889761555206-bc10601f-3b3e-4879-9ae0-d8c5214104a6.jpg",
     "link": "https://prod.danawa.com/info/?pcode=8069422",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "12,680원"
+      "min": 12680
     },
     "checkedAt": "2026-10-24",
     "summary": "상온 보관 간식이라 묶음 구매 부담이 낮고 역대 최저가 표시가 확인됨.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "12,680원"
-      ],
       [
         "할인/쿠폰",
         "역대 최저가 표시"
@@ -1422,13 +1350,12 @@
       [
         "추천 대상",
         "사무실·가정 간식 재고용"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "소비기한, 총 중량, 개별포장 여부, 우유·밀·대두 등 알레르기 표시 확인."
+    "caution": "소비기한, 총 중량, 개별포장 여부, 우유·밀·대두 등 알레르기 표시 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-24",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "gonggome-gimjaban",
@@ -1443,20 +1370,15 @@
       "상온보관"
     ],
     "store": "쿠팡",
-    "image": "https://catchprice.kr/_next/image?url=https%3A%2F%2Fthumbnail13.coupangcdn.com%2Fthumbnails%2Fremote%2F512x512ex%2Fimage%2Fretail%2Fimages%2F752587431462318-25b351f8-04af-42a1-8ddf-8d62759ec3df.png&w=3840&q=75",
+    "image": "https://thumbnail13.coupangcdn.com/thumbnails/remote/512x512ex/image/retail/images/752587431462318-25b351f8-04af-42a1-8ddf-8d62759ec3df.png",
     "link": "https://goldbox.today/products/66569",
     "affiliateLink": "",
     "price": {
-      "min": 0,
-      "text": "10,980원"
+      "min": 10980
     },
     "checkedAt": "2026-10-24",
     "summary": "밥반찬류는 자취·가족 모두 소진이 쉽고 30일 최저가 표시가 확인됨.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "10,980원"
-      ],
       [
         "할인/쿠폰",
         "30일 최저가 표시"
@@ -1472,13 +1394,12 @@
       [
         "추천 대상",
         "도시락·집밥 반찬을 간단히 채우려는 사람"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "총 중량, 개봉 후 보관, 참깨·대두 등 알레르기, 소비기한 확인."
+    "caution": "총 중량, 개봉 후 보관, 참깨·대두 등 알레르기, 소비기한 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-24",
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "ottogi-brownrice-150x30",
@@ -1497,16 +1418,12 @@
     "link": "https://otokimall.com/front/product/3044",
     "affiliateLink": "",
     "price": {
-      "min": 0,
+      "min": 22934,
       "text": "22,934원 외"
     },
     "checkedAt": "2026-10-24",
     "summary": "150g 소용량 즉석밥 30개 구성이라 개수와 단위가 명확함.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "22,934원 외"
-      ],
       [
         "할인/쿠폰",
         "오늘만 40% / 쿠폰+토스 할인가 / 무료배송"
@@ -1522,13 +1439,12 @@
       [
         "추천 대상",
         "아침·도시락용 즉석밥을 자주 쓰는 사람"
-      ],
-      [
-        "확인 출처",
-        "2026-10-24 검토 HTML"
       ]
     ],
-    "caution": "소비기한, 보관 방법, 개당 단가, 옵션별 가격 차이, 원재료 확인."
+    "caution": "소비기한, 보관 방법, 개당 단가, 옵션별 가격 차이, 원재료 확인.",
+    "status": "published",
+    "addedAt": "2026-10-24",
+    "discountRate": 40
   },
   {
     "id": "20261022-01-3-33m-30",
@@ -1546,15 +1462,11 @@
     "link": "https://www.coupang.com/vp/products/8710961443?itemId=29085129242&vendorItemId=93924118411",
     "affiliateLink": "",
     "price": {
-      "text": "17,320원"
+      "min": 17320
     },
     "checkedAt": "2026-10-22",
     "summary": "소모 속도가 빠른 롤화장지는 10m당 단가가 낮을 때 사두기 좋다. 할인율과 단가, 리뷰 수가 함께 확인되어 오늘 구매 후보로 보기 쉽다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "17,320원"
-      ],
       [
         "할인/쿠폰",
         "47% 할인, 10m당 175원, 로켓/와우 무료배송 조건"
@@ -1578,13 +1490,13 @@
       [
         "평점/리뷰 수",
         "14,905"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 생활용품 특가"
       ]
     ],
-    "caution": "보관 공간과 3겹/천연펄프 선호 여부를 확인. 가격은 조회 시점 기준으로 변동 가능."
+    "caution": "보관 공간과 3겹/천연펄프 선호 여부를 확인. 가격은 조회 시점 기준으로 변동 가능.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 47,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-02-2-5l-4",
@@ -1602,15 +1514,11 @@
     "link": "https://www.coupang.com/vp/products/305732568?itemId=963650372&vendorItemId=5366789544",
     "affiliateLink": "",
     "price": {
-      "text": "10,990원"
+      "min": 10990
     },
     "checkedAt": "2026-10-22",
     "summary": "총 10L 구성이라 100ml당 단가가 낮게 잡힌 소모품 딜이다. 할인율, 단가, 배송 조건, 리뷰 수가 모두 확인된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "10,990원"
-      ],
       [
         "할인/쿠폰",
         "26% 할인, 100ml당 110원, 로켓/와우 배송"
@@ -1634,13 +1542,13 @@
       [
         "평점/리뷰 수",
         "263,273"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 생활용품 특가"
       ]
     ],
-    "caution": "향/세탁기 타입/민감 피부 여부를 확인. 대용량이라 보관 위치가 필요하다."
+    "caution": "향/세탁기 타입/민감 피부 여부를 확인. 대용량이라 보관 위치가 필요하다.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 26,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-03-5",
@@ -1658,15 +1566,11 @@
     "link": "https://www.coupang.com/vp/products/6113657232?itemId=11538728285&vendorItemId=78813769516",
     "affiliateLink": "",
     "price": {
-      "text": "10,490원"
+      "min": 10490
     },
     "checkedAt": "2026-10-22",
     "summary": "본체와 여분 패드가 같이 들어간 구성이라 입문 비용이 낮다. 할인율과 리뷰 수, 배송 조건이 확인되어 자취 청소용 후보로 적합하다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "10,490원"
-      ],
       [
         "할인/쿠폰",
         "67% 할인, 로켓/와우 배송"
@@ -1690,13 +1594,13 @@
       [
         "평점/리뷰 수",
         "40,774"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 생활용품 특가"
       ]
     ],
-    "caution": "바닥재가 물걸레 사용에 맞는지 확인. 패드 추가 구매 가능 여부도 체크."
+    "caution": "바닥재가 물걸레 사용에 맞는지 확인. 패드 추가 구매 가능 여부도 체크.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 67,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-04-28cm",
@@ -1714,15 +1618,11 @@
     "link": "https://www.coupang.com/vp/products/9171562099?itemId=27031173510&vendorItemId=93999717144",
     "affiliateLink": "",
     "price": {
-      "text": "12,480원"
+      "min": 12480
     },
     "checkedAt": "2026-10-22",
     "summary": "28cm 기본 팬은 활용도가 높고 할인율과 리뷰 수가 확인된다. 코팅 팬은 주기적 교체품이라 가격이 낮을 때 후보로 보기 좋다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "12,480원"
-      ],
       [
         "할인/쿠폰",
         "51% 할인, 로켓/와우 배송"
@@ -1746,13 +1646,13 @@
       [
         "평점/리뷰 수",
         "9,506"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 주방용품 특가"
       ]
     ],
-    "caution": "인덕션 호환 여부는 구매 페이지에서 반드시 확인. 코팅 팬은 금속 조리도구 사용을 피해야 한다."
+    "caution": "인덕션 호환 여부는 구매 페이지에서 반드시 확인. 코팅 팬은 금속 조리도구 사용을 피해야 한다.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 51,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-05-550ml-1200ml",
@@ -1770,15 +1670,11 @@
     "link": "https://www.coupang.com/vp/products/6304727407?itemId=28847002443&vendorItemId=95780920761",
     "affiliateLink": "",
     "price": {
-      "text": "6,490원"
+      "min": 6490
     },
     "checkedAt": "2026-10-22",
     "summary": "전자레인지 조리 빈도가 높은 집에서 활용도가 높은 소형 주방템이다. 가격, 할인율, 구성, 리뷰 수가 함께 확인된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "6,490원"
-      ],
       [
         "할인/쿠폰",
         "43% 할인, 로켓/와우 배송"
@@ -1802,13 +1698,13 @@
       [
         "평점/리뷰 수",
         "11,718"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 주방용품 특가"
       ]
     ],
-    "caution": "전자레인지 전용 여부와 내열 온도, 식기세척기 사용 가능 여부를 상세 페이지에서 확인."
+    "caution": "전자레인지 전용 여부와 내열 온도, 식기세척기 사용 가능 여부를 상세 페이지에서 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 43,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-06-1kg",
@@ -1826,15 +1722,11 @@
     "link": "https://www.coupang.com/vp/products/1541104559?itemId=2249520008&vendorItemId=70246910450",
     "affiliateLink": "",
     "price": {
-      "text": "6,590원"
+      "min": 6590
     },
     "checkedAt": "2026-10-22",
     "summary": "홈카페·베이킹·식단 계량에 필요한 기본 저울이 1만원 이하로 확인된다. 할인율과 리뷰 수, 배송 조건이 충분하다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "6,590원"
-      ],
       [
         "할인/쿠폰",
         "44% 할인, 로켓/와우 배송"
@@ -1858,13 +1750,13 @@
       [
         "평점/리뷰 수",
         "42,549"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 저울"
       ]
     ],
-    "caution": "최대 1kg라 대용량 계량에는 부족할 수 있다. 0.1g 정밀 계량 필요 시 다른 모델을 봐야 한다."
+    "caution": "최대 1kg라 대용량 계량에는 부족할 수 있다. 0.1g 정밀 계량 필요 시 다른 모델을 봐야 한다.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 44,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-07-munjjing-400ml-6",
@@ -1882,15 +1774,11 @@
     "link": "https://www.coupang.com/vp/products/9443195412?itemId=28087675475&vendorItemId=96125822471",
     "affiliateLink": "",
     "price": {
-      "text": "13,900원"
+      "min": 13900
     },
     "checkedAt": "2026-10-22",
     "summary": "밥을 소분해 냉동하는 자취 패턴에 맞고 개당 약 2,317원 수준으로 확인된다. 할인율, 구성, 리뷰 수가 확인된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "13,900원"
-      ],
       [
         "할인/쿠폰",
         "76% 할인, 타임 표시, 로켓/와우 배송"
@@ -1914,13 +1802,13 @@
       [
         "평점/리뷰 수",
         "4,186"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 주방용품 특가"
       ]
     ],
-    "caution": "유리 제품이라 파손 배송/반품 조건을 확인. 냉동 후 전자레인지 사용 시 급격한 온도차 주의."
+    "caution": "유리 제품이라 파손 배송/반품 조건을 확인. 냉동 후 전자레인지 사용 시 급격한 온도차 주의.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 76,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-08-185ml-1000",
@@ -1938,15 +1826,11 @@
     "link": "https://www.coupang.com/vp/products/8194763460?itemId=29043163797&vendorItemId=95970214257",
     "affiliateLink": "",
     "price": {
-      "text": "9,950원"
+      "min": 9950
     },
     "checkedAt": "2026-10-22",
     "summary": "개당 단가가 명확한 대용량 소모품이라 사무실·자취방 공용 비품으로 비교하기 쉽다. 가격, 할인율, 구성, 리뷰 수가 확인된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "9,950원"
-      ],
       [
         "할인/쿠폰",
         "37% 할인, 개당 약 10원, 로켓/와우 배송"
@@ -1970,13 +1854,13 @@
       [
         "평점/리뷰 수",
         "16,293"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 주방용품 특가"
       ]
     ],
-    "caution": "1000개 구성이라 보관 공간이 필요하다. 뜨거운 음료 사용 가능 범위를 확인."
+    "caution": "1000개 구성이라 보관 공간이 필요하다. 뜨거운 음료 사용 가능 범위를 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 37,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-09-100-2",
@@ -1994,15 +1878,11 @@
     "link": "https://www.coupang.com/vp/products/7299719601?itemId=19815641903&vendorItemId=86917697307",
     "affiliateLink": "",
     "price": {
-      "text": "12,000원"
+      "min": 12000
     },
     "checkedAt": "2026-10-22",
     "summary": "매일 쓰는 배변패드는 1매당 단가가 핵심인데 60원으로 확인된다. 할인율, 단가, 리뷰 수, 배송 조건이 모두 확인된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "12,000원"
-      ],
       [
         "할인/쿠폰",
         "42% 할인, 1매당 60원, 로켓/와우 배송"
@@ -2026,13 +1906,13 @@
       [
         "평점/리뷰 수",
         "174,462"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 반려동물용품 특가"
       ]
     ],
-    "caution": "대형견·다견 가정은 크기와 흡수량을 상세 페이지에서 확인. 향/무향 선호도 체크."
+    "caution": "대형견·다견 가정은 크기와 흡수량을 상세 페이지에서 확인. 향/무향 선호도 체크.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 42,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-10-1kg",
@@ -2050,15 +1930,11 @@
     "link": "https://www.coupang.com/vp/products/8487404030?itemId=24563910643&vendorItemId=91576053521",
     "affiliateLink": "",
     "price": {
-      "text": "9,890원"
+      "min": 9890
     },
     "checkedAt": "2026-10-22",
     "summary": "대용량 간식은 10g당 단가 비교가 쉬운데 99원으로 확인된다. 할인율과 리뷰 수가 있어 구매 판단 근거가 충분하다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "9,890원"
-      ],
       [
         "할인/쿠폰",
         "52% 할인, 10g당 99원, 로켓/와우 배송"
@@ -2082,13 +1958,13 @@
       [
         "평점/리뷰 수",
         "13,987"
-      ],
-      [
-        "확인 출처",
-        "쿠팡 검색: 반려동물용품 특가"
       ]
     ],
-    "caution": "반려견 알레르기, 급여량, 원재료를 상세 페이지에서 확인. 간식은 주식 대체가 아니다."
+    "caution": "반려견 알레르기, 급여량, 원재료를 상세 페이지에서 확인. 간식은 주식 대체가 아니다.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 52,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-11-item",
@@ -2106,15 +1982,11 @@
     "link": "https://www.coupang.com/vp/products/7808694366?itemId=21172705941&vendorItemId=83278356220",
     "affiliateLink": "",
     "price": {
-      "text": "17,900원"
+      "min": 17900
     },
     "checkedAt": "2026-10-22",
     "summary": "쿠폰 적용가와 10매당 단가가 확인되어 물티슈 후보로 검토 가능하다. 유아용품은 가격보다 성분·평량·피부 반응 확인이 우선이다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "17,900원"
-      ],
       [
         "할인/쿠폰",
         "57% 할인, 8,000원 쿠폰 적용 표시, 10매당 256원"
@@ -2138,13 +2010,13 @@
       [
         "평점/리뷰 수",
         "1,305"
-      ],
-      [
-        "확인 출처",
-        "웹 검색 결과: 쿠팡 상품 페이지"
       ]
     ],
-    "caution": "성분, 평량, 제조일/소비기한, 피부 자극 테스트 표기를 구매 전 확인. 아이 피부에 맞지 않으면 즉시 중단."
+    "caution": "성분, 평량, 제조일/소비기한, 피부 자극 테스트 표기를 구매 전 확인. 아이 피부에 맞지 않으면 즉시 중단.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 57,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-12-5-120",
@@ -2162,15 +2034,11 @@
     "link": "https://www.coupang.com/vp/products/1357425665?itemId=2388378557&vendorItemId=70383821111",
     "affiliateLink": "",
     "price": {
-      "text": "51,900원"
+      "min": 51900
     },
     "checkedAt": "2026-10-22",
     "summary": "기저귀는 단계와 매당 단가가 핵심인데 5단계 120매와 1개당 433원이 확인된다. 할인율과 배송 조건도 확인된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "51,900원"
-      ],
       [
         "할인/쿠폰",
         "37% 할인, 1개당 433원, 무료배송"
@@ -2194,13 +2062,13 @@
       [
         "평점/리뷰 수",
         "3,745"
-      ],
-      [
-        "확인 출처",
-        "웹 검색 결과: 쿠팡 상품 페이지"
       ]
     ],
-    "caution": "아이 체중·체형에 맞는 단계인지 반드시 확인. 개봉 후 단순 변심 반품 제한 여부를 확인."
+    "caution": "아이 체중·체형에 맞는 단계인지 반드시 확인. 개봉 후 단순 변심 반품 제한 여부를 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 37,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-13-12l",
@@ -2218,15 +2086,11 @@
     "link": "https://www.coupang.com/vp/products/7764340896",
     "affiliateLink": "",
     "price": {
-      "text": "59,800원"
+      "min": 59800
     },
     "checkedAt": "2026-10-22",
     "summary": "12L 오븐형 기준 6만원대라 용량 대비 가격 메리트가 있다. 할인율, 용량, 작동 방식, 배송 조건이 확인된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "59,800원"
-      ],
       [
         "할인/쿠폰",
         "62% 할인, 무료배송, 카드 혜택 표시"
@@ -2252,15 +2116,15 @@
         "575"
       ],
       [
-        "확인 출처",
-        "웹 검색 결과: 쿠팡 상품 페이지"
-      ],
-      [
         "전자제품 체크",
         "모델명·전원/배터리/용량·호환성·AS/보증·KC 인증은 구매 전 상세 페이지에서 재확인"
       ]
     ],
-    "caution": "모델명, KC 인증, 정격전압/소비전력, AS 기간을 상세 페이지에서 확인. 설치 공간과 발열 여유 공간 필요."
+    "caution": "모델명, KC 인증, 정격전압/소비전력, AS 기간을 상세 페이지에서 확인. 설치 공간과 발열 여유 공간 필요.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 62,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-14-3000-9l",
@@ -2278,15 +2142,11 @@
     "link": "https://www.coupang.com/vp/products/8277277776",
     "affiliateLink": "",
     "price": {
-      "text": "178,200원"
+      "min": 178200
     },
     "checkedAt": "2026-10-22",
     "summary": "브랜드형 듀얼 바스켓 9L 제품의 할인율과 규격이 확인된다. 두 가지 음식을 나눠 조리하는 사용성이 필요한 경우 비교 후보가 된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "178,200원"
-      ],
       [
         "할인/쿠폰",
         "58% 할인, 무료배송"
@@ -2312,15 +2172,15 @@
         "121"
       ],
       [
-        "확인 출처",
-        "웹 검색 결과: 쿠팡 상품 페이지"
-      ],
-      [
         "전자제품 체크",
         "모델명·전원/배터리/용량·호환성·AS/보증·KC 인증은 구매 전 상세 페이지에서 재확인"
       ]
     ],
-    "caution": "정확한 모델명, KC 인증, AS/보증, 소비전력, 주방 콘센트 용량을 확인. 해외직구가 아닌 국내 판매 조건인지 확인."
+    "caution": "정확한 모델명, KC 인증, AS/보증, 소비전력, 주방 콘센트 용량을 확인. 해외직구가 아닌 국내 판매 조건인지 확인.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 58,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-15-vcvc-010wh",
@@ -2338,15 +2198,11 @@
     "link": "https://www.coupang.com/vp/products/8463318437",
     "affiliateLink": "",
     "price": {
-      "text": "69,000원"
+      "min": 69000
     },
     "checkedAt": "2026-10-22",
     "summary": "욕실 청소 노동을 줄이는 목적이 명확하고 쿠폰 적용가가 확인된다. 모델명과 무선 여부가 확인되어 비교 후보로 쓸 수 있다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "69,000원"
-      ],
       [
         "할인/쿠폰",
         "30% 할인 + 10,000원 쿠폰 적용 표시"
@@ -2372,15 +2228,15 @@
         "44"
       ],
       [
-        "확인 출처",
-        "웹 검색 결과: 쿠팡 상품 페이지"
-      ],
-      [
         "전자제품 체크",
         "모델명·전원/배터리/용량·호환성·AS/보증·KC 인증은 구매 전 상세 페이지에서 재확인"
       ]
     ],
-    "caution": "방수 등급, 충전 방식, 배터리 사용시간, AS/보증, KC 인증을 반드시 확인. 표시 소비전력은 상세 재확인 필요."
+    "caution": "방수 등급, 충전 방식, 배터리 사용시간, AS/보증, KC 인증을 반드시 확인. 표시 소비전력은 상세 재확인 필요.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 30,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-16-210g-24",
@@ -2398,15 +2254,11 @@
     "link": "https://www.coupang.com/vp/products/5576234738",
     "affiliateLink": "",
     "price": {
-      "text": "24,990원"
+      "min": 24990
     },
     "checkedAt": "2026-10-22",
     "summary": "상온 보관 즉석밥은 대량 구매 부담이 낮고 100g당 단가가 확인된다. 할인율, 구성, 배송, 리뷰 수가 확인된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "24,990원"
-      ],
       [
         "할인/쿠폰",
         "28% 할인, 100g당 496원, 무료배송"
@@ -2432,15 +2284,15 @@
         "13,872"
       ],
       [
-        "확인 출처",
-        "웹 검색 결과: 쿠팡 상품 페이지"
-      ],
-      [
         "식품 체크",
         "구성/중량·단위가격·상온/냉장/냉동·소비기한·원재료/알레르기 확인 필요"
       ]
     ],
-    "caution": "소비기한과 원재료/알레르기 정보를 상세 페이지에서 확인. 24개 구성이라 소비 속도와 보관 공간을 고려."
+    "caution": "소비기한과 원재료/알레르기 정보를 상세 페이지에서 확인. 24개 구성이라 소비 속도와 보관 공간을 고려.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 28,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-17-300g-6",
@@ -2458,15 +2310,11 @@
     "link": "https://www.coupang.com/vp/products/8289722456",
     "affiliateLink": "",
     "price": {
-      "text": "9,420원"
+      "min": 9420
     },
     "checkedAt": "2026-10-22",
     "summary": "큰공기 300g 구성이라 식사량이 많은 경우 일반 210g보다 맞을 수 있다. 할인율과 100g당 단가, 리뷰 수가 확인된다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "9,420원"
-      ],
       [
         "할인/쿠폰",
         "36% 할인, 100g당 523원"
@@ -2492,15 +2340,15 @@
         "44,471"
       ],
       [
-        "확인 출처",
-        "웹 검색 결과: 쿠팡 상품 페이지"
-      ],
-      [
         "식품 체크",
         "구성/중량·단위가격·상온/냉장/냉동·소비기한·원재료/알레르기 확인 필요"
       ]
     ],
-    "caution": "소비기한, 원재료, 보관 방법을 구매 전 확인. 큰공기라 1회 섭취량이 맞는지 체크."
+    "caution": "소비기한, 원재료, 보관 방법을 구매 전 확인. 큰공기라 1회 섭취량이 맞는지 체크.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 36,
+    "hiddenReason": "이미지 주소가 https 절대경로가 아님"
   },
   {
     "id": "20261022-18-190ml-48",
@@ -2518,15 +2366,11 @@
     "link": "https://todaydeal.brandkr.com/ohouse/",
     "affiliateLink": "",
     "price": {
-      "text": "27,510원"
+      "min": 27510
     },
     "checkedAt": "2026-10-22",
     "summary": "상온 보관 가능한 음료형 가공식품이고 총 48팩 구성의 할인율이 확인된다. 대량 구성이라 개당 단가 계산 후 비교하기 좋다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "27,510원"
-      ],
       [
         "할인/쿠폰",
         "65% 할인, 오늘의집 오늘의딜"
@@ -2552,15 +2396,15 @@
         "확인 필요"
       ],
       [
-        "확인 출처",
-        "투데모아/오늘의집 오늘의딜 2026.10.22 00:30 KST"
-      ],
-      [
         "식품 체크",
         "구성/중량·단위가격·상온/냉장/냉동·소비기한·원재료/알레르기 확인 필요"
       ]
     ],
-    "caution": "소비기한, 당류/단백질 함량, 알레르기 원료(대두 등), 배송비를 원판매처에서 확인. 건강 효능으로 과장하지 않는다."
+    "caution": "소비기한, 당류/단백질 함량, 알레르기 원료(대두 등), 배송비를 원판매처에서 확인. 건강 효능으로 과장하지 않는다.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "discountRate": 65,
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "20261022-19-aliexpress-1pc-lint",
@@ -2584,10 +2428,6 @@
     "summary": "반려동물 털·의류 보풀 제거 용도로 실사용성이 있고 가격과 판매량, 평점이 표시된다. 해외구매라 배송과 반품 난이도를 별도 고려해야 한다.",
     "specs": [
       [
-        "오늘 확인 가격",
-        "US .79"
-      ],
-      [
         "할인/쿠폰",
         "오늘의특가 Dollar Express, 기존 5.27 표기"
       ],
@@ -2610,13 +2450,12 @@
       [
         "평점/리뷰 수",
         "score 4.7, 10,000+ 판매"
-      ],
-      [
-        "확인 출처",
-        "AliExpress Korea 홈 오늘의특가"
       ]
     ],
-    "caution": "정확한 옵션, 배송 예정일, 무료반품 여부, 원화 환산가를 결제 전 확인. 알리 제휴 추적 ID는 별도 필요."
+    "caution": "정확한 옵션, 배송 예정일, 무료반품 여부, 원화 환산가를 결제 전 확인. 알리 제휴 추적 ID는 별도 필요.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "hiddenReason": "가격 손상"
   },
   {
     "id": "20261022-20-aliexpress-1pcs",
@@ -2640,10 +2479,6 @@
     "summary": "홈카페 소품으로 가격 메리트와 판매량이 표시된다. 단, 유리 제품은 파손/반품 리스크가 있어 확장 후보로만 분리했다.",
     "specs": [
       [
-        "오늘 확인 가격",
-        "US .19"
-      ],
-      [
         "할인/쿠폰",
         "오늘의특가, 기존 7.95 표기"
       ],
@@ -2666,13 +2501,12 @@
       [
         "평점/리뷰 수",
         "score 4.4, 10,000+ 판매"
-      ],
-      [
-        "확인 출처",
-        "AliExpress Korea 홈 오늘의특가"
       ]
     ],
-    "caution": "내열 온도, 식세기 가능 여부, 배송 중 파손 보상, 리뷰 사진을 확인. 알리 추적 ID 필요."
+    "caution": "내열 온도, 식세기 가능 여부, 배송 중 파손 보상, 리뷰 사진을 확인. 알리 추적 ID 필요.",
+    "status": "hidden",
+    "addedAt": "2026-10-22",
+    "hiddenReason": "가격 손상"
   },
   {
     "id": "20261023-01-250-12",
@@ -2690,15 +2524,11 @@
     "link": "https://pages.coupang.com/m/42295",
     "affiliateLink": "",
     "price": {
-      "text": "15,500원"
+      "min": 15500
     },
     "checkedAt": "2026-10-23",
     "summary": "키친타올은 대용량 소모품이라 10매당 단가가 낮을 때 사두기 좋습니다. 할인율과 리뷰 수, 도착 조건이 함께 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "15,500원"
-      ],
       [
         "할인/쿠폰",
         "13% 할인"
@@ -2722,17 +2552,13 @@
       [
         "평점/리뷰",
         "리뷰 88,626건 확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/m/42295\">쿠팡 생활용품 BEST 특가</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "보관 공간이 필요한 12개 구성입니다. 최저가·반품 상품이 섞일 수 있어 새 상품 조건을 결제 전 확인하세요."
+    "caution": "보관 공간이 필요한 12개 구성입니다. 최저가·반품 상품이 섞일 수 있어 새 상품 조건을 결제 전 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 13,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-02-2-250-6",
@@ -2750,15 +2576,12 @@
     "link": "https://pages.coupang.com/p/102984",
     "affiliateLink": "",
     "price": {
-      "text": "10매당 58원"
+      "text": "10매당 58원",
+      "min": 10
     },
     "checkedAt": "2026-10-23",
     "summary": "갑티슈류는 단가가 핵심인데 10매당 가격과 리뷰 수가 확인됩니다. 6개 구성이라 부담이 크지 않습니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "10매당 58원"
-      ],
       [
         "할인/쿠폰",
         "카테고리 특가/가격 노출"
@@ -2782,17 +2605,12 @@
       [
         "평점/리뷰",
         "리뷰 553건 확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/p/102984\">쿠팡 생활용품 특별고객 쿠폰 기획전</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "할인율 자체는 검색 스니펫에 없으므로 최종가 변동 여부를 결제 화면에서 재확인하세요."
+    "caution": "할인율 자체는 검색 스니펫에 없으므로 최종가 변동 여부를 결제 화면에서 재확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-03-100-2",
@@ -2810,15 +2628,11 @@
     "link": "https://hotdeal.kimgoon.kr/",
     "affiliateLink": "",
     "price": {
-      "text": "14,530원"
+      "min": 14530
     },
     "checkedAt": "2026-10-23",
     "summary": "마스크는 계절성 소모품이고 200개 구성 대비 가격이 낮게 노출됐습니다. 할인율과 현재가가 함께 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "14,530원"
-      ],
       [
         "할인/쿠폰",
         "43% 할인"
@@ -2838,21 +2652,13 @@
       [
         "배송/판매처",
         "쿠팡 골드박스 노출"
-      ],
-      [
-        "평점/리뷰",
-        "검색 결과에서 미확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://hotdeal.kimgoon.kr/\">핫딜·골드박스 공개 집계</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "대형 사이즈가 맞는지 확인하고, 위생용품 특성상 개봉 후 반품 조건을 보수적으로 봐야 합니다."
+    "caution": "대형 사이즈가 맞는지 확인하고, 위생용품 특성상 개봉 후 반품 조건을 보수적으로 봐야 합니다.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 43,
+    "hiddenReason": "판매처 아닌 링크"
   },
   {
     "id": "20261023-04-ezn-4-67",
@@ -2870,15 +2676,11 @@
     "link": "https://pages.coupang.com/m/97486",
     "affiliateLink": "",
     "price": {
-      "text": "13,890원"
+      "min": 13890
     },
     "checkedAt": "2026-10-23",
     "summary": "냉장·냉동 보관에 자주 쓰는 소모품이고 4종 구성으로 활용 범위가 넓습니다. 할인율과 매당 단가가 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "13,890원"
-      ],
       [
         "할인/쿠폰",
         "35% 할인"
@@ -2902,17 +2704,13 @@
       [
         "평점/리뷰",
         "별점 4.8, 리뷰 14,683건(검색 결과 소개글)"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/m/97486\">쿠팡 주방용품 쿠폰 기획전</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "사이즈별 수량이 필요한 용도와 맞는지 확인하세요."
+    "caution": "사이즈별 수량이 필요한 용도와 맞는지 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 35,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-05-9-1",
@@ -2930,15 +2728,12 @@
     "link": "https://pages.coupang.com/p/124014",
     "affiliateLink": "",
     "price": {
-      "text": "1개입당 1,502원"
+      "text": "1개입당 1,502원",
+      "min": 1
     },
     "checkedAt": "2026-10-23",
     "summary": "브랜드 수세미 소모품으로 개당 단가가 명확합니다. 쿠팡 기획전에서 새 상품과 최저가 조건이 함께 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "1개입당 1,502원 / 최저 12,970원 노출"
-      ],
       [
         "할인/쿠폰",
         "기획전 특가"
@@ -2962,17 +2757,12 @@
       [
         "평점/리뷰",
         "추출 결과 리뷰 수 미표시"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/p/124014\">쿠팡 주방용품 할인 기획전</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "재포장 옵션과 새 상품 가격이 혼재할 수 있어 옵션 선택을 확인하세요."
+    "caution": "재포장 옵션과 새 상품 가격이 혼재할 수 있어 옵션 선택을 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-06-1x-28cm",
@@ -2990,15 +2780,11 @@
     "link": "https://pages.coupang.com/p/124014",
     "affiliateLink": "",
     "price": {
-      "text": "40,990원"
+      "min": 40990
     },
     "checkedAt": "2026-10-23",
     "summary": "모델명·사이즈·인덕션 호환이 명확하고 할인율이 높게 확인됩니다. 28cm 단품이라 교체 수요에 맞습니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "40,990원"
-      ],
       [
         "할인/쿠폰",
         "62% 할인"
@@ -3018,21 +2804,13 @@
       [
         "배송/판매처",
         "쿠팡, 내일 도착 보장"
-      ],
-      [
-        "평점/리뷰",
-        "검색 결과 미확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/p/124014\">쿠팡 주방용품 할인 기획전</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "코팅팬은 사용 주기와 조리도구 호환을 확인하세요. 반품·박스훼손 옵션이 섞이면 새 상품 조건을 고르세요."
+    "caution": "코팅팬은 사용 주기와 조리도구 호환을 확인하세요. 반품·박스훼손 옵션이 섞이면 새 상품 조건을 고르세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 62,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-07-4",
@@ -3050,15 +2828,11 @@
     "link": "https://pages.coupang.com/m/76134",
     "affiliateLink": "",
     "price": {
-      "text": "15,900원"
+      "min": 15900
     },
     "checkedAt": "2026-10-23",
     "summary": "원룸·주방 틈새 수납에 쓰기 쉬운 이동식 트롤리입니다. 4단 구성에 할인율과 배송 조건이 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "15,900원"
-      ],
       [
         "할인/쿠폰",
         "48% 할인"
@@ -3082,17 +2856,13 @@
       [
         "평점/리뷰",
         "리뷰 324건 확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/m/76134\">쿠팡 월간 정리의 신</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "폭·높이를 설치 공간과 비교하고, 조립형 제품의 흔들림 가능성을 확인하세요."
+    "caution": "폭·높이를 설치 공간과 비교하고, 조립형 제품의 흔들림 가능성을 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 48,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-08-3",
@@ -3110,15 +2880,11 @@
     "link": "https://pages.coupang.com/m/76134",
     "affiliateLink": "",
     "price": {
-      "text": "9,270원"
+      "min": 9270
     },
     "checkedAt": "2026-10-23",
     "summary": "1만원 이하로 진열·수납을 보강할 수 있는 3단 선반입니다. 쿠폰할인과 리뷰 수가 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "9,270원"
-      ],
       [
         "할인/쿠폰",
         "쿠폰할인 14%"
@@ -3142,17 +2908,12 @@
       [
         "평점/리뷰",
         "리뷰 543건 확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/m/76134\">쿠팡 월간 정리의 신</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "하중 제한과 설치 폭을 먼저 확인하세요. 반품·박스훼손 옵션이 섞일 수 있습니다."
+    "caution": "하중 제한과 설치 폭을 먼저 확인하세요. 반품·박스훼손 옵션이 섞일 수 있습니다.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-09-100-3",
@@ -3170,15 +2931,12 @@
     "link": "https://pages.coupang.com/p/165846",
     "affiliateLink": "",
     "price": {
-      "text": "1매당 116원"
+      "text": "1매당 116원",
+      "min": 1
     },
     "checkedAt": "2026-10-23",
     "summary": "배변패드는 반복 구매 소모품이라 1매당 단가가 핵심입니다. 300매 구성, 배송, 리뷰 수가 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "1매당 116원"
-      ],
       [
         "할인/쿠폰",
         "카드할인/기획전 노출"
@@ -3202,17 +2960,12 @@
       [
         "평점/리뷰",
         "리뷰 121,278건 확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/p/165846\">쿠팡 반려동물용품 카드할인</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "흡수량·패드 크기가 반려견 체중과 맞는지 확인하세요. 향 처리 여부와 반품 조건도 확인 필요합니다."
+    "caution": "흡수량·패드 크기가 반려견 체중과 맞는지 확인하세요. 향 처리 여부와 반품 조건도 확인 필요합니다.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-10-100-2",
@@ -3230,15 +2983,11 @@
     "link": "https://www.coupang.com/np/categories/115674",
     "affiliateLink": "",
     "price": {
-      "text": "11,700원"
+      "min": 11700
     },
     "checkedAt": "2026-10-23",
     "summary": "1매당 59원으로 단가가 낮은 실속형 구성입니다. 가격과 구성, 단가가 명확합니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "11,700원"
-      ],
       [
         "할인/쿠폰",
         "카테고리 특가"
@@ -3258,21 +3007,12 @@
       [
         "배송/판매처",
         "쿠팡"
-      ],
-      [
-        "평점/리뷰",
-        "검색 결과 미확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://www.coupang.com/np/categories/115674\">쿠팡 반려동물용품 카테고리</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "실속형은 두께가 얇을 수 있어 장시간 외출·대형견 용도에는 흡수량을 반드시 확인하세요."
+    "caution": "실속형은 두께가 얇을 수 있어 장시간 외출·대형견 용도에는 흡수량을 반드시 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-11-50g-100-10",
@@ -3290,15 +3030,11 @@
     "link": "https://www.coupang.com/np/categories/221934",
     "affiliateLink": "",
     "price": {
-      "text": "10,890원"
+      "min": 10890
     },
     "checkedAt": "2026-10-23",
     "summary": "아기물티슈는 단가와 매수, 중량이 중요한데 10매당 가격이 확인됩니다. 할인율과 배송 조건도 같이 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "10,890원"
-      ],
       [
         "할인/쿠폰",
         "39% 할인"
@@ -3318,21 +3054,13 @@
       [
         "배송/판매처",
         "쿠팡, 내일 도착"
-      ],
-      [
-        "평점/리뷰",
-        "카테고리 결과 리뷰 미확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://www.coupang.com/np/categories/221934\">쿠팡 출산/유아동 카테고리</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "피부에 닿는 제품이므로 성분, 향 유무, 제조일자, 개봉 후 반품 제한을 결제 전 확인하세요."
+    "caution": "피부에 닿는 제품이므로 성분, 향 유무, 제조일자, 개봉 후 반품 제한을 결제 전 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 39,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-12-new-1-198",
@@ -3350,15 +3078,11 @@
     "link": "https://www.coupang.com/np/categories/485952",
     "affiliateLink": "",
     "price": {
-      "text": "50,050원"
+      "min": 50050
     },
     "checkedAt": "2026-10-23",
     "summary": "기저귀는 단계와 장당 가격이 중요합니다. 1단계 198매 구성, 할인율, 장당 단가가 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "50,050원"
-      ],
       [
         "할인/쿠폰",
         "40% 할인"
@@ -3378,21 +3102,13 @@
       [
         "배송/판매처",
         "쿠팡"
-      ],
-      [
-        "평점/리뷰",
-        "검색 결과 미확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://www.coupang.com/np/categories/485952\">쿠팡 기저귀 카테고리</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "아기 체중에 맞는 단계인지 꼭 확인하세요. 피부 트러블 가능성 때문에 대량 구매 전 기존 사용 경험이 있으면 더 안전합니다."
+    "caution": "아기 체중에 맞는 단계인지 꼭 확인하세요. 피부 트러블 가능성 때문에 대량 구매 전 기존 사용 경험이 있으면 더 안전합니다.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 40,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-13-2",
@@ -3410,15 +3126,11 @@
     "link": "https://pages.coupang.com/m/157435",
     "affiliateLink": "",
     "price": {
-      "text": "15,170원"
+      "min": 15170
     },
     "checkedAt": "2026-10-23",
     "summary": "외출·어린이집 준비물로 쓰기 쉬운 케이스 포함 식기 세트입니다. 할인율과 리뷰 수가 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "15,170원"
-      ],
       [
         "할인/쿠폰",
         "53% 할인"
@@ -3442,17 +3154,13 @@
       [
         "평점/리뷰",
         "리뷰 2,555건 확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/m/157435\">쿠팡 맘편한 육아템</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "2단계가 아이 연령·손잡이 사용 습관과 맞는지 확인하세요. 스테인리스 소재 관리법도 체크가 필요합니다."
+    "caution": "2단계가 아이 연령·손잡이 사용 습관과 맞는지 확인하세요. 스테인리스 소재 관리법도 체크가 필요합니다.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 53,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-14-11l-d11",
@@ -3470,15 +3178,11 @@
     "link": "https://www.coupang.com/np/categories/238890",
     "affiliateLink": "",
     "price": {
-      "text": "148,000원"
+      "min": 148000
     },
     "checkedAt": "2026-10-23",
     "summary": "장마·습기 시즌 전후로 수요가 있는 생활가전이고, 11L 용량과 모델명이 명확합니다. 쿠폰할인율도 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "148,000원"
-      ],
       [
         "할인/쿠폰",
         "쿠폰할인 40%"
@@ -3506,17 +3210,12 @@
       [
         "배송/판매처",
         "쿠팡"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://www.coupang.com/np/categories/238890\">쿠팡 가정용 제습기 카테고리</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "정격전압, 소비전력, 물통 용량, 소음, KC 인증, AS 주체를 상세 페이지에서 확인하세요."
+    "caution": "정격전압, 소비전력, 물통 용량, 소음, KC 인증, AS 주체를 상세 페이지에서 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-15-sif-g12aned",
@@ -3534,15 +3233,11 @@
     "link": "https://www.coupang.com/np/categories/416173",
     "affiliateLink": "",
     "price": {
-      "text": "45,900원"
+      "min": 45900
     },
     "checkedAt": "2026-10-23",
     "summary": "브랜드와 모델명이 명확한 스탠드형 선풍기입니다. 할인율과 현재가가 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "45,900원"
-      ],
       [
         "할인/쿠폰",
         "61% 할인"
@@ -3570,17 +3265,13 @@
       [
         "배송/판매처",
         "쿠팡"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://www.coupang.com/np/categories/416173\">쿠팡 에어컨/계절가전 카테고리</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "날개 크기, 리모컨 유무, 소비전력, KC 인증, AS 기간을 상세 페이지에서 확인하세요."
+    "caution": "날개 크기, 리모컨 유무, 소비전력, KC 인증, AS 기간을 상세 페이지에서 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 61,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-16-210g-12",
@@ -3598,15 +3289,11 @@
     "link": "https://pages.coupang.com/p/113155",
     "affiliateLink": "",
     "price": {
-      "text": "13,090원"
+      "min": 13090
     },
     "checkedAt": "2026-10-23",
     "summary": "즉석밥은 상온 보관이 가능하고 단위 가격이 명확해 묶음 구매 판단이 쉽습니다. 할인율과 100g당 가격이 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "13,090원"
-      ],
       [
         "할인/쿠폰",
         "17% 할인"
@@ -3634,17 +3321,13 @@
       [
         "배송/판매처",
         "쿠팡"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/p/113155\">쿠팡 면/통조림/가공식품 오늘의 할인</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "소비기한, 제조일, 전자레인지 조리 조건을 결제 전 확인하세요."
+    "caution": "소비기한, 제조일, 전자레인지 조리 조건을 결제 전 확인하세요.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 17,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-17-85g-8",
@@ -3662,15 +3345,11 @@
     "link": "https://pages.coupang.com/p/169918",
     "affiliateLink": "",
     "price": {
-      "text": "13,410원"
+      "min": 13410
     },
     "checkedAt": "2026-10-23",
     "summary": "통조림은 상온 보관이 가능해 대량 부담이 상대적으로 낮습니다. 할인율과 현재가가 확인됩니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "13,410원"
-      ],
       [
         "할인/쿠폰",
         "40% 할인"
@@ -3698,17 +3377,13 @@
       [
         "배송/판매처",
         "쿠팡"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://pages.coupang.com/p/169918\">쿠팡 인기 식품 쿠폰 할인</a>"
-      ],
-      [
-        "제휴 링크",
-        "원본 URL + [쿠팡 파트너스 ID 적용 필요]"
       ]
     ],
-    "caution": "소비기한, 원재료, 나트륨 함량, 캔 찌그러짐 반품 조건을 확인하세요. 건강 효능으로 해석하지 않습니다."
+    "caution": "소비기한, 원재료, 나트륨 함량, 캔 찌그러짐 반품 조건을 확인하세요. 건강 효능으로 해석하지 않습니다.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "discountRate": 40,
+    "hiddenReason": "상품 사진이 아닌 아이콘/로고 이미지"
   },
   {
     "id": "20261023-18-aliexpress",
@@ -3726,15 +3401,13 @@
     "link": "https://www.aliexpress.com/",
     "affiliateLink": "",
     "price": {
-      "text": "$3.49부터"
+      "text": "$3.49부터",
+      "min": 3.49,
+      "currency": "USD"
     },
     "checkedAt": "2026-10-23",
     "summary": "저가 주방 정리 소품은 알리에서 가격 메리트가 있는 편이고 할인 표시가 확인됩니다. 국내 급배송이 필요 없는 소품 후보로만 분리했습니다.",
     "specs": [
-      [
-        "오늘 확인 가격",
-        "$3.49부터"
-      ],
       [
         "할인/쿠폰",
         "$8.06 대비 할인 표시"
@@ -3754,20 +3427,11 @@
       [
         "배송/판매처",
         "AliExpress, 해외배송"
-      ],
-      [
-        "평점/리뷰",
-        "검색 결과 미확인"
-      ],
-      [
-        "확인 출처",
-        "<a href=\"https://www.aliexpress.com/\">AliExpress Today's deals</a>"
-      ],
-      [
-        "제휴 링크",
-        "[알리 어필리에이트 가입/추적 ID 필요]"
       ]
     ],
-    "caution": "배송 예정일, 무료배송 여부, 식품 접촉 소재 안전성, 반품 비용을 반드시 확인하세요. 이미지·옵션별 가격 차이가 클 수 있습니다."
+    "caution": "배송 예정일, 무료배송 여부, 식품 접촉 소재 안전성, 반품 비용을 반드시 확인하세요. 이미지·옵션별 가격 차이가 클 수 있습니다.",
+    "status": "hidden",
+    "addedAt": "2026-10-23",
+    "hiddenReason": "첫 화면 링크"
   }
 ]

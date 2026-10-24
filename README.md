@@ -4,6 +4,7 @@
 
 - 데이터: `data/*.json` (상품, 글, 카테고리, 사이트 설정)
 - 생성기: `node scripts/build.mjs` (Node 18+, 의존성 없음)
+- 상품 수집·검수: `scripts/coupang.mjs`, `scripts/import.mjs`, `scripts/review.mjs`
 - 스타일·스크립트: `assets/styles.css`, `assets/app.js`
 - 로컬 미리보기: `python -m http.server 8000` 후 http://localhost:8000 (루트 경로를 쓰므로 파일 더블클릭으로는 안 열림)
 
