@@ -4,3 +4,7 @@ data/inbox/
 *.local
 node_modules/
 .DS_Store
+
+# Claude Code 가 만드는 임시 worktree. git 이 gitlink 로 추적해서
+# daily.sh 의 자동 커밋에 딸려 들어간 적이 있다.
+.claude/worktrees/
