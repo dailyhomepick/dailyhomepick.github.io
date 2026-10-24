@@ -123,11 +123,13 @@ import가 아래 중 하나라도 걸리면 탈락시키고 `data/rejected.json`
 
 ## 5. 검색 노출(SEO)을 위해 할 일
 
-정렬 기본값: **제휴 링크 있는 상품 → 할인율·가격 인하·골드박스** 순. 생성기가 자동으로 하는 것: 페이지별 제목·설명, canonical, Open Graph, 상품 구조화 데이터(Product/Offer), 목록(ItemList), 경로(BreadcrumbList), 사이트 검색(SearchAction), `sitemap.xml`(lastmod 포함), `rss.xml`, 오래된 상품 noindex, 인기 검색어 랜딩 페이지(`/k/키워드.html`).
+정렬 기본값: **제휴 링크 있는 상품 → 할인율·가격 인하·골드박스** 순. 생성기가 자동으로 하는 것: 페이지별 제목·설명, canonical, Open Graph, 상품 구조화 데이터(Product/Offer), 목록(ItemList), 경로(BreadcrumbList), 사이트 검색(SearchAction), `sitemap.xml`(lastmod 포함), `rss.xml`, 오래된 상품 noindex, 인기 검색어 랜딩 페이지(`/k/키워드.html`), 태그 페이지(`/tags/태그.html`), 품목별 FAQ(FAQPage).
 
 Hermes가 할 일:
 - **인기 검색어 갱신(주 1~2회)**: `data/site.json`의 `trending`(16개 안팎)을 네이버 데이터랩 쇼핑인사이트·쿠팡 검색 추이 등에서 생활용품 위주로 고른다. 상품이 1개 이상 매칭되는 키워드만 `/k/` 페이지가 생긴다. 키워드에 맞는 상품을 `coupang.mjs search 키워드`로 보충한다.
-- **태그**: 사람들이 검색할 단어(예: "고양이모래", "물티슈", "가습기")를 2~4개. 너무 넓은 태그("오늘할인")만 달지 않는다.
+- **태그**: `scripts/lib/keywords.mjs`의 사전으로 상품명에서 자동으로 붙는다(품목 1개 + 특징·대상 최대 3개). 손으로 넣은 태그가 있으면 그대로 둔다. 사전에 없는 품목은 태그가 비는데, 그런 상품이 쌓이면 `ITEMS`에 품목 이름을 넣는다. **확신이 없으면 비워 두는 쪽이 낫다** — 틀린 태그는 엉뚱한 태그 페이지를 만든다.
+- **품목별 FAQ**: `scripts/lib/faq.mjs`에 품목 이름을 키로 문답을 넣으면 그 품목 상품 페이지에 FAQ 블록과 FAQPage 구조화 데이터가 붙는다. 상품이 아니라 **품목**을 설명한다(특정 제품의 착용감·내구성처럼 확인할 수 없는 건 쓰지 않고, 브랜드마다 다른 값은 "표기를 확인하라"고 연다). 모든 상품에 같은 문답을 붙이면 중복 콘텐츠가 되므로 사전에 있는 품목에만 붙는다.
+- **카테고리**: 소스가 준 분류가 틀릴 때가 있다(쿠팡 베스트 카테고리 id 매핑 탓에 사람용 영양제와 고양이 사료가 '유아용품'으로 들어왔다). `rules.mjs`의 `strongCategory()`가 제목이 명백할 때만 덮어쓴다. 손으로 재분류할 때는 틀린 카테고리를 **지우고 대체**한다 — 덧붙이면 빌드가 양쪽 카테고리 페이지에 모두 올린다.
 - **상품명**: 판매처 상품명 그대로(브랜드+모델+용량). 꾸밈말 추가 금지.
 - **매일 갱신**: 같은 상품이라도 가격을 다시 확인해 import하면 확인일·가격 기록이 쌓여 페이지가 "살아있는" 상태로 유지된다.
 - 검색엔진 등록용 인증값은 `site.json`의 `verification.naver` / `verification.google`에 넣는다(값만, 태그 전체 X).
@@ -165,5 +167,7 @@ LINKPRICE_AFFILIATE_ID=A100...
 | `scripts/import.mjs` | 후보 가져오기 + 자동 검수 |
 | `scripts/review.mjs` | 승인·반려·내리기 |
 | `scripts/build.mjs` | 사이트 생성 |
-| `scripts/lib/rules.mjs` | 검수 규칙(금지 품목, 판매처, 이미지, 가격) |
+| `scripts/lib/rules.mjs` | 검수 규칙(금지 품목, 판매처, 이미지, 가격), 카테고리 추정·보정 |
+| `scripts/lib/keywords.mjs` | 상품명 → 태그 사전(품목·특징·대상). 제목·설명의 검색 키워드도 여기서 나온다 |
+| `scripts/lib/faq.mjs` | 품목별 자주 묻는 질문 |
 | `assets/styles.css`, `assets/app.js` | 디자인·검색·정렬·필터 |
