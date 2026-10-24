@@ -3,61 +3,95 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="오늘 살 만한 할인 상품만 깔끔하게 보여줍니다.">
-  <meta name="theme-color" content="#f5f3ee">
+  <meta name="description" content="오늘 살 만한 할인 상품을 쇼핑몰처럼 정리합니다.">
+  <meta name="theme-color" content="#f4f2ec">
   <title>Daily Home Picks</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
   <div class="shell">
+    <div class="promo-bar">
+      <span>오늘의 할인 · 카테고리별 추천 · 검수 통과 상품만 노출</span>
+      <a href="posts/2026-10-21-deals.html">오늘의 딜 보러가기</a>
+    </div>
     <header class="topbar">
       <a class="brand" href="index.html">
         <span class="name">Daily Home Picks</span>
         <span class="sub">shopping editorial daily deals</span>
       </a>
-      <nav class="nav"><a href="categories/living.html">생활</a><a href="categories/kitchen.html">주방</a><a href="categories/solo-living.html">자취</a><a href="categories/pet.html">반려동물</a><a href="categories/baby.html">유아</a><a href="categories/electronics.html">전자제품</a><a href="categories/food.html">가공식품</a><a href="categories/overseas.html">해외</a><a href="tags/index.html">태그</a></nav>
+      <nav class="nav">
+        <a href="categories/living.html">생활</a>
+        <a href="categories/kitchen.html">주방</a>
+        <a href="categories/solo-living.html">자취</a>
+        <a href="categories/pet.html">반려동물</a>
+        <a href="categories/baby.html">유아</a>
+        <a href="categories/electronics.html">전자제품</a>
+        <a href="categories/food.html">가공식품</a>
+        <a href="categories/overseas.html">해외</a>
+      </nav>
     </header>
-    
-<section class="hero">
-  <div class="hero-copy">
-    <div class="eyebrow">daily deals / commerce magazine</div>
-    <h1>오늘 살 만한 할인 상품을 쇼핑몰처럼 정리합니다.</h1>
-    <p class="lead">리뷰 블로그처럼 길게 늘어놓지 않고, 메인에서 카테고리와 오늘의 선택지를 한 번에 보이게 바꿨습니다. 가격·스펙·이미지·구매 이유를 먼저 보여주고, 상품 후보는 덜어내는 방식으로 운영합니다.</p>
-    <div class="hero-actions">
-      <a class="btn" href="posts/2026-10-21-deals.html">오늘의 할인 샘플</a>
-      <a class="ghost" href="#categories">카테고리 보기</a>
-    </div>
-    <div class="hero-note">GitHub Pages에 올릴 때도 깨지지 않도록 내부 링크를 전부 상대경로로 바꾸고, 정적 배포에 맞는 구조로 정리했습니다.</div>
-    <div class="stat-row">
-      <div class="stat"><div class="k">Format</div><div class="v">Daily commerce</div><div class="d">잡지형 메인 + 상품 큐레이션</div></div>
-      <div class="stat"><div class="k">Rule</div><div class="v">Real images</div><div class="d">썸네일 비율과 여백 통일</div></div>
-      <div class="stat"><div class="k">Scope</div><div class="v">8 categories</div><div class="d">생활 · 주방 · 자취 · 반려 · 유아 · 전자 · 식품 · 해외</div></div>
-      <div class="stat"><div class="k">Deploy</div><div class="v">GitHub Pages</div><div class="d">정적 사이트 배포용 구조</div></div>
-    </div>
-  </div>
-  <aside class="hero-aside">
-    <div class="hero-card">
-      <div class="visual"><img src="https://img.danuri.io/catalog-image/119/191/019/8886736521a944e393fb545e97173422.jpg?shrink=160:160&_v=20261021115703" alt="오늘의 샘플 상품 이미지"></div>
-      <div class="caption">대표 영역은 실제 상품 썸네일로 채우고, 메인 비주얼은 광고 느낌보다 편집 느낌에 맞췄습니다.</div>
-    </div>
-    <div class="panel">
-      <h2>이번 리뉴얼의 방향</h2>
-      <p>• 쇼핑몰 메인처럼 보이게 구성</p>
-      <p>• 카드보다 카테고리와 히어로를 더 강하게</p>
-      <p>• 내부 링크를 모두 상대경로로 변경</p>
-      <p>• GitHub Pages 배포를 전제로 정리</p>
-    </div>
-  </aside>
-</section>
-<section class="section" id="categories">
-  <div class="section-head"><h2>카테고리</h2><p>매일 돌려보는 진입점</p></div>
-  <div class="grid"><a class="card" href="categories/living.html"><div class="category-img"><img src="https://gibone.com/web/product/medium/202608/86d2bb60a7449f5e35a6d362b20787de.jpg" alt="생활용품 대표 이미지"></div><div><div class="count">Category</div><h3>생활용품</h3><p>매일 쓰는 소모품, 청소, 욕실, 세탁, 수납용품</p></div></a><a class="card" href="categories/kitchen.html"><div class="category-img"><img src="https://img.danuri.io/catalog-image/968/699/113/c9962367a36f4de9847c62e47a691317.jpg?shrink=160:160&_v=20261019080603" alt="주방용품 대표 이미지"></div><div><div class="count">Category</div><h3>주방용품</h3><p>조리도구, 보관용기, 주방 소모품, 냉장고 정리</p></div></a><a class="card" href="categories/solo-living.html"><div class="category-img"><img src="https://www.cleanlabmall.co.kr/Upload/ProductImage/0103/100454_1_0600_0600_20200621134345.png" alt="자취템 대표 이미지"></div><div><div class="count">Category</div><h3>자취템</h3><p>원룸, 1인 가구, 좁은 주방과 작은 냉장고 기준</p></div></a><a class="card" href="categories/pet.html"><div class="category-img"><img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/7019152500/B.jpg?1000000" alt="반려동물 대표 이미지"></div><div><div class="count">Category</div><h3>반려동물</h3><p>고양이/강아지 위생, 급식, 산책, 청소용품</p></div></a><a class="card" href="categories/baby.html"><div class="category-img"><img src="https://m.motherkmall.co.kr/web/product/big/202309/9ae247524eaf8c12b521b44f943ad725.jpg" alt="유아용품 대표 이미지"></div><div><div class="count">Category</div><h3>유아용품</h3><p>아기 위생, 수납, 외출, 식기, 안전용품</p></div></a><a class="card" href="categories/electronics.html"><div class="category-img"><img src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="전자제품 대표 이미지"></div><div><div class="count">Category</div><h3>전자제품</h3><p>소형가전, 생활가전, 충전/거치, 헤어/미용가전</p></div></a><a class="card" href="categories/food.html"><div class="category-img"><img src="https://img.danuri.io/catalog-image/054/152/001/75bfef8375274ac4aaa3c96f50690f24.jpg?shrink=160:160&_v=20261021115753" alt="가공식품 대표 이미지"></div><div><div class="count">Category</div><h3>가공식품</h3><p>즉석밥, 간편식, 냉동식품, 상온보관 식품</p></div></a><a class="card" href="categories/overseas.html"><div class="category-img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S7f3ace433bea40779c85c2b989fb1302u.jpeg" alt="해외구매 대표 이미지"></div><div><div class="count">Category</div><h3>해외구매</h3><p>알리/아마존 등 해외배송 후보와 주의점</p></div></a></div>
-</section>
-<section class="section">
-  <div class="section-head"><h2>태그</h2><p>검색과 재방문용 구조</p></div>
-  <div class="tagcloud"><a href="tags/오늘할인.html">#오늘할인</a><a href="tags/특가.html">#특가</a><a href="tags/쿠폰.html">#쿠폰</a><a href="tags/가격비교.html">#가격비교</a><a href="tags/생활용품.html">#생활용품</a><a href="tags/주방용품.html">#주방용품</a><a href="tags/자취템.html">#자취템</a><a href="tags/청소용품.html">#청소용품</a><a href="tags/정리수납.html">#정리수납</a><a href="tags/소모품.html">#소모품</a><a href="tags/인덕션.html">#인덕션</a><a href="tags/홈카페.html">#홈카페</a><a href="tags/쿠팡.html">#쿠팡</a><a href="tags/알리익스프레스.html">#알리익스프레스</a><a href="tags/해외구매.html">#해외구매</a><a href="tags/반려동물.html">#반려동물</a><a href="tags/유아용품.html">#유아용품</a><a href="tags/전자제품.html">#전자제품</a><a href="tags/가공식품.html">#가공식품</a><a href="tags/구매전체크.html">#구매전체크</a></div>
-</section>
+
+    <section class="hero hero-home">
+      <div class="hero-copy">
+        <div class="eyebrow">daily deals / retail edit</div>
+        <h1>오늘 살 만한 할인 상품을 쇼핑몰처럼 정리합니다.</h1>
+        <p class="lead">불필요한 설명은 줄이고, 가격·스펙·이미지·구매 이유를 먼저 보여주는 구조로 바꿨습니다. 매일 들어와서 바로 훑고, 바로 고를 수 있게 만드는 것이 목표입니다.</p>
+        <div class="hero-actions">
+          <a class="btn" href="posts/2026-10-21-deals.html">오늘의 할인 샘플</a>
+          <a class="ghost" href="#categories">카테고리 보기</a>
+        </div>
+        <div class="hero-note">처음부터 많은 상품을 넣기보다 검수된 상품만 보여주고, 나머지는 후보군으로 두는 방식으로 운영합니다.</div>
+        <div class="stat-row stat-row-home">
+          <div class="stat"><div class="k">Format</div><div class="v">Retail edit</div><div class="d">딜 중심 메인</div></div>
+          <div class="stat"><div class="k">Focus</div><div class="v">Image first</div><div class="d">이미지가 먼저 보이게</div></div>
+          <div class="stat"><div class="k">Scope</div><div class="v">8 categories</div><div class="d">생활 · 주방 · 자취 · 반려 · 유아 · 전자 · 식품 · 해외</div></div>
+          <div class="stat"><div class="k">Deploy</div><div class="v">GitHub Pages</div><div class="d">정적 배포 구조</div></div>
+        </div>
+      </div>
+      <aside class="hero-aside hero-grid-aside">
+        <div class="hero-card hero-card-featured">
+          <div class="visual"><img src="https://img.danuri.io/catalog-image/119/191/019/8886736521a944e393fb545e97173422.jpg?shrink=160:160&_v=20261021115703" alt="오늘의 샘플 상품 이미지"></div>
+          <div class="caption">오늘의 대표 추천 상품</div>
+        </div>
+        <div class="mini-list mini-list-home">
+          <div class="mini-item"><img src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="전자제품"> <div class="mini-body"><h4>전자제품</h4><p>소형가전, 생활가전, 미용가전</p></div></div>
+          <div class="mini-item"><img src="https://img.danuri.io/catalog-image/054/152/001/75bfef8375274ac4aaa3c96f50690f24.jpg?shrink=160:160&_v=20261021115753" alt="가공식품"> <div class="mini-body"><h4>가공식품</h4><p>즉석밥, 간편식, 냉동식품</p></div></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section section-dealbar">
+      <div class="section-head">
+        <h2>오늘의 딜 포맷</h2>
+        <p>진입부터 상품이 보이는 구조</p>
+      </div>
+      <div class="dealbar">
+        <a href="categories/electronics.html"><span>전자</span><strong>오늘 확인할 소형가전</strong></a>
+        <a href="categories/food.html"><span>식품</span><strong>쟁여두기 좋은 가공식품</strong></a>
+        <a href="categories/pet.html"><span>반려</span><strong>실용 소모품과 급식템</strong></a>
+        <a href="categories/baby.html"><span>유아</span><strong>필수 육아 소모품</strong></a>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="section-head"><h2>카테고리</h2><p>매일 확인할 진입점</p></div>
+      <div class="grid grid-home">
+        <a class="card" href="categories/living.html"><div class="category-img"><img src="https://gibone.com/web/product/medium/202608/86d2bb60a7449f5e35a6d362b20787de.jpg" alt="생활용품 대표 이미지"></div><div><div class="count">Category</div><h3>생활용품</h3><p>매일 쓰는 소모품, 청소, 욕실, 세탁, 수납용품</p></div></a>
+        <a class="card" href="categories/kitchen.html"><div class="category-img"><img src="https://img.danuri.io/catalog-image/968/699/113/c9962367a36f4de9847c62e47a691317.jpg?shrink=160:160&_v=20261019080603" alt="주방용품 대표 이미지"></div><div><div class="count">Category</div><h3>주방용품</h3><p>조리도구, 보관용기, 주방 소모품, 냉장고 정리</p></div></a>
+        <a class="card" href="categories/solo-living.html"><div class="category-img"><img src="https://www.cleanlabmall.co.kr/Upload/ProductImage/0103/100454_1_0600_0600_20200621134345.png" alt="자취템 대표 이미지"></div><div><div class="count">Category</div><h3>자취템</h3><p>원룸, 1인 가구, 좁은 주방과 작은 냉장고 기준</p></div></a>
+        <a class="card" href="categories/pet.html"><div class="category-img"><img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/7019152500/B.jpg?1000000" alt="반려동물 대표 이미지"></div><div><div class="count">Category</div><h3>반려동물</h3><p>고양이/강아지 위생, 급식, 산책, 청소용품</p></div></a>
+        <a class="card" href="categories/baby.html"><div class="category-img"><img src="https://m.motherkmall.co.kr/web/product/big/202309/9ae247524eaf8c12b521b44f943ad725.jpg" alt="유아용품 대표 이미지"></div><div><div class="count">Category</div><h3>유아용품</h3><p>아기 위생, 수납, 외출, 식기, 안전용품</p></div></a>
+        <a class="card" href="categories/electronics.html"><div class="category-img"><img src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="전자제품 대표 이미지"></div><div><div class="count">Category</div><h3>전자제품</h3><p>소형가전, 생활가전, 충전/거치, 헤어/미용가전</p></div></a>
+        <a class="card" href="categories/food.html"><div class="category-img"><img src="https://img.danuri.io/catalog-image/054/152/001/75bfef8375274ac4aaa3c96f50690f24.jpg?shrink=160:160&_v=20261021115753" alt="가공식품 대표 이미지"></div><div><div class="count">Category</div><h3>가공식품</h3><p>즉석밥, 간편식, 냉동식품, 상온보관 식품</p></div></a>
+        <a class="card" href="categories/overseas.html"><div class="category-img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S7f3ace433bea40779c85c2b989fb1302u.jpeg" alt="해외구매 대표 이미지"></div><div><div class="count">Category</div><h3>해외구매</h3><p>알리/아마존 등 해외배송 후보와 주의점</p></div></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>태그</h2><p>검색과 재방문용 구조</p></div>
+      <div class="tagcloud"><a href="tags/오늘할인.html">#오늘할인</a><a href="tags/특가.html">#특가</a><a href="tags/쿠폰.html">#쿠폰</a><a href="tags/가격비교.html">#가격비교</a><a href="tags/생활용품.html">#생활용품</a><a href="tags/주방용품.html">#주방용품</a><a href="tags/자취템.html">#자취템</a><a href="tags/청소용품.html">#청소용품</a><a href="tags/정리수납.html">#정리수납</a><a href="tags/소모품.html">#소모품</a><a href="tags/인덕션.html">#인덕션</a><a href="tags/홈카페.html">#홈카페</a><a href="tags/쿠팡.html">#쿠팡</a><a href="tags/알리익스프레스.html">#알리익스프레스</a><a href="tags/해외구매.html">#해외구매</a><a href="tags/반려동물.html">#반려동물</a><a href="tags/유아용품.html">#유아용품</a><a href="tags/전자제품.html">#전자제품</a><a href="tags/가공식품.html">#가공식품</a><a href="tags/구매전체크.html">#구매전체크</a></div>
+    </section>
 
     <footer class="footer">Daily Home Picks · GitHub Pages ready</footer>
   </div>
