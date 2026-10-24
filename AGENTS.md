@@ -34,6 +34,23 @@ git add -A && git commit -m "Daily deals YYYY-MM-DD" && git push
 - 사람이 확인 후: `node scripts/review.mjs approve all` 또는 `approve ID ...`, 문제 상품은 `node scripts/review.mjs reject ID "사유"`(다시 안 들어옴), 게시된 상품 내리기는 `hide ID`.
 - 사용자가 자동 전환을 지시하면 `autoApprove: true`로 바꾼다. 그 뒤로는 자동 검수를 통과한 상품이 바로 게시된다.
 
+## 1-1. 자동 실행과 Hermes 역할
+
+매일 반복 작업은 **`scripts/daily.sh`가 cron으로 자동 실행**한다(하루 2회). Hermes가 같은 명령을 따로 돌리지 않는다.
+- 하는 일: git pull → 쿠팡 골드박스·베스트 수집 → import(자동 검수) → 파트너스 링크 변환 → 빌드 → 바뀐 게 있으면 커밋·push.
+- 빌드가 규칙 위반으로 멈추면 push하지 않는다. 로그: `~/.local/state/dailyhomepick/daily-YYYY-MM.log`. 텔레그램 값이 env에 있으면 실패·검수 대기를 알린다.
+- 수동 실행: `scripts/daily.sh` (테스트는 `scripts/daily.sh --no-push`).
+
+**Hermes가 맡는 일**
+| 일 | 주기 |
+|---|---|
+| 인기 검색어(`site.json` → `trending`) 갱신: 네이버 데이터랩 쇼핑인사이트 등에서 생활·식품·육아·반려·뷰티 위주 16개 안팎 | 주 1~2회 |
+| 인기 검색어로 쿠팡 검색 보충: `node scripts/coupang.mjs search 키워드1 키워드2 …` (한 번에 5개 이내) → `node scripts/import.mjs` → `node scripts/build.mjs` → 커밋·push | 주 1~2회 |
+| 링크프라이스 후보 파일 만들기(연동 마무리 후, 3장 형식) | 매일 |
+| daily.sh 실패 알림이 오면 로그를 보고 원인 보고 (데이터를 억지로 고쳐 통과시키지 않는다) | 필요 시 |
+
+Hermes는 작업 전 항상 `git pull --ff-only`, 작업 후 바로 커밋·push한다(cron 실행과 충돌 방지). 커밋하지 않은 변경을 남겨 두면 다음 자동 실행이 `git pull` 단계에서 멈춘다.
+
 ## 2. 상품 소스와 우선순위
 
 같은 상품이 여러 곳에 있으면 **쿠팡 파트너스 링크가 있는 쪽**을 쓴다. 그다음 링크프라이스.
