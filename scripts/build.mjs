@@ -9,6 +9,7 @@ import { readJson, path } from './lib/store.mjs';
 import {
   textProblem, isBlockedLink, isProductUrl, prohibitedReason, discountOf, networkOf, today, daysBetween, imageProblem,
 } from './lib/rules.mjs';
+import { itemOf, MODIFIERS } from './lib/keywords.mjs';
 
 const site = readJson('data/site.json');
 const categories = readJson('data/categories.json');
@@ -648,9 +649,18 @@ for (const p of products) {
     },
   });
   const pr = priceParts(p).main;
+  // 사람들은 상품 정식명이 아니라 "논슬립 옷걸이 최저가"처럼 품목+의도로 검색한다.
+  // 품목이 제목에 이미 있으면 되풀이하지 않고 의도 어미만 붙인다.
+  const kwItem = itemOf(p);
+  const kwMod = (p.tags || []).find((t) => MODIFIERS.includes(t));
+  const kwPhrase = kwItem ? [kwMod, kwItem].filter(Boolean).join(' ') : '';
+  const squash = (s) => String(s).replace(/\s+/g, '');
+  const kwInTitle = kwPhrase && squash(p.title).includes(squash(kwPhrase));
+  const titleTail = kwPhrase ? (kwInTitle ? ' 최저가' : ` ${kwPhrase} 최저가`) : '';
+  const kwLead = kwPhrase ? `${kwPhrase} 추천, 가격 비교. ` : '';
   add(`p/${p.id}.html`, layout({
-    title: `${p.title}${p.discountRate ? ` ${p.discountRate}% 할인` : isGoldbox(p) ? ' 골드박스 특가' : ''} ${pr}`,
-    description: `${autoSummary(p)} ${longDate(p.checkedAt)} 가격 확인.`.slice(0, 155),
+    title: `${p.title}${p.discountRate ? ` ${p.discountRate}% 할인` : isGoldbox(p) ? ' 골드박스 특가' : ''} ${pr}${titleTail}`,
+    description: `${kwLead}${autoSummary(p)} ${longDate(p.checkedAt)} 가격 확인.`.slice(0, 155),
     path: productHref(p), body, image: p.image, bodyClass: 'has-sticky-buy', noindex: expired, head,
   }), expired ? null : p.checkedAt);
 }
