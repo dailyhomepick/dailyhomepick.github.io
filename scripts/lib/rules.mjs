@@ -76,7 +76,10 @@ export function isProductUrl(url) {
 const EXCEPTIONS = { 주류: ['잔', '컵', '글라스', '오프너', '병따개', '랙', '냉장고', '셀러', '거치대', '보관함', '디캔터', '스토퍼'] };
 
 export function prohibitedReason(...texts) {
-  const hay = texts.filter(Boolean).join(' ').toLowerCase().replace(/\s+/g, '');
+  // 값마다 따로 공백을 지운 뒤 구분자로 잇는다. 한 값 안의 띄어쓰기 우회("성 인 용 품")는
+  // 그대로 걸리되, 서로 다른 값이 맞붙어 없던 단어가 생기지는 않는다
+  // (제목 "완숙 토마토" + 태그 "토마토" → 예전엔 "토마토토마토"가 되어 '토토'에 걸렸다).
+  const hay = texts.filter(Boolean).map((t) => String(t).toLowerCase().replace(/\s+/g, '')).join('|');
   for (const [reason, words] of Object.entries(PROHIBITED)) {
     if (EXCEPTIONS[reason]?.some((w) => hay.includes(w))) continue;
     const hit = words.find((w) => hay.includes(w.toLowerCase()));
