@@ -10,6 +10,7 @@ import {
   textProblem, isBlockedLink, isProductUrl, prohibitedReason, discountOf, networkOf, today, daysBetween, imageProblem,
 } from './lib/rules.mjs';
 import { itemOf, MODIFIERS } from './lib/keywords.mjs';
+import { faqFor } from './lib/faq.mjs';
 
 const site = readJson('data/site.json');
 const categories = readJson('data/categories.json');
@@ -608,6 +609,9 @@ for (const p of products) {
   const stale = age(p) > rules.staleDays;
   const history = (p.priceHistory || []).slice(-8).reverse();
   const lowest = lowestOf(p);
+  // 품목을 아는 상품에만 문답을 붙인다. 전부에 같은 걸 붙이면 중복 콘텐츠가 된다.
+  const kwItem = itemOf(p);
+  const faqs = faqFor(kwItem);
   const body = `
 <div class="wrap">
   ${breadcrumb([['홈', '/'], [cat.title, catHref(cat.slug)], [p.title, productHref(p)]])}
@@ -630,6 +634,7 @@ for (const p of products) {
       ${p.tags.length ? tagChips(p.tags) : ''}
     </div>
   </section>
+  ${faqs.length ? `<section class="section-tight"><h2 class="h3">${esc(kwItem)} 자주 묻는 질문</h2><dl class="faq">${faqs.map(([q, a]) => `<dt>${esc(q)}</dt><dd>${esc(a)}</dd>`).join('')}</dl></section>` : ''}
   ${disclosure([p])}
   ${inPosts.length ? `<section class="section-tight"><h2 class="h3">이 상품이 소개된 글</h2><div class="post-list">${inPosts.slice(0, 4).map(postCard).join('')}</div></section>` : ''}
   ${similar.length ? `<section class="section-tight"><h2 class="h3">${esc(cat.title)} 할인 더 보기</h2>${grid(similar)}</section>` : ''}
@@ -647,11 +652,16 @@ for (const p of products) {
       priceValidUntil: offerValid, availability: expired ? 'https://schema.org/LimitedAvailability' : 'https://schema.org/InStock',
       ...(p.store ? { seller: { '@type': 'Organization', name: p.store } } : {}),
     },
-  });
+  }) + (faqs.length ? jsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(([q, a]) => ({
+      '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }) : '');
   const pr = priceParts(p).main;
   // 사람들은 상품 정식명이 아니라 "논슬립 옷걸이 최저가"처럼 품목+의도로 검색한다.
   // 품목이 제목에 이미 있으면 되풀이하지 않고 의도 어미만 붙인다.
-  const kwItem = itemOf(p);
   const kwMod = (p.tags || []).find((t) => MODIFIERS.includes(t));
   const kwPhrase = kwItem ? [kwMod, kwItem].filter(Boolean).join(' ') : '';
   const squash = (s) => String(s).replace(/\s+/g, '');
