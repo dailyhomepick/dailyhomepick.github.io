@@ -14,7 +14,7 @@ import { readdirSync, readFileSync, renameSync, mkdirSync, existsSync } from 'no
 import { basename, join, resolve } from 'node:path';
 import {
   prohibitedReason, parsePrice, discountOf, textProblem, isBlockedLink, isProductUrl,
-  storeOf, networkOf, guessCategory, today, loadEnv, imageProblem, unwrapImage,
+  storeOf, networkOf, guessCategory, today, loadEnv, imageProblem, unwrapImage, outOfScope, daysBetween,
 } from './lib/rules.mjs';
 import { loadMerchants, deeplinkFor } from './lib/linkprice.mjs';
 import { readJson, writeJson, path, hash, titleKey, linkKey, addToDailyPost } from './lib/store.mjs';
@@ -71,6 +71,8 @@ function review(c) {
   if (!c.link) problems.push('판매 링크 없음');
   const bad = prohibitedReason(c.title, c.sourceCategory, ...(c.tags || []));
   if (bad) problems.push(`금지 품목: ${bad}`);
+  const scope = outOfScope(c.title);
+  if (scope) problems.push(`사이트 범위 아님: ${scope}`);
   if (c.link && isBlockedLink(c.link)) problems.push('판매처가 아닌 사이트(비교·커뮤니티·중고) 링크');
   if (c.link && !isProductUrl(c.link)) problems.push('상품 페이지가 아닌 첫 화면 링크');
 
@@ -134,6 +136,11 @@ for (const file of inputs) {
     const r = review(c);
     if (r.problems.length) {
       report.rejected.push({ title: c.title, key, reasons: r.problems });
+      // A published item that now fails a hard rule (금지 품목·범위 밖) is taken down.
+      if (existing && existing.status !== 'hidden' && r.problems.some((x) => /^(금지 품목|사이트 범위 아님)/.test(x))) {
+        existing.status = 'hidden';
+        existing.hiddenReason = r.problems[0];
+      }
       continue;
     }
     if (r.normalized.image) {
@@ -143,7 +150,12 @@ for (const file of inputs) {
     const n = r.normalized;
 
     if (existing) {
-      // Price refresh: keep a short history so pages can show "최근 최저가".
+      // Price refresh: keep a short history so pages can show "최근 최저가" and price drops.
+      const recent = (existing.priceHistory || []).filter((h) => daysBetween(h.date, date) <= 30).map((h) => h.price);
+      const high = Math.max(0, ...recent);
+      const drop = high > n.price.min ? Math.round(((high - n.price.min) / high) * 100) : 0;
+      if (drop >= 3) existing.priceDropRate = drop;
+      else delete existing.priceDropRate;
       const last = existing.priceHistory?.at(-1);
       if (!last || last.price !== n.price.min) {
         existing.priceHistory = [...(existing.priceHistory || []), { date, price: n.price.min }].slice(-60);
@@ -151,6 +163,7 @@ for (const file of inputs) {
       Object.assign(existing, {
         price: n.price, originalPrice: n.originalPrice, discountRate: n.discountRate, checkedAt: date,
         image: n.image || existing.image,
+        badges: n.badges.length ? n.badges : existing.badges,
         affiliateLink: n.affiliateLink || existing.affiliateLink,
         network: n.affiliateLink ? n.network : existing.network,
       });

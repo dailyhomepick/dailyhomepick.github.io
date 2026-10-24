@@ -30,6 +30,7 @@ git add -A && git commit -m "Daily deals YYYY-MM-DD" && git push
 ### 검수 단계 (지금은 수동 → 나중에 자동)
 
 - 현재 `data/site.json` → `publish.autoApprove: false`. 가져온 상품은 `pending` 상태가 되고 https://dailyhomepick.github.io/review.html 에 모인다.
+- **승인 명령은 review.html을 실제로 본 다음에만 실행한다.** 명령어를 한꺼번에 붙여 넣어 검수 없이 승인되는 일이 있었다.
 - 사람이 확인 후: `node scripts/review.mjs approve all` 또는 `approve ID ...`, 문제 상품은 `node scripts/review.mjs reject ID "사유"`(다시 안 들어옴), 게시된 상품 내리기는 `hide ID`.
 - 사용자가 자동 전환을 지시하면 `autoApprove: true`로 바꾼다. 그 뒤로는 자동 검수를 통과한 상품이 바로 게시된다.
 
@@ -42,6 +43,9 @@ git add -A && git commit -m "Daily deals YYYY-MM-DD" && git push
 - 승인 전: 사람이 파트너스 대시보드 "링크 생성"으로 만든 `https://link.coupang.com/a/...` 링크를 후보 파일의 `affiliateLink`에 넣는다.
 - 골드박스가 할인율이 있어 가장 좋다. 검색 API(`search`)는 호출 한도가 작으니 하루 몇 개 키워드만.
 - API가 주는 `productUrl`은 이미 파트너스 링크다. `productImage`가 그 상품의 공식 이미지다(썸네일 일치 보장).
+
+- **골드박스·베스트 API 응답에는 정가·할인율·카테고리명이 없다.** 그래서 골드박스 상품은 `골드박스` 배지로 표시하고, 할인 폭은 우리 가격 기록으로 계산한다(같은 상품을 다시 가져왔을 때 최근 30일 최고가보다 3% 이상 싸면 `priceDropRate`, 화면에는 "↓n%"). **매일 수집해야 이 값이 생긴다.** 정가를 임의로 만들어 넣지 않는다.
+- 골드박스는 카테고리명이 없어 상품명으로 분류한다(`guessCategory`). 입장권·이용권·숙박·항공권 같은 상품은 사이트 범위 밖이라 자동 탈락하고, 이미 게시된 것은 자동으로 내려간다.
 
 ### 링크프라이스 (2순위)
 - 머천트 제휴가 승인된 쇼핑몰만 `data/merchants.json`에 `id`를 채우고 `enabled: true`로 바꾼다. 승인 안 된 머천트 링크는 실적이 잡히지 않는다.
@@ -79,7 +83,7 @@ JSON 배열. 한 항목:
 
 - `price`·`originalPrice`는 숫자(원). 달러는 `"$3.49"`처럼 문자열 가능. **정가는 판매 페이지에 표시된 값만** 쓴다. 정가를 모르면 `discountRate`(숫자)만 넣어도 된다.
 - `sourceId`는 출처별 고유 ID(중복 판별에 사용). 쿠팡은 `coupang-상품번호`.
-- `categories`: `living, kitchen, solo-living, pet, baby, electronics, food, overseas` 중에서. 비우면 상품명으로 자동 분류.
+- `categories`: `living, kitchen, solo-living, pet, baby, electronics, food, beauty, fashion, overseas` 중에서. 비우면 상품명으로 자동 분류.
 - `summary`는 비워도 된다(판매처·가격·할인율로 자동 문장 생성). 쓸 경우 **상품마다 다른 한 문장**.
 - `specs`·`summary`·`caution`에 HTML, `[...필요]` 같은 메모, "미확인" 금지.
 
@@ -92,6 +96,7 @@ import가 아래 중 하나라도 걸리면 탈락시키고 `data/rejected.json`
 | 썸네일 | https 절대경로, 실제로 열리는 이미지(image/*), 아이콘·로고·배지·플레이스홀더 아님. **반드시 그 상품 페이지의 대표 이미지** |
 | 가격 | 숫자, 0원 아님, 100원~2천만 원, 정가 ≥ 판매가, 할인율 95% 이하 |
 | 할인율 | `publish.minDiscount`(10%) 미만 탈락. 할인율 모르는 상품은 `allowUnknownDiscount`가 true일 때만 통과 |
+| 범위 밖 | 입장권·이용권·숙박·항공권·상품권 등 (`OUT_OF_SCOPE`) |
 | 금지 품목 | 성인용품, 담배·전자담배, 주류, 의약품, 무기·위험물, 가품, 도박 (`PROHIBITED` 목록). 와인잔·맥주컵 같은 용품은 예외 |
 | 링크 | 판매처 **상품 페이지**(첫 화면 X). 비교·핫딜·커뮤니티·중고 사이트 X |
 | 문구 | HTML 태그, 내부 메모 금지 |
@@ -101,7 +106,7 @@ import가 아래 중 하나라도 걸리면 탈락시키고 `data/rejected.json`
 
 ## 5. 검색 노출(SEO)을 위해 할 일
 
-생성기가 자동으로 하는 것: 페이지별 제목·설명, canonical, Open Graph, 상품 구조화 데이터(Product/Offer), 목록(ItemList), 경로(BreadcrumbList), 사이트 검색(SearchAction), `sitemap.xml`(lastmod 포함), `rss.xml`, 오래된 상품 noindex, 인기 검색어 랜딩 페이지(`/k/키워드.html`).
+정렬 기본값: **제휴 링크 있는 상품 → 할인율·가격 인하·골드박스** 순. 생성기가 자동으로 하는 것: 페이지별 제목·설명, canonical, Open Graph, 상품 구조화 데이터(Product/Offer), 목록(ItemList), 경로(BreadcrumbList), 사이트 검색(SearchAction), `sitemap.xml`(lastmod 포함), `rss.xml`, 오래된 상품 noindex, 인기 검색어 랜딩 페이지(`/k/키워드.html`).
 
 Hermes가 할 일:
 - **인기 검색어 갱신(주 1~2회)**: `data/site.json`의 `trending`(16개 안팎)을 네이버 데이터랩 쇼핑인사이트·쿠팡 검색 추이 등에서 생활용품 위주로 고른다. 상품이 1개 이상 매칭되는 키워드만 `/k/` 페이지가 생긴다. 키워드에 맞는 상품을 `coupang.mjs search 키워드`로 보충한다.
@@ -136,7 +141,7 @@ LINKPRICE_AFFILIATE_ID=A100...
 | `data/site.json` | 사이트 설정, 게시 규칙(`publish`), 인기 검색어(`trending`), 고지 문구, 검색엔진 인증값 |
 | `data/products.json` | 상품 (import/review 스크립트가 관리). `status`: published / pending / hidden |
 | `data/posts.json` | 날짜별 글. import·approve가 그날 `YYYY-MM-DD-deals` 글에 자동 추가 |
-| `data/categories.json` | 카테고리 8개 |
+| `data/categories.json` | 카테고리 10개 (living, kitchen, solo-living, pet, baby, electronics, food, beauty, fashion, overseas) |
 | `data/merchants.json` | 링크프라이스 머천트·딥링크 형식 |
 | `data/rejected.json` | 탈락·반려 기록 |
 | `scripts/coupang.mjs` | 쿠팡 수집·딥링크 |

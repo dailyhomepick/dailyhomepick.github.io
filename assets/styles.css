@@ -514,3 +514,6 @@ button, input, select { font: inherit; color: inherit; }
 /* Hide alt text of broken thumbnails; the striped .img-missing background shows instead. */
 .card-media img, .hero-lead-img img, .hero-mosaic img, .product-media img, .post-thumbs img,
 .feature-media img, .guide-media img, .cat-img img, .review-img img { color: transparent; font-size: 0; }
+.chip-rate.is-drop { background: var(--good); }
+.chip-rate.is-deal { background: var(--ink); color: var(--surface); }
+.price .rate-drop { color: var(--good); }

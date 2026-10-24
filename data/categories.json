@@ -1,10 +1,62 @@
 [
-  { "slug": "living", "name": "생활", "title": "생활용품", "description": "매일 쓰는 소모품, 청소, 욕실, 세탁, 수납용품" },
-  { "slug": "kitchen", "name": "주방", "title": "주방용품", "description": "조리도구, 보관용기, 주방 소모품, 냉장고 정리" },
-  { "slug": "solo-living", "name": "자취", "title": "자취템", "description": "원룸, 1인 가구, 좁은 주방과 작은 냉장고 기준" },
-  { "slug": "pet", "name": "반려동물", "title": "반려동물", "description": "고양이·강아지 위생, 급식, 산책, 청소용품" },
-  { "slug": "baby", "name": "유아", "title": "유아용품", "description": "아기 위생, 수납, 외출, 식기, 안전용품" },
-  { "slug": "electronics", "name": "전자제품", "title": "전자제품", "description": "소형가전, 생활가전, 충전·거치, 헤어·미용가전" },
-  { "slug": "food", "name": "식품", "title": "가공식품", "description": "즉석밥, 간편식, 냉동식품, 상온보관 식품" },
-  { "slug": "overseas", "name": "해외직구", "title": "해외구매", "description": "알리·아마존 등 해외배송 상품과 구매 전 주의점" }
+  {
+    "slug": "living",
+    "name": "생활",
+    "title": "생활용품",
+    "description": "매일 쓰는 소모품, 청소, 욕실, 세탁, 수납용품"
+  },
+  {
+    "slug": "kitchen",
+    "name": "주방",
+    "title": "주방용품",
+    "description": "조리도구, 보관용기, 주방 소모품, 냉장고 정리"
+  },
+  {
+    "slug": "solo-living",
+    "name": "자취",
+    "title": "자취템",
+    "description": "원룸, 1인 가구, 좁은 주방과 작은 냉장고 기준"
+  },
+  {
+    "slug": "pet",
+    "name": "반려동물",
+    "title": "반려동물",
+    "description": "고양이·강아지 위생, 급식, 산책, 청소용품"
+  },
+  {
+    "slug": "baby",
+    "name": "유아",
+    "title": "유아용품",
+    "description": "아기 위생, 수납, 외출, 식기, 안전용품"
+  },
+  {
+    "slug": "electronics",
+    "name": "전자제품",
+    "title": "전자제품",
+    "description": "소형가전, 생활가전, 충전·거치, 헤어·미용가전"
+  },
+  {
+    "slug": "food",
+    "name": "식품",
+    "title": "식품",
+    "description": "즉석밥, 간편식, 신선·냉동식품, 음료·간식"
+  },
+  {
+    "slug": "beauty",
+    "name": "뷰티",
+    "title": "뷰티·생활건강",
+    "description": "스킨케어, 헤어·바디, 메이크업, 구강·면도용품"
+  },
+  {
+    "slug": "fashion",
+    "name": "패션",
+    "title": "패션·잡화",
+    "description": "의류, 신발, 가방, 양말·속옷 등 패션잡화"
+  },
+  {
+    "slug": "overseas",
+    "name": "해외직구",
+    "title": "해외구매",
+    "description": "알리·아마존 등 해외배송 상품과 구매 전 주의점"
+  }
 ]

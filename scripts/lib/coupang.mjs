@@ -3,6 +3,7 @@
 // API access requires Coupang Partners "최종 승인"; before that every call returns 401/403.
 
 import { createHmac } from 'node:crypto';
+import { guessCategory } from './rules.mjs';
 
 const HOST = 'https://api-gateway.coupang.com';
 const BASE = '/v2/providers/affiliate_open_api/apis/openapi/v1';
@@ -57,6 +58,8 @@ export const deeplink = (urls) =>
 
 // Coupang best-category ids → site category slugs. Unlisted ids are not collected.
 export const CATEGORY_MAP = {
+  1001: 'fashion', 1002: 'fashion',
+  1010: 'beauty',
   1011: 'baby', 1030: 'baby',
   1012: 'food',
   1013: 'kitchen',
@@ -66,13 +69,16 @@ export const CATEGORY_MAP = {
 };
 const NAME_MAP = [
   [/출산|유아|아동/, 'baby'], [/식품/, 'food'], [/주방/, 'kitchen'], [/생활|인테리어|홈/, 'living'],
-  [/가전|디지털/, 'electronics'], [/반려/, 'pet'],
+  [/가전|디지털/, 'electronics'], [/반려/, 'pet'], [/뷰티/, 'beauty'], [/패션/, 'fashion'],
 ];
 
 // API product → candidate (schema in AGENTS.md). productUrl from the API is already a partner link.
+// The goldbox/best responses carry no list price or category name, so the category may be guessed
+// from the title and discounts come from our own price history (see import.mjs).
 export function toCandidate(p, { categoryId, source } = {}) {
-  const category = CATEGORY_MAP[categoryId] || NAME_MAP.find(([re]) => re.test(p.categoryName || ''))?.[1] || '';
-  const original = Number(p.originalPrice || p.basePrice || 0) || undefined;
+  const category = CATEGORY_MAP[categoryId] || NAME_MAP.find(([re]) => re.test(p.categoryName || ''))?.[1]
+    || guessCategory(p.productName, '쿠팡');
+  const original = Number(p.originalPrice || p.basePrice || p.listPrice || 0) || undefined;
   return {
     source: source || 'coupang',
     sourceId: `coupang-${p.productId}`,
@@ -87,6 +93,6 @@ export function toCandidate(p, { categoryId, source } = {}) {
     network: 'coupang',
     categories: category ? [category] : [],
     sourceCategory: p.categoryName || '',
-    badges: [p.isRocket && '로켓배송', p.isFreeShipping && '무료배송'].filter(Boolean),
+    badges: [source === 'coupang-goldbox' && '골드박스', p.isRocket && '로켓배송', p.isFreeShipping && '무료배송'].filter(Boolean),
   };
 }

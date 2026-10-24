@@ -113,6 +113,7 @@ function autoSummary(p) {
   if (p.summary) return p.summary;
   const parts = [`${p.store || '판매처'}에서 ${priceParts(p).main}`];
   if (p.discountRate) parts.push(`정가 대비 ${p.discountRate}% 할인`);
+  else if (p.priceDropRate) parts.push(`최근 기록보다 ${p.priceDropRate}% 내린 가격`);
   if (p.badges?.length) parts.push(p.badges.join('·'));
   return `${parts.join(', ')}에 판매 중입니다.`;
 }
@@ -126,16 +127,25 @@ function buyButton(p, cls = 'btn btn-buy') {
   return `<a class="${cls}" href="${esc(href)}" target="_blank" rel="sponsored nofollow noopener">${esc(p.store || '판매처')}에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
 }
 
+// Discount from list price, or else the drop against our own recent price records.
+const rateOf = (p) => p.discountRate || p.priceDropRate || 0;
+const isGoldbox = (p) => (p.badges || []).includes('골드박스');
+const rateChip = (p, cls = 'chip-rate') => (p.discountRate ? `<span class="${cls}">${p.discountRate}%</span>`
+  : p.priceDropRate ? `<span class="${cls} is-drop" title="최근 기록 대비 인하">↓${p.priceDropRate}%</span>`
+  : isGoldbox(p) ? `<span class="${cls} is-deal">특가</span>` : '');
+
 function priceBlock(p, cls = 'price') {
   const { main, sub } = priceParts(p);
-  return `<div class="${cls}">${p.discountRate ? `<span class="rate">${p.discountRate}%</span>` : ''}<strong>${esc(main)}</strong>${sub ? `<span class="price-sub">${esc(sub)}</span>` : ''}${p.originalPrice ? `<del>${money(p.originalPrice, p.price.currency)}</del>` : ''}</div>`;
+  const rate = p.discountRate ? `<span class="rate">${p.discountRate}%</span>`
+    : p.priceDropRate ? `<span class="rate rate-drop" title="최근 기록 대비 인하">↓${p.priceDropRate}%</span>` : '';
+  return `<div class="${cls}">${rate}<strong>${esc(main)}</strong>${sub ? `<span class="price-sub">${esc(sub)}</span>` : ''}${p.originalPrice ? `<del>${money(p.originalPrice, p.price.currency)}</del>` : ''}</div>`;
 }
 
 function card(p, order = 0) {
   const cat = categoryBySlug.get(p.categories[0]);
   const stale = age(p) > rules.staleDays;
-  return `<article class="card" data-price="${priceKey(p)}" data-rate="${p.discountRate || 0}" data-order="${order}" data-cat="${cat.slug}">
-  <a class="card-media" href="${productHref(p)}" tabindex="-1" aria-hidden="true">${img(p)}${p.discountRate ? `<span class="chip-rate">${p.discountRate}%</span>` : ''}</a>
+  return `<article class="card" data-price="${priceKey(p)}" data-rate="${rateOf(p)}" data-order="${order}" data-cat="${cat.slug}">
+  <a class="card-media" href="${productHref(p)}" tabindex="-1" aria-hidden="true">${img(p)}${rateChip(p)}</a>
   <div class="card-body">
     <p class="card-meta"><a class="card-cat" href="${catHref(cat.slug)}">${esc(cat.name)}</a>${p.store ? `<span>${esc(p.store)}</span>` : ''}</p>
     <h3 class="card-title"><a href="${productHref(p)}">${esc(p.title)}</a></h3>
@@ -248,8 +258,11 @@ ${body}
 }
 
 // ---------- derived indexes ----------
-const byRate = (a, b) => (b.discountRate || 0) - (a.discountRate || 0) || b.checkedAt.localeCompare(a.checkedAt);
-const byNewest = (a, b) => b.checkedAt.localeCompare(a.checkedAt) || (b.discountRate || 0) - (a.discountRate || 0);
+// Recommended order: items that earn (affiliate link) first, then discount / price drop / goldbox.
+const dealScore = (p) => rateOf(p) + (isGoldbox(p) ? 15 : 0);
+const earnScore = (p) => (p.affiliateLink ? 1000 : 0) + dealScore(p);
+const byRate = (a, b) => earnScore(b) - earnScore(a) || b.checkedAt.localeCompare(a.checkedAt);
+const byNewest = (a, b) => b.checkedAt.localeCompare(a.checkedAt) || dealScore(b) - dealScore(a);
 const productsByCategory = new Map(categories.map((c) => [c.slug, []]));
 const productsByTag = new Map();
 for (const p of listed) {
@@ -267,7 +280,9 @@ for (const post of posts) {
   }
 }
 const tagsSorted = [...productsByTag.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'ko'));
-const todayList = listed.filter(isFresh).sort(byRate).slice(0, rules.todayMax);
+// Today's deals: real discounts, price drops and goldbox first, then other fresh items to fill the page.
+const fresh = listed.filter(isFresh).sort(byRate);
+const todayList = fresh.slice(0, rules.todayMax);
 const todayDeals = todayList.length ? todayList : [...listed].sort(byNewest).slice(0, 40);
 const lastChecked = listed.reduce((m, p) => (p.checkedAt > m ? p.checkedAt : m), '2000-01-01');
 
@@ -364,12 +379,12 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
       <a class="hero-lead" href="${productHref(lead)}">
         <span class="hero-lead-img">${img(lead, '', true)}</span>
         <span class="hero-lead-body">
-          <span class="badge">오늘 할인율 1위</span>
+          <span class="badge">${rateOf(lead) ? '오늘 할인율 1위' : '오늘의 특가'}</span>
           <strong>${esc(lead.title)}</strong>
           ${priceBlock(lead)}
         </span>
       </a>
-      <div class="hero-mosaic">${mosaic.map((p) => `<a href="${productHref(p)}" title="${esc(p.title)}">${img(p)}${p.discountRate ? `<span class="chip-rate">${p.discountRate}%</span>` : ''}</a>`).join('')}</div>
+      <div class="hero-mosaic">${mosaic.map((p) => `<a href="${productHref(p)}" title="${esc(p.title)}">${img(p)}${rateChip(p)}</a>`).join('')}</div>
     </div>
   </div>
 </section>
@@ -431,7 +446,7 @@ ${posts.length ? `<section class="section">
   <header class="page-head">
     <p class="kicker"><span class="dot" aria-hidden="true"></span>${longDate(lastChecked)} 업데이트</p>
     <h1>오늘의 할인</h1>
-    <p class="lead">최근 ${rules.staleDays}일 안에 가격을 다시 확인한 할인 상품입니다. 할인율이 높은 순서로 보여드려요.</p>
+    <p class="lead">최근 ${rules.staleDays}일 안에 가격을 다시 확인한 상품입니다. 할인율·가격 인하 폭이 큰 상품과 쿠팡 골드박스 특가를 먼저 보여드려요.</p>
   </header>
   ${sortBar(todayDeals.length, { def: 'rate-desc', filters })}
   ${grid(todayDeals, ' data-sortable')}
@@ -596,7 +611,7 @@ for (const p of products) {
 <div class="wrap">
   ${breadcrumb([['홈', '/'], [cat.title, catHref(cat.slug)], [p.title, productHref(p)]])}
   <section class="product">
-    <div class="product-media">${img(p, '', true)}${p.discountRate ? `<span class="chip-rate chip-rate-lg">${p.discountRate}%</span>` : ''}</div>
+    <div class="product-media">${img(p, '', true)}${rateChip(p, 'chip-rate chip-rate-lg')}</div>
     <div class="product-info">
       <p class="kicker">${p.categories.map((c) => `<a href="${catHref(c)}">${esc(categoryBySlug.get(c).name)}</a>`).join(' · ')}${p.store ? ` · ${esc(p.store)}` : ''}</p>
       <h1>${esc(p.title)}</h1>
@@ -634,7 +649,7 @@ for (const p of products) {
   });
   const pr = priceParts(p).main;
   add(`p/${p.id}.html`, layout({
-    title: `${p.title}${p.discountRate ? ` ${p.discountRate}% 할인` : ''} ${pr}`,
+    title: `${p.title}${p.discountRate ? ` ${p.discountRate}% 할인` : isGoldbox(p) ? ' 골드박스 특가' : ''} ${pr}`,
     description: `${autoSummary(p)} ${longDate(p.checkedAt)} 가격 확인.`.slice(0, 155),
     path: productHref(p), body, image: p.image, bodyClass: 'has-sticky-buy', noindex: expired, head,
   }), expired ? null : p.checkedAt);
