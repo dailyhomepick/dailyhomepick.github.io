@@ -1,104 +1,253 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="오늘 살 만한 할인 상품을 커머스 룩으로 정리합니다.">
-  <meta name="theme-color" content="#0052cc">
-  <title>Daily Home Picks</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily Home Picks · 매일 확인한 생활 할인 상품</title>
+<meta name="description" content="생활·주방·자취·반려동물·유아·전자제품·식품까지, 매일 가격을 확인한 할인 상품을 모아 보여줍니다.">
+<link rel="canonical" href="https://songkisong.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Daily Home Picks">
+<meta property="og:title" content="Daily Home Picks">
+<meta property="og:description" content="생활·주방·자취·반려동물·유아·전자제품·식품까지, 매일 가격을 확인한 할인 상품을 모아 보여줍니다.">
+<meta property="og:url" content="https://songkisong.github.io/">
+<meta property="og:image" content="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111318" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/assets/styles.css?v=mvlr5lal">
+<script src="/assets/app.js?v=mvlr5lal" defer></script>
 </head>
 <body>
-  <div class="shell">
-    <div class="promo-bar">
-      <span>오늘의 할인 · 카테고리별 추천 · 검수 통과 상품만 노출</span>
-      <a href="posts/2026-10-21-deals.html">오늘의 딜 보러가기</a>
-    </div>
-    <header class="topbar commerce-topbar">
-      <a class="brand" href="index.html">
-        <span class="name">Daily Home Picks</span>
-        <span class="sub">commerce daily deals</span>
-      </a>
-      <div class="search-wrap">
-        <div class="search-box">
-          <span class="search-label">전체</span>
-          <input type="text" value="" placeholder="찾고 싶은 상품을 검색해보세요" aria-label="검색">
-          <button>검색</button>
-        </div>
-      </div>
-      <nav class="nav">
-        <a href="categories/living.html">생활</a>
-        <a href="categories/kitchen.html">주방</a>
-        <a href="categories/solo-living.html">자취</a>
-        <a href="categories/pet.html">반려동물</a>
-        <a href="categories/baby.html">유아</a>
-        <a href="categories/electronics.html">전자제품</a>
-        <a href="categories/food.html">가공식품</a>
-        <a href="categories/overseas.html">해외</a>
-      </nav>
-    </header>
-
-    <section class="hero commerce-hero">
-      <div class="hero-copy">
-        <div class="eyebrow">daily deals / commerce edit</div>
-        <h1>오늘 살 만한 할인 상품을 커머스처럼 보여줍니다.</h1>
-        <p class="lead">검색, 가격, 할인율, 카테고리, 배송 감각을 한 화면 안에 담아 쇼핑몰처럼 보이게 만들었습니다. 광고글보다 먼저 상품이 보여야 해서, 문장보다 구조와 숫자를 우선합니다.</p>
-        <div class="hero-actions">
-          <a class="btn" href="posts/2026-10-21-deals.html">오늘의 할인 샘플</a>
-          <a class="ghost" href="#categories">카테고리 보기</a>
-        </div>
-        <div class="hero-note">이 버전은 커머스 룩에 맞춰 검색바, 할인 배지, 별점 느낌, 가격 강조를 더 강하게 적용합니다.</div>
-      </div>
-      <aside class="hero-aside commerce-aside">
-        <div class="hero-card commerce-hero-card">
-          <div class="visual"><img src="https://img.danuri.io/catalog-image/119/191/019/8886736521a944e393fb545e97173422.jpg?shrink=160:160&_v=20261021115703" alt="오늘의 샘플 상품 이미지"></div>
-          <div class="caption">
-            <div class="deal-price">19% 할인</div>
-            <strong>오늘의 대표 추천 상품</strong>
-            <span>가격 · 스펙 · 배송을 한 번에</span>
-          </div>
-        </div>
-        <div class="mini-list mini-list-home">
-          <div class="mini-item"><img src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="전자제품"><div class="mini-body"><h4>전자제품</h4><p>소형가전, 생활가전, 미용가전</p></div></div>
-          <div class="mini-item"><img src="https://img.danuri.io/catalog-image/054/152/001/75bfef8375274ac4aaa3c96f50690f24.jpg?shrink=160:160&_v=20261021115753" alt="가공식품"><div class="mini-body"><h4>가공식품</h4><p>즉석밥, 간편식, 냉동식품</p></div></div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>오늘의 딜 포맷</h2>
-        <p>커머스 메인처럼 보이게</p>
-      </div>
-      <div class="dealbar">
-        <a href="categories/electronics.html"><span>전자</span><strong>오늘 확인할 소형가전</strong></a>
-        <a href="categories/food.html"><span>식품</span><strong>쟁여두기 좋은 가공식품</strong></a>
-        <a href="categories/pet.html"><span>반려</span><strong>실용 소모품과 급식템</strong></a>
-        <a href="categories/baby.html"><span>유아</span><strong>필수 육아 소모품</strong></a>
-      </div>
-    </section>
-
-    <section class="section" id="categories">
-      <div class="section-head"><h2>카테고리</h2><p>매일 확인할 진입점</p></div>
-      <div class="grid grid-home">
-        <a class="card commerce-card" href="categories/living.html"><div class="category-img"><img src="https://gibone.com/web/product/medium/202608/86d2bb60a7449f5e35a6d362b20787de.jpg" alt="생활용품 대표 이미지"></div><div><div class="count">Category</div><h3>생활용품</h3><p>매일 쓰는 소모품, 청소, 욕실, 세탁, 수납용품</p><div class="card-meta"><span class="rating">★ 4.8</span><span class="ship">내일도착</span></div></div></a>
-        <a class="card commerce-card" href="categories/kitchen.html"><div class="category-img"><img src="https://img.danuri.io/catalog-image/968/699/113/c9962367a36f4de9847c62e47a691317.jpg?shrink=160:160&_v=20261019080603" alt="주방용품 대표 이미지"></div><div><div class="count">Category</div><h3>주방용품</h3><p>조리도구, 보관용기, 주방 소모품, 냉장고 정리</p><div class="card-meta"><span class="rating">★ 4.9</span><span class="ship">무료배송</span></div></div></a>
-        <a class="card commerce-card" href="categories/solo-living.html"><div class="category-img"><img src="https://www.cleanlabmall.co.kr/Upload/ProductImage/0103/100454_1_0600_0600_20200621134345.png" alt="자취템 대표 이미지"></div><div><div class="count">Category</div><h3>자취템</h3><p>원룸, 1인 가구, 좁은 주방과 작은 냉장고 기준</p><div class="card-meta"><span class="rating">★ 4.7</span><span class="ship">빠른배송</span></div></div></a>
-        <a class="card commerce-card" href="categories/pet.html"><div class="category-img"><img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/7019152500/B.jpg?1000000" alt="반려동물 대표 이미지"></div><div><div class="count">Category</div><h3>반려동물</h3><p>고양이/강아지 위생, 급식, 산책, 청소용품</p><div class="card-meta"><span class="rating">★ 4.8</span><span class="ship">도착보장</span></div></div></a>
-        <a class="card commerce-card" href="categories/baby.html"><div class="category-img"><img src="https://m.motherkmall.co.kr/web/product/big/202309/9ae247524eaf8c12b521b44f943ad725.jpg" alt="유아용품 대표 이미지"></div><div><div class="count">Category</div><h3>유아용품</h3><p>아기 위생, 수납, 외출, 식기, 안전용품</p><div class="card-meta"><span class="rating">★ 4.9</span><span class="ship">안심배송</span></div></div></a>
-        <a class="card commerce-card" href="categories/electronics.html"><div class="category-img"><img src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="전자제품 대표 이미지"></div><div><div class="count">Category</div><h3>전자제품</h3><p>소형가전, 생활가전, 충전/거치, 헤어/미용가전</p><div class="card-meta"><span class="rating">★ 4.8</span><span class="ship">배송빠름</span></div></div></a>
-        <a class="card commerce-card" href="categories/food.html"><div class="category-img"><img src="https://img.danuri.io/catalog-image/054/152/001/75bfef8375274ac4aaa3c96f50690f24.jpg?shrink=160:160&_v=20261021115753" alt="가공식품 대표 이미지"></div><div><div class="count">Category</div><h3>가공식품</h3><p>즉석밥, 간편식, 냉동식품, 상온보관 식품</p><div class="card-meta"><span class="rating">★ 4.7</span><span class="ship">냉장/냉동</span></div></div></a>
-        <a class="card commerce-card" href="categories/overseas.html"><div class="category-img"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S7f3ace433bea40779c85c2b989fb1302u.jpeg" alt="해외구매 대표 이미지"></div><div><div class="count">Category</div><h3>해외구매</h3><p>알리/아마존 등 해외배송 후보와 주의점</p><div class="card-meta"><span class="rating">★ 4.5</span><span class="ship">해외직구</span></div></div></a>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head"><h2>태그</h2><p>검색과 재방문용 구조</p></div>
-      <div class="tagcloud"><a href="tags/오늘할인.html">#오늘할인</a><a href="tags/특가.html">#특가</a><a href="tags/쿠폰.html">#쿠폰</a><a href="tags/가격비교.html">#가격비교</a><a href="tags/생활용품.html">#생활용품</a><a href="tags/주방용품.html">#주방용품</a><a href="tags/자취템.html">#자취템</a><a href="tags/청소용품.html">#청소용품</a><a href="tags/정리수납.html">#정리수납</a><a href="tags/소모품.html">#소모품</a><a href="tags/인덕션.html">#인덕션</a><a href="tags/홈카페.html">#홈카페</a><a href="tags/쿠팡.html">#쿠팡</a><a href="tags/알리익스프레스.html">#알리익스프레스</a><a href="tags/해외구매.html">#해외구매</a><a href="tags/반려동물.html">#반려동물</a><a href="tags/유아용품.html">#유아용품</a><a href="tags/전자제품.html">#전자제품</a><a href="tags/가공식품.html">#가공식품</a><a href="tags/구매전체크.html">#구매전체크</a></div>
-    </section>
-
-    <footer class="footer">Daily Home Picks · GitHub Pages ready</footer>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="/" aria-label="Daily Home Picks 홈">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M9 13.5 16 8l7 5.5V23a1 1 0 0 1-1 1h-4v-5h-4v5h-4a1 1 0 0 1-1-1z" fill="var(--logo-ink)"/></svg>
+      <span>Daily Home Picks</span>
+    </a>
+    <form class="search" action="/search.html" role="search">
+      <svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="search" name="q" placeholder="상품, 브랜드, 태그 검색" aria-label="상품 검색" autocomplete="off" enterkeyhint="search">
+    </form>
   </div>
+  <nav class="wrap cat-nav" aria-label="카테고리"><a href="/categories/living.html">생활</a><a href="/categories/kitchen.html">주방</a><a href="/categories/solo-living.html">자취</a><a href="/categories/pet.html">반려동물</a><a href="/categories/baby.html">유아</a><a href="/categories/electronics.html">전자제품</a><a href="/categories/food.html">식품</a><a href="/categories/overseas.html">해외직구</a><a href="/tags/">태그</a></nav>
+</header>
+<main id="main">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker"><span class="dot" aria-hidden="true"></span>2026년 10월 21일 (수) 업데이트</p>
+      <h1>10월 21일 오늘의 할인 상품 10선</h1>
+      <p class="lead">전자레인지·드라이기부터 즉석밥, 반려동물·육아 소모품까지 오늘 가격을 확인한 상품 10개입니다.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/posts/2026-10-21-deals.html">오늘의 할인 보기</a>
+        <a class="btn btn-ghost" href="#categories">카테고리 둘러보기</a>
+      </div>
+      <ul class="hero-points">
+        <li>매일 판매처 가격 재확인</li>
+        <li>이미지·상품명 일치 검수</li>
+        <li>구매 전 주의점 함께 표기</li>
+      </ul>
+    </div>
+    <div class="hero-visual">
+      <a class="hero-lead" href="/p/cuckoo-microwave-cmw-pf2310ew.html">
+        <span class="hero-lead-img"><img class="" src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="쿠쿠전자 23L 전자레인지 CMW-PF2310EW" fetchpriority="high" decoding="async" referrerpolicy="no-referrer"></span>
+        <span class="hero-lead-body">
+          <span class="badge">오늘의 대표 상품</span>
+          <strong>쿠쿠전자 23L 전자레인지 CMW-PF2310EW</strong>
+          <div class="price"><strong>175,620원</strong><span class="price-sub">~ 198,550원</span></div>
+        </span>
+      </a>
+      <div class="hero-mosaic"><a href="/p/jmw-dryer-mg1800.html" title="JMW BLDC 항공모터 헤어 드라이기 MG1800"><img class="" src="https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/284627612228291-3ba63635-6a03-4b68-923a-b819ec94f876.jpg" alt="JMW BLDC 항공모터 헤어 드라이기 MG1800" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a><a href="/p/homeplanet-massage-gun-hsj229.html" title="홈플래닛 미니 마사지건 HSJ-229"><img class="" src="https://thumbnail.coupangcdn.com/thumbnails/remote/490x490ex/image/retail/images/2848220277697012-495fb118-aad4-4629-a870-e4ca0e0c10eb.jpg" alt="홈플래닛 미니 마사지건 HSJ-229" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a><a href="/p/ottogi-rice-210g-24.html" title="오뚜기 맛있는 오뚜기밥 흰밥 210g (24개)"><img class="" src="https://img.danuri.io/catalog-image/054/152/001/75bfef8375274ac4aaa3c96f50690f24.jpg?shrink=160:160&amp;_v=20261021115753" alt="오뚜기 맛있는 오뚜기밥 흰밥 210g (24개)" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a><a href="/p/bibigo-wanggyoja-1-4kg-2.html" title="CJ제일제당 비비고 왕교자 1.4kg (2개)"><img class="" src="https://img.danuri.io/catalog-image/119/191/019/8886736521a944e393fb545e97173422.jpg?shrink=160:160&amp;_v=20261021115703" alt="CJ제일제당 비비고 왕교자 1.4kg (2개)" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="kicker">10.21 가격 확인</p><h2>오늘 확인한 상품</h2></div>
+      <a class="link-more" href="/posts/2026-10-21-deals.html">전체 보기 →</a>
+    </div>
+    <div class="grid"><article class="card" data-price="175620" data-order="0">
+  <a class="card-media" href="/p/cuckoo-microwave-cmw-pf2310ew.html" tabindex="-1" aria-hidden="true"><img class="" src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="쿠쿠전자 23L 전자레인지 CMW-PF2310EW" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="chip-store">하이마트</span></a>
+  <div class="card-body">
+    <a class="card-cat" href="/categories/electronics.html">전자제품</a>
+    <h3 class="card-title"><a href="/p/cuckoo-microwave-cmw-pf2310ew.html">쿠쿠전자 23L 전자레인지 CMW-PF2310EW</a></h3>
+    <div class="price"><strong>175,620원</strong><span class="price-sub">~ 198,550원</span></div>
+    <p class="card-note">원룸 기본형 전자레인지로 보기 좋은 스펙입니다.</p>
+    <div class="card-foot"><span class="checked">10.21 가격 확인</span></div>
+    <a class="btn btn-buy btn-sm" href="https://www.e-himart.co.kr/app/goods/goodsDetail?goodsNo=0045340135" target="_blank" rel="sponsored nofollow noopener">하이마트에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</article>
+<article class="card" data-price="57800" data-order="1">
+  <a class="card-media" href="/p/jmw-dryer-mg1800.html" tabindex="-1" aria-hidden="true"><img class="" src="https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/284627612228291-3ba63635-6a03-4b68-923a-b819ec94f876.jpg" alt="JMW BLDC 항공모터 헤어 드라이기 MG1800" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="chip-store">다나와</span></a>
+  <div class="card-body">
+    <a class="card-cat" href="/categories/electronics.html">전자제품</a>
+    <h3 class="card-title"><a href="/p/jmw-dryer-mg1800.html">JMW BLDC 항공모터 헤어 드라이기 MG1800</a></h3>
+    <div class="price"><strong>57,800원</strong><span class="price-sub">~ 65,000원</span></div>
+    <p class="card-note">모델명과 가격대가 분명해 비교하기 쉬운 BLDC 드라이기입니다.</p>
+    <div class="card-foot"><span class="checked">10.21 가격 확인</span></div>
+    <a class="btn btn-buy btn-sm" href="https://prod.danawa.com/info/?pcode=3427644" target="_blank" rel="sponsored nofollow noopener">다나와에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</article>
+<article class="card" data-price="29130" data-order="2">
+  <a class="card-media" href="/p/homeplanet-massage-gun-hsj229.html" tabindex="-1" aria-hidden="true"><img class="" src="https://thumbnail.coupangcdn.com/thumbnails/remote/490x490ex/image/retail/images/2848220277697012-495fb118-aad4-4629-a870-e4ca0e0c10eb.jpg" alt="홈플래닛 미니 마사지건 HSJ-229" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="chip-store">쿠팡</span></a>
+  <div class="card-body">
+    <a class="card-cat" href="/categories/electronics.html">전자제품</a>
+    <h3 class="card-title"><a href="/p/homeplanet-massage-gun-hsj229.html">홈플래닛 미니 마사지건 HSJ-229</a></h3>
+    <div class="price"><strong>29,130원</strong><span class="price-sub">~ 29,420원</span></div>
+    <p class="card-note">3만원 이하 예산에서 바로 고르기 쉬운 미니 마사지건입니다.</p>
+    <div class="card-foot"><span class="checked">10.21 가격 확인</span></div>
+    <a class="btn btn-buy btn-sm" href="https://pages.coupang.com/p/99926" target="_blank" rel="sponsored nofollow noopener">쿠팡에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</article>
+<article class="card" data-price="19750" data-order="3">
+  <a class="card-media" href="/p/ottogi-rice-210g-24.html" tabindex="-1" aria-hidden="true"><img class="" src="https://img.danuri.io/catalog-image/054/152/001/75bfef8375274ac4aaa3c96f50690f24.jpg?shrink=160:160&amp;_v=20261021115753" alt="오뚜기 맛있는 오뚜기밥 흰밥 210g (24개)" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="chip-store">다나와</span></a>
+  <div class="card-body">
+    <a class="card-cat" href="/categories/food.html">식품</a>
+    <h3 class="card-title"><a href="/p/ottogi-rice-210g-24.html">오뚜기 맛있는 오뚜기밥 흰밥 210g (24개)</a></h3>
+    <div class="price"><strong>19,750원</strong><span class="price-sub">~ 24,480원</span></div>
+    <p class="card-note">실온보관이 가능해 쟁여두기 쉬운 대표 즉석밥입니다.</p>
+    <div class="card-foot"><span class="checked">10.21 가격 확인</span></div>
+    <a class="btn btn-buy btn-sm" href="https://prod.danawa.com/info/?pcode=1152054" target="_blank" rel="sponsored nofollow noopener">다나와에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</article>
+<article class="card" data-price="24820" data-order="4">
+  <a class="card-media" href="/p/bibigo-wanggyoja-1-4kg-2.html" tabindex="-1" aria-hidden="true"><img class="" src="https://img.danuri.io/catalog-image/119/191/019/8886736521a944e393fb545e97173422.jpg?shrink=160:160&amp;_v=20261021115703" alt="CJ제일제당 비비고 왕교자 1.4kg (2개)" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="chip-store">다나와</span></a>
+  <div class="card-body">
+    <a class="card-cat" href="/categories/food.html">식품</a>
+    <h3 class="card-title"><a href="/p/bibigo-wanggyoja-1-4kg-2.html">CJ제일제당 비비고 왕교자 1.4kg (2개)</a></h3>
+    <div class="price"><strong>24,820원</strong><span class="price-sub">~ 29,340원</span></div>
+    <p class="card-note">냉동실 공간만 된다면 단가가 좋은 대용량 간편식입니다.</p>
+    <div class="card-foot"><span class="checked">10.21 가격 확인</span></div>
+    <a class="btn btn-buy btn-sm" href="https://prod.danawa.com/info/?pcode=19191119" target="_blank" rel="sponsored nofollow noopener">다나와에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</article>
+<article class="card" data-price="51900" data-order="5">
+  <a class="card-media" href="/p/pebblepet-feeder-ipf-w100.html" tabindex="-1" aria-hidden="true"><img class="" src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/7019152500/B.jpg?1000000" alt="페블펫 와이파이 앱연동 스마트 자동급식기 IPF-W100" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="chip-store">11번가</span></a>
+  <div class="card-body">
+    <a class="card-cat" href="/categories/pet.html">반려동물</a>
+    <h3 class="card-title"><a href="/p/pebblepet-feeder-ipf-w100.html">페블펫 와이파이 앱연동 스마트 자동급식기 IPF-W100</a></h3>
+    <div class="price"><strong>51,900원 전후</strong></div>
+    <p class="card-note">앱으로 급식 시간을 관리하고 싶은 집에 맞는 자동급식기입니다.</p>
+    <div class="card-foot"><span class="checked">10.21 가격 확인</span></div>
+    <a class="btn btn-buy btn-sm" href="https://www.11st.co.kr/products/7019152500" target="_blank" rel="sponsored nofollow noopener">11번가에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</article>
+<article class="card" data-price="19570" data-order="6">
+  <a class="card-media" href="/p/petsmoa-pad-large-50.html" tabindex="-1" aria-hidden="true"><img class="" src="https://img.danuri.io/catalog-image/139/802/099/ae8fa1c1ba124f8ca91b640b7098e9d1.jpg?shrink=160:160&amp;_v=20261020102738" alt="페츠모아 냄새잡는 요술배변패드 대형 50매" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="chip-store">쿠팡</span></a>
+  <div class="card-body">
+    <a class="card-cat" href="/categories/pet.html">반려동물</a>
+    <h3 class="card-title"><a href="/p/petsmoa-pad-large-50.html">페츠모아 냄새잡는 요술배변패드 대형 50매</a></h3>
+    <div class="price"><strong>19,570원</strong><span class="price-sub">~ 20,600원</span></div>
+    <p class="card-note">장당 단가와 흡수력을 같이 봐야 하는 대표 소모품입니다.</p>
+    <div class="card-foot"><span class="checked">10.21 가격 확인</span></div>
+    <a class="btn btn-buy btn-sm" href="https://www.coupang.com/vp/products/8376657610?itemId=24249662716&amp;vendorItemId=3896131157" target="_blank" rel="sponsored nofollow noopener">쿠팡에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</article>
+<article class="card" data-price="17900" data-order="7">
+  <a class="card-media" href="/p/penelope-wipes-cap.html" tabindex="-1" aria-hidden="true"><img class="" src="https://ns-curation.s3.ap-northeast-2.amazonaws.com/watermark/물티슈_페넬로페_본보야지세느70매20팩.png" alt="페넬로페 본보야지 세느 아기물티슈 캡형 70매 20팩" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="chip-store">쿠팡</span></a>
+  <div class="card-body">
+    <a class="card-cat" href="/categories/baby.html">유아</a>
+    <h3 class="card-title"><a href="/p/penelope-wipes-cap.html">페넬로페 본보야지 세느 아기물티슈 캡형 70매 20팩</a></h3>
+    <div class="price"><strong>17,900원</strong><span class="price-sub">~ 25,900원</span></div>
+    <p class="card-note">평량·매수·캡형 여부를 같이 봐야 하는 육아 필수 소모품입니다.</p>
+    <div class="card-foot"><span class="checked">10.21 가격 확인</span></div>
+    <a class="btn btn-buy btn-sm" href="https://www.coupang.com/vp/products/7808694366?itemId=21172705941&amp;vendorItemId=83278356220" target="_blank" rel="sponsored nofollow noopener">쿠팡에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</article></div>
+  </div>
+</section>
+
+<section class="section section-alt" id="categories">
+  <div class="wrap">
+    <div class="section-head"><div><h2>카테고리</h2></div></div>
+    <div class="cat-grid"><a class="cat-tile" href="/categories/living.html">
+  <span class="cat-img"><img class="" src="https://gibone.com/web/product/medium/202608/86d2bb60a7449f5e35a6d362b20787de.jpg" alt="기본에 행주티슈 플러스케어 캡형 80매 10팩" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>
+  <span class="cat-text"><strong>생활용품</strong><span>2개 상품</span></span>
+</a>
+<a class="cat-tile" href="/categories/kitchen.html">
+  <span class="cat-img"><img class="" src="https://ae-pic-a1.aliexpress-media.com/kf/S7f3ace433bea40779c85c2b989fb1302u.jpeg" alt="냉장고 선반 서랍형 정리함" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>
+  <span class="cat-text"><strong>주방용품</strong><span>6개 상품</span></span>
+</a>
+<a class="cat-tile" href="/categories/solo-living.html">
+  <span class="cat-img"><img class="" src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="쿠쿠전자 23L 전자레인지 CMW-PF2310EW" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>
+  <span class="cat-text"><strong>자취템</strong><span>4개 상품</span></span>
+</a>
+<a class="cat-tile" href="/categories/pet.html">
+  <span class="cat-img"><img class="" src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/7019152500/B.jpg?1000000" alt="페블펫 와이파이 앱연동 스마트 자동급식기 IPF-W100" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>
+  <span class="cat-text"><strong>반려동물</strong><span>2개 상품</span></span>
+</a>
+<a class="cat-tile" href="/categories/baby.html">
+  <span class="cat-img"><img class="" src="https://ns-curation.s3.ap-northeast-2.amazonaws.com/watermark/물티슈_페넬로페_본보야지세느70매20팩.png" alt="페넬로페 본보야지 세느 아기물티슈 캡형 70매 20팩" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>
+  <span class="cat-text"><strong>유아용품</strong><span>2개 상품</span></span>
+</a>
+<a class="cat-tile" href="/categories/electronics.html">
+  <span class="cat-img"><img class="" src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="쿠쿠전자 23L 전자레인지 CMW-PF2310EW" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>
+  <span class="cat-text"><strong>전자제품</strong><span>3개 상품</span></span>
+</a>
+<a class="cat-tile" href="/categories/food.html">
+  <span class="cat-img"><img class="" src="https://img.danuri.io/catalog-image/054/152/001/75bfef8375274ac4aaa3c96f50690f24.jpg?shrink=160:160&amp;_v=20261021115753" alt="오뚜기 맛있는 오뚜기밥 흰밥 210g (24개)" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>
+  <span class="cat-text"><strong>가공식품</strong><span>2개 상품</span></span>
+</a>
+<a class="cat-tile" href="/categories/overseas.html">
+  <span class="cat-img"><img class="" src="https://ae-pic-a1.aliexpress-media.com/kf/S7f3ace433bea40779c85c2b989fb1302u.jpeg" alt="냉장고 선반 서랍형 정리함" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>
+  <span class="cat-text"><strong>해외구매</strong><span>1개 상품</span></span>
+</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div><h2>최근 글</h2></div></div>
+    <div class="post-list"><a class="post-card" href="/posts/2026-10-21-deals.html">
+  <div class="post-thumbs"><span><img class="" src="https://static2.e-himart.co.kr/contents/goods/00/45/34/01/35/0045340135__CMW-PF2310EW__M_220_220.jpg" alt="쿠쿠전자 23L 전자레인지 CMW-PF2310EW" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span><span><img class="" src="https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/284627612228291-3ba63635-6a03-4b68-923a-b819ec94f876.jpg" alt="JMW BLDC 항공모터 헤어 드라이기 MG1800" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span><span><img class="" src="https://thumbnail.coupangcdn.com/thumbnails/remote/490x490ex/image/retail/images/2848220277697012-495fb118-aad4-4629-a870-e4ca0e0c10eb.jpg" alt="홈플래닛 미니 마사지건 HSJ-229" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span></div>
+  <div class="post-card-body">
+    <span class="kicker">오늘의 할인 · 10.21</span>
+    <h3>10월 21일 오늘의 할인 상품 10선</h3>
+    <p>전자레인지·드라이기부터 즉석밥, 반려동물·육아 소모품까지 오늘 가격을 확인한 상품 10개입니다.</p>
+    <span class="more">상품 10개 보기 →</span>
+  </div>
+</a>
+<a class="post-card" href="/posts/2026-10-20-kitchen-picks.html">
+  <div class="post-thumbs"><span><img class="" src="https://gibone.com/web/product/medium/202608/86d2bb60a7449f5e35a6d362b20787de.jpg" alt="기본에 행주티슈 플러스케어 캡형 80매 10팩" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span><span><img class="" src="https://img.danuri.io/catalog-image/968/699/113/c9962367a36f4de9847c62e47a691317.jpg?shrink=160:160&amp;_v=20261019080603" alt="해피콜 IH 플라즈마 티타늄 프라이팬 28cm" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span><span><img class="" src="https://www.cleanlabmall.co.kr/Upload/ProductImage/0103/100454_1_0600_0600_20200621134345.png" alt="크린랩 롤백 25×35cm 500매" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span></div>
+  <div class="post-card-body">
+    <span class="kicker">구매 가이드 · 10.20</span>
+    <h3>자취방 주방에서 계속 쓰게 되는 소모품과 정리템 6가지</h3>
+    <p>행주티슈, 프라이팬, 롤백, 지퍼백, 아이스볼 트레이, 냉장고 정리함을 구매 전 체크포인트 중심으로 정리했습니다.</p>
+    <span class="more">상품 6개 보기 →</span>
+  </div>
+</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div><h2>많이 찾는 태그</h2></div><a class="link-more" href="/tags/">전체 태그 →</a></div>
+    <div class="tags"><a href="/tags/%EC%A3%BC%EB%B0%A9%EC%9A%A9%ED%92%88.html">#주방용품</a><a href="/tags/%EC%86%8C%EB%AA%A8%ED%92%88.html">#소모품</a><a href="/tags/%EC%9E%90%EC%B7%A8%ED%85%9C.html">#자취템</a><a href="/tags/%EB%83%89%EC%9E%A5%EA%B3%A0%EC%A0%95%EB%A6%AC.html">#냉장고정리</a><a href="/tags/%EC%A0%84%EC%9E%90%EC%A0%9C%ED%92%88.html">#전자제품</a><a href="/tags/%EC%BF%A0%ED%8C%A1.html">#쿠팡</a><a href="/tags/%EA%B0%80%EA%B2%A9%EB%B9%84%EA%B5%90.html">#가격비교</a><a href="/tags/%EA%B0%80%EA%B3%B5%EC%8B%9D%ED%92%88.html">#가공식품</a><a href="/tags/%EA%B0%95%EC%95%84%EC%A7%80%EC%9A%A9%ED%92%88.html">#강아지용품</a><a href="/tags/%EB%B0%98%EB%A0%A4%EB%8F%99%EB%AC%BC.html">#반려동물</a><a href="/tags/%EC%98%A4%EB%8A%98%ED%95%A0%EC%9D%B8.html">#오늘할인</a><a href="/tags/%EC%9C%A0%EC%95%84%EC%9A%A9%ED%92%88.html">#유아용품</a><a href="/tags/%EC%A0%95%EB%A6%AC%EC%88%98%EB%82%A9.html">#정리수납</a><a href="/tags/%EA%B0%80%EC%84%B1%EB%B9%84.html">#가성비</a><a href="/tags/%EA%B3%A0%EC%96%91%EC%9D%B4%EC%9A%A9%ED%92%88.html">#고양이용품</a><a href="/tags/%EC%83%9D%ED%99%9C%EC%9A%A9%ED%92%88.html">#생활용품</a></div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="logo logo-sm" href="/"><span>Daily Home Picks</span></a>
+      <p class="muted">매일 확인한 생활 할인 상품. 매일 가격을 다시 확인하고, 이미지와 실제 상품명이 맞는 상품만 올립니다.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/categories/living.html">생활용품</a><a href="/categories/kitchen.html">주방용품</a><a href="/categories/solo-living.html">자취템</a><a href="/categories/pet.html">반려동물</a><a href="/categories/baby.html">유아용품</a><a href="/categories/electronics.html">전자제품</a><a href="/categories/food.html">가공식품</a><a href="/categories/overseas.html">해외구매</a>
+    </div>
+  </div>
+  <div class="wrap footer-legal">
+    <p>이 페이지의 일부 링크는 제휴/파트너스 링크로, 구매 시 일정액의 수수료를 제공받을 수 있습니다. 구매자가 내는 가격에는 영향이 없습니다.</p>
+    <p>가격·재고·배송 조건은 판매처 기준으로 수시로 바뀝니다. 구매 전 판매 페이지에서 최종 정보를 확인하세요.</p>
+    <p>© 2026 Daily Home Picks</p>
+  </div>
+</footer>
 </body>
 </html>
