@@ -3,7 +3,7 @@
 // API access requires Coupang Partners "최종 승인"; before that every call returns 401/403.
 
 import { createHmac } from 'node:crypto';
-import { guessCategory } from './rules.mjs';
+import { guessCategory, strongCategory } from './rules.mjs';
 
 const HOST = 'https://api-gateway.coupang.com';
 const BASE = '/v2/providers/affiliate_open_api/apis/openapi/v1';
@@ -76,7 +76,9 @@ const NAME_MAP = [
 // The goldbox/best responses carry no list price or category name, so the category may be guessed
 // from the title and discounts come from our own price history (see import.mjs).
 export function toCandidate(p, { categoryId, source } = {}) {
-  const category = CATEGORY_MAP[categoryId] || NAME_MAP.find(([re]) => re.test(p.categoryName || ''))?.[1]
+  // 제목이 명백한 신호를 주면 소스 카테고리보다 우선한다(아래 CATEGORY_MAP 설명 참고).
+  const category = strongCategory(p.productName)
+    || CATEGORY_MAP[categoryId] || NAME_MAP.find(([re]) => re.test(p.categoryName || ''))?.[1]
     || guessCategory(p.productName, '쿠팡');
   const original = Number(p.originalPrice || p.basePrice || p.listPrice || 0) || undefined;
   return {
