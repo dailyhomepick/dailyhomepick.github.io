@@ -378,8 +378,13 @@ button, input, select { font: inherit; color: inherit; }
   .feature-body { border-left: 0; border-top: 1px solid var(--line); padding: 22px; }
   .feature-media { aspect-ratio: 4 / 3; }
   .product { gap: 24px; }
-  .product-media, .guide-media { position: static; }
-  .product-media { aspect-ratio: 4 / 3; padding: 24px; }
+  .guide-media { position: static; }
+  /* 모바일은 따라다닐 필요가 없다. relative 로 두는 건 할인율 칩(absolute)의 기준이기 때문이고,
+     top 은 sticky 전용이라 풀어 준다. 안 풀면 이미지가 140px 아래로 밀려 다음 섹션을 덮는다. */
+  /* 화면 높이의 38%로 묶는다. 안 묶으면 정사각형에 가까운 상품 사진이 첫 화면을 다 먹어
+     상품명과 가격이 스크롤 밖으로 밀린다. */
+  .product-media { position: relative; top: auto; aspect-ratio: 4 / 3; max-height: 38vh; padding: 24px; }
+  .product-media img { min-height: 0; }
   .guide-item { grid-template-columns: 1fr; padding: 20px; }
   .guide-media { aspect-ratio: 4 / 3; }
   .footer-grid { grid-template-columns: 1fr; }
@@ -450,7 +455,7 @@ button, input, select { font: inherit; color: inherit; }
   font-size: 13px; font-weight: 800; letter-spacing: -0.02em;
 }
 .chip-rate-lg { left: 18px; top: 18px; font-size: 18px; padding: 6px 12px; border-radius: 10px; }
-.product-media, .hero-mosaic a { position: relative; }
+.hero-mosaic a { position: relative; }
 .hero-mosaic .chip-rate { left: 6px; top: 6px; font-size: 11px; padding: 2px 6px; }
 
 .card-meta { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); min-width: 0; }
