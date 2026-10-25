@@ -166,6 +166,7 @@ LINKPRICE_AFFILIATE_ID=A100...
 | `scripts/coupang.mjs` | 쿠팡 수집·딥링크 |
 | `scripts/import.mjs` | 후보 가져오기 + 자동 검수 |
 | `scripts/review.mjs` | 승인·반려·내리기 |
+| `scripts/make-session.mjs` | 브라우저에서 복사한 cURL → 헤드리스용 로그인 세션 파일 |
 | `scripts/build.mjs` | 사이트 생성 |
 | `scripts/lib/rules.mjs` | 검수 규칙(금지 품목, 판매처, 이미지, 가격), 카테고리 추정·보정 |
 | `scripts/lib/keywords.mjs` | 상품명 → 태그 사전(품목·특징·대상). 제목·설명의 검색 키워드도 여기서 나온다 |

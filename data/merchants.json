@@ -1,7 +1,7 @@
 {
-  "_comment": "링크프라이스 머천트 목록. id는 어필리에이트 센터의 머천트 ID(예: 11st). 제휴 승인된 곳만 id를 채우고 enabled=true. template은 센터에서 만든 실제 딥링크와 같은 형식인지 확인 후 verified=true로 바꿀 것.",
-  "verified": false,
-  "template": "https://click.linkprice.com/click.php?m={merchant}&a={affiliateId}&l=9999&l_cd1=3&l_cd2=0&u_id={subId}&tu={url}",
+  "_comment": "링크프라이스 머천트 목록. id는 어필리에이트 센터의 머천트 ID(예: 11st). 제휴 승인된 곳만 id를 채우고 enabled=true. template은 센터의 링크생성이 내준 실제 딥링크와 대조해 맞춘 것이다(l_cd1=D, l_cd2=H). u_id는 실적조회 API 의 user_id 로 되돌아오는 값이라, 데일리홈픽을 거친 주문을 가려내는 데 쓴다.",
+  "verified": true,
+  "template": "https://click.linkprice.com/click.php?m={merchant}&a={affiliateId}&l=9999&l_cd1=D&l_cd2=H&u_id={subId}&tu={url}",
   "merchants": [
     {
       "name": "11번가",
