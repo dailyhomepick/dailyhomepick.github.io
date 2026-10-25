@@ -285,11 +285,12 @@ for (const post of posts) {
   }
 }
 const tagsSorted = [...productsByTag.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'ko'));
-// Today's deals: real discounts, price drops and goldbox first, then other fresh items to fill the page.
-const fresh = listed.filter(isFresh).sort(byRate);
-const todayList = fresh.slice(0, rules.todayMax);
-const todayDeals = todayList.length ? todayList : [...listed].sort(byNewest).slice(0, 40);
+// Today's deals: only what the last sweep re-checked, discounts and goldbox first.
+// staleDays(3일) 를 그대로 쓰면 어제·그저께 확인한 값이 섞여 "오늘" 이 아니게 된다.
+// 기준을 달력상의 오늘로 잡으면 수집 전 새벽에 목록이 비므로, 가장 최근 확인일을 쓴다.
 const lastChecked = listed.reduce((m, p) => (p.checkedAt > m ? p.checkedAt : m), '2000-01-01');
+const checkedLast = listed.filter((p) => p.checkedAt === lastChecked).sort(byRate);
+const todayDeals = (checkedLast.length ? checkedLast : [...listed].sort(byNewest)).slice(0, rules.todayMax);
 
 // Keyword landing pages: trending terms + popular tags, only when they match products.
 const keywordPages = new Map();
@@ -451,7 +452,7 @@ ${posts.length ? `<section class="section">
   <header class="page-head">
     <p class="kicker"><span class="dot" aria-hidden="true"></span>${longDate(lastChecked)} 업데이트</p>
     <h1>오늘의 할인</h1>
-    <p class="lead">최근 ${rules.staleDays}일 안에 가격을 다시 확인한 상품입니다. 할인율·가격 인하 폭이 큰 상품과 쿠팡 골드박스 특가를 먼저 보여드려요.</p>
+    <p class="lead">${longDate(lastChecked)}에 가격을 다시 확인한 상품만 모았습니다. 할인율·가격 인하 폭이 큰 상품과 쿠팡 골드박스 특가를 먼저 보여드려요.</p>
   </header>
   ${sortBar(todayDeals.length, { def: 'rate-desc', filters })}
   ${grid(todayDeals, ' data-sortable')}
@@ -709,6 +710,8 @@ if (site.adminPath) {
   const all = stats.days || [];
   const sum = (rows, where, k) => rows.reduce((s, r) => s + Number(r[where]?.[k] || 0), 0);
   const won = (n) => `${Math.round(n).toLocaleString()}원`;
+  // stats.json 의 시각은 UTC 다. 그대로 찍으면 9시간 어긋나 보인다.
+  const kst = (iso) => new Date(Date.parse(iso) + 9 * 3600e3).toISOString().slice(0, 16).replace('T', ' ');
   // 축 눈금은 보기 좋은 단위로 끊는다. 눈금이 5개를 넘으면 숫자가 겹쳐 읽기 어렵다.
   const maxClick = Math.max(1, ...series.map((r) => Math.max(r.site.clicks, r.other.clicks)));
   const step = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000].find((s) => maxClick / s <= 4) || 2000;
@@ -731,8 +734,14 @@ if (site.adminPath) {
 <div class="wrap">
   <header class="page-head">
     <h1>실적 대시보드</h1>
-    <p class="lead">쿠팡 파트너스 기준입니다. 갱신 ${stats.updatedAt ? esc(stats.updatedAt.slice(0, 16).replace('T', ' ')) : '없음'} · 누적 ${all.length}일</p>
+    <p class="lead">쿠팡 파트너스 기준입니다. 갱신 ${stats.updatedAt ? esc(kst(stats.updatedAt)) : '없음'} · 누적 ${all.length}일</p>
   </header>
+
+  <div class="refresh-row">
+    <button type="button" id="refresh-btn" class="btn btn-primary">지금 새로고침</button>
+    <span id="refresh-msg" class="muted small">맥미니에서 쿠팡 실적을 다시 받습니다.</span>
+    <button type="button" id="refresh-setup" class="link-btn">주소 설정</button>
+  </div>
 
   <h2 class="h3">${esc(site.name)} <span class="muted small">(subId ${esc(stats.subId || '없음')})</span></h2>
   <div class="stat-row">
@@ -789,6 +798,39 @@ if (site.adminPath) {
       수집: <code>node scripts/stats.mjs</code> (daily.sh 가 하루 두 번 실행)
     </p>
   </section>
+
+  <script>
+  (function () {
+    var KEY = 'dhpRefreshUrl';
+    var btn = document.getElementById('refresh-btn');
+    var msg = document.getElementById('refresh-msg');
+    var setup = document.getElementById('refresh-setup');
+    var get = function () { try { return localStorage.getItem(KEY) || ''; } catch (e) { return ''; } };
+    var ask = function () {
+      var v = prompt('맥미니 새로고침 주소 (Tailscale 안에서만 닿습니다)', get() || 'https://');
+      if (v === null) return '';
+      v = v.trim();
+      try { if (v) localStorage.setItem(KEY, v); else localStorage.removeItem(KEY); } catch (e) {}
+      return v;
+    };
+    setup.addEventListener('click', function () { if (ask()) msg.textContent = '주소를 저장했습니다.'; });
+    btn.addEventListener('click', function () {
+      var url = get() || ask();
+      if (!url) return;
+      btn.disabled = true;
+      msg.textContent = '쿠팡에서 실적을 다시 받는 중… 1분쯤 걸립니다.';
+      fetch(url, { method: 'POST' })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { r: r, j: j }; }); })
+        .then(function (o) {
+          if (!o.r.ok || !o.j.ok) throw new Error(o.j.error || ('HTTP ' + o.r.status));
+          msg.textContent = '갱신 완료 · ' + (o.j.text || '') + ' — 이 페이지에 반영되기까지 1분쯤 더 걸립니다.';
+        })
+        .catch(function (e) { msg.textContent = '실패: ' + e.message + ' (Tailscale 연결과 주소를 확인해 주세요)'; })
+        .then(function () { btn.disabled = false; });
+    });
+  })();
+  </script>
+
 </div>`,
   }));
 }
