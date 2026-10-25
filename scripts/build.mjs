@@ -805,7 +805,9 @@ if (site.adminPath) {
     var btn = document.getElementById('refresh-btn');
     var msg = document.getElementById('refresh-msg');
     var setup = document.getElementById('refresh-setup');
-    var get = function () { try { return localStorage.getItem(KEY) || ''; } catch (e) { return ''; } };
+    // 맥미니에서 연 경우(…ts.net)에는 같은 출처라 바로 부를 수 있다.
+    var local = /\\.ts\\.net$/i.test(location.hostname);
+    var get = function () { try { return local ? '/api/refresh' : (localStorage.getItem(KEY) || ''); } catch (e) { return ''; } };
     var ask = function () {
       var v = prompt('맥미니 새로고침 주소 (Tailscale 안에서만 닿습니다)', get() || 'https://');
       if (v === null) return '';
@@ -813,6 +815,7 @@ if (site.adminPath) {
       try { if (v) localStorage.setItem(KEY, v); else localStorage.removeItem(KEY); } catch (e) {}
       return v;
     };
+    if (local) setup.hidden = true;
     setup.addEventListener('click', function () { if (ask()) msg.textContent = '주소를 저장했습니다.'; });
     btn.addEventListener('click', function () {
       var url = get() || ask();
@@ -825,7 +828,10 @@ if (site.adminPath) {
           if (!o.r.ok || !o.j.ok) throw new Error(o.j.error || ('HTTP ' + o.r.status));
           msg.textContent = '갱신 완료 · ' + (o.j.text || '') + ' — 이 페이지에 반영되기까지 1분쯤 더 걸립니다.';
         })
-        .catch(function (e) { msg.textContent = '실패: ' + e.message + ' (Tailscale 연결과 주소를 확인해 주세요)'; })
+        .catch(function (e) {
+          msg.textContent = '실패: ' + e.message
+            + (local ? '' : ' — 브라우저가 공개 사이트에서 사설망 호출을 막았을 수 있습니다. 맥미니 주소로 이 페이지를 열면 그냥 됩니다.');
+        })
         .then(function () { btn.disabled = false; });
     });
   })();

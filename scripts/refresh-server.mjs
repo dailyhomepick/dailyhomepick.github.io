@@ -26,6 +26,10 @@ const cors = (res) => {
   res.setHeader('Access-Control-Allow-Origin', ORIGIN);
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // 공개 사이트(https://dailyhomepick…)에서 tailnet 주소를 부르면 크롬이 "local address
+  // space" 라며 따로 막는다. 이 헤더로 풀리는 버전도 있고, 최신 크롬은 사용자에게
+  // 물어본다. 맥미니에서 같은 출처로 열면(아래 정적 서빙) 아예 겪지 않는다.
+  res.setHeader('Access-Control-Allow-Private-Network', 'true');
   res.setHeader('Vary', 'Origin');
 };
 
