@@ -737,11 +737,11 @@ if (site.adminPath) {
     <p class="lead">쿠팡 파트너스 기준입니다. 갱신 ${stats.updatedAt ? esc(kst(stats.updatedAt)) : '없음'} · 누적 ${all.length}일</p>
   </header>
 
-  <div class="refresh-row">
-    <button type="button" id="refresh-btn" class="btn btn-primary">지금 새로고침</button>
-    <span id="refresh-msg" class="muted small">맥미니에서 쿠팡 실적을 다시 받습니다.</span>
-    <button type="button" id="refresh-setup" class="link-btn">주소 설정</button>
-  </div>
+  <nav class="quick-links" aria-label="파트너 사이트 바로가기">
+    <a class="btn btn-ghost" href="https://partners.coupang.com/" target="_blank" rel="noopener">쿠팡 파트너스</a>
+    <a class="btn btn-ghost" href="https://portals.aliexpress.com/affiportals/web/ad_center.htm" target="_blank" rel="noopener">알리 파트너스</a>
+    <a class="btn btn-ghost" href="https://www.linkprice.com/" target="_blank" rel="noopener">링크프라이스</a>
+  </nav>
 
   <h2 class="h3">${esc(site.name)} <span class="muted small">(subId ${esc(stats.subId || '없음')})</span></h2>
   <div class="stat-row">
@@ -798,44 +798,6 @@ if (site.adminPath) {
       수집: <code>node scripts/stats.mjs</code> (daily.sh 가 하루 두 번 실행)
     </p>
   </section>
-
-  <script>
-  (function () {
-    var KEY = 'dhpRefreshUrl';
-    var btn = document.getElementById('refresh-btn');
-    var msg = document.getElementById('refresh-msg');
-    var setup = document.getElementById('refresh-setup');
-    // 맥미니에서 연 경우(…ts.net)에는 같은 출처라 바로 부를 수 있다.
-    var local = /\\.ts\\.net$/i.test(location.hostname);
-    var get = function () { try { return local ? '/api/refresh' : (localStorage.getItem(KEY) || ''); } catch (e) { return ''; } };
-    var ask = function () {
-      var v = prompt('맥미니 새로고침 주소 (Tailscale 안에서만 닿습니다)', get() || 'https://');
-      if (v === null) return '';
-      v = v.trim();
-      try { if (v) localStorage.setItem(KEY, v); else localStorage.removeItem(KEY); } catch (e) {}
-      return v;
-    };
-    if (local) setup.hidden = true;
-    setup.addEventListener('click', function () { if (ask()) msg.textContent = '주소를 저장했습니다.'; });
-    btn.addEventListener('click', function () {
-      var url = get() || ask();
-      if (!url) return;
-      btn.disabled = true;
-      msg.textContent = '쿠팡에서 실적을 다시 받는 중… 1분쯤 걸립니다.';
-      fetch(url, { method: 'POST' })
-        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { r: r, j: j }; }); })
-        .then(function (o) {
-          if (!o.r.ok || !o.j.ok) throw new Error(o.j.error || ('HTTP ' + o.r.status));
-          msg.textContent = '갱신 완료 · ' + (o.j.text || '') + ' — 이 페이지에 반영되기까지 1분쯤 더 걸립니다.';
-        })
-        .catch(function (e) {
-          msg.textContent = '실패: ' + e.message
-            + (local ? '' : ' — 브라우저가 공개 사이트에서 사설망 호출을 막았을 수 있습니다. 맥미니 주소로 이 페이지를 열면 그냥 됩니다.');
-        })
-        .then(function () { btn.disabled = false; });
-    });
-  })();
-  </script>
 
 </div>`,
   }));
