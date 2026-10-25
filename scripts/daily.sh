@@ -45,6 +45,16 @@ if [ -f "$ENV_FILE" ]; then
   TELEGRAM_CHAT_ID="$(grep -E '^TELEGRAM_CHAT_ID=' "$ENV_FILE" | head -1 | cut -d= -f2-)"
 fi
 
+# 오늘 이미 했으면 1, 아니면 0 을 돌려주고 했다고 적어 둔다.
+done_today() {
+  local mark="$LOG_DIR/$1-$(TZ=Asia/Seoul date +%F).done"
+  [ -f "$mark" ] && return 1
+  touch "$mark"
+  # 지난 기록은 쌓아 둘 이유가 없다.
+  find "$LOG_DIR" -name "$1-*.done" -mtime +7 -delete 2>/dev/null
+  return 0
+}
+
 notify() {
   [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ] || return 0
   curl -s -m 15 "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
@@ -78,7 +88,7 @@ else
   node scripts/coupang.mjs best || echo "  경고: 베스트 수집 실패"
 
   # 인기 검색어 보충. 쿠팡 검색은 호출 한도가 작아 하루 몇 개씩 돌아가며 받는다.
-  if [ "$(date +%H)" -lt 12 ]; then
+  if done_today trending; then
     step "인기 검색어 보충"
     node scripts/trending.mjs || echo "  경고: 인기 검색어 보충 실패"
   fi
@@ -86,7 +96,7 @@ else
   step "가져오기·자동 검수"
   # 알리는 공개 API 가 없어 Ad Center 화면을 거쳐 받는다. 계정을 지키려고 아침 실행에만,
   # 한 페이지만 받는다. 세션이 만료되면 실패하는데, 그래도 나머지는 계속 간다.
-  if [ "$(date +%H)" -lt 12 ]; then
+  if done_today aliexpress; then
     step "알리익스프레스 수집"
     node scripts/aliexpress.mjs || echo "  경고: 알리 수집 실패 (세션 만료면 ali-session.json 을 다시 만든다)"
   fi
@@ -123,8 +133,8 @@ else
   MSG="Daily deals $(date '+%F %H:%M')"
   [ "$STATS_ONLY" = 1 ] && MSG="Refresh stats $(date '+%F %H:%M')"
   git commit -q -m "$MSG" || fail "커밋 실패"
-  if ! git push -q; then
-    git pull --rebase -q && git push -q || fail "push 실패"
+  if ! git push -q origin HEAD:main; then
+    git pull --rebase -q && git push -q origin HEAD:main || fail "push 실패"
   fi
 fi
 
