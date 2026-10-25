@@ -69,6 +69,10 @@ echo "$IMPORT_OUT"
 step "파트너스 링크 변환"
 node scripts/coupang.mjs deeplink || echo "  경고: 딥링크 변환 실패"
 
+step "실적 수집"
+# 실패해도 빌드는 계속한다. 실적은 사이트 내용이 아니라 관리자 화면 데이터다.
+node scripts/stats.mjs || echo "  경고: 실적 수집 실패"
+
 step "빌드"
 BUILD_OUT="$(node scripts/build.mjs 2>&1)" || { echo "$BUILD_OUT"; fail "빌드가 규칙 위반으로 중단됨 — push 안 함"; }
 echo "$BUILD_OUT"

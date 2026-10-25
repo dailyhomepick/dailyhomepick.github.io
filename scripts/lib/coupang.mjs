@@ -56,6 +56,16 @@ export const search = async (keyword, limit = 10) => {
 export const deeplink = (urls) =>
   call('POST', `${BASE}/deeplink`, { coupangUrls: urls, ...(process.env.COUPANG_SUB_ID ? { subId: process.env.COUPANG_SUB_ID } : {}) });
 
+// 실적 리포트. 날짜는 YYYYMMDD. 조회 기간 상한이 있으니 길면 나눠 부른다.
+// clicks/commission 은 날짜별 집계, orders/cancels 는 건별이다.
+// subId 는 붙이지 않는다 — 실제 클릭이 subId 없이 기록돼 있어서, 필터를 걸면 0건이 된다.
+const reportRange = (name) => (startDate, endDate) =>
+  call('GET', `${BASE}/reports/${name}${qs(`startDate=${startDate}`, `endDate=${endDate}`)}`);
+export const reportClicks = reportRange('clicks');
+export const reportOrders = reportRange('orders');
+export const reportCommission = reportRange('commission');
+export const reportCancels = reportRange('cancels');
+
 // Coupang best-category ids → site category slugs. Unlisted ids are not collected.
 export const CATEGORY_MAP = {
   1001: 'fashion', 1002: 'fashion',

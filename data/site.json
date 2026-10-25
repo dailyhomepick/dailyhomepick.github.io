@@ -15,14 +15,32 @@
     "requireAffiliate": false,
     "minDiscount": 10,
     "allowUnknownDiscount": true,
-    "networkPriority": ["coupang", "linkprice"],
+    "networkPriority": [
+      "coupang",
+      "linkprice"
+    ],
     "staleDays": 3,
     "expireDays": 21,
     "todayMax": 120,
     "subId": "dailyhomepick"
   },
   "trending": [
-    "물티슈", "생수", "즉석밥", "휴지", "세탁세제", "기저귀", "고양이 모래", "강아지 배변패드",
-    "에어프라이어", "무선청소기", "보조배터리", "밀폐용기", "프라이팬", "가습기", "전기요", "핫팩"
-  ]
+    "물티슈",
+    "생수",
+    "즉석밥",
+    "휴지",
+    "세탁세제",
+    "기저귀",
+    "고양이 모래",
+    "강아지 배변패드",
+    "에어프라이어",
+    "무선청소기",
+    "보조배터리",
+    "밀폐용기",
+    "프라이팬",
+    "가습기",
+    "전기요",
+    "핫팩"
+  ],
+  "adminPath": "admin-7bee32cc6b"
 }

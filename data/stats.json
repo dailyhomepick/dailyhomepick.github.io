@@ -1,0 +1,77 @@
+{
+  "updatedAt": "2026-10-25T03:17:18.815Z",
+  "source": "coupang-partners",
+  "note": "방문자 수는 포함되지 않는다. 쿠팡은 상품 클릭만 집계한다.",
+  "days": [
+    {
+      "date": "2026-08-28",
+      "clicks": 1,
+      "orders": 2,
+      "commission": 323,
+      "cancels": 0
+    },
+    {
+      "date": "2026-08-29",
+      "clicks": 1,
+      "orders": 0,
+      "commission": 0,
+      "cancels": 0
+    },
+    {
+      "date": "2026-09-03",
+      "clicks": 1,
+      "orders": 0,
+      "commission": 0,
+      "cancels": 0
+    },
+    {
+      "date": "2026-09-08",
+      "clicks": 1,
+      "orders": 2,
+      "commission": 467,
+      "cancels": 0
+    },
+    {
+      "date": "2026-09-13",
+      "clicks": 1,
+      "orders": 0,
+      "commission": 0,
+      "cancels": 0
+    },
+    {
+      "date": "2026-09-30",
+      "clicks": 1,
+      "orders": 0,
+      "commission": 0,
+      "cancels": 0
+    },
+    {
+      "date": "2026-10-09",
+      "clicks": 4,
+      "orders": 9,
+      "commission": 4202,
+      "cancels": 0
+    },
+    {
+      "date": "2026-10-14",
+      "clicks": 0,
+      "orders": 0,
+      "commission": -1350,
+      "cancels": 1
+    },
+    {
+      "date": "2026-10-18",
+      "clicks": 1,
+      "orders": 0,
+      "commission": 0,
+      "cancels": 0
+    },
+    {
+      "date": "2026-10-19",
+      "clicks": 4,
+      "orders": 0,
+      "commission": 0,
+      "cancels": 0
+    }
+  ]
+}
