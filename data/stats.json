@@ -1,77 +1,278 @@
 {
-  "updatedAt": "2026-10-25T03:17:18.815Z",
+  "updatedAt": "2026-10-25T05:33:20.840Z",
   "source": "coupang-partners",
-  "note": "방문자 수는 포함되지 않는다. 쿠팡은 상품 클릭만 집계한다.",
+  "subId": "dailyhomepick",
+  "note": "방문자 수는 포함되지 않는다. 쿠팡은 상품 클릭만 집계한다. site = 이 사이트(subId 일치), other = 다른 경로.",
   "days": [
     {
+      "date": "2026-07-28",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 0,
+        "orders": 9,
+        "commission": 1893,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 13,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 14,
+        "orders": 4,
+        "commission": 1550,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-08-07",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 3,
+        "orders": 1,
+        "commission": 370,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 2,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
       "date": "2026-08-28",
-      "clicks": 1,
-      "orders": 2,
-      "commission": 323,
-      "cancels": 0
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 2,
+        "commission": 323,
+        "cancels": 0
+      }
     },
     {
       "date": "2026-08-29",
-      "clicks": 1,
-      "orders": 0,
-      "commission": 0,
-      "cancels": 0
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
     },
     {
       "date": "2026-09-03",
-      "clicks": 1,
-      "orders": 0,
-      "commission": 0,
-      "cancels": 0
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
     },
     {
       "date": "2026-09-08",
-      "clicks": 1,
-      "orders": 2,
-      "commission": 467,
-      "cancels": 0
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 2,
+        "commission": 467,
+        "cancels": 0
+      }
     },
     {
       "date": "2026-09-13",
-      "clicks": 1,
-      "orders": 0,
-      "commission": 0,
-      "cancels": 0
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
     },
     {
       "date": "2026-09-30",
-      "clicks": 1,
-      "orders": 0,
-      "commission": 0,
-      "cancels": 0
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
     },
     {
       "date": "2026-10-09",
-      "clicks": 4,
-      "orders": 9,
-      "commission": 4202,
-      "cancels": 0
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 4,
+        "orders": 9,
+        "commission": 4202,
+        "cancels": 0
+      }
     },
     {
       "date": "2026-10-14",
-      "clicks": 0,
-      "orders": 0,
-      "commission": -1350,
-      "cancels": 1
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": -1350,
+        "cancels": 1
+      }
     },
     {
       "date": "2026-10-18",
-      "clicks": 1,
-      "orders": 0,
-      "commission": 0,
-      "cancels": 0
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
     },
     {
       "date": "2026-10-19",
-      "clicks": 4,
-      "orders": 0,
-      "commission": 0,
-      "cancels": 0
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 4,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
     }
   ]
 }

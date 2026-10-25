@@ -3,8 +3,12 @@
 //   node scripts/stats.mjs            # 최근 60일
 //   node scripts/stats.mjs 180        # 기간 지정
 //
-// 쿠팡은 날짜별 집계만 주고 과거를 다시 고쳐 주기도 한다(주문 확정·취소).
-// 그래서 매번 기간 전체를 다시 받아 같은 날짜는 덮어쓴다.
+// 이 사이트가 만드는 링크에는 subId(COUPANG_SUB_ID)가 붙는다. 같은 계정으로 다른 데서
+// 만든 링크는 subId 가 비어 있으므로, 둘을 갈라 담는다. 섞어 놓으면 사이트에서 돈이
+// 나는 것처럼 오해하게 된다.
+//
+// 쿠팡은 날짜별 집계만 주고 과거를 다시 고치기도 한다(주문 확정·취소). 그래서 매번
+// 기간 전체를 다시 받아 같은 날짜를 덮어쓴다.
 // 방문자 수는 여기 없다 — 쿠팡은 "상품을 눌러 쿠팡으로 넘어간 클릭"만 센다.
 
 import { loadEnv, today } from './lib/rules.mjs';
@@ -18,11 +22,10 @@ if (!hasKeys()) {
   process.exit(1);
 }
 
+const MY_SUB = process.env.COUPANG_SUB_ID || '';
 const days = Number(process.argv[2]) || 60;
 const ymd = (n) => new Date(Date.now() + 9 * 3600e3 - n * 86400e3).toISOString().slice(0, 10).replace(/-/g, '');
 const dash = (s) => `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`;
-const startDate = ymd(days - 1);
-const endDate = ymd(0);
 
 // 쿠팡 조회 상한이 걸리면 한 달씩 끊어 받는다.
 async function fetchAll(fn) {
@@ -41,23 +44,25 @@ async function fetchAll(fn) {
   return out;
 }
 
-const [clicks, commission, orders, cancels] = [
-  await fetchAll(reportClicks),
-  await fetchAll(reportCommission),
-  await fetchAll(reportOrders),
-  await fetchAll(reportCancels),
-];
+const clicks = await fetchAll(reportClicks);
+const commission = await fetchAll(reportCommission);
+const orders = await fetchAll(reportOrders);
+const cancels = await fetchAll(reportCancels);
 
-// 날짜별로 합친다. 같은 날짜가 여러 행으로 쪼개져 오므로(subId·ctag 별) 더한다.
+const blank = () => ({ clicks: 0, orders: 0, commission: 0, cancels: 0 });
 const byDate = new Map();
-const row = (d) => {
-  if (!byDate.has(d)) byDate.set(d, { date: d, clicks: 0, orders: 0, commission: 0, cancels: 0 });
-  return byDate.get(d);
+const pick = (r, dateField) => {
+  const d = dash(String(r[dateField] || r.date));
+  if (!byDate.has(d)) byDate.set(d, { date: d, site: blank(), other: blank() });
+  const row = byDate.get(d);
+  // subId 가 우리 것이면 사이트 실적, 아니면 기타 경로.
+  return MY_SUB && String(r.subId || '') === MY_SUB ? row.site : row.other;
 };
-for (const r of clicks) row(dash(String(r.date))).clicks += Number(r.click || 0);
-for (const r of commission) row(dash(String(r.date))).commission += Number(r.commission || 0);
-for (const r of orders) row(dash(String(r.orderDate || r.date))).orders += 1;
-for (const r of cancels) row(dash(String(r.cancelDate || r.date))).cancels += 1;
+
+for (const r of clicks) pick(r, 'date').clicks += Number(r.click || 0);
+for (const r of commission) pick(r, 'date').commission += Number(r.commission || 0);
+for (const r of orders) pick(r, 'orderDate').orders += 1;
+for (const r of cancels) pick(r, 'cancelDate').cancels += 1;
 
 const list = [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
 
@@ -69,12 +74,14 @@ for (const d of list) merged.set(d.date, d);
 const out = {
   updatedAt: new Date().toISOString(),
   source: 'coupang-partners',
-  note: '방문자 수는 포함되지 않는다. 쿠팡은 상품 클릭만 집계한다.',
+  subId: MY_SUB,
+  note: '방문자 수는 포함되지 않는다. 쿠팡은 상품 클릭만 집계한다. site = 이 사이트(subId 일치), other = 다른 경로.',
   days: [...merged.values()].sort((a, b) => a.date.localeCompare(b.date)).slice(-400),
 };
 writeJson('data/stats.json', out);
 
-const sum = (k) => list.reduce((s, d) => s + d[k], 0);
-console.log(`실적 수집 (${dash(startDate)} ~ ${dash(endDate)}, ${list.length}일)`);
-console.log(`  클릭 ${sum('clicks')} · 주문 ${sum('orders')} · 취소 ${sum('cancels')} · 수수료 ${Math.round(sum('commission')).toLocaleString()}원`);
+const sum = (where, k) => list.reduce((s, d) => s + (d[where]?.[k] || 0), 0);
+console.log(`실적 수집 (${list.length}일, subId=${MY_SUB || '(설정 없음)'})`);
+console.log(`  이 사이트 : 클릭 ${sum('site', 'clicks')} · 주문 ${sum('site', 'orders')} · 수수료 ${Math.round(sum('site', 'commission')).toLocaleString()}원`);
+console.log(`  기타 경로 : 클릭 ${sum('other', 'clicks')} · 주문 ${sum('other', 'orders')} · 수수료 ${Math.round(sum('other', 'commission')).toLocaleString()}원`);
 console.log(`  저장: data/stats.json (누적 ${out.days.length}일, 오늘 ${today()})`);

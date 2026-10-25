@@ -693,26 +693,30 @@ add('search.html', layout({
 }));
 
 // Admin dashboard (secret path, not linked, not indexed).
-// 쿠팡 실적만 담는다. 방문자 수는 쿠팡이 주지 않으므로 분석 도구를 붙인 뒤에 더한다.
+// 쿠팡 실적을 subId 로 갈라 보여준다. 이 사이트가 만든 링크에는 subId 가 붙고,
+// 같은 계정으로 다른 데서 만든 링크는 붙지 않는다. 섞어 놓으면 사이트에서 돈이
+// 나는 것처럼 오해하게 된다. 방문자 수는 쿠팡이 주지 않으므로 여기 없다.
 if (site.adminPath) {
   const stats = readJson('data/stats.json') || { days: [], updatedAt: '' };
+  const blank = () => ({ clicks: 0, orders: 0, commission: 0, cancels: 0 });
   const byDate = new Map((stats.days || []).map((d) => [d.date, d]));
-  // 빈 날짜를 0으로 채워야 그래프가 끊기지 않는다.
+  // 빈 날짜를 0 으로 채워야 그래프가 끊기지 않는다.
   const series = [];
   for (let i = 29; i >= 0; i -= 1) {
     const d = new Date(Date.now() + 9 * 3600e3 - i * 86400e3).toISOString().slice(0, 10);
-    series.push(byDate.get(d) || { date: d, clicks: 0, orders: 0, commission: 0, cancels: 0 });
+    series.push(byDate.get(d) || { date: d, site: blank(), other: blank() });
   }
-  const sum = (rows, k) => rows.reduce((s, r) => s + Number(r[k] || 0), 0);
-  const won = (n) => `${Math.round(n).toLocaleString()}원`;
   const all = stats.days || [];
-  const maxClick = Math.max(1, ...series.map((r) => r.clicks));
+  const sum = (rows, where, k) => rows.reduce((s, r) => s + Number(r[where]?.[k] || 0), 0);
+  const won = (n) => `${Math.round(n).toLocaleString()}원`;
+  const maxClick = Math.max(1, ...series.map((r) => r.site.clicks));
   const card = (label, rows) => `<div class="stat-card">
     <p class="stat-label">${esc(label)}</p>
-    <p class="stat-main">${won(sum(rows, 'commission'))}</p>
-    <p class="stat-sub">클릭 ${sum(rows, 'clicks')} · 주문 ${sum(rows, 'orders')}${sum(rows, 'cancels') ? ` · 취소 ${sum(rows, 'cancels')}` : ''}</p>
+    <p class="stat-main">${won(sum(rows, 'site', 'commission'))}</p>
+    <p class="stat-sub">클릭 ${sum(rows, 'site', 'clicks')} · 주문 ${sum(rows, 'site', 'orders')}${sum(rows, 'site', 'cancels') ? ` · 취소 ${sum(rows, 'site', 'cancels')}` : ''}</p>
   </div>`;
-  const rows = [...series].reverse().filter((r) => r.clicks || r.orders || r.commission || r.cancels);
+  const moved = [...series].reverse().filter((r) => r.site.clicks || r.site.orders || r.site.commission || r.other.clicks || r.other.orders || r.other.commission);
+  const siteTotal = sum(all, 'site', 'clicks');
 
   add(`${site.adminPath}.html`, layout({
     title: '실적 대시보드', path: `/${site.adminPath}.html`, noindex: true,
@@ -723,25 +727,40 @@ if (site.adminPath) {
     <p class="lead">쿠팡 파트너스 기준입니다. 갱신 ${stats.updatedAt ? esc(stats.updatedAt.slice(0, 16).replace('T', ' ')) : '없음'} · 누적 ${all.length}일</p>
   </header>
 
+  <h2 class="h3">이 사이트 <span class="muted small">(subId ${esc(stats.subId || '없음')})</span></h2>
   <div class="stat-row">
     ${card('최근 7일', series.slice(-7))}
     ${card('최근 30일', series)}
     ${card('전체 기간', all)}
   </div>
+  ${siteTotal ? '' : `<p class="empty" style="margin-top:14px">아직 이 사이트를 거친 클릭이 없습니다. 검색 색인이 되고 유입이 시작되면 여기에 쌓입니다.</p>`}
 
   <section class="section-tight">
-    <h2 class="h3">일별 클릭 (최근 30일)</h2>
-    <div class="spark">${series.map((r) => `<i style="height:${Math.round((r.clicks / maxClick) * 100)}%" title="${r.date} · 클릭 ${r.clicks} · 주문 ${r.orders} · ${won(r.commission)}"></i>`).join('')}</div>
+    <h2 class="h3">일별 클릭 (이 사이트, 최근 30일)</h2>
+    <div class="spark">${series.map((r) => `<i style="height:${Math.round((r.site.clicks / maxClick) * 100)}%" title="${r.date} · 클릭 ${r.site.clicks} · 주문 ${r.site.orders} · ${won(r.site.commission)}"></i>`).join('')}</div>
     <p class="muted small">${series[0].date} ~ ${series[series.length - 1].date} · 최고 ${maxClick}회</p>
   </section>
 
   <section class="section-tight">
+    <h2 class="h3">기타 경로 <span class="muted small">(이 사이트 밖에서 만든 링크)</span></h2>
+    <div class="stat-row">
+      <div class="stat-card"><p class="stat-label">최근 30일</p>
+        <p class="stat-main">${won(sum(series, 'other', 'commission'))}</p>
+        <p class="stat-sub">클릭 ${sum(series, 'other', 'clicks')} · 주문 ${sum(series, 'other', 'orders')}</p></div>
+      <div class="stat-card"><p class="stat-label">전체 기간</p>
+        <p class="stat-main">${won(sum(all, 'other', 'commission'))}</p>
+        <p class="stat-sub">클릭 ${sum(all, 'other', 'clicks')} · 주문 ${sum(all, 'other', 'orders')}</p></div>
+    </div>
+  </section>
+
+  <section class="section-tight">
     <h2 class="h3">움직임이 있던 날</h2>
-    ${rows.length ? `<table class="stat-table">
-      <thead><tr><th>날짜</th><th>클릭</th><th>주문</th><th>취소</th><th>수수료</th></tr></thead>
-      <tbody>${rows.map((r) => `<tr>
-        <td>${r.date}</td><td>${r.clicks}</td><td>${r.orders}</td>
-        <td>${r.cancels || ''}</td><td class="${r.commission < 0 ? 'neg' : ''}">${won(r.commission)}</td>
+    ${moved.length ? `<table class="stat-table">
+      <thead><tr><th>날짜</th><th>사이트 클릭</th><th>사이트 수수료</th><th>기타 클릭</th><th>기타 수수료</th></tr></thead>
+      <tbody>${moved.map((r) => `<tr>
+        <td>${r.date}</td>
+        <td>${r.site.clicks || ''}</td><td class="${r.site.commission < 0 ? 'neg' : ''}">${r.site.commission ? won(r.site.commission) : ''}</td>
+        <td>${r.other.clicks || ''}</td><td class="${r.other.commission < 0 ? 'neg' : ''}">${r.other.commission ? won(r.other.commission) : ''}</td>
       </tr>`).join('')}</tbody>
     </table>` : '<p class="empty">최근 30일 기록이 없습니다.</p>'}
   </section>
@@ -750,13 +769,15 @@ if (site.adminPath) {
     <h2 class="h3">덧붙임</h2>
     <p class="muted small">
       방문자 수는 여기 없습니다. 쿠팡은 <b>상품을 눌러 쿠팡으로 넘어간 클릭</b>만 세고,
-      GitHub Pages는 접속 로그를 주지 않습니다. 방문자를 보려면 분석 도구를 따로 붙여야 합니다.<br>
-      수집: <code>node scripts/stats.mjs</code> (daily.sh 가 매일 자동 실행)
+      GitHub Pages 는 접속 로그를 주지 않습니다. GA4 를 붙여 뒀으니 데이터가 쌓이면 여기에 더합니다.<br>
+      수집: <code>node scripts/stats.mjs</code> (daily.sh 가 하루 두 번 실행)
     </p>
   </section>
 </div>`,
   }));
 }
+
+
 
 // Review queue (not linked, not indexed)
 add('review.html', layout({
