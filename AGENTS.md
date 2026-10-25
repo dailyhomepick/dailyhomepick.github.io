@@ -41,6 +41,20 @@ git add -A && git commit -m "Daily deals YYYY-MM-DD" && git push
 - 빌드가 규칙 위반으로 멈추면 push하지 않는다. 로그: `~/.local/state/dailyhomepick/daily-YYYY-MM.log`. 텔레그램 값이 env에 있으면 실패·검수 대기를 알린다.
 - 수동 실행: `scripts/daily.sh` (테스트는 `scripts/daily.sh --no-push`).
 
+**대시보드 새로고침 (버튼)**
+
+실적 대시보드의 "지금 새로고침" 버튼은 맥미니의 `scripts/refresh-server.mjs`(127.0.0.1:8899)를 두드리고,
+그 서버가 `scripts/daily.sh --stats-only`를 돌린다. 상품 수집은 건너뛰고 쿠팡 실적만 다시 받아 빌드·push 한다(10초 안팎).
+
+- 서비스: `systemctl --user status dailyhomepick-refresh` (user 유닛, 자동 시작)
+- 바깥에 열지 않는다. Tailscale Serve 로 tailnet 안에서만 닿는다 — 주소는 `tailscale serve status` 로 확인.
+  같은 포트에 `/`(저장소 정적 서빙)와 `/api`(이 서버)가 같이 걸려 있어, 맥미니 주소로 대시보드를 열면
+  같은 출처라 버튼이 그냥 동작한다.
+- 공개 주소(…github.io)에서 누르면 브라우저가 "사설망 접근"을 막거나 물어볼 수 있다. 그때는 맥미니 주소로 열면 된다.
+  공개 페이지는 주소를 저장소에 담지 않고 브라우저 localStorage(`dhpRefreshUrl`)에 둔다.
+- 토큰은 두지 않았다. 할 수 있는 일이 "실적을 다시 받아 다시 빌드" 하나뿐이고 tailnet 밖에서는 닿지 않는다.
+  바깥에 열 일이 생기면 그때 인증을 붙인다.
+
 **Hermes가 맡는 일**
 | 일 | 주기 |
 |---|---|
