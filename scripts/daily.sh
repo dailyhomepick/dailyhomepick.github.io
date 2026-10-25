@@ -63,6 +63,13 @@ step "쿠팡 카테고리 베스트"
 node scripts/coupang.mjs best || echo "  경고: 베스트 수집 실패"
 
 step "가져오기·자동 검수"
+# 알리는 공개 API 가 없어 Ad Center 화면을 거쳐 받는다. 계정을 지키려고 아침 실행에만,
+# 한 페이지만 받는다. 세션이 만료되면 실패하는데, 그래도 나머지는 계속 간다.
+if [ "$(date +%H)" -lt 12 ]; then
+  step "알리익스프레스 수집"
+  node scripts/aliexpress.mjs || echo "  경고: 알리 수집 실패 (세션 만료면 ali-session.json 을 다시 만든다)"
+fi
+
 IMPORT_OUT="$(node scripts/import.mjs)" || fail "import.mjs 오류"
 echo "$IMPORT_OUT"
 

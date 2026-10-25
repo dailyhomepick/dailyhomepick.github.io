@@ -4,10 +4,13 @@
     "kind": "deals",
     "date": "2026-10-25",
     "auto": true,
-    "title": "10월 25일 오늘의 할인 301선",
+    "title": "10월 25일 오늘의 할인 310선",
     "description": "10월 25일 가격을 확인한 할인 상품 모음입니다.",
     "intro": "오늘 가격을 확인한 할인 상품입니다. 할인율이 높은 순서로 정리했고, 가격은 판매처 사정에 따라 바뀔 수 있습니다.",
     "items": [
+      {
+        "product": "aliexpress-1005010225246671"
+      },
       {
         "product": "coupang-188227098"
       },
@@ -910,9 +913,33 @@
       },
       {
         "product": "persil-disc-power-capsule-pouch"
+      },
+      {
+        "product": "aliexpress-1005009724921496"
+      },
+      {
+        "product": "aliexpress-1005007861075029"
+      },
+      {
+        "product": "aliexpress-1005007341990710"
+      },
+      {
+        "product": "aliexpress-1005007355555130"
+      },
+      {
+        "product": "aliexpress-1005006980090984"
+      },
+      {
+        "product": "aliexpress-1005008941135535"
+      },
+      {
+        "product": "aliexpress-1005007294796796"
+      },
+      {
+        "product": "aliexpress-1005005671598813"
       }
     ],
-    "featured": "coupang-188227098"
+    "featured": "aliexpress-1005010225246671"
   },
   {
     "slug": "2026-10-24-deals",
