@@ -127,7 +127,7 @@ export function loadEnv() {
 }
 
 // Not products we list (time-limited tickets, travel, services).
-const OUT_OF_SCOPE = /입장권|이용권|관람권|숙박권|숙박|항공권|티켓|패키지여행|종일권|1인권|체험권|상품권|기프티콘|방문설치비/;
+const OUT_OF_SCOPE = /입장권|이용권|관람권|숙박권|숙박|항공권|티켓|패키지여행|종일권|1인권|체험권|상품권|기프티콘|방문설치비|호텔형|객실|양실|온돌실|펜션|글램핑|카라반|풀빌라|콘도미니엄|\d박\s*\d일/;
 export function outOfScope(title = '') {
   return OUT_OF_SCOPE.test(title) ? '여행·티켓·이용권' : '';
 }
@@ -167,7 +167,7 @@ export function guessCategory(title = '', store = '') {
 // Thumbnails must be a real product photo URL: absolute https, not a site icon/badge/placeholder.
 // ads-partners.coupang.com 은 상품 사진이 아니라 제휴 배너로 리다이렉트한다(320x100 짜리).
 // 쿠팡 검색 API 가 productImage 로 이 주소를 주는 경우가 있어 막아 둔다.
-const ICON_PATTERNS = [/\/icons?\//i, /\/badges?\//i, /sprite/i, /placeholder/i, /no[_-]?image/i, /\/logo/i, /favicon/i, /rocket-(delivery|fresh)/i, /\/wow\.png/i, /\/event\.png/i, /ads-partners\.coupang\.com/i, /\/image\/affiliate\//i];
+const ICON_PATTERNS = [/\/icons?\//i, /\/badges?\//i, /sprite/i, /placeholder/i, /no[_-]?image/i, /\/logo/i, /favicon/i, /rocket-(delivery|fresh)/i, /\/wow\.png/i, /\/event\.png/i, /\/image\/affiliate\//i, /ads-partners\.coupang\.com\/image\/(?!1\/)/i];
 export function imageProblem(url) {
   if (!url || !/^https:\/\//.test(url)) return `이미지 주소가 https 절대경로가 아님: ${String(url).slice(0, 60)}`;
   if (ICON_PATTERNS.some((re) => re.test(url))) return `상품 사진이 아닌 아이콘/로고 이미지: ${url.slice(0, 80)}`;

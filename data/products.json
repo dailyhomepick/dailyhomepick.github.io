@@ -327,7 +327,7 @@
       ]
     ],
     "caution": "접었을 때 크기와 세척 편의성을 확인하세요.",
-    "status": "hidden",
+    "status": "published",
     "addedAt": "2026-10-21",
     "priceHistory": [
       {
@@ -726,7 +726,7 @@
       ]
     ],
     "caution": "정확한 캡슐 수, 드럼/일반 세탁기 호환, 어린이 접근 방지 보관 필요.",
-    "status": "hidden",
+    "status": "published",
     "addedAt": "2026-10-24",
     "priceHistory": [
       {
@@ -1601,13 +1601,13 @@
       "소모품"
     ],
     "store": "쿠팡",
-    "image": "daily-deals-2026-10-22_files/02.jpg",
+    "image": "https://ads-partners.coupang.com/image1/wJDCmyUh8IR5wvO3wDIwPLm3am1ohIfVrmJN4axucoh0xvjVVrSIucMkPwIu4GpctcUIwTmT8BO3xvLQuYuGhhiTtw4k3oIIzaekRTdww10eZIo7aHx7RmXLbGxmGQTPij586j7gDCNy66YkVGJbKjLq9Vp7zaoKGUpYrA5CSfRoJuhVeeLvOBex7jrl7nIQYA3-lxvzvlYPbR8W9kyFTSg5vA5z--CNKKaDFCXxI42N1hA3VhiRtHyLjeaO-c94p4dxz5t-ZW-bY8ZkAB7BypcEg08rsiUSRbK_XKF_MmT9KDcie-2OzQZCbkpV3wssvDEV3O-jG9Ztji7qRmZSAq94DjGQKnPeRifjSOzyfyrI3XfhfOMwKHmC5qA60YT7rlDekhAdDmDEabs7YDIzXOvLSUlxm1XFLfq9QpOB8enz_bnq3-lOuOPACbSt6rpuvd0febX3nehMRKwUtnbC31oVNS0p4MD4yr0c1cdvnYsD6jO_OozLNpnt7_09U71pMGSecs7eIXvDNgV1sxrWHxXQ03cm3IThxLIlFgVM",
     "link": "https://www.coupang.com/vp/products/305732568?itemId=963650372&vendorItemId=5366789544",
-    "affiliateLink": "https://link.coupang.com/a/h6uX1lQvpk",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=305732568&itemId=963650372&vendorItemId=5366789544&traceid=V0-153-19cbcea9a24da303&requestid=20261026003029245282565553&token=31850C%7CMIXED&pt=0&slot=9",
     "price": {
       "min": 10990
     },
-    "checkedAt": "2026-10-22",
+    "checkedAt": "2026-10-26",
     "summary": "총 10L 구성이라 100ml당 단가가 낮게 잡힌 소모품 딜이다. 할인율, 단가, 배송 조건, 리뷰 수가 모두 확인된다.",
     "specs": [
       [
@@ -1636,11 +1636,19 @@
       ]
     ],
     "caution": "향/세탁기 타입/민감 피부 여부를 확인. 대용량이라 보관 위치가 필요하다.",
-    "status": "hidden",
+    "status": "published",
     "addedAt": "2026-10-22",
-    "discountRate": 26,
     "hiddenReason": "이미지 주소가 https 절대경로가 아님",
-    "network": "coupang"
+    "network": "coupang",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 10990
+      }
+    ],
+    "badges": [
+      "로켓배송"
+    ]
   },
   {
     "id": "20261022-03-5",
@@ -2013,13 +2021,13 @@
       "소모품"
     ],
     "store": "쿠팡",
-    "image": "https://image2.coupangcdn.com/image/retail/images/15506948735869-d9614ee3-257f-4e1a-bea9-694f3cf88911.jpg",
+    "image": "https://ads-partners.coupang.com/image1/tRL-TO9sn0ojyOlwtfaQVCqEiDrHsk0HK-UuL0Xs27q7Tpec-Bsy_w3hURqunhag0lUvaKBndxQLEmRx8BERssIhMnnbVZaYKmYzaM2D652mBSO1WUSoZqS44kEj-VuBJvOWaF0oTBzGUnxrOv5eNqQXOjifqQAX310V5wJFiec86SHT5VIM5f8RmHvS-RB0VZNxmbUmsUfQnYBq45tz1iJE1qfBY9HRyEX7s_zn0RSEwDF4ewbKh9SF1Ae6BeubZCdsSTejMpIUJ3ycilQiu1yX-P_JMCXhu1FNhjykrYi9aOI5MFW_obE7oqgW9hMWx-Mf8QaJd_Afm9uo2vjdfMe85NAvtmrJs5qHFPwCOYToZI7czqGIc7OJgIRtBS_j8X04Jouf1y77zIXqmuAhkjkVRtMz9lTAy-7Adl-n0q4z_QN3Si0LZ2ZyHHSV2THiKe1GN5U3jJNbEwKdPFgrZu-XVT1GYFjz23hbeqd4FKN_0oiPC9y2_aoWLRHXTv_7e-SKYj8IbqoiO12qJltvVtPpP7L0Chp7TAzO-ce7k6Hz",
     "link": "https://www.coupang.com/vp/products/7299719601?itemId=19815641903&vendorItemId=86917697307",
-    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=7299719601&itemId=19977611761&vendorItemId=87075962908&traceid=V0-113-a654f2eb1a75f0f5&pt=0&slot=28",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=7299719601&itemId=18677046089&vendorItemId=85811303945&traceid=V0-153-a654f2eb1a75f0f5&requestid=20261026003030861079313896&token=31850C%7CMIXED&pt=0&slot=8",
     "price": {
-      "min": 17440
+      "min": 6190
     },
-    "checkedAt": "2026-10-25",
+    "checkedAt": "2026-10-26",
     "summary": "매일 쓰는 배변패드는 1매당 단가가 핵심인데 60원으로 확인된다. 할인율, 단가, 리뷰 수, 배송 조건이 모두 확인된다.",
     "specs": [
       [
@@ -2048,7 +2056,7 @@
       ]
     ],
     "caution": "대형견·다견 가정은 크기와 흡수량을 상세 페이지에서 확인. 향/무향 선호도 체크.",
-    "status": "hidden",
+    "status": "published",
     "addedAt": "2026-10-22",
     "hiddenReason": "이미지 주소가 https 절대경로가 아님",
     "priceHistory": [
@@ -2079,13 +2087,25 @@
       {
         "date": "2026-10-25",
         "price": 17440
+      },
+      {
+        "date": "2026-10-26",
+        "price": 12000
+      },
+      {
+        "date": "2026-10-26",
+        "price": 23200
+      },
+      {
+        "date": "2026-10-26",
+        "price": 6190
       }
     ],
     "network": "coupang",
     "badges": [
       "로켓배송"
     ],
-    "priceDropRate": 25
+    "priceDropRate": 73
   },
   {
     "id": "20261022-10-1kg",
@@ -5799,15 +5819,15 @@
     "id": "coupang-9052582961",
     "status": "published",
     "addedAt": "2026-10-24",
-    "checkedAt": "2026-10-24",
+    "checkedAt": "2026-10-26",
     "title": "오뚜기 흰밥",
-    "image": "https://img3a.coupangcdn.com/image/1025_amir_coupang_oct_80k/609f/2a16b027330af1bc54cc37669c6c5602d19e5e1cd5465789acd4fc9210d1.jpg",
+    "image": "https://ads-partners.coupang.com/image1/cFtJCqUPschHv2ZccAVjvWhQll84T1b2AqOW60C37tjqLZ3M6ZISYlot1y6bl9tuRwSfYUciTGhVJSgTn7r2PKCfuae9kqac_yGI_PzETWQWplV553TQl8BBRrU9Hrs3SHK8XpwLwQcToOxI2m5JBVYR6BrotA4jcYzKwsTyXKCFzhmO5UmWe9VM4Sd6y1yCEPQzxQ324qoMRXfjaVsVHpx2osrUmzhIGgvvaPPMfQVZgsHGw-LYOzqiVZhiB9BBkYE50FKrdsel4m2YcJjrOxhO3dKltDy5oVmV4KP_QZTBTPzojvYjnmnVQbC_S2Jh0c62fHXQhDx9sBFh-n4xCWhOUJVQjJrTSDMPmy0KietJkzQJRBIJAYdHxYbSt_dxY-oYRlImn1dDEYSwhtgUCTQlLqPWjwLBYjsGaXNhatY2Ppmg3sy80lnOBtnnMRfMt_VYotj_4qX_Gg8Yzel9pmTESgNwZsmE1UHsRppA9WRJtRQBGzvyUqDjklSBsbKZSRXhvZsILL9LjPfPpAooy-0yacxBBKeLfMd2TB9D82aeyAGwG8PgAgX8s3ui4bs=",
     "price": {
-      "min": 10300
+      "min": 5960
     },
     "store": "쿠팡",
     "link": "https://www.coupang.com/vp/products/9052582961",
-    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9052582961&itemId=24263208524&vendorItemId=80641989278&traceid=V0-113-2ebe9079b13a94d7&pt=0&slot=12",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9052582961&itemId=8024439456&vendorItemId=3028311140&traceid=V0-153-2ebe9079b13a94d7&requestid=20261026003025952308725677&token=31850C%7CMIXED&pt=0&slot=8",
     "network": "coupang",
     "categories": [
       "food"
@@ -5825,9 +5845,14 @@
       {
         "date": "2026-10-24",
         "price": 10300
+      },
+      {
+        "date": "2026-10-26",
+        "price": 5960
       }
     ],
-    "publishedAt": "2026-10-24"
+    "publishedAt": "2026-10-24",
+    "priceDropRate": 42
   },
   {
     "id": "coupang-6202345562",
@@ -6062,15 +6087,15 @@
     "id": "coupang-9509930958",
     "status": "published",
     "addedAt": "2026-10-24",
-    "checkedAt": "2026-10-24",
+    "checkedAt": "2026-10-26",
     "title": "햇반 백미밥",
-    "image": "https://img3c.coupangcdn.com/image/vendor_inventory/2ac4/cea9e101a1c68b00c7a685b52802410aedeb0ed80a401cad088bd6e3a765.jpg",
+    "image": "https://ads-partners.coupang.com/image1/_aXLlQuJS9ii3Llf_byBFPLKHruvyx-n2l3Y_UTm-Br_Kg31frkGJQFR5bF8QJpz6anPhA5CMnnP_Xg_EiciXz1Oxx_ECtFc_QPg1HwNXUzwU7QWzZWuqdl2lSbE2UCM3owsSKRNDbCxCilDDscxccpdMUd1rYLRHcvm_oiIoIAM0-8l1fXrqS3h1L8RPHMwNQXbhHEbh8m6i7RWkqMHWI721UqIWEgQNoSsuJx2UNrJj0-YAh_CCm71X4r_BCrTjhsRpmkNUJ8J1J9_Gx9CN4UddzIRw7iehKnfufoFm2oB4xVscEuOsyGufXq8o8tyYGzW-PMCw9LSLAtqr_sMDNhPqtjIlQamdVpDDNyt0QjgbD0vtgg3S1nEQlxalLWaTAabod8dpvRxStxQixWzLFEmoTctcq3yiVJx-9m1HaJRYeOdbXuKiPQpHmFe5RkUjZcA0XJd7BpxlFp2J4rGq0SHuPGcDD9uRva1zAweojj1tLi6OlZa68jm7dr_tgk4yCMHlFPrmSR4879H0n33Z82N8iTirDJdxr5p9Se1YmbIDoQDZw==",
     "price": {
-      "min": 13700
+      "min": 14300
     },
     "store": "쿠팡",
     "link": "https://www.coupang.com/vp/products/9509930958",
-    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9509930958&itemId=3475105914&vendorItemId=3000522128&traceid=V0-113-8c083752b54f2e4d&pt=0&slot=19",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9509930958&itemId=25326121753&vendorItemId=93502209405&traceid=V0-153-8c083752b54f2e4d&clickBeacon=005407c0-d089-11f1-8526-51f5368b2a2c%7E3&requestid=20261026003025952308725677&token=31850C%7CMIXED&pt=1&slot=6",
     "network": "coupang",
     "categories": [
       "food"
@@ -6080,7 +6105,7 @@
     ],
     "specs": [],
     "badges": [
-      "로켓배송"
+      "무료배송"
     ],
     "source": "coupang-best",
     "sourceId": "coupang-9509930958",
@@ -6088,6 +6113,10 @@
       {
         "date": "2026-10-24",
         "price": 13700
+      },
+      {
+        "date": "2026-10-26",
+        "price": 14300
       }
     ],
     "publishedAt": "2026-10-24"
@@ -14569,15 +14598,15 @@
     "id": "coupang-8466415135",
     "status": "published",
     "addedAt": "2026-10-24",
-    "checkedAt": "2026-10-25",
+    "checkedAt": "2026-10-26",
     "title": "씨엔앨라이프  전국민  집사 배변패드 모음전",
-    "image": "https://image3.coupangcdn.com/image/vendor_inventory/af93/e07cce7c4fa966016d6e093dec1837b48cc3d4d2fcb601e97aeee09a4fd9.jpg",
+    "image": "https://ads-partners.coupang.com/image1/k7oDqCR8EpdXsZ_7k8utt7BIReRHtvGszy1cjEK4gyIwlSmCZZxD97zjywHljKCX6t2LocMde9ioGIeDFV9EdSZLs8P41QjbdcYF9Qy9g7ZR1N0RawGZpx_DZFjLETsH-rZiq6O7g65eOP2OFKOykr3z8NViRYO0YNkjGDE3Zu1ede4u2Gd1wV-jEP11RNwc2JixcSfdAGqmoz1MGWq69krjsGSJNUL7Ri-PXLLRnRRhY4Vza3ugCTFw9zP_2ex4cxW54pF9lK9eib5HUdlVtPqEloMzbGHXbFW7-qBg87PMsgyLlhe7AF77ST11EyO5FO4_VrtpyydggZsyiZXdWbaMEO24XMxSQTmtvmvMPO1d41WMGbBhlamyWFp5WQW331bYKVAGbCsTJaHi5Re5eEACQDW2NMyo6o8pdhHLuR35jvIItGuhTwYliM2uP7pZG6kibBhN7kXDT9-PvgqgZhw32nkL_0DRgvl7npg5mJ7eGLcbtgcAgctjYKkmeiRd-GLz3cYnik-ZVGKxO5XvH3RZBcYgvZglziWsa_EaVXTUjm_Kj8TP5mB6oWoyO1RO",
     "price": {
       "min": 19880
     },
     "store": "쿠팡",
     "link": "https://www.coupang.com/vp/products/8466415135",
-    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8466415135&itemId=21085455074&vendorItemId=90866891771&traceid=V0-113-6c492b22e991819f&pt=0&slot=33",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8466415135&itemId=21085455074&vendorItemId=90866891771&traceid=V0-153-6c492b22e991819f&requestid=20261026003030861079313896&token=31850C%7CMIXED&pt=0&slot=9",
     "network": "coupang",
     "categories": [
       "pet"
@@ -17633,7 +17662,7 @@
   },
   {
     "id": "coupang-205024921",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "두발로 여성용 프리미엄 무지 장목 양말 10켤레",
@@ -17662,11 +17691,12 @@
         "date": "2026-10-24",
         "price": 12900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8246306869",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "슈리팜 4P 운동화 뒤꿈치 수선패드 신발까짐 수선 패치",
@@ -17695,11 +17725,12 @@
         "date": "2026-10-24",
         "price": 5900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-174997928",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "두발로 여성용 안벗겨짐 자물쇠 페이크삭스 실속형 12켤레",
@@ -17728,11 +17759,12 @@
         "date": "2026-10-24",
         "price": 8900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8118562896",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "비비고 한식간장김자반",
@@ -17761,11 +17793,12 @@
         "date": "2026-10-24",
         "price": 11020
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9256900625",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "탑브로 러닝 중목 스포츠 쿠션 양말 6켤레 세트",
@@ -17794,11 +17827,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6398611245",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "씨로이 초경량 방수 러닝벨트",
@@ -17828,11 +17862,12 @@
         "date": "2026-10-24",
         "price": 7900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9501055635",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "바이일이오 나이키 3켤레 2세트 에브리데이 쿠션 크루 삭스 스포츠 장목 양말 SX7664-100",
@@ -17861,11 +17896,12 @@
         "date": "2026-10-24",
         "price": 18900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5387284782",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "삭피엔스 여성용 절대 벗겨지지 않는 앞코보강 페이크삭스 10켤레 세트",
@@ -17894,11 +17930,12 @@
         "date": "2026-10-24",
         "price": 14210
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8852987291",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "수능시계 4년 배터리 칼리브 시험용 저소음 KALIV SUPER2035",
@@ -17927,11 +17964,12 @@
         "date": "2026-10-24",
         "price": 12900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8366678245",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "슈페르바 저소음 큰숫자 학생 수능 아날로그 손목 시계 수능시계",
@@ -17960,11 +17998,12 @@
         "date": "2026-10-24",
         "price": 6490
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9081602559",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "이지하임 4켤레 털빠짐없는 편안한 무압박 남녀공용 수면양말 세트",
@@ -17993,11 +18032,12 @@
         "date": "2026-10-24",
         "price": 8900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8445091675",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "우디우디 겨울 방한 기모 바라클라바 오토바이",
@@ -18026,11 +18066,12 @@
         "date": "2026-10-24",
         "price": 19900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5071236307",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "컴포럽 프리미엄 암막 수면안대",
@@ -18059,11 +18100,12 @@
         "date": "2026-10-24",
         "price": 19710
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7048515849",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "나이키 스포츠 미니 백팩 DR6091-010",
@@ -18101,11 +18143,12 @@
         "date": "2026-10-25",
         "price": 18340
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6643644946",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "미즈노 남녀공용 플레이 더블 쿠션 미드",
@@ -18134,11 +18177,12 @@
         "date": "2026-10-24",
         "price": 15250
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9449097265",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "아이스 아웃도어 팔토시 쿨토시",
@@ -18167,11 +18211,12 @@
         "date": "2026-10-24",
         "price": 3000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8777246072",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "아마폴라 여성 소가죽벨트 청바지용 허리띠",
@@ -18200,11 +18245,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8039976016",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "르포스 자외선차단 쿨 스포츠 골프 마스크 1+1",
@@ -18233,11 +18279,12 @@
         "date": "2026-10-24",
         "price": 12580
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6431129537",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "로또 남성용 이중 쿠션 중목 스포츠 양말 7켤레",
@@ -18266,11 +18313,12 @@
         "date": "2026-10-24",
         "price": 12490
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7972887783",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "바디인솔 1+1 아치 기능성 발편한 깔창",
@@ -18299,11 +18347,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9128818721",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "제이케이 연사 쿨파일 등산양말 장목",
@@ -18336,11 +18385,12 @@
         "date": "2026-10-25",
         "price": 11670
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8679870697",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "베로 가벼운 크로와상 크로스백",
@@ -18369,11 +18419,12 @@
         "date": "2026-10-24",
         "price": 9700
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9727537520",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "나이키 에브리데이 쿠션 트레이닝 크루 샥스 스포츠 장목 양말(2세트 6켤레)",
@@ -18402,11 +18453,12 @@
         "date": "2026-10-24",
         "price": 18200
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9369049865",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "닥터메모리 발충격 32% 감소 특허 무중력 발편한 족저근막 보호 아치 신발깔창",
@@ -18435,11 +18487,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9700457587",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "1+1 글램가드 4세대 숨쉬기 편한 겨울 방한 바라클라바 오토바이",
@@ -18468,11 +18521,12 @@
         "date": "2026-10-24",
         "price": 13900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7507760932",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "블랙야크워크웨어 안면 햇빛가리개 쿨 흡한속건 스포츠 마스크",
@@ -18501,11 +18555,12 @@
         "date": "2026-10-24",
         "price": 8500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9612958287",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "젠시크 자외선차단 쿨 스포츠 골프 마스크",
@@ -18534,11 +18589,12 @@
         "date": "2026-10-24",
         "price": 7900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8413085956",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "[1+1] 에어메쉬로 숨쉬기 편한 우디우디 프리미엄 기모 방한 넥워머",
@@ -18567,11 +18623,12 @@
         "date": "2026-10-24",
         "price": 17900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9659848538",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "온유마켓 휴대가 편한 신발주머니",
@@ -18600,11 +18657,12 @@
         "date": "2026-10-24",
         "price": 3500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-113166378",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "두발로 여성용 프리미엄 스니커즈 발목 양말 10켤레",
@@ -18633,11 +18691,12 @@
         "date": "2026-10-24",
         "price": 7900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8632355458",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "올리싹 5+5 두꺼운 남성용 국산 더블쿠션 두줄 스포츠 중목 양말",
@@ -18666,11 +18725,12 @@
         "date": "2026-10-24",
         "price": 19900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8215610823",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "탐사 초극세사 안경닦이 10p",
@@ -18699,11 +18759,12 @@
         "date": "2026-10-24",
         "price": 4750
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9616621341",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "사뿐삭스 프리미엄 무지 중목 양말 15켤레",
@@ -18732,11 +18793,12 @@
         "date": "2026-10-24",
         "price": 7200
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8609410958",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "트립킹 캐리어 바퀴 보호 일회용 커버 100p",
@@ -18766,11 +18828,12 @@
         "date": "2026-10-24",
         "price": 1900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8673216756",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "픽솔 1+1 세상편한 7부 키높이깔창 여성 남성 1.5cm 2.5cm 3.5cm",
@@ -18799,11 +18862,12 @@
         "date": "2026-10-24",
         "price": 8400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6786633262",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "베이스알파에센셜_베이직 EVA 실내화",
@@ -18832,11 +18896,12 @@
         "date": "2026-10-24",
         "price": 3990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8966171675",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "비바핏 남녀공용 무지 스포츠 메쉬 대두 볼캡 모자",
@@ -18865,11 +18930,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9421454398",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "릴리플라 프리미엄 고탄력 데일리 머리끈 24p",
@@ -18898,11 +18964,12 @@
         "date": "2026-10-24",
         "price": 5470
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-234431816",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "베이스알파에센셜 남성용 프리미엄 스포츠 커버 중목 양말 10켤레",
@@ -18931,11 +18998,12 @@
         "date": "2026-10-24",
         "price": 9960
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9612806766",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "헤어센틱 짱짱한 무매듭 여성 머리끈 500개+파우치 5개",
@@ -18964,11 +19032,12 @@
         "date": "2026-10-24",
         "price": 8900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8224916739",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "컴포트데이 고급 양가죽 라텍스 깔창 발편한 기능성 쿠션깔창 러닝 운동화 구두 푹신한 신발깔창",
@@ -18997,11 +19066,12 @@
         "date": "2026-10-24",
         "price": 6900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8618506004",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "루미앤드 안경 코 받침 교체세트 부드러운 실리콘 에어 풀세트",
@@ -19031,11 +19101,12 @@
         "date": "2026-10-24",
         "price": 8990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8515244316",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "스카위즈 우아한 주얼리 보관함",
@@ -19064,11 +19135,12 @@
         "date": "2026-10-24",
         "price": 7000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8719736799",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "걸핀스 자국없는 스프링 데일리 케이스 머리끈 9p 세트 1077",
@@ -19097,11 +19169,12 @@
         "date": "2026-10-24",
         "price": 3250
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6408543757",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "워더미 여성용 큐티 캐릭터 포인트 골지 단목 발목 양말 10종 세트 W512",
@@ -19130,11 +19203,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1885706361",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "베이스알파에센셜 학생용 카바 무지 중목 양말 10켤레",
@@ -19163,11 +19237,12 @@
         "date": "2026-10-24",
         "price": 8270
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7108645202",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "올웨이즈굿 여성용 무지 중목 양말 6켤레세트",
@@ -19196,11 +19271,12 @@
         "date": "2026-10-24",
         "price": 12800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9702631490",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "여성 와이드 트레이닝 팬츠 빅사이즈 투웨이 절개 벌룬 와이드 시야오",
@@ -19229,11 +19305,12 @@
         "date": "2026-10-24",
         "price": 9990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9738208722",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "코엔드 남자 헤어밴드 머리띠 3종",
@@ -19262,11 +19339,12 @@
         "date": "2026-10-24",
         "price": 3000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8618912",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "더베이직 남성용 스포츠 커버 중목 양말 12켤레",
@@ -19295,11 +19373,12 @@
         "date": "2026-10-24",
         "price": 11460
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-22559961",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "제트스트림 볼펜 SXN-150 0.5mm",
@@ -19328,11 +19407,12 @@
         "date": "2026-10-24",
         "price": 12500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7645527396",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "더베이직 남성용 프리미엄 스니커즈 발목 양말 10켤레",
@@ -19361,11 +19441,12 @@
         "date": "2026-10-24",
         "price": 9970
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8174334666",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "라이프컴바인 1+1 남성벨트 남자 허리띠 정장 가죽",
@@ -19394,11 +19475,12 @@
         "date": "2026-10-24",
         "price": 9500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8384438668",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "라세르 겨울 방한 기모 바라클라바",
@@ -19427,11 +19509,12 @@
         "date": "2026-10-24",
         "price": 18900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9496377616",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "FITOJIM 남자 트레이닝바지 원턱 벌룬 와이드팬츠 츄리닝 바지",
@@ -19460,11 +19543,12 @@
         "date": "2026-10-24",
         "price": 13900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8734722763",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "카시오 군인 학생 스포츠 디지털시계 F-91W-1",
@@ -19493,11 +19577,12 @@
         "date": "2026-10-24",
         "price": 20000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6853286088",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "엘엑스티 남성용 구김없는 스판 반슬림 와이셔츠",
@@ -19526,11 +19611,12 @@
         "date": "2026-10-24",
         "price": 20230
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8982575583",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "찰리앤 데일리 가죽 남성 벨트",
@@ -19559,11 +19645,12 @@
         "date": "2026-10-24",
         "price": 5990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-343490373",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "블랑플뢰르 남성용 캐주얼 정장벨트",
@@ -19592,11 +19679,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9698561194",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "안경 코받침 코패드 실리콘 미끄럼방지",
@@ -19626,11 +19714,12 @@
         "date": "2026-10-24",
         "price": 2500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9649923742",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "JEEP SPIRIT 캐주얼 프리미엄 가죽 벨트 BT0653",
@@ -19659,11 +19748,12 @@
         "date": "2026-10-24",
         "price": 26800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-281403973",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "베이스알파 에센셜 남성용 프리미엄 스니커즈 양말 10켤레",
@@ -19692,11 +19782,12 @@
         "date": "2026-10-24",
         "price": 7990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9633859697",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "[압도적 땀흡수] 온메이드 남성용 프리미엄 스니커즈 발목 양말 10켤레",
@@ -19725,11 +19816,12 @@
         "date": "2026-10-24",
         "price": 8990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9487504279",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "나이키 브라질리아 스포츠 드로우 스트링백 IB4409-010",
@@ -19762,11 +19854,12 @@
         "date": "2026-10-25",
         "price": 16120
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7164345502",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "세타필 모이스춰라이징 로션",
@@ -19795,11 +19888,12 @@
         "date": "2026-10-24",
         "price": 14010
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8988525857",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "온더바디 코튼풋 발을 씻자 풋샴푸 레몬민트향",
@@ -19832,11 +19926,12 @@
         "date": "2026-10-25",
         "price": 9480
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8330725092",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "에스트라 아토베리어365 크림 플러스",
@@ -19865,11 +19960,12 @@
         "date": "2026-10-24",
         "price": 31000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6789548230",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "케라시스 케라마이드 극손상 헤어트리트먼트",
@@ -19898,11 +19994,12 @@
         "date": "2026-10-24",
         "price": 9000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-4343134537",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "아리얼 스트레스 릴리빙 퓨어풀 클렌징 티슈",
@@ -19931,11 +20028,12 @@
         "date": "2026-10-24",
         "price": 7440
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6945258911",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "도브 포밍 핸드워시 딥 모이스처",
@@ -19964,11 +20062,12 @@
         "date": "2026-10-24",
         "price": 5400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1946659295",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "바세린 립테라피 스틱",
@@ -19997,11 +20096,12 @@
         "date": "2026-10-24",
         "price": 4400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7742021454",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "코멧 베이직 나무 순면 면봉",
@@ -20030,11 +20130,12 @@
         "date": "2026-10-24",
         "price": 4660
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6146620481",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "웰라쥬 리얼 히알루로닉 블루 앰플",
@@ -20063,11 +20164,12 @@
         "date": "2026-10-24",
         "price": 17900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8209850103",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "티스 딥 오프 클렌징 오일",
@@ -20096,11 +20198,12 @@
         "date": "2026-10-24",
         "price": 8660
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8370947658",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "마녀공장 퓨어 클렌징 오일",
@@ -20129,11 +20232,12 @@
         "date": "2026-10-24",
         "price": 12500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8059755411",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "도브 뷰티 크림 바 비누",
@@ -20183,11 +20287,12 @@
         "price": 12480
       }
     ],
-    "priceDropRate": 3
+    "priceDropRate": 3,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7650005374",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "미쟝센 퍼펙트 오리지널 헤어 세럼",
@@ -20220,11 +20325,12 @@
         "date": "2026-10-25",
         "price": 8800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-106265",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "폰즈 클리어 훼이스 스파 립 앤 아이 메이크업 리무버",
@@ -20253,11 +20359,12 @@
         "date": "2026-10-24",
         "price": 5450
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7166913299",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "더마팩토리 나이아신아마이드 20% 세럼",
@@ -20295,11 +20402,12 @@
         "price": 5550
       }
     ],
-    "priceDropRate": 3
+    "priceDropRate": 3,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9072524953",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "메디힐 데일리 솔루션 수분 진정 탄력 마스크팩 3종 세트",
@@ -20328,11 +20436,12 @@
         "date": "2026-10-24",
         "price": 23500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8582731683",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "미쟝센 쉽고 빠른 거품 염색 새치전용",
@@ -20361,11 +20470,12 @@
         "date": "2026-10-24",
         "price": 10900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7844630835",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "나드 리프레쉬 퍼퓸드 바디워시 화이트머스크향",
@@ -20394,11 +20504,12 @@
         "date": "2026-10-24",
         "price": 8900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8802041287",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "아이깨끗해 핸드워시 리필용 순 파우더향",
@@ -20431,11 +20542,12 @@
         "date": "2026-10-25",
         "price": 10360
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9187340574",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "2+1 출시하자마자 1위 퓨어그램 모공이별 딥클렌징폼 제주 그린티 저자극 폼클렌징 120ml",
@@ -20464,11 +20576,12 @@
         "date": "2026-10-24",
         "price": 14670
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-189259849",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "샤워메이트 바디워시 클린코튼",
@@ -20497,11 +20610,12 @@
         "date": "2026-10-24",
         "price": 8500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8633754180",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "닥터지 블랙 스네일 크림 듀오",
@@ -20538,11 +20652,12 @@
         "date": "2026-10-25",
         "price": 22380
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-344528374",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "일리윤 울트라 리페어 바디로션",
@@ -20571,11 +20686,12 @@
         "date": "2026-10-24",
         "price": 15230
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9039379842",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "일리윤 세라마이드 아토 대용량 바디로션",
@@ -20604,11 +20720,12 @@
         "date": "2026-10-24",
         "price": 21960
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9291024760",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "올웨일리 국산 오가닉 면봉 이탈리아 코튼",
@@ -20637,11 +20754,12 @@
         "date": "2026-10-24",
         "price": 5900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6148487160",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "크리스마 더마랩 1 페이스 타올 1겹",
@@ -20670,11 +20788,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6492007298",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "피지오겔 데일리 모이스쳐 테라피 페이셜 크림",
@@ -20703,11 +20822,12 @@
         "date": "2026-10-24",
         "price": 21890
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-181699807",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "밀크바오밥 바디워시 화이트머스크향",
@@ -20736,11 +20856,12 @@
         "date": "2026-10-24",
         "price": 12900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6499998087",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "헤드앤숄더 두피 토탈 솔루션 샴푸 쿨 멘솔",
@@ -20769,11 +20890,12 @@
         "date": "2026-10-24",
         "price": 13580
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7006899364",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "팬틴 극손상케어 샴푸 프루티 플로럴",
@@ -20802,11 +20924,12 @@
         "date": "2026-10-24",
         "price": 8120
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-91830709",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "일리윤 세라마이드 아토 6.0 탑투토 바디워시 무향",
@@ -20856,11 +20979,12 @@
         "price": 8200
       }
     ],
-    "priceDropRate": 45
+    "priceDropRate": 45,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7440121642",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "피노 프리미엄 터치 헤어 마스크 비",
@@ -20889,11 +21013,12 @@
         "date": "2026-10-24",
         "price": 9450
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8207856682",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "도브 뷰티 바 센서티브 스킨 비누",
@@ -20933,11 +21058,12 @@
         "price": 8910
       }
     ],
-    "priceDropRate": 62
+    "priceDropRate": 62,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-4352455743",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "에스트라 아토베리어 365 크림 미스트",
@@ -20966,11 +21092,12 @@
         "date": "2026-10-24",
         "price": 14100
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7397036159",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "듀이트리 하이 아미노 올 클렌징 밀크",
@@ -20999,11 +21126,12 @@
         "date": "2026-10-24",
         "price": 16610
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1176713569",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "일리윤 히알루론 모이스춰 수분크림",
@@ -21032,11 +21160,12 @@
         "date": "2026-10-24",
         "price": 8010
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1912642276",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "디오디너리 나이아신아마이드 10% + 징크 1% 에센스",
@@ -21065,11 +21194,12 @@
         "date": "2026-10-24",
         "price": 15000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7353151170",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "제이웨이브 듀오덤 스팟패치",
@@ -21098,11 +21228,12 @@
         "date": "2026-10-24",
         "price": 5800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8085379688",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "팬틴 케라틴 극손상케어 컨디셔너 프루티플로럴향",
@@ -21131,11 +21262,12 @@
         "date": "2026-10-24",
         "price": 9430
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-4310015590",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "바세린 프로텍팅 젤리 멀티밤",
@@ -21168,11 +21300,12 @@
         "date": "2026-10-25",
         "price": 4800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9648097024",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "에스트라 아토베리어 365 하이드로 수딩크림",
@@ -21201,11 +21334,12 @@
         "date": "2026-10-24",
         "price": 20500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8729115745",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "유닉스 세라믹 판고데기",
@@ -21238,11 +21372,12 @@
         "date": "2026-10-25",
         "price": 24900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9636910186",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "바세린 글루타히야 듀이 래디언스 투명광채 세럼 바디로션",
@@ -21271,11 +21406,12 @@
         "date": "2026-10-24",
         "price": 10550
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6685232511",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "이니스프리 납작 아이브로우 펜슬 0.3g",
@@ -21304,11 +21440,12 @@
         "date": "2026-10-24",
         "price": 4900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5449910664",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "도브 리밸런싱 바디워시 화이트피치",
@@ -21337,11 +21474,12 @@
         "date": "2026-10-24",
         "price": 8050
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8133102277",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "닥터지 레드 블레미쉬 시카 수딩 크림",
@@ -21370,11 +21508,12 @@
         "date": "2026-10-24",
         "price": 28140
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6137107869",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "달바 워터풀 톤업 선크림 SPF 50+ PA++++",
@@ -21403,11 +21542,12 @@
         "date": "2026-10-24",
         "price": 16360
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9349360026",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "블루나 본 프리미엄 고평량 엠보싱 물티슈 캡형",
@@ -21438,11 +21578,12 @@
         "date": "2026-10-24",
         "price": 12900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8466035425",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "리벤스 퓨어워터 아기물티슈 엠보싱 캡형",
@@ -21474,11 +21615,12 @@
         "date": "2026-10-24",
         "price": 10400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9699430550",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "샤오커오라 무설탕 비타민C 민트 박하 12가지맛 믹스 미니 과일 사탕 캔디 중형",
@@ -21508,11 +21650,12 @@
         "date": "2026-10-24",
         "price": 14500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8161005570",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "브라운라이프 베이지 도톰한 아기 물티슈 대용량 엠보싱 저자극 캡형",
@@ -21544,11 +21687,12 @@
         "date": "2026-10-24",
         "price": 11900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-4665612599",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "[로켓프레시] 친환경 국내산 팽이버섯",
@@ -21579,11 +21723,12 @@
         "date": "2026-10-24",
         "price": 1140
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-130180788",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "서울우유 목장의 신선함이 살아있는 우유",
@@ -21612,11 +21757,12 @@
         "date": "2026-10-24",
         "price": 3310
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7748460732",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "[로켓프레시] 서울우유 나 100% 우유",
@@ -21645,11 +21791,12 @@
         "date": "2026-10-24",
         "price": 5940
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9532199546",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "[로켓프레시] 신선 대란 1560g",
@@ -21678,11 +21825,12 @@
         "date": "2026-10-24",
         "price": 7990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6854321814",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "곰곰 아삭한 숙주나물",
@@ -21711,11 +21859,12 @@
         "date": "2026-10-24",
         "price": 1290
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7941558764",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "[로켓프레시] 곰곰 만능두부",
@@ -21744,11 +21893,12 @@
         "date": "2026-10-24",
         "price": 990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1649813767",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "풀무원 무농약 국산 숙주",
@@ -21782,11 +21932,12 @@
         "price": 2070
       }
     ],
-    "priceDropRate": 8
+    "priceDropRate": 8,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-266254917",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "곰곰 광천 도시락김",
@@ -21815,11 +21966,12 @@
         "date": "2026-10-24",
         "price": 10780
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-172779883",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "맑은물에 촌두부",
@@ -21848,11 +22000,12 @@
         "date": "2026-10-24",
         "price": 1250
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6121918362",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "[팩] 밀양 깻잎",
@@ -21881,11 +22034,12 @@
         "date": "2026-10-24",
         "price": 2480
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8188344094",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "브론디 플러스 천연펄프 키친타월",
@@ -21914,11 +22068,12 @@
         "date": "2026-10-24",
         "price": 7130
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8880525259",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "가치생활 오가닉  대나무 키친타올 천연펄프 롤형",
@@ -21947,11 +22102,12 @@
         "date": "2026-10-24",
         "price": 11500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-2208125618",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "코멧 뽑아쓰는 테이블 냅킨",
@@ -21981,11 +22137,12 @@
         "date": "2026-10-24",
         "price": 9980
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9543060017",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "코멧 위생롤백 25 x 35 cm",
@@ -22014,11 +22171,12 @@
         "date": "2026-10-24",
         "price": 3090
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6976737267",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "코멧 키친 스테인레스 찜기 소형",
@@ -22047,11 +22205,12 @@
         "date": "2026-10-24",
         "price": 3540
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8414858493",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "탐사 한장씩 깔아쓰는 일타 비닐식탁보, 90 x 128cm",
@@ -22080,11 +22239,12 @@
         "date": "2026-10-24",
         "price": 5390
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6542739738",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "달팽이리빙 퀴진드마망 실리콘 씽크대 물막이",
@@ -22114,11 +22274,12 @@
         "date": "2026-10-24",
         "price": 8500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-16495803",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "더좋은컵 천연펄프 종이컵 184ml",
@@ -22147,11 +22308,12 @@
         "date": "2026-10-24",
         "price": 6990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8879966713",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "코멧 뽑아쓰는 키친타올 리필 2겹 2000매",
@@ -22182,11 +22344,12 @@
         "date": "2026-10-24",
         "price": 10490
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-240416607",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "이지캔 기저귀 쓰레기통 EZ-270 + EZ-280R 리필1롤",
@@ -22215,11 +22378,12 @@
         "date": "2026-10-24",
         "price": 37500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9769746722",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "매직캔 리필 봉투 250R10BC",
@@ -22248,11 +22412,12 @@
         "date": "2026-10-24",
         "price": 18000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9216204315",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "오우아스튜디오 자기주도 이유식 턱받이 식탁일체형 2way 지퍼형",
@@ -22302,11 +22467,12 @@
         "price": 18400
       }
     ],
-    "priceDropRate": 10
+    "priceDropRate": 10,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8272889813",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "퍼기 유아용 자기주도 이유식 긴팔형 턱받이",
@@ -22336,11 +22502,12 @@
         "date": "2026-10-24",
         "price": 19710
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9640607675",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "바니블라썸 미세불량 아기띠 침받이 순면 3세트 랜덤",
@@ -22370,11 +22537,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9664526313",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "퍼기 유아용 미피 실리콘 이지버클 이유식 턱받이",
@@ -22405,11 +22573,12 @@
         "date": "2026-10-24",
         "price": 15730
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7295300799",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "케이시조명 LED 방등 전등 60W 플리커프리 DC타입",
@@ -22438,11 +22607,12 @@
         "date": "2026-10-24",
         "price": 11160
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8350616562",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "코멧 뽑아쓰는 분리수거 배접 비닐봉투",
@@ -22485,11 +22655,12 @@
         "price": 5190
       }
     ],
-    "priceDropRate": 47
+    "priceDropRate": 47,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7757692318",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "벡셀 알카라인 D형 건전지 LR20",
@@ -22518,11 +22689,12 @@
         "date": "2026-10-24",
         "price": 3650
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7858734625",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "플라이토 돼지코 220V 변환 110V 무나사 여행용 어댑터",
@@ -22551,11 +22723,12 @@
         "date": "2026-10-24",
         "price": 4000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8042727154",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "아브카 뿌리는 다리미 핌 스프레이 500ml",
@@ -22584,11 +22757,12 @@
         "date": "2026-10-24",
         "price": 9800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8989222887",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "코멧 검정 손잡이 비닐봉투",
@@ -22617,11 +22791,12 @@
         "date": "2026-10-24",
         "price": 3790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7742258273",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "아토젯 순수필터 바디필터 3p + 헤드필터 3p",
@@ -22650,11 +22825,12 @@
         "date": "2026-10-24",
         "price": 9260
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1757119726",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "모노케어 접지 전선형 멀티탭 4구 DH-2048NT DH-1049-ST",
@@ -22683,11 +22859,12 @@
         "date": "2026-10-24",
         "price": 6980
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7704899476",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "홈플래닛 C타입 USB 3.0 멀티 카드리더기 MSD/SD",
@@ -22716,11 +22893,12 @@
         "date": "2026-10-24",
         "price": 8400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-237746555",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "유닉스 1700W 접이식 헤어 드라이어",
@@ -22750,11 +22928,12 @@
         "date": "2026-10-24",
         "price": 25060
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6164055018",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "신지모루 변색방지 이어폰 TPU 투명케이스 + 철가루 방지 스티커 + 카라비너 세트",
@@ -22783,11 +22962,12 @@
         "date": "2026-10-24",
         "price": 7930
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8528238769",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "번개표 개별스위치 멀티탭 2구",
@@ -22816,11 +22996,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8562480365",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "제피드 마이크로 SD카드 블랙박스 메모리카드 UHS-I",
@@ -22849,11 +23030,12 @@
         "date": "2026-10-24",
         "price": 19000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9019055318",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "삼성전자 갤럭시 버즈3 FE 블루투스 이어폰",
@@ -22882,11 +23064,12 @@
         "date": "2026-10-24",
         "price": 137990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8832081734",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "유한락스 반려동물 냄새얼룩 제거제",
@@ -22920,11 +23103,12 @@
         "date": "2026-10-25",
         "price": 16400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8391635007",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "캐츠랑 전연령 고양이 리브레 건식사료",
@@ -22955,11 +23139,12 @@
         "date": "2026-10-24",
         "price": 38790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6113370508",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "프로베스트 고양이 그린 전연령 기능성 사료",
@@ -23003,11 +23188,12 @@
         "price": 11490
       }
     ],
-    "priceDropRate": 39
+    "priceDropRate": 39,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7170134497",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "도그랑 전연령 강아지 클래식 건식사료",
@@ -23038,11 +23224,12 @@
         "date": "2026-10-24",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8425193796",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "리스펫 반려동물 LED 다보여 발톱깎이 4.3 x 15 cm",
@@ -23072,11 +23259,12 @@
         "date": "2026-10-24",
         "price": 8990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8405261953",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "몽셰펫 반려동물 덴탈 스프레이 뿌리는 치약 구취/치석제거",
@@ -23106,11 +23294,12 @@
         "date": "2026-10-24",
         "price": 14900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6224528154",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "마이펫닥터 강아지 시그니처 티어스 컨트롤 기능성 사료",
@@ -23140,11 +23329,12 @@
         "date": "2026-10-24",
         "price": 18000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9778531308",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "펫스토리로얄 프리미엄 고양이 캔 사료",
@@ -23174,11 +23364,12 @@
         "date": "2026-10-24",
         "price": 23750
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7701698412",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "베이스알파에센셜 아동 심플 골지 중목 양말 6켤레 세트",
@@ -23208,11 +23399,12 @@
         "date": "2026-10-24",
         "price": 6590
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6751074162",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "롤리트리 아동용 페이크 목폴라 넥워머",
@@ -23242,11 +23434,12 @@
         "date": "2026-10-24",
         "price": 4140
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7908109026",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "롤리트리 여아용 대용량 고무줄 머리끈 100g + 이지컷 고무줄 칼 + 휴대용 빗 세트",
@@ -23277,11 +23470,12 @@
         "date": "2026-10-24",
         "price": 5000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6466216123",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "비바세븐 아동용 마이베어 양말 4족 선물세트",
@@ -23311,11 +23505,12 @@
         "date": "2026-10-24",
         "price": 7870
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8941560110",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "롤리트리 여아용 러블리 하트 타이즈",
@@ -23345,11 +23540,12 @@
         "date": "2026-10-24",
         "price": 6890
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8463372387",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "유니프랜드 아동용 플러피안 플리스 집업 점퍼",
@@ -23379,11 +23575,12 @@
         "date": "2026-10-24",
         "price": 15430
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7257500972",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-24",
     "title": "비단길 유프 대용량 U핀 3종 x 60p 세트",
@@ -23412,11 +23609,12 @@
         "date": "2026-10-24",
         "price": 6500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7870193642",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "베이스알파에센셜 아동용 플라워 양말 5족 세트",
@@ -23446,11 +23644,12 @@
         "date": "2026-10-24",
         "price": 6790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9344735755",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "아이러브제이 아동용 SFAT03 제이 베이직 싱글 스판티",
@@ -23480,11 +23679,12 @@
         "date": "2026-10-24",
         "price": 15050
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7951127185",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "베이스알파 에센셜 성인용 일회용 우의 10개",
@@ -23511,11 +23711,12 @@
         "date": "2026-10-25",
         "price": 6390
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8366713990",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "탐사 극세사 안경닦이 10p",
@@ -23542,11 +23743,12 @@
         "date": "2026-10-25",
         "price": 5840
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9701404270",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "예그리나 여자 발가락양말 중목 장목 여성 러닝 무지 쿠션 양말 4켤레 세트",
@@ -23573,11 +23775,12 @@
         "date": "2026-10-25",
         "price": 10810
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9679357905",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "드노엘 4D 암막 수면안대 빛차단 숙면 눈가리개 여행용 아이마스크 1+1",
@@ -23604,11 +23807,12 @@
         "date": "2026-10-25",
         "price": 6700
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9704030238",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "스무삭스 남녀공용 프리미엄 무지 중목 양말 20켤레",
@@ -23635,11 +23839,12 @@
         "date": "2026-10-25",
         "price": 9400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8941555654",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "베이스알파에센셜 남성용 등산 작업용 양말 5종 세트",
@@ -23666,11 +23871,12 @@
         "date": "2026-10-25",
         "price": 6990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9682103702",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "여성 러닝 니삭스 압박 니삭스 3켤레 세트 스포츠 컴프레션 양말 쿠션 바닥 다리라인 보정",
@@ -23697,11 +23903,12 @@
         "date": "2026-10-25",
         "price": 8990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7434490441",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "콜로닐 워터스탑 신발 방수 스프레이",
@@ -23728,11 +23935,12 @@
         "date": "2026-10-25",
         "price": 11610
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9500641127",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "디어픽스 남성 귀 안아픈 머리띠 헤어밴드 3종 세트",
@@ -23759,11 +23967,12 @@
         "date": "2026-10-25",
         "price": 4900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9740723213",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "비타플렉스 남녀공용 기모양말 5켤레 세트",
@@ -23790,11 +23999,12 @@
         "date": "2026-10-25",
         "price": 6900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8581157741",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "걸핀스 버블 미니 집게핀 2p 1541",
@@ -23821,11 +24031,12 @@
         "date": "2026-10-25",
         "price": 1610
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7230708295",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "탐사 고탄력 헤어밴드 2종 세트",
@@ -23852,11 +24063,12 @@
         "date": "2026-10-25",
         "price": 5000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5567091641",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "MLB NY 심플로고 3단 자동우산 + 커버세트",
@@ -23883,11 +24095,12 @@
         "date": "2026-10-25",
         "price": 12500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9726048723",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "모아든 프리미엄 암막 여행용 숙면 수면안대",
@@ -23914,11 +24127,12 @@
         "date": "2026-10-25",
         "price": 16900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9099211551",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "맨인모드 남성용 스판 좋은 데일리 두줄 트레이닝 팬츠 JY018",
@@ -23945,11 +24159,12 @@
         "date": "2026-10-25",
         "price": 12890
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9160590793",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "제이케이 남성용 이중바닥 등산양말 단목",
@@ -23976,11 +24191,12 @@
         "date": "2026-10-25",
         "price": 10060
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9679029316",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "쓱핏 남자 검정 자동 넥타이",
@@ -24007,11 +24223,12 @@
         "date": "2026-10-25",
         "price": 5800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8519907781",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "JUSTPICK 잘라쓰는 구두 미끄럼방지 패드",
@@ -24038,11 +24255,12 @@
         "date": "2026-10-25",
         "price": 5490
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7194313082",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "2개1세트 장사부 남자 스포츠 레깅스 9부",
@@ -24069,11 +24287,12 @@
         "date": "2026-10-25",
         "price": 13460
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9678366548",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "크록스 정품 ORIGINAL BAYABAND CLOG 바야밴드 클로그 205089 레츄 악세사리",
@@ -24100,11 +24319,12 @@
         "date": "2026-10-25",
         "price": 51900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9046635590",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "말랑이 족저근막 깔창 푹신한 쿠션 기능성",
@@ -24131,11 +24351,12 @@
         "date": "2026-10-25",
         "price": 9500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7773825463",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "비타할로 무형광 도톰한 원형 순면 화장솜",
@@ -24162,11 +24383,12 @@
         "date": "2026-10-25",
         "price": 4090
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7022353211",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "라운드랩 1025 독도 로션",
@@ -24193,11 +24415,12 @@
         "date": "2026-10-25",
         "price": 18750
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9355438708",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "제이숲 피토콜라겐 힐링픽서 헤어스프레이",
@@ -24224,11 +24447,12 @@
         "date": "2026-10-25",
         "price": 12900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6429602575",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "고운발 명품 크림",
@@ -24255,11 +24479,12 @@
         "date": "2026-10-25",
         "price": 5490
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8336040965",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "미샤 소프트 면봉",
@@ -24286,11 +24511,12 @@
         "date": "2026-10-25",
         "price": 1340
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7405989794",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "에스쁘아 비벨벳 에어 퍼프 7p",
@@ -24317,11 +24543,12 @@
         "date": "2026-10-25",
         "price": 7230
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5054141272",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "토니모리 이지터치 오토 아이브로우 0.4g",
@@ -24348,11 +24575,12 @@
         "date": "2026-10-25",
         "price": 6160
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6523610496",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "케라시스 데미지 클리닉 단백질 컨디셔너",
@@ -24379,11 +24607,12 @@
         "date": "2026-10-25",
         "price": 6000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6259990836",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "에스트라 아토베리어365 젠틀 포밍클렌저",
@@ -24410,11 +24639,12 @@
         "date": "2026-10-25",
         "price": 12900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9597427089",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "블루나 본 시그니처 도톰한 아기 물티슈 엠보싱 캡형",
@@ -24441,11 +24671,12 @@
         "date": "2026-10-25",
         "price": 11070
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9344126652",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "블루나 본 오리지널 유아물티슈 캡형",
@@ -24472,11 +24703,12 @@
         "date": "2026-10-25",
         "price": 9990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9055193080",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "베베숲 오리지널 유아물티슈 캡형",
@@ -24503,11 +24735,12 @@
         "date": "2026-10-25",
         "price": 12900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8309014082",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "FRANKLIIN 주방세제&젖병세정제",
@@ -24534,11 +24767,12 @@
         "date": "2026-10-25",
         "price": 8840
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8791905739",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "퍼기 유기농 이유식 쌀가루 가루입자",
@@ -24565,11 +24799,12 @@
         "date": "2026-10-25",
         "price": 5900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8336583914",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "재로우 우먼 펨-도필러스 유산균 10억 베지테리안 캡슐",
@@ -24599,11 +24834,12 @@
         "price": 31300
       }
     ],
-    "priceDropRate": 16
+    "priceDropRate": 16,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6601497920",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "그린핑거 촉촉한 자연보습 베이비 로션",
@@ -24630,11 +24866,12 @@
         "date": "2026-10-25",
         "price": 14910
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9721889405",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "델리아 슈프림 플러스 프리미엄 아기물티슈 캡형",
@@ -24661,11 +24898,12 @@
         "date": "2026-10-25",
         "price": 10900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1074470755",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "국내산 양파",
@@ -24692,11 +24930,12 @@
         "date": "2026-10-25",
         "price": 3580
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7548941405",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "[로켓프레시] 국내산 깐마늘",
@@ -24723,11 +24962,12 @@
         "date": "2026-10-25",
         "price": 1680
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8773906801",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "아쿠아시스 먹는샘물 무라벨",
@@ -24754,11 +24994,12 @@
         "date": "2026-10-25",
         "price": 6170
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7038381329",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "짜파게티 140g",
@@ -24785,11 +25026,12 @@
         "date": "2026-10-25",
         "price": 4800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-4778232644",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "국내산 깐쪽파",
@@ -24816,11 +25058,12 @@
         "date": "2026-10-25",
         "price": 2380
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9225706227",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "[로켓프레시] 귤탐 당도선별 11Brix 감귤",
@@ -24847,11 +25090,12 @@
         "date": "2026-10-25",
         "price": 15990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7217231257",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "[로켓프레시] 광식이농장 완숙 토마토",
@@ -24878,11 +25122,12 @@
         "date": "2026-10-25",
         "price": 7100
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8907000918",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "[로켓프레시] 무항생제 신선 대란 1.56kg",
@@ -24909,11 +25154,12 @@
         "date": "2026-10-25",
         "price": 8390
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-170016366",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 더블 지퍼백 중형 50매 + 대형 50매",
@@ -24940,11 +25186,12 @@
         "date": "2026-10-25",
         "price": 9890
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1402935103",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "스카트 하루한장 THE 버블 수세미",
@@ -24971,11 +25218,12 @@
         "date": "2026-10-25",
         "price": 3650
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5387625549",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "스타벅스 네스프레소 하우스블렌드 커피",
@@ -25002,11 +25250,12 @@
         "date": "2026-10-25",
         "price": 30640
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1625152374",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "살림비책 일회용 뽑아쓰는 세제일체형 한장수세미",
@@ -25033,11 +25282,12 @@
         "date": "2026-10-25",
         "price": 4300
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7225189408",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 심플한 일회용 개별포장 숟가락 화이트",
@@ -25064,11 +25314,12 @@
         "date": "2026-10-25",
         "price": 4790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8463456921",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "탐사 무인쇄 종이용기 380ml",
@@ -25095,11 +25346,12 @@
         "date": "2026-10-25",
         "price": 5790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9734593767",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "샤인스펀 제로 스크래치 양면 수세미",
@@ -25126,11 +25378,12 @@
         "date": "2026-10-25",
         "price": 4990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8357716360",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "탐사 250시리즈 매직 리필 비닐봉투 라벤더향",
@@ -25157,11 +25410,12 @@
         "date": "2026-10-25",
         "price": 11890
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9728263919",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "베르데 리필 매직캔 호환 리필 쓰레기 봉투 무향 250",
@@ -25188,11 +25442,12 @@
         "date": "2026-10-25",
         "price": 18800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9510086035",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "모윰 자기주도 이유식 가운 긴팔형",
@@ -25223,11 +25478,12 @@
         "date": "2026-10-25",
         "price": 25510
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8750362366",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "바니블라썸 롤링 턱받이 세트",
@@ -25254,11 +25510,12 @@
         "date": "2026-10-25",
         "price": 13100
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9681575187",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "국산 순면 100% 가제 면손수건 5개",
@@ -25285,11 +25542,12 @@
         "date": "2026-10-25",
         "price": 7800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9751997251",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "돗투돗 유아용 일회용 방수 턱받이",
@@ -25316,11 +25574,12 @@
         "date": "2026-10-25",
         "price": 12900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7812235201",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 홈 미끄럼방지 회전형 옷걸이",
@@ -25347,11 +25606,12 @@
         "date": "2026-10-25",
         "price": 6790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7755865565",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 홈 이염방지 세탁시트 200매",
@@ -25378,11 +25638,12 @@
         "date": "2026-10-25",
         "price": 8990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-220911908",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "이지드롭 변기크리너 뉴 레몬향",
@@ -25409,11 +25670,12 @@
         "date": "2026-10-25",
         "price": 8900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7217431210",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "스카트 유리 거울 세정 청소티슈",
@@ -25444,11 +25706,12 @@
         "date": "2026-10-25",
         "price": 9420
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9032104227",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "해피데이 포켓형 핫팩 100g",
@@ -25475,11 +25738,12 @@
         "date": "2026-10-25",
         "price": 11380
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7104758439",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "고로고로 초강력 테이프클리너 리필",
@@ -25506,11 +25770,12 @@
         "date": "2026-10-25",
         "price": 13900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9506325370",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "맥스틸 25W GaN 2포트 PD PPS 초고속 충전기 C타입 USB 멀티 어댑터",
@@ -25537,11 +25802,12 @@
         "date": "2026-10-25",
         "price": 4900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8915242678",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "셀루미 메가 스틱 올인원 스마트폰 셀카봉 삼각대 171.7cm",
@@ -25568,11 +25834,12 @@
         "date": "2026-10-25",
         "price": 12900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-2119214381",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "누아트 태블릿 스마트폰 침대 자바라 거치대",
@@ -25599,11 +25866,12 @@
         "date": "2026-10-25",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9643230405",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "삼성전자 갤럭시 핏3",
@@ -25628,11 +25896,12 @@
         "date": "2026-10-25",
         "price": 76500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8989460734",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "요이치 USB 3.0 A타입 to C타입 플로우 C2 OTG 변환 젠더",
@@ -25659,11 +25928,12 @@
         "date": "2026-10-25",
         "price": 3750
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8192680551",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코드웨이 DP to DP 양방향 케이블",
@@ -25690,11 +25960,12 @@
         "date": "2026-10-25",
         "price": 7780
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9616144397",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "멍식이네 맛있개먹개 대용량 강아지 간식껌",
@@ -25721,11 +25992,12 @@
         "date": "2026-10-25",
         "price": 11890
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-150878901",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "마도로스펫 반려동물 트릿 간식",
@@ -25752,11 +26024,12 @@
         "date": "2026-10-25",
         "price": 17000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8129382339",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "졸리마켓 강아지 졸리의 행복한 간식 상점 껌",
@@ -25783,11 +26056,12 @@
         "date": "2026-10-25",
         "price": 13900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9393282869",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "바론 이지풋프로 반려동물 발바닥 바리깡",
@@ -25814,11 +26088,12 @@
         "date": "2026-10-25",
         "price": 21900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6631842834",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "탐사 반려동물 동결건조 간식 닭가슴살 240g",
@@ -25845,11 +26120,12 @@
         "date": "2026-10-25",
         "price": 12740
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-335833200",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 펫 고양이 쇼파 스크래쳐",
@@ -25876,11 +26152,12 @@
         "date": "2026-10-25",
         "price": 5690
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8693615412",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "지앤 아이부터 엄마까지 g패밀리 비비드 컬러 양말 2켤레 세트",
@@ -25907,11 +26184,12 @@
         "date": "2026-10-25",
         "price": 3750
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9021201367",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "투해피 아동용 미끄럼방지양말 5컬레- A05 디디",
@@ -25938,11 +26216,12 @@
         "date": "2026-10-25",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9710345127",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "하츄핑 프린세스 워치 어린이 손목시계",
@@ -25969,11 +26248,12 @@
         "date": "2026-10-25",
         "price": 19600
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9000582658",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "베베쥬 모노베이직넥워머 3종 세트",
@@ -26000,11 +26280,12 @@
         "date": "2026-10-25",
         "price": 8280
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7623327729",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "투나이언 남아 후드티 상하복세트 주니어 의류 트레이닝복 운동복 츄리닝 상하세트",
@@ -26031,11 +26312,12 @@
         "date": "2026-10-25",
         "price": 28600
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8491683480",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "롤리트리 아동용 고밀도 도톰 반팔 기본 티셔츠",
@@ -26062,11 +26344,12 @@
         "date": "2026-10-25",
         "price": 6390
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7965526314",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "유아동 데님팬츠 남아 여아 청바지 키즈 일자핏 데일리룩 밴딩 예가와이드팬츠",
@@ -26093,11 +26376,12 @@
         "date": "2026-10-25",
         "price": 15900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7425253232",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "롤리트리 아동 밴딩 부츠컷 나팔 팬츠",
@@ -26124,11 +26408,12 @@
         "date": "2026-10-25",
         "price": 6990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7106622989",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "산리오 아동용 시나모롤 47 스윗스타 입체 홀로그램 장우산 MUHKU10048",
@@ -26155,11 +26440,12 @@
         "date": "2026-10-25",
         "price": 7930
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8709756021",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "키즈트리 여아용 토끼 EVA 입체 슬리퍼 SZ-471",
@@ -26186,11 +26472,12 @@
         "date": "2026-10-25",
         "price": 6910
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9050114587",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "아빠빠키즈 초등 주니어 봄가을&겨울기모 와이드나이프팬츠  130-170호",
@@ -26217,11 +26504,12 @@
         "date": "2026-10-25",
         "price": 18900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7716170084",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "보드라미 기모 패딩 우주복 신생아 아기 겨울 외출복 아기옷 0~3개월 0~6개월 백일 출산선물",
@@ -26248,11 +26536,12 @@
         "date": "2026-10-25",
         "price": 39800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8560881515",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "피죤 드릴펑",
@@ -26280,11 +26569,12 @@
         "date": "2026-10-25",
         "price": 9700
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5717449507",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "폰타나 나폴리 뽀모도로 토마토 파스타소스",
@@ -26312,11 +26602,12 @@
         "date": "2026-10-25",
         "price": 12500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7970315172",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "브람스 올인 안마의자 방문설치",
@@ -26345,11 +26636,12 @@
         "date": "2026-10-25",
         "price": 1078990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8826288636",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "너구리 얼큰한맛 120g",
@@ -26377,11 +26669,12 @@
         "date": "2026-10-25",
         "price": 13400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-2783169",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "가그린 어린이용 구강세정제 사과향",
@@ -26409,11 +26702,12 @@
         "date": "2026-10-25",
         "price": 10460
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1762998328",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "엄마랑 낱말카드 150장 세이펜 호환",
@@ -26441,11 +26735,12 @@
         "date": "2026-10-25",
         "price": 19500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6927343547",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "흥화신바람 국내산 접이식 튼튼 빨래건조대",
@@ -26473,11 +26768,12 @@
         "date": "2026-10-25",
         "price": 21500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7510723221",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "AHC 아우라 시크릿 톤 업 크림 SPF30 PA++",
@@ -26505,11 +26801,12 @@
         "date": "2026-10-25",
         "price": 28450
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7802129666",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "ITC 헬로키티 핑크앤화이트 천연펄프 4겹 화장지",
@@ -26537,11 +26834,12 @@
         "date": "2026-10-25",
         "price": 19400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5307855301",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "케라시스 데빌스 퍼퓸 에디션 샴푸 미드나잇 판타지",
@@ -26569,11 +26867,12 @@
         "date": "2026-10-25",
         "price": 9500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1234247193",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "스카치 투명 테이프 550 리필 18mm x 20m",
@@ -26601,11 +26900,12 @@
         "date": "2026-10-25",
         "price": 9710
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7273912303",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "락피도 철분 액상 30포",
@@ -26633,11 +26933,12 @@
         "date": "2026-10-25",
         "price": 15900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8633888332",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "칼로쿡 전자레인지 저당질 밥솥 4인용",
@@ -26665,11 +26966,12 @@
         "date": "2026-10-25",
         "price": 19900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9132127024",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "지티스 양면 기내용 여행용 목베개",
@@ -26697,11 +26999,12 @@
         "date": "2026-10-25",
         "price": 37800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8425234785",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "[로켓프레시] 오징어링 (냉동)",
@@ -26729,11 +27032,12 @@
         "date": "2026-10-25",
         "price": 5830
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8487726444",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "[로켓프레시] 절단꽃게 L (냉동)",
@@ -26761,11 +27065,12 @@
         "date": "2026-10-25",
         "price": 5790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8673270088",
-    "status": "hidden",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "풀무원건강생활 스팀쿡 베이직 버튼음 무음모드 에어프라이어 12L, AV12E10CC, 단일 색상",
@@ -27092,7 +27397,7 @@
   },
   {
     "id": "coupang-9724755552",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "나이키 에브리데이 쿠션 트레이닝 앵클 샥스 스포츠 중목 양말(2세트 6켤레)",
@@ -27119,11 +27424,12 @@
         "date": "2026-10-25",
         "price": 18200
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5233401760",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "시너싹스 여성용 전체실리콘 논슬립 쿨 덧신 9켤레",
@@ -27150,11 +27456,12 @@
         "date": "2026-10-25",
         "price": 8450
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8248006949",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "셀마운틴 10켤레 두꺼운 작업 남성 등산 양말",
@@ -27181,11 +27488,12 @@
         "date": "2026-10-25",
         "price": 13500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9069452916",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "핏오짐 여성 원턱 와이드 일자 슬랙스 밴딩 와이드팬츠 스판 바지",
@@ -27212,11 +27520,12 @@
         "date": "2026-10-25",
         "price": 11900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9671917652",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "무드홈 리브 UV 자외선차단 고리형 원터치 고급 3단 자동 우산 양산 대형",
@@ -27243,11 +27552,12 @@
         "date": "2026-10-25",
         "price": 8900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9304924629",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "일감생활 프리미엄 초극세사 안경닦이 7p",
@@ -27274,11 +27584,12 @@
         "date": "2026-10-25",
         "price": 7980
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8538355392",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "이지레그 여성용 프리미엄 베이스 무지 장목 양말 8켤레 세트",
@@ -27305,11 +27616,12 @@
         "date": "2026-10-25",
         "price": 10500
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8118316861",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "뉴발란스 스탠다드 중목 양말 5팩 NBDSDMDL",
@@ -27336,11 +27648,12 @@
         "date": "2026-10-25",
         "price": 17900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8969464771",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "올라운드 니삭스 여성용 데일리 골지 셔링 롱 오버 양말 4종 세트",
@@ -27367,11 +27680,12 @@
         "date": "2026-10-25",
         "price": 9790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9691905177",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "이든무드 반투명 방수재질 여행용 다용도 신발 파우치 12개",
@@ -27398,11 +27712,12 @@
         "date": "2026-10-25",
         "price": 4900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9152056213",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "스위스톤 대용량 노트북 백팩 확장형  ST4D18",
@@ -27429,11 +27744,12 @@
         "date": "2026-10-25",
         "price": 29800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7188479078",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "케이투세이프티 BOA 안전화 K2-67S",
@@ -27460,11 +27776,12 @@
         "date": "2026-10-25",
         "price": 87790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9452404088",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "미제이 3P세트 남자 기능성 긴팔티 여름용 오버핏 쿨티셔츠 1+1+1",
@@ -27491,11 +27808,12 @@
         "date": "2026-10-25",
         "price": 19800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8366321167",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "챠오츄르 이나바 챠오츄르 버라이어티 SC138",
@@ -27522,11 +27840,12 @@
         "date": "2026-10-25",
         "price": 38370
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7557076812",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "세계일주 남녀공용 초경량 방수 바람막이 등산 자켓 간절기 점퍼 후드 커플 단체BDSF-599FDF",
@@ -27553,11 +27872,12 @@
         "date": "2026-10-25",
         "price": 20390
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9742195044",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "꼭필양말 남성 스포츠일상 발가락양말 5켤레",
@@ -27584,11 +27904,12 @@
         "date": "2026-10-25",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8364399439",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "케이에프몰 해동지 200매",
@@ -27615,11 +27936,12 @@
         "date": "2026-10-25",
         "price": 9800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9724752985",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "센카 퍼펙트 휩 페이셜 워시 FA 클렌징폼",
@@ -27646,11 +27968,12 @@
         "date": "2026-10-25",
         "price": 11700
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8209844068",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "이니스프리 화산송이 모공 바하 클렌징 폼",
@@ -27681,11 +28004,12 @@
         "date": "2026-10-25",
         "price": 11250
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7853426780",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "아이오페 맨 올데이 퍼펙트 올인원",
@@ -27712,11 +28036,12 @@
         "date": "2026-10-25",
         "price": 19300
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9395735618",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "크리스마 더마랩 3코튼 엠보 화장솜",
@@ -27743,11 +28068,12 @@
         "date": "2026-10-25",
         "price": 6900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6687515620",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "아브카 퍼퓸 핸드 워시 베이비 파우더",
@@ -27774,11 +28100,12 @@
         "date": "2026-10-25",
         "price": 7000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9392356527",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "도브 Miffy 뷰티너리싱 바디워시",
@@ -27805,11 +28132,12 @@
         "date": "2026-10-25",
         "price": 7000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9088017324",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "비플레인 녹두 약산성 클렌징폼 120ml + 80ml 기획세트",
@@ -27836,11 +28164,12 @@
         "date": "2026-10-25",
         "price": 19300
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1601751214",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "[2입기획] 미샤 수퍼 아쿠아 울트라 히알론 클렌징 폼",
@@ -27867,11 +28196,12 @@
         "date": "2026-10-25",
         "price": 9320
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7144144379",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "[비건뷰티] 비플레인 녹두 약산성 클렌징폼",
@@ -27898,11 +28228,12 @@
         "date": "2026-10-25",
         "price": 9300
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7800453299",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "릴리바이레드 스키니 메스 브로우 펜슬 0.06g",
@@ -27929,11 +28260,12 @@
         "date": "2026-10-25",
         "price": 4860
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8416670559",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "라입 어드밴스드 2X 아르간오일 헤어에센스",
@@ -27960,11 +28292,12 @@
         "date": "2026-10-25",
         "price": 11920
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-184630928",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "샤워메이트 산양유 비누 플러스",
@@ -27991,11 +28324,12 @@
         "date": "2026-10-25",
         "price": 9740
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8466035420",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "리벤스 유아용 시그니처 블루 도톰한 엠보싱 물티슈 캡형",
@@ -28022,11 +28356,12 @@
         "date": "2026-10-25",
         "price": 12570
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5509226394",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "아토팜 탑투토 워시",
@@ -28053,11 +28388,12 @@
         "date": "2026-10-25",
         "price": 16900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8251128160",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "아토팜 판테놀 크림",
@@ -28084,11 +28420,12 @@
         "date": "2026-10-25",
         "price": 21280
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7038366959",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "신라면 120g",
@@ -28115,11 +28452,12 @@
         "date": "2026-10-25",
         "price": 4150
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-172859237",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "남양유업 맛있는 우유 GT",
@@ -28151,11 +28489,12 @@
         "price": 2920
       }
     ],
-    "priceDropRate": 50
+    "priceDropRate": 50,
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-188775851",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "청정원 1등급 국산콩 두부 부침찌개 겸용",
@@ -28182,11 +28521,12 @@
         "date": "2026-10-25",
         "price": 3400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8255612928",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 손이 편한 위생장갑",
@@ -28213,11 +28553,12 @@
         "date": "2026-10-25",
         "price": 5280
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5471859034",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 니트릴장갑 화이트",
@@ -28244,11 +28585,12 @@
         "date": "2026-10-25",
         "price": 6990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9682171979",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "브리타 정수기 필터 막스트라 프로 퓨어 퍼포먼스 3p",
@@ -28275,11 +28617,12 @@
         "date": "2026-10-25",
         "price": 19900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6771558626",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 프리미엄 대나무 젓가락",
@@ -28306,11 +28649,12 @@
         "date": "2026-10-25",
         "price": 3680
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-320322651",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "탐사 해달별 종이컵 185ml",
@@ -28337,11 +28681,12 @@
         "date": "2026-10-25",
         "price": 11980
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-54610901",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "키친아트 솔리드 전기주전자",
@@ -28368,11 +28713,12 @@
         "date": "2026-10-25",
         "price": 9900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6784715012",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "쿠쿠 전자레인지 다이얼식 20L",
@@ -28399,11 +28745,12 @@
         "date": "2026-10-25",
         "price": 68900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7271386589",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "잘풀리는집 맥스 다용도 천연펄프 롤키친타올",
@@ -28430,11 +28777,12 @@
         "date": "2026-10-25",
         "price": 14900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8776336017",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 위생롤백 30 x 40 cm",
@@ -28461,11 +28809,12 @@
         "date": "2026-10-25",
         "price": 3690
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7225189423",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 심플한 일회용 개별포장 숟가락 블랙",
@@ -28492,11 +28841,12 @@
         "date": "2026-10-25",
         "price": 4790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7105099367",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 25cm 개별포장 롱 빨대, 블랙",
@@ -28523,11 +28873,12 @@
         "date": "2026-10-25",
         "price": 5930
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-2140167813",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "스카치브라이트 베이직 제로 스크래치 스펀지 수세미",
@@ -28554,11 +28905,12 @@
         "date": "2026-10-25",
         "price": 10100
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9068696519",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "신일 박스테이프 폭 48mm x 길이 40m x 두께 0.57mm",
@@ -28585,11 +28937,12 @@
         "date": "2026-10-25",
         "price": 3490
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1276717101",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "신일테이프 OPP 박스테이프 48mm x 80m",
@@ -28616,11 +28969,12 @@
         "date": "2026-10-25",
         "price": 10900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7310061586",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "에너자이저 맥스 AAA건전지",
@@ -28647,11 +29001,12 @@
         "date": "2026-10-25",
         "price": 9300
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7615319945",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "케이크린업 물걸레 청소포 30매",
@@ -28678,11 +29033,12 @@
         "date": "2026-10-25",
         "price": 7380
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-274935456",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 사선컷팅 테이프 클리너 리필 16cm x 12m",
@@ -28709,11 +29065,12 @@
         "date": "2026-10-25",
         "price": 8390
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9470721263",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "대동소방 ABC분말소화기 3.3kg + 스티커 + 점검표 세트",
@@ -28740,11 +29097,12 @@
         "date": "2026-10-25",
         "price": 17900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9287063502",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "주식회사아텍스 실리콘 외풍차단 틈새차단 문풍지 테이프 반투명 45mm x 5m",
@@ -28771,11 +29129,12 @@
         "date": "2026-10-25",
         "price": 3150
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-220853185",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "홈플래닛 알카라인 AAA건전지",
@@ -28802,11 +29161,12 @@
         "date": "2026-10-25",
         "price": 5390
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7772316248",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "신지모루 O PD 65W GaN 3포트 초고속 접지 충전기",
@@ -28833,11 +29193,12 @@
         "date": "2026-10-25",
         "price": 22900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1628630781",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "홈플래닛 퀄컴 공식인증 QC3.0 18W고속충전기 + 타입C케이블 1.2m 세트",
@@ -28864,11 +29225,12 @@
         "date": "2026-10-25",
         "price": 5990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9729253115",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "Apple 아이폰 18 Pro 자급제",
@@ -28895,11 +29257,12 @@
         "date": "2026-10-25",
         "price": 1990000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-2068932759",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "필립스 3000 시리즈 무선 전기 주전자",
@@ -28926,11 +29289,12 @@
         "date": "2026-10-25",
         "price": 25080
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7851681717",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "닥터블랭크 저자극 강아지 샴푸 베이비파우더향",
@@ -28957,11 +29321,12 @@
         "date": "2026-10-25",
         "price": 14900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8438619701",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "누터스가든 강아지 브러싱츄 치석제거 덴탈껌 100p",
@@ -28988,11 +29353,12 @@
         "date": "2026-10-25",
         "price": 28900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-1785268681",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "캐츠랑 키튼 고양이 건식 사료",
@@ -29019,11 +29385,12 @@
         "date": "2026-10-25",
         "price": 11400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7251679199",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "쉬바 고양이 주식 파우치",
@@ -29050,11 +29417,12 @@
         "date": "2026-10-25",
         "price": 21240
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9000166441",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "깨비다 아동용 우비",
@@ -29081,11 +29449,12 @@
         "date": "2026-10-25",
         "price": 3000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9375491156",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "엔젤테디 아동용 완성한 갓성비 애니멀 프렌즈 중목 양말 5켤레 세트",
@@ -29112,11 +29481,12 @@
         "date": "2026-10-25",
         "price": 5900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9208895170",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "이유몽 아동용 루즈핏 라운드넥 스트라이프 긴팔 티셔츠 E6S107",
@@ -29143,11 +29513,12 @@
         "date": "2026-10-25",
         "price": 13900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9730238859",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "ECLL 국내제작 아동 페이크 목폴라 넥워머 유아 목토시 키즈 겨울 공갈목티",
@@ -29172,11 +29543,12 @@
         "date": "2026-10-25",
         "price": 4900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8959255745",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "지디오 2개 세트 주니어 트레이닝 팬츠 밴딩 포켓 바지 심플 하의",
@@ -29203,11 +29575,12 @@
         "date": "2026-10-25",
         "price": 29900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8496041486",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "에이치제이 귀염뽀짝 유아 청바지 캐릭터 토끼딸기",
@@ -29234,11 +29607,12 @@
         "date": "2026-10-25",
         "price": 15900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8653725787",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "비바세븐 여아용 폴링 미끄럼방지 양말 5종 세트",
@@ -29265,11 +29639,12 @@
         "date": "2026-10-25",
         "price": 10890
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9749439307",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "키즈목마 주니어 남아 가을 겨울 기모 배색 후드 집업 점퍼 초등생 빅 포켓 아우터 A1031",
@@ -29296,11 +29671,12 @@
         "date": "2026-10-25",
         "price": 36800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8919064413",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "베이스알파에센셜 아동용 키즈카페 미끄럼방지 양말 3켤레 세트",
@@ -29327,11 +29703,12 @@
         "date": "2026-10-25",
         "price": 5490
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9507530088",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "캐치티니핑 40 다이아나 매직미러 입체왕관 우산 PUTPU10012",
@@ -29358,11 +29735,12 @@
         "date": "2026-10-25",
         "price": 13980
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8245824385",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "조지아 크래프트 아메리카노",
@@ -29390,11 +29768,12 @@
         "date": "2026-10-25",
         "price": 22520
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8157286425",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "파워에이드 마운틴 블라스트",
@@ -29422,11 +29801,12 @@
         "date": "2026-10-25",
         "price": 23900
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9556031178",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "스프라이트 제로 사이다 with TEA",
@@ -29454,11 +29834,12 @@
         "date": "2026-10-25",
         "price": 15050
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9625284119",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "클린노트 부드러운 순면 일회용 페이스타올",
@@ -29486,11 +29867,12 @@
         "date": "2026-10-25",
         "price": 9800
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9769629069",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "[하루딱100박스특가] 최대16브릭스 초고당도선별 제주 감귤",
@@ -29518,11 +29900,12 @@
         "date": "2026-10-25",
         "price": 14060
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9595377472",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "칼보 스페인산 올리브오일 참치캔 3p",
@@ -29550,11 +29933,12 @@
         "date": "2026-10-25",
         "price": 17960
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-5548273115",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "우리차 콘푸레이크 천마차",
@@ -29582,11 +29966,12 @@
         "date": "2026-10-25",
         "price": 16430
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-8792418749",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "라이프란스 발편한 족저근막 EVA 사무실 층간소음 슬리퍼",
@@ -29614,42 +29999,12 @@
         "date": "2026-10-25",
         "price": 10000
       }
-    ]
-  },
-  {
-    "id": "coupang-10000011476637",
-    "status": "pending",
-    "addedAt": "2026-10-25",
-    "checkedAt": "2026-10-25",
-    "title": "10.♠벨버디어_디럭스(호텔형)",
-    "image": "https://img3a.coupangcdn.com/image/travel_reactor/travelSeller/resort/A00420106/27e49fc9-1f84-44ef-a40f-90654fa663bd.jpg",
-    "price": {
-      "min": 244000
-    },
-    "store": "쿠팡",
-    "link": "https://www.coupang.com/vp/products/10000011476637",
-    "affiliateLink": "https://link.coupang.com/re/AFFTDP?lptag=AF7630418&subid=dailyhomepick&pageKey=10000011476637&vendorItemId=70000317521118&itemId=20002257009062&traceid=V0-143-9c2b586fbf9fb49b&pt=0&slot=11",
-    "network": "coupang",
-    "categories": [
-      "living"
     ],
-    "tags": [],
-    "specs": [],
-    "badges": [
-      "골드박스"
-    ],
-    "source": "coupang-goldbox",
-    "sourceId": "coupang-10000011476637",
-    "priceHistory": [
-      {
-        "date": "2026-10-25",
-        "price": 244000
-      }
-    ]
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-188121233",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "코멧 미용티슈",
@@ -29677,11 +30032,12 @@
         "date": "2026-10-25",
         "price": 7990
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9701039848",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "Kipnos 행거 업그레이드 이동식 스탠드 옷걸이 행거 바퀴형",
@@ -29709,11 +30065,12 @@
         "date": "2026-10-25",
         "price": 21000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9202402902",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "LG전자 4K UHD LED TV",
@@ -29742,11 +30099,12 @@
         "date": "2026-10-25",
         "price": 640000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9705878770",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "바디프랜드 아제라로봇 안마의자 + 러그 세트 방문설치",
@@ -29775,11 +30133,12 @@
         "date": "2026-10-25",
         "price": 1990000
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-6065154611",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "앱솔루트 킨더밀쉬 유아우유",
@@ -29807,11 +30166,12 @@
         "date": "2026-10-25",
         "price": 25790
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-115750438",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "가농 금계란 비타민E 1+등급 XL",
@@ -29839,11 +30199,12 @@
         "date": "2026-10-25",
         "price": 11620
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-4686173166",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "모던하우스 ON 자주쓰는 3칸 미니나눔접시",
@@ -29871,11 +30232,12 @@
         "date": "2026-10-25",
         "price": 9440
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-7759264942",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "깨끗한나라 톡톡 뽑아쓰는 무표백 천연펄프 키친타올",
@@ -29903,11 +30265,12 @@
         "date": "2026-10-25",
         "price": 8400
       }
-    ]
+    ],
+    "publishedAt": "2026-10-26"
   },
   {
     "id": "coupang-9291027133",
-    "status": "pending",
+    "status": "published",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "웅진 애사비 오리지널",
@@ -29935,36 +30298,918 @@
         "date": "2026-10-25",
         "price": 17900
       }
+    ],
+    "publishedAt": "2026-10-26"
+  },
+  {
+    "id": "coupang-6659188131",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "더미식 백미밥, 210g, 24개",
+    "image": "https://ads-partners.coupang.com/image1/6f-jkFy1B_z20lnZ6XRgrB8GKR750tYrYvU2O1HErlcoriMfmG2lCS_vC0CuKs9IjIVnBC8I9rcVuhFYM9m-iyg8u4a9SlUKEihD38dp4cYrMrHIZHBsfCMFFiLLI-pGln-fJzUyyNQfW7N3exhB_XImx-PNDUjbvYd5vgHh7sfmbRlx0sOTzAF3k50BA22p31fQHPtgiClvDIxKf_bSxXZQxiYqE9dok_OyWTgQR1VGpaJ80TD5MBv5mxxRnacXJxSZD2o76_xP-Np81n7QvgbM2kPUzzkGPVb9MNaHeNFxEEgVN3AxR02tTVzK2zKOmTDtc6SfHkGHsbDYhhdr6X0aI6V1bKlnbS6z-JY0NmYc9bZTEdBVtK6nTEdMx4ZQ-NCqH-NwP7bLyHSFgIv-YyFoSK5Q5CdGlQ61T7hbpJYjgEgilDVdgXTXwUSfmVq3FN5caX8NtuE9DsBzYUK6aH0fQiXO4tNO6hVHaS_7bMVS2C8A5aqYamtVML3DimzY1CV41z7FRK3fMQM7HaDddCGc5rVX3PlnJ7I0HKO_hYW8KSozw0Q=",
+    "price": {
+      "min": 25980
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/6659188131",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=6659188131&itemId=17397677890&vendorItemId=84567135519&traceid=V0-153-f8274ca59d2a9d25&clickBeacon=0053e0b0-d089-11f1-8df2-9ca12a80ef77%7E3&requestid=20261026003025952308725677&token=31850C%7CMIXED&pt=1&slot=2",
+    "network": "coupang",
+    "categories": [
+      "food"
+    ],
+    "tags": [
+      "즉석밥"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-6659188131",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 25980
+      }
     ]
   },
   {
-    "id": "coupang-78724661",
-    "status": "pending",
-    "addedAt": "2026-10-25",
-    "checkedAt": "2026-10-25",
-    "title": "스위트 양실",
-    "image": "https://image7.coupangcdn.com/image/travel_reactor/travelSeller/resort/A00020960/34406203-7644-4ec7-b811-a57405d76602.jpg",
+    "id": "coupang-9699336690",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "더미식 당진 백미밥, 200g, 24개",
+    "image": "https://ads-partners.coupang.com/image1/As2fMVc8jdVmlPyOAqc1GSBdkJ3z726oW6BMQqMenAN41iDcHGRba-WuBJ0Lx48sfiwKeYhK5Fw_n4VE0VSFiGf_UFMw35NAfvjGj4WBOu1eXoydOCy97jD1kENc3uHa9sEwwPs9ONk3JgCWAhKf6K_nheBhkUDapmi6bH9QUL8bdgEePvbuu-ItdiVZ_ccokrPeY1Bb7mSmdZLxnvB5GX5-cWzcIfT_ppAJUTUBhsy_R8xeVtc6rlk-MW_OzevESq7SSy3auRjd73-FwYobq_wytbkj0eUnUr_TSRqcolQPVmvGDJGGSqbcWaoaorH1-Rz3dB86tf8XWpF6SQBA-IIYPZNzVh8zqBQJbpMgIBIglvL8jpNP8_uGFQdki4TUTlDVhLQ2QRO4sqwwDXu8ajJFNLZU5-5YJ5kdC1xyA9T94TL2xa9LQhMZ7zqUhShqqtWn9kEJvSwdmipp-So48dksuv_wcQy7Wl65R-3f2lkM8Uzmcn_GZbElDQtSKXCoXWKAJ9pyxsj0sd0bRLnl3NiekV_sx4VDkr1TrzBj1wpBrJ6BCF8TgbAWS-nhhtIT",
     "price": {
-      "min": 148480
+      "min": 25240
     },
     "store": "쿠팡",
-    "link": "https://www.coupang.com/vp/products/78724661",
-    "affiliateLink": "https://link.coupang.com/re/AFFTDP?lptag=AF7630418&subid=dailyhomepick&pageKey=78724661&vendorItemId=70000124679776&itemId=20002027760219&traceid=V0-143-0b3e8de3e4cbeadb&pt=0&slot=26",
+    "link": "https://www.coupang.com/vp/products/9699336690",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9699336690&itemId=25222947878&vendorItemId=96049437019&traceid=V0-153-4540cd62c4d3b213&requestid=20261026003025952308725677&token=31850C%7CMIXED&pt=0&slot=10",
+    "network": "coupang",
+    "categories": [
+      "food"
+    ],
+    "tags": [
+      "즉석밥"
+    ],
+    "specs": [],
+    "badges": [
+      "무료배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-9699336690",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 25300
+      },
+      {
+        "date": "2026-10-26",
+        "price": 25240
+      }
+    ]
+  },
+  {
+    "id": "coupang-8765835567",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "동원 양반 100밥 130g 4종기획세트(찰진밥6+오미밥6+현미밥6+흑미밥6), 130g, 24개",
+    "image": "https://ads-partners.coupang.com/image1/YY7CvnebA6BMKZipYV2pOEoP_QimfSAsvxLS7AVDcFfDgunh0Esufpax2z3kwOxwWOx9FNrKeYZG6hU9jC2_ZGRh7oXJ4Yee0auwlMbBGF-3xXEzS6ustm9IKym1CUFl4IOq-oYmz47DX_agDNrGP4sVRuKAWH-1yRrJSCSNxDHEWa0J-DGIzPZlEIo72CTydpw2JDYanmzDdfFmN64S_X7pAe371hfZr3Y09KxVe57tFHbL9RVdm86QRvzWB6aSJ4wYpMaePFGSAqRU8TZRIKd3QrdblUF0V1GpSYGg0xwSBxNs1UqWCsRPXIn6UQa3_AD-ou8t6HlAK6VOC6gYya2Dh9f0hNmmDq9LsXxHhHuKsqduHzMOOuW_ArVOu92Vy2xjsQzDpr1vR-Ws-pIKDoJCgfzDtVOQyUJ0NOamtCxX0m1Ov2tU3RzUcrL8HkcFqdkUW4LFIc-L99rSJcZKvQP7pDZqhCoknCeZuuDldrGXyDjFHavocPnR95Jq7KXO3sdcM38L9aDYAuCZ5wV4jTfv9rRd3DpVSr14y1h6CezPRtlz-Ho=",
+    "price": {
+      "min": 24980
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/8765835567",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8765835567&itemId=25492951191&vendorItemId=92475912643&traceid=V0-153-3f04f4d53b24d1cb&clickBeacon=005407c0-d089-11f1-ac84-2ee091c6b59f%7E3&requestid=20261026003025952308725677&token=31850C%7CMIXED&pt=1&slot=4",
+    "network": "coupang",
+    "categories": [
+      "food"
+    ],
+    "tags": [
+      "즉석밥"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-8765835567",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 24980
+      }
+    ]
+  },
+  {
+    "id": "coupang-8169048703",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "CJ 햇반 매일 잡곡밥, 210g, 24개",
+    "image": "https://ads-partners.coupang.com/image1/ntfnVgJpbPXx7g66nlue0htT28g2jGnIEup732IuR3VLYLDeuYdBk4hto6PZcqCUGWd89wzUnf9x37QoET4fPQ5QSkO5tl2IhzxpIyrK-xH9ib5P6gNzXF9z0IKh2wlNvVz6PZGsKNX03ugBUxSwHMls1oSrqGXO1xxPm5Dh2gru703OaF2U-RJo7gxiUpvpNLCMOp_y4qsmlkqJfkzzvW-MQmGpYdVqezjqO4BYyOymYFqML4TnNt_h3Y9ddWMWIFW8gfYjdb8lmp_B2R_tETF7qWLxE9rrKf6K3KxLEkSPNaFek_OxHGwQCDyDxl-xgrphafwwRAGGdDlYYUjNM32LFLz9fCoLKzqUPV_HbqxU5xU2Rpg94LYqrLsvVyeqGTs1lzJczJsw1uahYwBnF_plgT_-tMhFaZxj9k_1D-nSn98D9vMLC6QMu5J2hHDQnE1jgPiH33_Wtp3BK6DzE_BM9Ij85cyVClFFIvwR4djMzSojvAANQVzWeaWm3BO88DkfvjD7hQmrmTqM_xUZ803rRrrV_0ch3GqS97mvJ-M8CFAz",
+    "price": {
+      "min": 27450
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/8169048703",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8169048703&itemId=14950293697&vendorItemId=95560345529&traceid=V0-153-92074b86822f9450&clickBeacon=005407c0-d089-11f1-8652-ac34b92590b2%7E3&requestid=20261026003025952308725677&token=31850C%7CMIXED&pt=1&slot=5",
+    "network": "coupang",
+    "categories": [
+      "food"
+    ],
+    "tags": [
+      "즉석밥"
+    ],
+    "specs": [],
+    "badges": [
+      "무료배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-8169048703",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 27450
+      }
+    ]
+  },
+  {
+    "id": "coupang-1258945808",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "곰곰 소중한 우리쌀밥",
+    "image": "https://ads-partners.coupang.com/image1/uGvKKminNsvHxpItuIFYytepeiYYa-po150Np0dq61jXiD9CjFLN4c7Vx1oh-51tGNOOrDKFvPT8IcGCjDtI7sEs7DJgEppW7fq6al-xQtZGk22U80yTaql_gByQgw8f7T9nz6ER3ZQeCuYYimBsgQBGJQMsGIDAIKC3XKsjekw5HCWEalJs5cdtllBCshyz9emD7Oxr-a5SntWfjwSJcnXlqNLL11bxLCLHqz1cLpP8_JPWtN7Az6c71KhYaNIlm7yAAocYRoFjAunRIYMgDfb7yufEankZtdswvl9d3JRr9s_vwt-l8AN3zvYb0TslSdIGmFRcK7dytVVRBiQS4skHk27AJctMBCUB2gs7zhSywiyr9kSGqllWzqNjRi1RmyuXhSEeJuC2k3IIfD2qYZnv7m88Fwb2cT2v1y9x_wZPBiz_anKKC6ec4hVEF5_4PMnqfLkzjrP-DMsxspt8PIHYPgcFtn4fBrE9emO4xbYx-Tp1bCmkeTWmBgwV_DQ_paKi2JznV-e7JF7zHrLj4yHWGwxwcWT9Jy94lps=",
+    "price": {
+      "min": 30590
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/1258945808",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=1258945808&itemId=14500557940&vendorItemId=81743595278&traceid=V0-153-99f87c1562eae252&requestid=20261026003025952308725677&token=31850C%7CMIXED&pt=0&slot=7",
+    "network": "coupang",
+    "categories": [
+      "food"
+    ],
+    "tags": [
+      "즉석밥"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-1258945808",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 30590
+      }
+    ]
+  },
+  {
+    "id": "coupang-8693275579",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "오뚜기 든든쌀밥",
+    "image": "https://ads-partners.coupang.com/image1/dpLkJI5oCjTcoNbgdsTKCIIq8JOCQD3oY49eAwU4FezgfqpULmEt0GScLHsy0znQXv6u_qW2XccN9zjaZGJYeolYLOvrdb0F-7HVFSgaWu2_3eXE6tYE1bGqkOR3v0z2EMtiIFcYwvWbpgdOCbWaQuSLmoizl9XQn3SkpZtblnMKknaM7lgz1OpSa8sdgJGXzzqOdgs8_-XiizIas3fZk5VCshuYi3F0nflvJkeEHo8WaZ1Fy0F9_CAQ9C1QKf4PFQCVHwA2R8IdHW66Z8nl16BwDejWMnRSGAly8eHzBF6dbdCs0a3bTmj9-BxCgWzDafT4Pr85v2hkkJYzc81ninfRBAVVonYo5w_-xkDtA3gGeQ6AFtuS0wYwft6N4-dgvo4v1dPToT7naNsSeKYYi_Z7tDDysaiMaF6HeJlUAmbUNHc6hK7f0ppLxz3Ux2Bp9JQIDzSjX5RJWrk7_HRg28cqbO2r8LxJQ9uWT5pVpumdvuvdDHgGnEO1OYf4ijKdwxIWwtSmQSSMDwRIrQRvXu15Pt4-XQhB09ctlHj67w==",
+    "price": {
+      "min": 31980
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/8693275579",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8693275579&itemId=25240451517&vendorItemId=92236508731&traceid=V0-153-7630856acbc09215&requestid=20261026003025952308725677&token=31850C%7CMIXED&pt=0&slot=9",
+    "network": "coupang",
+    "categories": [
+      "food"
+    ],
+    "tags": [
+      "즉석밥"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-8693275579",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 31980
+      }
+    ]
+  },
+  {
+    "id": "coupang-261192458",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "코멧 순백 3겹 라벤더 바닐라 롤화장지",
+    "image": "https://ads-partners.coupang.com/image1/nNjk0oRDZqck-98PnLawO7uMI-zJY0Lg8TZWgW_SFgUloHx9B2buCTjcPEsWeLfEimf8fP-Qvcm7TZ89151EX0vZ929vc0jpbYX2CHmWgUFFljPvnqY8fwMvtiecZbLNuk8AcOZuhTXGeyaVJ-cWhoDBWs-Hg1ERlgBkXWR4SN2Zehzve8R5y7eErH08k-sdU3ftCpiwgcZgx6DFcpGStKr-oyMIkKZaoNH642l1Hx3l7GnoZyN0OGXc4GhB56lIysWh8BemNkbsT4VW52BRdpafzRs7nJPX2yCCbDlNtze0IdPMDTcj_RVc9WW9sQRugxeP_iX5QSEIHnRakiwvLLoOVhtR1H2U0PS5mq0rSCD-Tg8gCp8nTXwgX-IL3R6c6pf9NvKrsJkd0h_oS-Zr2pBiBXo-3YP9aOYLwB_GwCfUOjrYYPEWCd9emZgCeAaGrzWJRArFtcL6lEZweT7LqLnds4mnnXX1ug5GU1xW9i8cIyFx6rEOpjuyAOQZegGmR6DTWhuyTJQVHW90lobgVKZwdygTH1x8pHs7NVdFp5I=",
+    "price": {
+      "min": 21990
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/261192458",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=261192458&itemId=7633145557&vendorItemId=74924265429&traceid=V0-153-5875e3f7a89a609b&requestid=20261026003027581079312885&token=31850C%7CMIXED&pt=0&slot=10",
     "network": "coupang",
     "categories": [
       "living"
     ],
-    "tags": [],
+    "tags": [
+      "휴지"
+    ],
     "specs": [],
     "badges": [
-      "골드박스"
+      "로켓배송"
     ],
-    "source": "coupang-goldbox",
-    "sourceId": "coupang-78724661",
+    "source": "coupang-search",
+    "sourceId": "coupang-261192458",
     "priceHistory": [
       {
-        "date": "2026-10-25",
-        "price": 148480
+        "date": "2026-10-26",
+        "price": 11990
+      },
+      {
+        "date": "2026-10-26",
+        "price": 21990
+      }
+    ]
+  },
+  {
+    "id": "coupang-6714209681",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "커클랜드 프리미엄 화장지 3겹 롤화장지 30롤, 40m, 30개입, 1개",
+    "image": "https://ads-partners.coupang.com/image1/oVlSYM27D1OdeBrUoT3he3IZaNUxt1kqDRMtt7zIZQpF6fEUKPYBXNutKufRHNwoIYTtmbST7nN07lVH4KHl8Z6L_wsjKwrSEH5An2lp9Qhoq1Iret9iwXJ0wGahXFrHoNqHJR7o3SpT1AI_rxREpmsZR1mrc9Pn9BZNB8PU74Nb2mqDTYs5QOcpKK8sIWaHXf22D9aXbdzh5BAC1fLsPjRwFmC4wxf2Vhf57EghPgFvcZMtOZj34KhmHM6AJWweEpuf1g-NrD97d-PAuhgRh3G_YY7FEf3QvABKM4pkFrvgpssVRBWaKcw-fiyOFL3KCdTla5N3nPJwcoM0ElUmqeavWMfiHvMNn6V6VJ_y6SuAn6BzWcznDPunLLCe33FWwxQ7QZPMcwSEBr05NDPJuABZ3HEGawGkUq4bfmiWR-Hsl8HRq4R2VU1m4NNIiWa0DOSEXK5ZioTPXmLz1Dw21cJpulgYzzFaSXxhG1mKYqwRxOYpNDK8kNRQf4cM6bESLNo4orqoH9aMqN-kEfT22BlEERJey4DBfyAteURdVwE4sta3",
+    "price": {
+      "min": 16490
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/6714209681",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=6714209681&itemId=15597179169&vendorItemId=95361109930&traceid=V0-153-e357538a999c7251&clickBeacon=014c4a70-d089-11f1-8b22-d80b784f7b69%7E3&requestid=20261026003027581079312885&token=31850C%7CMIXED&pt=1&slot=2",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "휴지"
+    ],
+    "specs": [],
+    "badges": [],
+    "source": "coupang-search",
+    "sourceId": "coupang-6714209681",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 16490
+      }
+    ]
+  },
+  {
+    "id": "coupang-8721388212",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "가치생활 오가닉 대나무 천연펄프 3겹 고급롤화장지, 30m, 30개입, 1개",
+    "image": "https://ads-partners.coupang.com/image1/oFEIqxnTj7nBHTbUoLgFG6Q_6Dy_x_OkQLNggn6sLU_PzX7mlynqwqZwfJi0cAHtG-P1-I2iP3yvAlrtiRTrvG7hBSnBmkugF1GjEiuLzH1nYP2GYbWQUy9NZgkoys473YM-NAso5A4YGRtDWU_OGhO0qd1xLOI612lSp5bMbdBIwBUfg2Q0PCK7RRwWXoRh0aQXCd_ypFq2PxfvJXN_7nirzTH8uFMNtLEW9wwaWzdnLW0k7jfEu09Y89HLP2ZTCk4f5LOfzGN0H8QCtC-3ZxOnuofnjPAA1WALzqjHO08Qgd2VvnTHjcIfpkVLGOn1HRzpBxhseBbJzgWEie-LG06zu4uUq3VK3fhB9VASmRZNQFqWf-owy31tMfFmvXgQrGSIuH5w8JcJGpQ4jrfX1F9nv3k_eUe3xsDFAWgKZJKGNPvBwhpunBEoP-PM_YxmfCrdnQCk2s_tkfmwu53iyvf3hphdNeMRExY_xLiR4TKzTaYcKDyEC0gOQUvS8r9g3fnPuL1hxUuk5-_Q0gudwslBVhLjF8Kegcgn6gKjp8RQkioUpQ==",
+    "price": {
+      "min": 22500
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/8721388212",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8721388212&itemId=25333555972&vendorItemId=94321973984&traceid=V0-153-81eeefe113e649a8&clickBeacon=014c4a70-d089-11f1-aa20-4560c39da216%7E3&requestid=20261026003027581079312885&token=31850C%7CMIXED&pt=1&slot=3",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "휴지"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-8721388212",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 22500
+      }
+    ]
+  },
+  {
+    "id": "coupang-7481025968",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "광진클리어 3겹 클린 소프트 천연펄프 화장지, 30m, 30롤, 2개",
+    "image": "https://ads-partners.coupang.com/image1/f2xwQR6oVyNGgY2pf_CxS-dc24TeAlL-rMXlXpmz2rOqwuqeQGMBkOaQlY4oeiZiv0A1CFRxiqeiqoi7y4_qHHCNlSkLz-47BldMLRwmkTKSgQfapVOIIXijHdEKE6PXP7B59oO_WGPUU0c87-pEDG5p4aVpNLrg0UERbKe6Du7eq7nQ5ep0yWrK1-UpcgGF-IqxnFugjRg698gly4ib2TRPUmKrmJBvWEmx1VBaEudumg6AV17Enxox8QhCBy6f-JH3HQj6rk437pL4sqInWAqVFzT6OP5IHa9j8hUNT_m1Nieau1VCOS9DDBJEPfxK995BuebW40sMh1TomZVcBcbU3aFasEfccoT2clFx26RaLSKEl7djO78_3SRffyjltqlPTI0asWz5ipixsvpsaaaXEnT1pvJOTkH1Ta6n8jnADl5zdG42PyZeT-lDS-jMttfQgPsl4mr1LitJMpr0X0KmJYmU67RgdrYNoXsOW6BgqF3ZvaoJ-E37bHXh_vyuYNWuQ8MLHhuyYGeDBsvg2AviXnVUAw==",
+    "price": {
+      "min": 14900
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/7481025968",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=7481025968&itemId=19541217748&vendorItemId=91290285708&traceid=V0-153-82194cac05da1fd3&clickBeacon=014c4a70-d089-11f1-848c-e7c762f62deb%7E3&requestid=20261026003027581079312885&token=31850C%7CMIXED&pt=1&slot=6",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "휴지"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-7481025968",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 24900
+      },
+      {
+        "date": "2026-10-26",
+        "price": 14900
+      }
+    ],
+    "priceDropRate": 40
+  },
+  {
+    "id": "coupang-8817362511",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "ITC 헬로키티 더 넓은 핑크리본 와이드 4겹 천연펄프 양면더블데코 화장지, 1개, 24롤, 20m",
+    "image": "https://ads-partners.coupang.com/image1/-DXpO0eaGf6YGSMv-HgiXj-v6tQQ_fyibHpbEdNf1zQVNz7HE9Y4oeVApM_N_Q_vgxn64xqhzGaVUmcCsQPViTbOduPA7wTyLN4ZwN_LiLDcaQi2CBY5--MZzANz2DSngcE-a_lYCzyEtpeqqRLKGHwCMBMuWHmdm0y8TY5aKub-aCXYzd0CnHFSzy-B8KtLKkDdOSRtq-_fj0vFG1xXp0kiFw0Nf_02m2SW_9CTpW6fq1co9o_0FzbsvsJsIYNiJ1_X7AK6d0gRJCF1seJyvJbSqSSSrcpXEuBN37e49anCzAlbSqeYLbIfI4QgafYzS8C_JspZR-vBN1kOTQW6Dr1PerVG3fsmIX2cLKAgOgnM1UtxkCPuG_YBZVoEfV8fpsl1LwXLE86wxwp9CHks9wUVnKhENzjYMpuzdbWirrTE5mZa05mGgu_IEb5sGandQkXUBYqC4Sn0Q_7RB1FDMVwfTn7gZVwRLEKoRwvY-Braei8XoLUqdqmLOwniMsA0iM7ImeblgWwwnYnzEc7FKLj6k5Vh",
+    "price": {
+      "min": 15500
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/8817362511",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8817362511&itemId=25522119970&vendorItemId=92548597753&traceid=V0-153-9baceb70d3589a07&clickBeacon=014c4a70-d089-11f1-b421-ab80f6b4a26d%7E3&requestid=20261026003027581079312885&token=31850C%7CMIXED&pt=1&slot=5",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "휴지"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-8817362511",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 15500
+      }
+    ]
+  },
+  {
+    "id": "coupang-7751139469",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "잘풀리는집 3겹 클래식 화장지",
+    "image": "https://ads-partners.coupang.com/image1/CQV3nRTSIksXgnXcCZViVs1eEDzmP37NEmJColEMxVAgX5ts2ndBRU32l_WM8ezNUGng7XQ54FROrth7apGzY_ZUnfp3ck5t7r30lIKIF3xEaRZ4MhA_vQUcIQdjqfDbVaOW3yLtTo2dE1qwDu6xsAXvBzyfU2QeRrOTDAD71lVOQwBQM4ihdvVWXClh4T_zvchctkodkqArTnSiJEHcy1FbKtDpnEPns-_hZs5kOHsYeVNGOQX-luD3Nb5bVVN4WccL3rkkAzFeZkivYDoosFvjgEoN3fi7ANpcia_3VMxyvVP2qHWi5KyNXaTYCRaKH0kuB6Rm3_NDpNE-_R-koM04JTCunufZKPa67BFtJasyQU1fzkwOO_01SQBCfgCZIbIFS5AcgCSsKbVX9Albe7IyfnRK9UAmB1kJX1kvyLITIK8QGBaF5YqpzepfJAP16Zim9BcqFvmYxt5kmyjWQtjhZoChjeKvqNjJrmKaxxivNmA2UU2KRoOpTmOb5LvEHM9uG53BmPqaPGM707z_qT7oW6mu5EWVFWdY2ESdTRuUcgYFWL8DgWIxRGz4UCKEzcTwQXn-dUw=",
+    "price": {
+      "min": 7500
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/7751139469",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=7751139469&itemId=19469131918&vendorItemId=80228918932&traceid=V0-153-a9a59779038196fb&requestid=20261026003027581079312885&token=31850C%7CMIXED&pt=0&slot=7",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "휴지"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-7751139469",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 7500
+      }
+    ]
+  },
+  {
+    "id": "coupang-307020051",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "크리넥스 데코 앤 소프트 화장지 3겹",
+    "image": "https://ads-partners.coupang.com/image1/rCktGsH5TriONNl4rDi6aHWAs6yhuJ8ydkR5dupMxIucRbP-_wSgHoLfL1w4m-GJxDxCRCatuUPjTT1WJzaVLS5vKURWsaaNLf7zBPmY3aI7-JnDTaxgLCmRWyMxzVY-vxo7SgCwDLvHH0yD3Nm7Jjs__RkueKAR1V52tp8wwSU6wbjxskR1zNi9hzE1lw1pCb4Vm_O0ilCWzGc2J_wI_caB2AxRfejBoruIJulgywIlArXsbjqgreVykJrd6348N1F4bLTUj0TWaeNKydMOyd4Y5vBakHrCt3S4hbe3P8oX4JuPMgBQpNHKmg1scM-YktLpc5i8ab-wADYvdfyKUhm_Sr8ATENrDnsSP69tRllhuhc-YwSVGlWAJQQTEpIlYXBJYHhFFBfty54I-hlN2lVLhZDM_PBDIz7-I_jvpcDXh2_iDVAWGiTR4Gr36XPnwGz4-KsynofmA5gLtCg6AGfJPoyPO03Wj7biVZJaLoLJgY_NsqxpN5v-Bm7qkmaMRFIRdo4eStcxcNmseQCotVBHF5AsI7N9TYQ18A==",
+    "price": {
+      "min": 21500
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/307020051",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=307020051&itemId=19395560867&vendorItemId=5375349551&traceid=V0-153-558510a4ee6de084&requestid=20261026003027581079312885&token=31850C%7CMIXED&pt=0&slot=8",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "휴지"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-307020051",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 21500
+      }
+    ]
+  },
+  {
+    "id": "coupang-8056327270",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "코멧 코지 파우더 도톰한 3겹 화장지 30m",
+    "image": "https://ads-partners.coupang.com/image1/_Sn9Nl5RyjG7oMos_QyYb2bDDfpERKhXuuRlvfXk4vo38BVzGkO9Iw7XDJ-mKi5nu237X1OGHmBHMgksctAmCjFGOSh7v-RnUUIH_EJnEEUxpM4bi9ZIi6BpJzN9RsluyUJzIqpj6FqLqe-1nd52YrYwY9nEFSpzRd1TYcSTG572AuB9bJD9q1XOwc074y2igOWY8XEKsLjxtcXyp9hGLaYPG8-kTw1hS7MQXQhcGl7HYOe7791VV44KEfMAYmniv7kAVHvRkIy1K6EvP3wklEkoHr6iLOxhyXaR34k6629ZhVzUrVEpLOeaSGlgWLIq0XwFIHr21MaDT0aQQXB1uCoqTAzpquraE8l22EPig16Nzlb_buNimorS2J9PzwPv7I6MQU65xj4mhKm3_h95h_V5vCENxFVT6hjoWWwQ0zfVgcToGgbPC36Mxcr6zt37eulJhsUX8CtHEoKEkxplfreyFgfm7IGRdiuT3lGO1RCHIChP7dnwAg_YPzmJLcw-rAsgvVeJzf4JDc7gY8ThbyjPube81w075iPoeUJvUiJ1",
+    "price": {
+      "min": 10860
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/8056327270",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8056327270&itemId=22700116361&vendorItemId=89735745925&traceid=V0-153-b6521565dc9511da&requestid=20261026003027581079312885&token=31850C%7CMIXED&pt=0&slot=9",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "휴지"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-8056327270",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 10860
+      }
+    ]
+  },
+  {
+    "id": "coupang-9071926439",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "허글리 초고농축 액상 세탁세제 코튼캔디, 4개, 3L",
+    "image": "https://ads-partners.coupang.com/image1/6Hfv4oL6umKkQVvD6HH6GpvF4Lzo-bqK2TafXNOWm6_tClP74EO9J0d9XXV8bD-hfN-7e8MCYqhUYAZzleKy_D-GQNIuza7A9Vl7MXdU0t6UZOh7P-PJoPr9dkNs0__MY7WILMAtwyz0cmzZ1TWdtZ4eC4LeA_KdH88CLY4pqd3uJyYBpfW7Qc4HF_R65gPz110Igg2Wo5uWt_dhz-pivfgi9QB5Rgp55Aw924dO2DFvXGW0Py-oA3Y07MycZa6oK9FlSD0yi9wMFhb6olZgTOcAGyxdII7PmLrBFHXnYuO5AmBmmuMkYQ5lWNPijL_u09RfnRcYGCcYMZGU3i5WHRxYUNMZbBRKKeew_gbo4W3YlSfgErrwqkf8Ws03S1t9InwsObIhRszLFTIuAUTzhjICr0pG9e7y9ReSGPi9qbnLlgw6WG998GuLG9HaKtslBgRJTgKH4N7mA_hK4DgXSTwz1f3UaJf7igE56ifrBgcLc_uTc7e7VuxW0XEhABIeQTKgbn727OPXsD3foshj3NVeHwQBCW7YfqeA2d-6T1D2dtkP",
+    "price": {
+      "min": 28900
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/9071926439",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9071926439&itemId=26643131574&vendorItemId=93615833694&traceid=V0-153-18b75655ed4e60bf&clickBeacon=024a5980-d089-11f1-9ffa-683c8315e6af%7E3&requestid=20261026003029245282565553&token=31850C%7CMIXED&pt=1&slot=2",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "세탁세제"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송",
+      "무료배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-9071926439",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 37900
+      },
+      {
+        "date": "2026-10-26",
+        "price": 28900
+      }
+    ],
+    "priceDropRate": 24
+  },
+  {
+    "id": "coupang-8687771994",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "허글리 8IN1 딥 클린 초고농축 캡슐 세탁세제 코튼캔디 향, 2개, 100개입",
+    "image": "https://ads-partners.coupang.com/image1/ebWXMh05IVuw7oATeaSyajPxeizsNf9zfnTL-nFNDWvdYkhgcV5rZnwJmdYak-o2lvkWXrwQxyIGepElD0HDi_0ON44z99d47jrxM-PalwPkbjc1E6e9AhHmMPEp9Bjg2Ko4XCIkKSzFdP9MCQQ4t1bGAr0RVitfO7jlIWg23E0cmtHj_OUzd7xcGV3swBEd5PIOJt_VHOu71U-QATAKLd-kKqxlnIwdKSYyDEsKRbajJYnTliZBqX7IN8Oixo9vDHfjdtXrVxoB28-8jYwU7xDsusfzHtaTdFyd2xUcDvx3MnqblBpa9_CeZU-COOzSaRgaq6VbvQ4d_3ALcoTYVI5TSlOOg8KWJbDFXEzVKocrkdpvepnZsSy9MT0pINy6jp3-mIXdsYzYn6qCZjHOWDZON14a9AGpDjtnJNc4KEvKLjej74qczqLhM0Dyf0-wwD6TIAheQNntj3Kgz40mVjJsGzGHB4HV4u4I1tIacncfjnGDQo3Z4dYAqwVuooq_1EI0OdPAGAjwqt0jyy8mNzukqlEp_gCFpFrCzCQkT3k=",
+    "price": {
+      "min": 28520
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/8687771994",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8687771994&itemId=25222807980&vendorItemId=92219139301&traceid=V0-153-d66fe0e72ec57049&clickBeacon=024a5980-d089-11f1-8c7f-6dc2eae69eb0%7E3&requestid=20261026003029245282565553&token=31850C%7CMIXED&pt=1&slot=3",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "세탁세제"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-8687771994",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 28520
+      }
+    ]
+  },
+  {
+    "id": "coupang-7150103173",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "아토세이프 집먼지 진드기 세탁 액상세제 본품, 2.5L, 4개",
+    "image": "https://ads-partners.coupang.com/image1/YdoqfZwjreMU8NRYYb6ZQN-nfXx7VWeN2fKMcN36mhMieLsLmvPr15lvSVk81tMSwkM2RwYlXIhQRgkiKn6EexoFvJvnP1MncJugHCcCkUizYC-T7Jx4LZHguPkJtwvOg3EyQwLnR-9Sq1Yw_atAaIzEPFDXEagElGYQOaD1UNcJ8UygoxUl5RkPW1VL8pUWKUS7cmFOZgQjK669-Uw6bbQ9VdePB6HTxeVAH5M4bmyjjTIDgv2qwEdeeeTfPpMTKM1n98KK-OYl4ttMar7tocxUEZhsEdy1yJ6_QxilThdFzJryEBHMgrtGSNdYjmS5ReKeYDpXhzKG6YLF3E-us91ZQ6UVyp944jzbyRvAjpzthZEf4nWzShn54HZC0lqL2it4zz780ty9PwwnqxmwGLsAO25hhRQQWmRQigKpkxTkDumgGHbT7VzL3PuG2davebvsui59s9X1Ff7k3CJNa4a2cjqVP5oxBp4wv-8cLpfU0n1xz3e0xnx9r3LOziKdFSAUmbqV1qxxx0L7Gau3wbMiT6o=",
+    "price": {
+      "min": 18760
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/7150103173",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=7150103173&itemId=26533059491&vendorItemId=3060758814&traceid=V0-153-c8dea19e4ee365b2&clickBeacon=024a5980-d089-11f1-924b-3e7fc944481b%7E3&requestid=20261026003029245282565553&token=31850C%7CMIXED&pt=1&slot=4",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "세탁세제"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-7150103173",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 18760
+      }
+    ]
+  },
+  {
+    "id": "coupang-9181005526",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "허글리 초고농축 액상 세탁세제 노벨라코튼, 4개, 3L",
+    "image": "https://ads-partners.coupang.com/image1/eYGfcX7NUBv03ZZCedUPbZRCb2Ytf1Uy1BWiFFMDXXJzhkT9Xle_BOV9TZuqMNsskKf56iaYvtCMsSGfxJmK2VxkhMT95hnkWCqD4eI2f6Qe2a_LgcHORyr9Crls6RtxSt5zF5ef4RnyPOps4mhLT1iiCU9HPn9pgjWJ_z2MrlFXSVuKEqLE2IJL_Qt__A1304m1NEfxbRL8yMUOLJVXqIlUHPg2UAEFrzObUe_DsJBpRZKreq-PWn0ltCY4v_4NK3PabH8Wk-Lsi8FcI1drZULXttzAsDHCUdfaRn_IOCO_7MnI0RIOlenyqnTrtrFLS3VPbhrUwJcbLCKhvch7ezBGK8hLXHFRiJGDGCDbibs2ypoDFKwt6vBjebwIZ4cTiMKHeirfxYlwlP51rWwzrv_Ix0fHRz4dl2hA4GRYawf2gZByamHGv07tgihCf4Ef8F7DeNI__FM7Xux7W_ulHfC-NsZEJ7is7L59OFiSBOqYhQIH5slInh5cGxkplYXjazIkaYk-oq-XyWNpy5v6_RLP0wSsMq366L3SBisXeORq",
+    "price": {
+      "min": 37900
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/9181005526",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9181005526&itemId=27075462710&vendorItemId=94043762336&traceid=V0-153-798ec0dece9edf78&clickBeacon=024a5980-d089-11f1-8e27-248548aedfd1%7E3&requestid=20261026003029245282565553&token=31850C%7CMIXED&pt=1&slot=5",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "세탁세제"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-9181005526",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 37900
+      }
+    ]
+  },
+  {
+    "id": "coupang-9711973763",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "액츠 퍼펙트 실내건조 일반용 프레시 플로럴향 액상세제 본품",
+    "image": "https://ads-partners.coupang.com/image1/4On8wQEhkjEMERr-4Pu5yYarV2eZQ_gQiPwTn8JFBKnqvkEDPoh0TorVA1zu3sjLwZOy-fCnHI3xkfhN-mnRci9lUSDX4T_szhCcEcqRynz0uRW7aLiIGBJ4zRksD6vWMGWg_FsJW3HS9HfHA89tLwVLjgT0G_oPCpdjoBcas5X1UMGqMweiEdoji9ktc6xitdrTS0wcnFFLi9uxeZ7GbsmDZJNHawkZLGSsnv7JM_90Xi-VqALMKw1idqzDGvGURLUQSp2wPREChrePb7okXtRex8F-bg7aN7ORaYan7rPGgso7nL1ZTp3R5bwvChEQ8ywL94K_1GZRq_8J8uEuAHAPg3VruRKRzD84yP9Bbo-xmW9uMfW0zhzfwYNUOvdY8z5leGQGmZXV9kzhnCYjszDyQ9mvnP1YLRR3vhU9J0fOq81h56v91Ayi2W1OmmK9L4_2gRXTpO7H7J4sIhdlAx4gFEk1WZEFdh8jZEb6RpvUoJncnmAiDvpb3jJzLSwWd6TQC3fQ0M-C9eObc-L2Eguxjr5De8_YD7ygGXoX",
+    "price": {
+      "min": 10900
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/9711973763",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9711973763&itemId=23804197823&vendorItemId=85574305199&traceid=V0-153-758202ceb21ad815&requestid=20261026003029245282565553&token=31850C%7CMIXED&pt=0&slot=6",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "세탁세제"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-9711973763",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 10900
+      }
+    ]
+  },
+  {
+    "id": "coupang-8527004003",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "피지 모락셀라 냄새제거 세탁세제 코튼향",
+    "image": "https://ads-partners.coupang.com/image1/DIqrKIQfS8CoUTpaDDeDJzygaiU5Z7tVm4CyM74qHj2N2SeNhZOwFzrz32sjGlZlUNv9TsTICG7sdsi50BcgIvrT0viaXEbhpF6BclvCggFoE9p521cCuADGKA1j7U-4dXvxiArNv8U3lAgcSDC5yLOL1h7hIM6IOZ6CrYzBmsy-LeyfIKH-th3HGkpXl-AtYpazy5CD3m1azJ7mNTJOmLcCkka3yY9XUQh8Yn_Bg-XhHVOR8JWgbJpcS-XR9VWZfw6Ei77NMMNw6UIjLaJtpM9Qfyet7if9y4O9h90YT6ElgZaO1iYSd7mqRLnG8R04Liw68qXS9ZPHeiCXv8sHYkqzVVtWLcUEhhucSrTAiCB7pHmFK__l5vBLpCllsYwMbW56hkCMhKjUbXlA3gml-BADgLVmnsEyV6hG43C38vPQbccRJe_iA4lc6vLlRKkjvHyI_z_WlMaqXPhaAyEwUyBs4_V4OOvO452taYuiNWwks_HzLVVnSQEZM4_e23gruxVCgi7GYLg0uOpEfpEBSeugSSt7_hPO9dIn9Qg3KA==",
+    "price": {
+      "min": 15900
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/8527004003",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=8527004003&itemId=24689455523&vendorItemId=95175775104&traceid=V0-153-8d79f6b2a59883f6&requestid=20261026003029245282565553&token=31850C%7CMIXED&pt=0&slot=7",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "세탁세제"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-8527004003",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 15900
+      }
+    ]
+  },
+  {
+    "id": "coupang-9491755451",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "퍼실 딥클린 초미세세탁 라벤더젤 겸용 액체세제 리필",
+    "image": "https://ads-partners.coupang.com/image1/b_p2GhWxC_lwXHYxb-hlcLCQ1MEaSh_BaXcHNOr-o8U7sZyfqCf86KlCrLaMndG3DkiUBuTb9CVCMVk1hh4oVkxompF1PFXT6amDmBxr2bJXduU6raJfG7Czip-RdqYxX3QfPPZAvHZi0E_lh-xFVT_6bfAEGHLz-yHPGRD7mjgZ6QlHB51WzUu01phVWHvygBmNsZkOCOjuV0ksXqUdPIjqdU1oPdwbqEzYDUaYmJKdOZAkIeCTbgiuyZcQgydXr-fK7_RXWMa5bZYWyHJZa-KIq5b7LOo8O6BiWSc9111iDJtcmh3ICKqeGSs5xh14A37-wNmohenXA1eXMjrEzeVRnmfAe369XP31EQtvciFrpmLpm0S-aohVBoZ-dFv1DMIMRn3iVeX1Sv9urdAhFwIxMihv209PVY15uiGM52Hnt2hnNYqhUeMq_kXQgPl_0iPyz98mzVn6G-uVRkv0UM7Z6AMUTVdDzMK9N1LSmvxBjDIUn8j3bPXBqImljYZ2zLu9yt4SI9dyTQpHUUjUWUJ_bVkdZLACfMsNEbrWUG1caNel",
+    "price": {
+      "min": 28750
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/9491755451",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9491755451&itemId=29118040617&vendorItemId=95231104562&traceid=V0-153-1fb00ad9cc4146e2&requestid=20261026003029245282565553&token=31850C%7CMIXED&pt=0&slot=8",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "세탁세제"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-9491755451",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 28750
+      }
+    ]
+  },
+  {
+    "id": "coupang-9116096390",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "리퀴드 실내건조 중성 세탁 액체세제",
+    "image": "https://ads-partners.coupang.com/image1/1hA8k2eHVLPgmNLZ1rFuPi-gAi7dGTg5k2xrpgRPy4zqjR0rgTrAppq8vzn3TCOdVNT9HX4hx2g17dGh6yk-gSGh494VyB0l44MUroIQB7hoY5P_h0hGxvawIzwr0Twq5fbNsWwKOwLsJbiNB_tbruGJBls1S2VAVgUUCzR2TuDdHkhhIRa5wuNiU-71jKa43nVETsLTa6QZzgx0n83TKkjdXtUggjrwH5OBBRIwJL5zauyfy5J4SL_lfWlwezJd-tEFkOSNGrjsxaaVcQxYcqNBPBtoEa8bm0SKHVBVB7kAuuBC3ETqLSZnifQvuuFiuoXM9hgDWYpa0vk5NSxbwFbFyuEE-EXwp6HvBytH5kkAdv69O6Btnt-p5xIqCYaNAoW_KHcVjqZCAvxcn-9yvdXTZdeeRsfIVHf-c02mLS5Lp57lukr20akhLXJmNF58dNrzgDqXWNp3dFlrgYoEUQO3V0SRYmfZqEhenVnrFT7sBYLIXd_oflPRMgIhUzA_xrf6dglLcsWiUlZwP3WAfJ6qvlC7yfo7-nB4Bpy_KMHb",
+    "price": {
+      "min": 7940
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/9116096390",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9116096390&itemId=26812913660&vendorItemId=96164302071&traceid=V0-153-0ce4c660698c2aa2&requestid=20261026003029245282565553&token=31850C%7CMIXED&pt=0&slot=10",
+    "network": "coupang",
+    "categories": [
+      "living"
+    ],
+    "tags": [
+      "세탁세제"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-9116096390",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 7940
+      }
+    ]
+  },
+  {
+    "id": "coupang-6348077269",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "벨버드 크린 애견 배변패드, 80개입, 1개",
+    "image": "https://ads-partners.coupang.com/image1/5PNF74vHUJ8zny-l5PiLCdQbTjvGG5FtMMqHKLrKxZdhgI3Wke_QiuXf4ftYMC1tXA6NQ03-JS3DgU2f3p1CzzrBU3en8_-lsUi019-o0ctMt_vhtTpHj0_FYTE8_Gix3R2ygJYWgFjH2PqWvQTAng5L6zsYaUPz0qMIEwh9zGajUjVRJF9zOhaWYgctHpdDRYe7u6ZURgfKwZciLJWHNsZkrxFMA-4GElUES6pE2cszPEdNCMdWzWB-yjQd0lqvBvtIec8_cOA5HofAQCSPdYoQtTGdHPszJcbLHs9oW6OvfpNKArSrDNxiU4FexDLcyTjtx_cOtYTEXHMZ2-siCnnI3WqETlCTbxTXHz-MkTqgzsOE9dXgl6ilg0jZbT_y12KPn8b7-13nwpd6nLocgTqaeIGaDrWgWEwkGASWsTUK9rh06dHv57eYP9TvMUWwniH9W0GcQkehEFCrwwR3vmzmlf2ZAM1N79iDWJmAOAugvPtYv4Y0TM61HYJtktTUulUmG98U3bS6FZ6Uu_GxxcnzUHTaQBk2XvkXvgxc9OvFvWmVUA==",
+    "price": {
+      "min": 26900
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/6348077269",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=6348077269&itemId=400693&vendorItemId=93910701034&traceid=V0-153-8f24b9c4545eeaf1&clickBeacon=0340ee80-d089-11f1-b935-c967a65cf903%7E3&requestid=20261026003030861079313896&token=31850C%7CMIXED&pt=1&slot=2",
+    "network": "coupang",
+    "categories": [
+      "pet"
+    ],
+    "tags": [
+      "강아지배변패드"
+    ],
+    "specs": [],
+    "badges": [
+      "무료배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-6348077269",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 26900
+      }
+    ]
+  },
+  {
+    "id": "coupang-7567469702",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "뽀시래기 강아지 든든한 배변패드, 30개입, 4개",
+    "image": "https://ads-partners.coupang.com/image1/BKN1GJdlZtLr2BcJBI0_XfN2W9fV8NPypr0YW74sM1hvOqxwbAVTRCJQ5M4lWmlf_M2q2eTu0u2h7OWEnJ3Jafu8-hKxfH3UnSrEAFaY3Csof8K3_KnGY8yC5kEXR_EU54ZDKZl1y41XnmpTLnDet-IcgoCLLM6X3A2RXRyEZ_oPXaYWX9n9vVEjUamGu9hMUstGobV6mLcDBpupnWQ_lrMWPVjE8ljsDXcw14XpWlXAdNx_2hwvOPfvuQgDcH1O6LgvmWm-UNQtpwstVNopJitWrA9uAhMSqGS4FFLStMLk81xIGMXS4K83C1FLD-r9dgwhKdsAexNGvp1DN_CaRF1-_PPnH8WRF81kRi4ZgbmInA6pJtEXjn-ZuRBuRnkcsuEOIS6wsfaxAeYijZM2S-odP9FKPNqGNoRcZbGOTpgzbHLJUxvKGTz7FmISQRj9n0cN5IPzd0VmbEcn2ZvWZFRDf_Z2BF8t20oZBU7sfzdwXO34Zq9Rb7bQR2fhzsCrvr_9oKzZcxABqsAe-nn1Xb-toqA_2w==",
+    "price": {
+      "min": 45500
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/7567469702",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=7567469702&itemId=24707664953&vendorItemId=94417361578&traceid=V0-153-63559252d2d58042&clickBeacon=0340ee80-d089-11f1-a2e3-045f0caa2ec9%7E3&requestid=20261026003030861079313896&token=31850C%7CMIXED&pt=1&slot=4",
+    "network": "coupang",
+    "categories": [
+      "pet"
+    ],
+    "tags": [
+      "강아지배변패드"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-7567469702",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 44500
+      },
+      {
+        "date": "2026-10-26",
+        "price": 45500
+      }
+    ]
+  },
+  {
+    "id": "coupang-7504844083",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "벨버드 강아지 펫패드 베이직 레몬향, 100개입, 4개",
+    "image": "https://ads-partners.coupang.com/image1/pwW1Zc7pvh01oI0mp8_BRdUV_nNd4uKr0uTcCfqEx53JnSQvBvwm1wK_heG5HE3UtKfIx9mm3an5MB3ZVLEuM184Xo-2HIc8Hd0Jr_N67aonM7wSPVb-z2gazWTqVKMX_wOFBDnlO9ER6Am8cWbbcefqTeNBLU-fOA9uxktc1jQcoJi6ztD3B7qa7vY6JxI9qkJ4BsKjkdChysxUR3aRei35rgnio9eRDRcSfh313R-0znA0saE3K1xCh7qsPfzfdcJfR_yyyCvdX9x0TNLionX8uxUH7v9Usr9lUcWfEWaI63Eqbp_3ZzSa5RhPUQIh5tk_X_mJnALqDqMk8_gJcKZreZjezjxMTEUVTQq_jM7JIKx2YtrcU2RAMpO6rNuR7gdxqOLTeePBOfbaLatT-PdFNPAj1YBVU2U8hvCZU27k8aUPDDS1rq7r1fc64_TOm2x8OomtF0pw8-SviT8iodj-QTKTAWjiyZMIuuIrYK_ejKle-G3lDQI1ZdWb6q0YIp-QM9rUMq0tR09uyo6MBWuVi3yJgEl-Co6S6X3CtAZb6GiH1dKCO68F2tq4gjnFpFZF2kF-UaO_qu3jgQ8akwi47SUbtjYc5H2o",
+    "price": {
+      "min": 51430
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/7504844083",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=7504844083&itemId=25505794553&vendorItemId=92497841035&traceid=V0-153-8d8ecbd4d18d6cb9&clickBeacon=0340ee80-d089-11f1-b02b-bd649987aeb6%7E3&requestid=20261026003030861079313896&token=31850C%7CMIXED&pt=1&slot=5",
+    "network": "coupang",
+    "categories": [
+      "pet"
+    ],
+    "tags": [
+      "강아지배변패드"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-7504844083",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 51430
+      }
+    ]
+  },
+  {
+    "id": "coupang-1202122649",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "펫친구 작품패드 가성비패드 배변패드 400매 강아지 애견패드 강아지패드, 4개, 100개입",
+    "image": "https://ads-partners.coupang.com/image1/7p79pK3h1gOSUtSq7pqN6UGbXPk3CEEzYfaRGimGn2-PNduRlplaoibssAttw6HGawZycw_tz9PL_o3CkDS2syuy_UucrspIYFGE9_c3dvHvg8RHW08EKEK_HBhvBdWUnDYctqjaPKLB5ydFDQBPFL7fngaDw20abizJiEesL7kQtdvKd1PGKlpbYuAKkjMEA3zBKnTkNbYdcHZT8nQWV6T_4FWRXN67AsMTsqEgc3w8GPazKmZLI1yYPHm6auskeQbbNXeXQNHMOwjCGPw95UBw0djsq0QH-l6VDU9v_wIlpqL55bUb_gNYrXWYY_XYSdX5dcXWQ9Y2B1hH_MvQh1s3iM32uLckLWjpjXbftdvdiCxjR1ydwL-Y3wgIiOnr3utP6sxDAr6GbWBgiDznvMFyRgwWUqAh25QuDyfv2S1gjnrx0TyGSXSpVZLIxBJPzm4iWVBcFskotdtIJre31MdGJwSrpSpBiLTnxXXd-Wlap3HjjrDuScjh13fwuD6UDJeAX_JqrnNhXKrn-fV-_FgdW9RoDwGH3h24ab2Oy9JaaaGrQSY51i7X-bM=",
+    "price": {
+      "min": 33150
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/1202122649",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=1202122649&itemId=13854786836&vendorItemId=90934614736&traceid=V0-153-fb646ec632016210&clickBeacon=0340ee80-d089-11f1-95bc-d2fd3cbffbde%7E3&requestid=20261026003030861079313896&token=31850C%7CMIXED&pt=1&slot=6",
+    "network": "coupang",
+    "categories": [
+      "pet"
+    ],
+    "tags": [
+      "강아지배변패드"
+    ],
+    "specs": [],
+    "badges": [
+      "무료배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-1202122649",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 33150
+      }
+    ]
+  },
+  {
+    "id": "coupang-9572199231",
+    "status": "published",
+    "addedAt": "2026-10-26",
+    "checkedAt": "2026-10-26",
+    "title": "국제멍멍패드 강아지 배변패드 애완 모세관패드 측면흡수",
+    "image": "https://ads-partners.coupang.com/image1/E9os1gNgcp2ZzrZ6E6mVRcL-Kjcm3B_DwKuGj0fhtPSThNyMYtd1M4wj76f9yoLwhdcHKQtML9NdyAkt-IN0eUddo9CtX45jjL7HLrQKhQPkLneV72qECeDX7T8hdr83KfpKH5anp2DjneKyWGr3y78-QvcqjoYd8nqbLO69Jiahzdxp2bealYGqoPPBwRJx-z75ciiQNsQcp_31w7Ohz0yLtSh-TdyGtjjY8uSYkga7ZgjCx-aeDa_8xsuAfWRw_AK9ItHQCVdKrnEHdbIFNMGw5HPTYyq7Ei0W-CblB0rsYAo_ikL2IAcps82t-PIUmQYVSOdcMiFQd9jnkmd_w_FVhRIQ6ofhB2HP0PffFGZzJDXbggiL6iCpZkN3lLV68Uf7-kXoYxQjWKsT8RckLpZvtyTexxQX3_AfRQFhdawPxxDaK0wi_MuLc_q7Gkk4O7pmMprci7hP1I1MYYQQ8QkAvAC-iRAKdZBZgQg_G6zOq8KPuPwL3TLC-vKFd4zTe6gGcEP_Qvyt8uW2xcft1Y700qHt5qYeDHi7wVjY4BEFhW7rOkwy7UC3ls8VR78Urr4=",
+    "price": {
+      "min": 14400
+    },
+    "store": "쿠팡",
+    "link": "https://www.coupang.com/vp/products/9572199231",
+    "affiliateLink": "https://link.coupang.com/re/AFFSDP?lptag=AF7630418&subid=dailyhomepick&pageKey=9572199231&itemId=29163338714&vendorItemId=95843426488&traceid=V0-153-72de3b3c8a28eb8a&requestid=20261026003030861079313896&token=31850C%7CMIXED&pt=0&slot=10",
+    "network": "coupang",
+    "categories": [
+      "pet"
+    ],
+    "tags": [
+      "강아지배변패드"
+    ],
+    "specs": [],
+    "badges": [
+      "로켓배송"
+    ],
+    "source": "coupang-search",
+    "sourceId": "coupang-9572199231",
+    "priceHistory": [
+      {
+        "date": "2026-10-26",
+        "price": 14400
       }
     ]
   }

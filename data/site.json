@@ -11,7 +11,7 @@
     "google": ""
   },
   "publish": {
-    "autoApprove": false,
+    "autoApprove": true,
     "requireAffiliate": false,
     "minDiscount": 10,
     "allowUnknownDiscount": true,

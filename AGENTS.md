@@ -1,4 +1,4 @@
-# 데일리홈픽 운영 규칙 (Hermes·사람 공통)
+# 데일리홈픽 운영 규칙
 
 사이트: https://dailyhomepick.github.io · 저장소: `dailyhomepick/dailyhomepick.github.io`
 목표: **할인율이 높고 제휴 링크(쿠팡 파트너스 우선, 그다음 링크프라이스)가 있는 상품**을 매일 많이 올려 검색 노출과 클릭을 늘린다.
@@ -34,22 +34,30 @@ git add -A && git commit -m "Daily deals YYYY-MM-DD" && git push
 - 사람이 확인 후: `node scripts/review.mjs approve all` 또는 `approve ID ...`, 문제 상품은 `node scripts/review.mjs reject ID "사유"`(다시 안 들어옴), 게시된 상품 내리기는 `hide ID`.
 - 사용자가 자동 전환을 지시하면 `autoApprove: true`로 바꾼다. 그 뒤로는 자동 검수를 통과한 상품이 바로 게시된다.
 
-## 1-1. 자동 실행과 Hermes 역할
+## 1-1. 자동 실행과 손으로 하는 일
 
-매일 반복 작업은 **`scripts/daily.sh`가 cron으로 자동 실행**한다(하루 2회). Hermes가 같은 명령을 따로 돌리지 않는다.
+매일 반복 작업은 **`scripts/daily.sh`가 cron으로 자동 실행**한다(하루 2회). 같은 명령을 손으로 또 돌리지 않는다.
 - 하는 일: git pull → 쿠팡 골드박스·베스트 수집 → import(자동 검수) → 파트너스 링크 변환 → 빌드 → 바뀐 게 있으면 커밋·push.
 - 빌드가 규칙 위반으로 멈추면 push하지 않는다. 로그: `~/.local/state/dailyhomepick/daily-YYYY-MM.log`. 텔레그램 값이 env에 있으면 실패·검수 대기를 알린다.
 - 수동 실행: `scripts/daily.sh` (테스트는 `scripts/daily.sh --no-push`).
 
-**Hermes가 맡는 일**
-| 일 | 주기 |
-|---|---|
-| 인기 검색어(`site.json` → `trending`) 갱신: 네이버 데이터랩 쇼핑인사이트 등에서 생활·식품·육아·반려·뷰티 위주 16개 안팎 | 주 1~2회 |
-| 인기 검색어로 쿠팡 검색 보충: `node scripts/coupang.mjs search 키워드1 키워드2 …` (한 번에 5개 이내) → `node scripts/import.mjs` → `node scripts/build.mjs` → 커밋·push | 주 1~2회 |
-| 링크프라이스 후보 파일 만들기(연동 마무리 후, 3장 형식) | 매일 |
-| daily.sh 실패 알림이 오면 로그를 보고 원인 보고 (데이터를 억지로 고쳐 통과시키지 않는다) | 필요 시 |
+**사람(또는 에이전트)이 맡는 일**
 
-Hermes는 작업 전 항상 `git pull --ff-only`, 작업 후 바로 커밋·push한다(cron 실행과 충돌 방지). 커밋하지 않은 변경을 남겨 두면 다음 자동 실행이 `git pull` 단계에서 멈춘다.
+아래 표는 전에 "Hermes가 주 1~2회 한다"로 적혀 있었는데 아무도 하지 않아,
+10월 24일에 넣은 인기 검색어가 그대로 남아 있었다. 자동화할 수 있는 건 daily.sh 로 옮겼다.
+
+| 일 | 누가 | 주기 |
+|---|---|---|
+| 인기 검색어로 쿠팡 검색 보충 (`scripts/trending.mjs`) | daily.sh | 매일 아침, 4개씩 돌아가며 |
+| 인기 검색어 목록(`site.json` → `trending`) 자체를 갈아끼우기 | 사람 | 상품이 안 붙는 키워드가 쌓이면 |
+| 링크프라이스 후보 파일 만들기 | 보류 | 상품 API 승인 후 |
+| daily.sh 실패 알림이 오면 로그를 보고 원인 보고 | 사람 | 필요 시 |
+
+`node scripts/trending.mjs --check` 로 키워드별 상품 수를 볼 수 있다. 0건이 늘면
+그 키워드는 이 사이트가 다루는 상품과 안 맞는 것이니 다른 말로 바꾼다.
+
+저장소를 손으로 고칠 때는 작업 전 `git pull --ff-only`, 작업 후 바로 커밋·push 한다.
+커밋하지 않은 변경을 남겨 두면 다음 자동 실행이 `git pull` 단계에서 멈춘다.
 
 ## 2. 상품 소스와 우선순위
 
@@ -125,7 +133,7 @@ import가 아래 중 하나라도 걸리면 탈락시키고 `data/rejected.json`
 
 정렬 기본값: **제휴 링크 있는 상품 → 할인율·가격 인하·골드박스** 순. 생성기가 자동으로 하는 것: 페이지별 제목·설명, canonical, Open Graph, 상품 구조화 데이터(Product/Offer), 목록(ItemList), 경로(BreadcrumbList), 사이트 검색(SearchAction), `sitemap.xml`(lastmod 포함), `rss.xml`, 오래된 상품 noindex, 인기 검색어 랜딩 페이지(`/k/키워드.html`), 태그 페이지(`/tags/태그.html`), 품목별 FAQ(FAQPage).
 
-Hermes가 할 일:
+손으로 챙길 것:
 - **인기 검색어 갱신(주 1~2회)**: `data/site.json`의 `trending`(16개 안팎)을 네이버 데이터랩 쇼핑인사이트·쿠팡 검색 추이 등에서 생활용품 위주로 고른다. 상품이 1개 이상 매칭되는 키워드만 `/k/` 페이지가 생긴다. 키워드에 맞는 상품을 `coupang.mjs search 키워드`로 보충한다.
 - **태그**: `scripts/lib/keywords.mjs`의 사전으로 상품명에서 자동으로 붙는다(품목 1개 + 특징·대상 최대 3개). 손으로 넣은 태그가 있으면 그대로 둔다. 사전에 없는 품목은 태그가 비는데, 그런 상품이 쌓이면 `ITEMS`에 품목 이름을 넣는다. **확신이 없으면 비워 두는 쪽이 낫다** — 틀린 태그는 엉뚱한 태그 페이지를 만든다.
 - **품목별 FAQ**: `scripts/lib/faq.mjs`에 품목 이름을 키로 문답을 넣으면 그 품목 상품 페이지에 FAQ 블록과 FAQPage 구조화 데이터가 붙는다. 상품이 아니라 **품목**을 설명한다(특정 제품의 착용감·내구성처럼 확인할 수 없는 건 쓰지 않고, 브랜드마다 다른 값은 "표기를 확인하라"고 연다). 모든 상품에 같은 문답을 붙이면 중복 콘텐츠가 되므로 사전에 있는 품목에만 붙는다.

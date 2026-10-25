@@ -77,6 +77,12 @@ else
   step "쿠팡 카테고리 베스트"
   node scripts/coupang.mjs best || echo "  경고: 베스트 수집 실패"
 
+  # 인기 검색어 보충. 쿠팡 검색은 호출 한도가 작아 하루 몇 개씩 돌아가며 받는다.
+  if [ "$(date +%H)" -lt 12 ]; then
+    step "인기 검색어 보충"
+    node scripts/trending.mjs || echo "  경고: 인기 검색어 보충 실패"
+  fi
+
   step "가져오기·자동 검수"
   # 알리는 공개 API 가 없어 Ad Center 화면을 거쳐 받는다. 계정을 지키려고 아침 실행에만,
   # 한 페이지만 받는다. 세션이 만료되면 실패하는데, 그래도 나머지는 계속 간다.
