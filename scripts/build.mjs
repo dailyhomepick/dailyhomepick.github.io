@@ -201,6 +201,9 @@ function layout({ title, description, path: pagePath, body, active = '', image =
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(description || site.description)}">
 ${noindex ? '<meta name="robots" content="noindex, follow">' : `<link rel="canonical" href="${esc(url)}">`}
+${site.ga4 && !noindex ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(site.ga4)}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${esc(site.ga4)}')</script>
+` : ''}
 ${v.naver ? `<meta name="naver-site-verification" content="${esc(v.naver)}">\n` : ''}${v.google ? `<meta name="google-site-verification" content="${esc(v.google)}">\n` : ''}<meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(site.name)}">
 <meta property="og:locale" content="ko_KR">
