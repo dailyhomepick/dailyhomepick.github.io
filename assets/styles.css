@@ -1,4 +1,4 @@
-/* Daily Home Pick — generated pages share this one stylesheet. */
+/* 데일리홈픽 — generated pages share this one stylesheet. */
 :root {
   --bg: #f5f6f8;
   --surface: #ffffff;
@@ -535,12 +535,25 @@ button, input, select { font: inherit; color: inherit; }
 .stat-label { font-size: 13px; font-weight: 700; color: var(--muted); }
 .stat-main { font-size: 26px; font-weight: 800; letter-spacing: -0.03em; margin-top: 6px; font-variant-numeric: tabular-nums; }
 .stat-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
-.spark { display: flex; align-items: flex-end; gap: 3px; height: 120px; padding: 10px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
-.spark i { flex: 1; min-height: 2px; background: var(--accent); border-radius: 3px 3px 0 0; opacity: .85; }
-.spark i:hover { opacity: 1; }
+.chart-legend { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--muted); margin: -8px 0 12px; }
+.chart-legend .sw { width: 10px; height: 10px; border-radius: 2px; }
+.chart-legend .sw + .sw { margin-left: 10px; }
+.sw-site { background: var(--accent); }
+.sw-other { background: var(--muted); opacity: .45; }
+.chart-plot { position: relative; height: 150px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.chart-line { position: absolute; left: 38px; right: 12px; border-top: 1px dashed var(--line); }
+.chart-line span { position: absolute; left: -34px; top: -.62em; width: 28px; text-align: right; font-size: 11px; line-height: 1; color: var(--muted); font-variant-numeric: tabular-nums; }
+.chart-bars { position: absolute; top: 8px; bottom: 0; left: 38px; right: 12px; display: flex; align-items: flex-end; gap: 3px; }
+.chart-bars i { flex: 1; height: 100%; display: flex; align-items: flex-end; gap: 1px; }
+.chart-bars b { flex: 1; min-height: 2px; border-radius: 2px 2px 0 0; }
+.chart-bars b.zero { min-height: 0; }
+.chart-bars .b-site { background: var(--accent); }
+.chart-bars .b-other { background: var(--muted); opacity: .45; }
+.chart-x { display: flex; justify-content: space-between; padding: 6px 12px 0 38px; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 44px 0 0; }
 .stat-table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
 .stat-table th, .stat-table td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: right; }
-.stat-table th:first-child, .stat-table td:first-child { text-align: left; }
+.stat-table th:first-child, .stat-table td:first-child { text-align: left; white-space: nowrap; }
 .stat-table th { font-size: 12.5px; color: var(--muted); font-weight: 700; }
 .stat-table .neg { color: var(--bad); }
 @media (max-width: 560px) { .stat-row { grid-template-columns: 1fr; } }

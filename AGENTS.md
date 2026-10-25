@@ -1,4 +1,4 @@
-# Daily Home Pick 운영 규칙 (Hermes·사람 공통)
+# 데일리홈픽 운영 규칙 (Hermes·사람 공통)
 
 사이트: https://dailyhomepick.github.io · 저장소: `dailyhomepick/dailyhomepick.github.io`
 목표: **할인율이 높고 제휴 링크(쿠팡 파트너스 우선, 그다음 링크프라이스)가 있는 상품**을 매일 많이 올려 검색 노출과 클릭을 늘린다.

@@ -1,4 +1,4 @@
-// Daily Home Pick static site generator.
+// 데일리홈픽 static site generator.
 // Reads data/*.json and writes every HTML page, sitemap, RSS, robots and search index.
 // Usage: node scripts/build.mjs   (no dependencies)
 // The build stops with a list of problems when a published product breaks the rules in AGENTS.md.
@@ -709,7 +709,14 @@ if (site.adminPath) {
   const all = stats.days || [];
   const sum = (rows, where, k) => rows.reduce((s, r) => s + Number(r[where]?.[k] || 0), 0);
   const won = (n) => `${Math.round(n).toLocaleString()}원`;
-  const maxClick = Math.max(1, ...series.map((r) => r.site.clicks));
+  // 축 눈금은 보기 좋은 단위로 끊는다. 눈금이 5개를 넘으면 숫자가 겹쳐 읽기 어렵다.
+  const maxClick = Math.max(1, ...series.map((r) => Math.max(r.site.clicks, r.other.clicks)));
+  const step = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000].find((s) => maxClick / s <= 4) || 2000;
+  const axisTop = Math.ceil(maxClick / step) * step;
+  const ticks = [];
+  for (let v = 0; v <= axisTop; v += step) ticks.push(v);
+  const md = (iso) => `${Number(iso.slice(5, 7))}/${Number(iso.slice(8, 10))}`;
+  const bar = (cls, n) => `<b class="${cls}${n ? '' : ' zero'}" style="height:${((n / axisTop) * 100).toFixed(1)}%"></b>`;
   const card = (label, rows) => `<div class="stat-card">
     <p class="stat-label">${esc(label)}</p>
     <p class="stat-main">${won(sum(rows, 'site', 'commission'))}</p>
@@ -727,22 +734,31 @@ if (site.adminPath) {
     <p class="lead">쿠팡 파트너스 기준입니다. 갱신 ${stats.updatedAt ? esc(stats.updatedAt.slice(0, 16).replace('T', ' ')) : '없음'} · 누적 ${all.length}일</p>
   </header>
 
-  <h2 class="h3">이 사이트 <span class="muted small">(subId ${esc(stats.subId || '없음')})</span></h2>
+  <h2 class="h3">${esc(site.name)} <span class="muted small">(subId ${esc(stats.subId || '없음')})</span></h2>
   <div class="stat-row">
     ${card('최근 7일', series.slice(-7))}
     ${card('최근 30일', series)}
     ${card('전체 기간', all)}
   </div>
-  ${siteTotal ? '' : `<p class="empty" style="margin-top:14px">아직 이 사이트를 거친 클릭이 없습니다. 검색 색인이 되고 유입이 시작되면 여기에 쌓입니다.</p>`}
+  ${siteTotal ? '' : `<p class="empty" style="margin-top:14px">아직 ${esc(site.name)}을 거친 클릭이 없습니다. 검색 색인이 되고 유입이 시작되면 여기에 쌓입니다.</p>`}
 
   <section class="section-tight">
-    <h2 class="h3">일별 클릭 (이 사이트, 최근 30일)</h2>
-    <div class="spark">${series.map((r) => `<i style="height:${Math.round((r.site.clicks / maxClick) * 100)}%" title="${r.date} · 클릭 ${r.site.clicks} · 주문 ${r.site.orders} · ${won(r.site.commission)}"></i>`).join('')}</div>
-    <p class="muted small">${series[0].date} ~ ${series[series.length - 1].date} · 최고 ${maxClick}회</p>
+    <h2 class="h3">일별 클릭 (최근 30일)</h2>
+    <p class="chart-legend"><span class="sw sw-site"></span>${esc(site.name)}<span class="sw sw-other"></span>기타 경로</p>
+    <div class="chart">
+      <div class="chart-plot">
+        ${ticks.map((v) => `<div class="chart-line" style="bottom:${((v / axisTop) * 100).toFixed(1)}%"><span>${v}</span></div>`).join('')}
+        <div class="chart-bars">${series.map((r) => `<i title="${r.date} · ${esc(site.name)} ${r.site.clicks}회 · 기타 ${r.other.clicks}회">${bar('b-site', r.site.clicks)}${bar('b-other', r.other.clicks)}</i>`).join('')}</div>
+      </div>
+      <div class="chart-x">${[0, 7, 14, 21, 29].map((i) => `<span>${md(series[i].date)}</span>`).join('')}</div>
+    </div>
+    <p class="muted small">단위: 회 · ${series[0].date} ~ ${series[series.length - 1].date}</p>
   </section>
 
+  <hr class="rule">
+
   <section class="section-tight">
-    <h2 class="h3">기타 경로 <span class="muted small">(이 사이트 밖에서 만든 링크)</span></h2>
+    <h2 class="h3">기타 경로 <span class="muted small">(${esc(site.name)} 밖에서 만든 링크)</span></h2>
     <div class="stat-row">
       <div class="stat-card"><p class="stat-label">최근 30일</p>
         <p class="stat-main">${won(sum(series, 'other', 'commission'))}</p>
@@ -756,7 +772,7 @@ if (site.adminPath) {
   <section class="section-tight">
     <h2 class="h3">움직임이 있던 날</h2>
     ${moved.length ? `<table class="stat-table">
-      <thead><tr><th>날짜</th><th>사이트 클릭</th><th>사이트 수수료</th><th>기타 클릭</th><th>기타 수수료</th></tr></thead>
+      <thead><tr><th>날짜</th><th>${esc(site.name)} 클릭</th><th>${esc(site.name)} 수수료</th><th>기타 클릭</th><th>기타 수수료</th></tr></thead>
       <tbody>${moved.map((r) => `<tr>
         <td>${r.date}</td>
         <td>${r.site.clicks || ''}</td><td class="${r.site.commission < 0 ? 'neg' : ''}">${r.site.commission ? won(r.site.commission) : ''}</td>

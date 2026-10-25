@@ -1,4 +1,4 @@
-# Daily Home Pick
+# 데일리홈픽
 
 매일 가격을 확인한 생활 할인 상품을 모아 보여주는 GitHub Pages 사이트입니다. https://dailyhomepick.github.io
 
