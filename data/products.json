@@ -327,7 +327,7 @@
       ]
     ],
     "caution": "접었을 때 크기와 세척 편의성을 확인하세요.",
-    "status": "published",
+    "status": "hidden",
     "addedAt": "2026-10-21",
     "priceHistory": [
       {
@@ -726,7 +726,7 @@
       ]
     ],
     "caution": "정확한 캡슐 수, 드럼/일반 세탁기 호환, 어린이 접근 방지 보관 필요.",
-    "status": "published",
+    "status": "hidden",
     "addedAt": "2026-10-24",
     "priceHistory": [
       {
@@ -6994,7 +6994,7 @@
   },
   {
     "id": "coupang-7825654282",
-    "status": "published",
+    "status": "hidden",
     "addedAt": "2026-10-24",
     "checkedAt": "2026-10-25",
     "title": "크린랩 롤백 25cm x 35cm",
@@ -26275,7 +26275,7 @@
   },
   {
     "id": "coupang-8673270088",
-    "status": "published",
+    "status": "hidden",
     "addedAt": "2026-10-25",
     "checkedAt": "2026-10-25",
     "title": "풀무원건강생활 스팀쿡 베이직 버튼음 무음모드 에어프라이어 12L, AV12E10CC, 단일 색상",

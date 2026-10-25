@@ -165,7 +165,9 @@ export function guessCategory(title = '', store = '') {
 }
 
 // Thumbnails must be a real product photo URL: absolute https, not a site icon/badge/placeholder.
-const ICON_PATTERNS = [/\/icons?\//i, /\/badges?\//i, /sprite/i, /placeholder/i, /no[_-]?image/i, /\/logo/i, /favicon/i, /rocket-(delivery|fresh)/i, /\/wow\.png/i, /\/event\.png/i];
+// ads-partners.coupang.com 은 상품 사진이 아니라 제휴 배너로 리다이렉트한다(320x100 짜리).
+// 쿠팡 검색 API 가 productImage 로 이 주소를 주는 경우가 있어 막아 둔다.
+const ICON_PATTERNS = [/\/icons?\//i, /\/badges?\//i, /sprite/i, /placeholder/i, /no[_-]?image/i, /\/logo/i, /favicon/i, /rocket-(delivery|fresh)/i, /\/wow\.png/i, /\/event\.png/i, /ads-partners\.coupang\.com/i, /\/image\/affiliate\//i];
 export function imageProblem(url) {
   if (!url || !/^https:\/\//.test(url)) return `이미지 주소가 https 절대경로가 아님: ${String(url).slice(0, 60)}`;
   if (ICON_PATTERNS.some((re) => re.test(url))) return `상품 사진이 아닌 아이콘/로고 이미지: ${url.slice(0, 80)}`;
