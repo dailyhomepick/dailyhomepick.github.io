@@ -368,7 +368,7 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <p class="kicker"><span class="dot" aria-hidden="true"></span>${longDate(lastChecked)} 가격 확인</p>
-      <h1>오늘의 할인 상품 ${todayDeals.length}개,<br>할인율 높은 순으로</h1>
+      <h1>매일 가격을 확인한<br>할인 상품, 할인율 높은 순으로</h1>
       <p class="lead">쿠팡 골드박스와 주요 쇼핑몰 특가를 매일 다시 확인해서, 지금 할인 중인 생활용품만 모았습니다.</p>
       <div class="actions">
         <a class="btn btn-primary" href="/today.html">오늘의 할인 전체 보기</a>
@@ -404,7 +404,7 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <div><p class="kicker">할인율 높은 순</p><h2>오늘의 할인 TOP ${top.length}</h2></div>
+      <div><p class="kicker">할인율 높은 순</p><h2>오늘의 할인 TOP</h2></div>
       <a class="link-more" href="/today.html">${todayDeals.length}개 전체 →</a>
     </div>
     ${grid(top)}

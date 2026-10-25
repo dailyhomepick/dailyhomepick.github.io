@@ -50,9 +50,10 @@ export function addToDailyPost(posts, date, ids, productsById) {
     post.items.sort((a, b) => rate(b.product) - rate(a.product));
     post.featured = post.items[0]?.product;
     const [, m, d] = date.split('-').map(Number);
-    post.title = `${m}월 ${d}일 오늘의 할인 ${post.items.length}선`;
+    // 제목에 개수를 넣지 않는다. 홈의 '오늘의 할인'과 세는 기준이 달라 서로 어긋나 보인다.
+    post.title = `${m}월 ${d}일 오늘의 할인`;
   } else {
-    post.title = post.title.replace(/\d+선/, `${post.items.length}선`);
+    post.title = post.title.replace(/\s*\d+선$/, '');
   }
   return true;
 }
