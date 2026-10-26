@@ -15,6 +15,7 @@ import { basename, join, resolve } from 'node:path';
 import {
   prohibitedReason, parsePrice, discountOf, textProblem, isBlockedLink, isProductUrl,
   storeOf, networkOf, guessCategory, today, loadEnv, imageProblem, unwrapImage, outOfScope, daysBetween,
+  isSoloLiving,
 } from './lib/rules.mjs';
 import { loadMerchants, deeplinkFor } from './lib/linkprice.mjs';
 import { extractTags } from './lib/keywords.mjs';
@@ -61,6 +62,10 @@ async function imageOk(url) {
     return `이미지 열기 실패(${e.name === 'AbortError' ? '시간 초과' : e.message})`;
   }
 }
+
+// 자취템은 주 카테고리를 밀어내지 않고 뒤에 붙는다(주방이면서 자취템일 수 있다).
+const withSolo = (title, cats) =>
+  (isSoloLiving(title) && !cats.includes('solo-living') ? [...cats, 'solo-living'] : cats);
 
 function review(c) {
   const problems = [];
@@ -112,7 +117,7 @@ function review(c) {
       link: c.link,
       affiliateLink,
       network,
-      categories: cats.length ? cats : [guessCategory(c.title, c.store || storeOf(c.link)?.name)],
+      categories: withSolo(c.title, cats.length ? cats : [guessCategory(c.title, c.store || storeOf(c.link)?.name)]),
       // 후보가 태그를 주면 그대로 두고, 없을 때만 상품명에서 뽑는다.
       tags: [...new Set((c.tags || []).length ? c.tags : extractTags({ title: c.title }))],
       summary: c.summary || '',
