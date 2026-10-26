@@ -17,6 +17,7 @@ import {
   storeOf, networkOf, guessCategory, today, loadEnv, imageProblem, unwrapImage, outOfScope, daysBetween,
 } from './lib/rules.mjs';
 import { loadMerchants, deeplinkFor } from './lib/linkprice.mjs';
+import { extractTags } from './lib/keywords.mjs';
 import { readJson, writeJson, path, hash, titleKey, linkKey, addToDailyPost } from './lib/store.mjs';
 
 loadEnv();
@@ -112,7 +113,8 @@ function review(c) {
       affiliateLink,
       network,
       categories: cats.length ? cats : [guessCategory(c.title, c.store || storeOf(c.link)?.name)],
-      tags: [...new Set(c.tags || [])],
+      // 후보가 태그를 주면 그대로 두고, 없을 때만 상품명에서 뽑는다.
+      tags: [...new Set((c.tags || []).length ? c.tags : extractTags({ title: c.title }))],
       summary: c.summary || '',
       specs: c.specs || [],
       caution: c.caution || '',
