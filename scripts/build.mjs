@@ -616,17 +616,38 @@ add('tags/index.html', layout({
 }));
 for (const [t, list] of productsByTag) {
   const sorted = [...list].sort(byRate);
+  const prices = sorted.map(priceOf).filter(Boolean).sort((a, b) => a - b);
+  const low = prices[0] || 0;
+  const high = prices[prices.length - 1] || 0;
+  const cur = sorted[0].price?.currency;
+  const dropped = sorted.filter((p) => p.priceDropRate).length;
+  const checked = sorted.reduce((m, p) => (p.checkedAt > m ? p.checkedAt : m), '2000-01-01');
+  const many = sorted.length > 1 && low !== high;
+  const tagFaqs = faqFor(t);
+  const headline = many ? `${t} 가격 비교` : `${t} 할인`;
+  const range = many ? `${money(low, cur)}부터 ${money(high, cur)}까지` : money(low, cur);
+  const lead = `모아 둔 ${t} 할인 상품 ${sorted.length}개입니다. ${range}, ${longDate(checked)}에 가격을 다시 확인했습니다.`
+    + (dropped ? ` 그중 ${dropped}개는 최근 기록보다 값이 내렸습니다.` : '');
+
   add(`tags/${t}.html`, layout({
-    title: `${t} 할인 상품 ${list.length}개`, description: `#${t} 할인 상품 ${list.length}개를 할인율 높은 순으로 모았습니다.`, path: tagHref(t), active: 'tags',
+    title: `${headline} ${sorted.length}종${many ? ` · 최저 ${money(low, cur)}` : ''}`,
+    description: `${t} 할인 상품 ${sorted.length}개를 값으로 비교했습니다. ${range}. ${longDate(checked)} 가격 확인.`.slice(0, 155),
+    path: tagHref(t), active: 'tags',
     body: `
 <div class="wrap">
   ${breadcrumb([['홈', '/'], ['태그', '/tags/'], [`#${t}`, tagHref(t)]])}
-  <header class="page-head"><p class="kicker">태그</p><h1>#${esc(t)}</h1></header>
+  <header class="page-head"><p class="kicker">태그</p><h1>${esc(headline)}</h1><p class="lead">${esc(lead)}</p></header>
   ${sortBar(sorted.length, { def: 'rate-desc' })}${grid(sorted, ' data-sortable')}
+  ${tagFaqs.length ? `<section class="section-tight"><h2 class="h3">${esc(t)} 자주 묻는 질문</h2><dl class="faq">${tagFaqs.map(([q, a]) => `<dt>${esc(q)}</dt><dd>${esc(a)}</dd>`).join('')}</dl></section>` : ''}
   ${disclosure(sorted)}
 </div>`,
-    image: sorted[0].image, head: itemListLd(sorted),
-  }), sorted[0].checkedAt);
+    image: sorted[0].image,
+    head: itemListLd(sorted) + (tagFaqs.length ? jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: tagFaqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    }) : ''),
+  }), checked);
 }
 
 // Keyword landing pages
