@@ -551,6 +551,17 @@ button, input, select { font: inherit; color: inherit; }
 .chart-bars .b-other { background: var(--muted); opacity: .45; }
 .chart-x { display: flex; justify-content: space-between; padding: 6px 12px 0 38px; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .rule { border: 0; border-top: 1px solid var(--line); margin: 44px 0 0; }
+.price-log { margin-top: 22px; }
+.price-log .h4 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+.price-log-list { list-style: none; margin: 10px 0 0; padding: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.price-log-list li { display: flex; align-items: baseline; gap: 10px; padding: 9px 14px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.price-log-list li + li { border-top: 1px solid var(--line); }
+.price-log-list span { width: 52px; color: var(--muted); font-size: 12.5px; }
+.price-log-list b { font-weight: 700; }
+.price-log-list i { font-style: normal; font-size: 11px; font-weight: 700; color: var(--good); background: var(--good-soft); border-radius: 5px; padding: 1px 5px; margin-left: 4px; }
+.price-log-list em { font-style: normal; font-size: 12.5px; font-weight: 700; margin-left: auto; }
+.price-log-list em.down { color: var(--good); }
+.price-log-list em.up { color: var(--muted); }
 .quick-links { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 28px; }
 .quick-links .btn { padding: 9px 15px; font-size: 14px; }
 .stat-table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }

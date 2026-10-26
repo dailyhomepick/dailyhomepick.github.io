@@ -613,6 +613,9 @@ for (const p of products) {
   const stale = age(p) > rules.staleDays;
   const history = (p.priceHistory || []).slice(-8).reverse();
   const lowest = lowestOf(p);
+  const highest = Math.max(...(p.priceHistory || []).map((h) => h.price), p.price.min);
+  // 폭이 1.5배를 넘으면 같은 상품의 가격 변동이 아니라 다른 옵션이 섞인 것으로 본다.
+  const reliable = history.length > 1 && highest <= lowest * 1.5;
   // 품목을 아는 상품에만 문답을 붙인다. 전부에 같은 걸 붙이면 중복 콘텐츠가 된다.
   const kwItem = itemOf(p);
   const faqs = faqFor(kwItem);
@@ -628,12 +631,22 @@ for (const p of products) {
       ${stale ? `<p class="caution"><strong>${expired ? '지난 할인' : '가격 확인 필요'}</strong> ${longDate(p.checkedAt)}에 확인한 가격입니다. 지금은 달라졌을 수 있어요.</p>` : ''}
       <div class="buy-box buy-box-col">
         ${priceBlock(p, 'price price-xl')}
-        <p class="muted small">${longDate(p.checkedAt)} 가격 확인${history.length > 1 ? ` · 최근 기록 중 최저 ${money(lowest, p.price.currency)}` : ''}</p>
+        <p class="muted small">${longDate(p.checkedAt)} 가격 확인${reliable ? ` · 최근 기록 중 최저 ${money(lowest, p.price.currency)}` : ''}</p>
         ${(p.badges || []).length ? `<p class="pills">${p.badges.map((b) => `<span class="pill">${esc(b)}</span>`).join('')}</p>` : ''}
         ${buyButton(p, 'btn btn-buy btn-lg')}
       </div>
       ${specTable(p.specs)}
-      ${history.length > 1 ? `<details class="history"><summary>가격 기록 ${history.length}건</summary><dl class="specs">${history.map((h) => `<div><dt>${shortDate(h.date)}</dt><dd>${money(h.price, p.price.currency)}</dd></div>`).join('')}</dl></details>` : ''}
+      ${reliable ? `<section class="price-log">
+        <h2 class="h4">가격 기록</h2>
+        <p class="muted small">데일리홈픽이 판매처 가격을 다시 확인한 기록입니다. 최저 ${money(lowest, p.price.currency)} · 최고 ${money(highest, p.price.currency)} · ${history.length}회 확인</p>
+        <ol class="price-log-list">${history.map((h, i) => {
+          const prev = history[i + 1];
+          const diff = prev ? h.price - prev.price : 0;
+          const pct = prev && prev.price ? Math.round((diff / prev.price) * 100) : 0;
+          const move = !prev || !diff ? '' : `<em class="${diff < 0 ? 'down' : 'up'}">${diff < 0 ? '↓' : '↑'}${Math.abs(pct)}%</em>`;
+          return `<li><span>${shortDate(h.date)}</span><b>${money(h.price, p.price.currency)}${h.price === lowest ? ' <i>최저</i>' : ''}</b>${move}</li>`;
+        }).join('')}</ol>
+      </section>` : ''}
       ${p.caution ? `<p class="caution"><strong>구매 전 체크</strong> ${esc(p.caution)}</p>` : ''}
       ${p.tags.length ? tagChips(p.tags) : ''}
     </div>
@@ -670,8 +683,11 @@ for (const p of products) {
   const kwPhrase = kwItem ? [kwMod, kwItem].filter(Boolean).join(' ') : '';
   const squash = (s) => String(s).replace(/\s+/g, '');
   const kwInTitle = kwPhrase && squash(p.title).includes(squash(kwPhrase));
-  const titleTail = kwPhrase ? (kwInTitle ? ' 최저가' : ` ${kwPhrase} 최저가`) : '';
-  const kwLead = kwPhrase ? `${kwPhrase} 추천, 가격 비교. ` : '';
+  // 기록상 지금이 가장 싼 때만 "최저가" 라고 쓴다. 나머지는 검색어만 남기고 주장을 뺀다.
+  const atLowest = reliable && p.price.min <= lowest;
+  const intent = atLowest ? '최저가' : '가격';
+  const titleTail = kwPhrase ? (kwInTitle ? ` ${intent}` : ` ${kwPhrase} ${intent}`) : '';
+  const kwLead = kwPhrase ? `${kwPhrase} ${atLowest ? '최저가' : '가격'} 비교. ` : '';
   add(`p/${p.id}.html`, layout({
     title: `${p.title}${p.discountRate ? ` ${p.discountRate}% 할인` : isGoldbox(p) ? ' 골드박스 특가' : ''} ${pr}${titleTail}`,
     description: `${kwLead}${autoSummary(p)} ${longDate(p.checkedAt)} 가격 확인.`.slice(0, 155),

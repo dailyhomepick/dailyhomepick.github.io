@@ -156,10 +156,10 @@ for (const file of inputs) {
       const drop = high > n.price.min ? Math.round(((high - n.price.min) / high) * 100) : 0;
       if (drop >= 3) existing.priceDropRate = drop;
       else delete existing.priceDropRate;
-      const last = existing.priceHistory?.at(-1);
-      if (!last || last.price !== n.price.min) {
-        existing.priceHistory = [...(existing.priceHistory || []), { date, price: n.price.min }].slice(-60);
-      }
+      const hist = (existing.priceHistory || []).filter((h) => h.date !== date);
+      const last = hist.at(-1);
+      if (!last || last.price !== n.price.min) hist.push({ date, price: n.price.min });
+      existing.priceHistory = hist.slice(-60);
       Object.assign(existing, {
         price: n.price, originalPrice: n.originalPrice, discountRate: n.discountRate, checkedAt: date,
         image: n.image || existing.image,
