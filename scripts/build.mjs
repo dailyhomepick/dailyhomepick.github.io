@@ -111,13 +111,55 @@ function priceParts(p) {
 const priceKey = (p) => (p.price.currency === 'USD' ? p.price.min * 1400 : p.price.min);
 const lowestOf = (p) => Math.min(...(p.priceHistory || []).map((h) => h.price), p.price.min);
 
+// 품목 안에서 몇 번째로 싼지. 같은 품목이 3개 이상 모였을 때만 센다.
+// 우리가 모아 둔 것들 사이의 순위일 뿐이라 문장에서도 그렇게 적는다.
+const priceRank = new Map();
+function buildPriceRanks(list) {
+  const groups = new Map();
+  for (const p of list) {
+    const item = (p.tags || [])[0];
+    if (!item) continue;
+    if (!groups.has(item)) groups.set(item, []);
+    groups.get(item).push(p);
+  }
+  for (const [item, g] of groups) {
+    if (g.length < 3) continue;
+    const sorted = [...g].sort((a, b) => priceOf(a) - priceOf(b));
+    sorted.forEach((p, i) => priceRank.set(p.id, { item, rank: i + 1, total: g.length }));
+  }
+}
+const priceOf = (p) => (typeof p.price === 'object' ? p.price?.min : p.price) || 0;
+
 function autoSummary(p) {
   if (p.summary) return p.summary;
   const parts = [`${p.store || '판매처'}에서 ${priceParts(p).main}`];
   if (p.discountRate) parts.push(`정가 대비 ${p.discountRate}% 할인`);
   else if (p.priceDropRate) parts.push(`최근 기록보다 ${p.priceDropRate}% 내린 가격`);
   if (p.badges?.length) parts.push(p.badges.join('·'));
-  return `${parts.join(', ')}에 판매 중입니다.`;
+  const out = [`${parts.join(', ')}에 판매 중입니다.`];
+
+  // 같은 품목끼리 비교. 1등과 꼴찌만 말하면 밋밋하니 위치를 그대로 적는다.
+  const r = priceRank.get(p.id);
+  if (r) {
+    out.push(r.rank === 1
+      ? `모아 둔 ${r.item} 할인 ${r.total}개 중 가장 쌉니다.`
+      : `모아 둔 ${r.item} 할인 ${r.total}개 중 ${r.rank}번째 가격입니다.`);
+  }
+
+  // 우리 기록으로 확인되는 변화. 판매처 페이지에는 없는 내용이다.
+  const hist = p.priceHistory || [];
+  if (hist.length > 1) {
+    const lo = Math.min(...hist.map((h) => h.price));
+    const hi = Math.max(...hist.map((h) => h.price));
+    if (hi <= lo * 1.5) {
+      const prev = hist[hist.length - 2];
+      const now = priceOf(p);
+      const diff = prev ? now - prev.price : 0;
+      if (diff < 0) out.push(`${shortDate(prev.date)}보다 ${Math.round((-diff / prev.price) * 100)}% 내렸습니다.`);
+      else if (now === lo) out.push(`${hist.length}번 확인한 중 가장 낮은 가격입니다.`);
+    }
+  }
+  return out.join(' ');
 }
 
 const img = (p, cls = '', eager = false) =>
@@ -284,6 +326,7 @@ for (const post of posts) {
     postsByProduct.get(item.product).push(post);
   }
 }
+buildPriceRanks(listed);
 const tagsSorted = [...productsByTag.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'ko'));
 // Today's deals: only what the last sweep re-checked, discounts and goldbox first.
 // staleDays(3일) 를 그대로 쓰면 어제·그저께 확인한 값이 섞여 "오늘" 이 아니게 된다.
