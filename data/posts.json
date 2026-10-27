@@ -1,5 +1,1874 @@
 [
   {
+    "slug": "2026-10-28-deals",
+    "kind": "deals",
+    "date": "2026-10-28",
+    "auto": true,
+    "title": "10월 28일 오늘의 할인",
+    "description": "10월 28일 가격을 확인한 할인 상품 모음입니다.",
+    "intro": "오늘 가격을 확인한 할인 상품입니다. 할인율이 높은 순서로 정리했고, 가격은 판매처 사정에 따라 바뀔 수 있습니다.",
+    "items": [
+      {
+        "product": "aliexpress-1005007340360989"
+      },
+      {
+        "product": "aliexpress-1005009806690706"
+      },
+      {
+        "product": "aliexpress-1005006856460301"
+      },
+      {
+        "product": "aliexpress-1005012614111283"
+      },
+      {
+        "product": "aliexpress-1005012986766115"
+      },
+      {
+        "product": "aliexpress-1005006980090984"
+      },
+      {
+        "product": "aliexpress-1005007861075029"
+      },
+      {
+        "product": "aliexpress-1005011885329811"
+      },
+      {
+        "product": "aliexpress-1005007355555130"
+      },
+      {
+        "product": "aliexpress-1005008941135535"
+      },
+      {
+        "product": "coupang-6595829212"
+      },
+      {
+        "product": "coupang-9724755552"
+      },
+      {
+        "product": "coupang-1806346903"
+      },
+      {
+        "product": "coupang-9684905113"
+      },
+      {
+        "product": "coupang-174997928"
+      },
+      {
+        "product": "coupang-9081602559"
+      },
+      {
+        "product": "coupang-7951127185"
+      },
+      {
+        "product": "coupang-8366678245"
+      },
+      {
+        "product": "coupang-8366713990"
+      },
+      {
+        "product": "coupang-9256900625"
+      },
+      {
+        "product": "coupang-6983961383"
+      },
+      {
+        "product": "coupang-5387284782"
+      },
+      {
+        "product": "coupang-6398611245"
+      },
+      {
+        "product": "coupang-9128818721"
+      },
+      {
+        "product": "coupang-9768037662"
+      },
+      {
+        "product": "coupang-8248006949"
+      },
+      {
+        "product": "coupang-6431129537"
+      },
+      {
+        "product": "coupang-9700457587"
+      },
+      {
+        "product": "coupang-7989391340"
+      },
+      {
+        "product": "coupang-7048515849"
+      },
+      {
+        "product": "coupang-8413085956"
+      },
+      {
+        "product": "coupang-8178947496"
+      },
+      {
+        "product": "coupang-8632355458"
+      },
+      {
+        "product": "coupang-8679870697"
+      },
+      {
+        "product": "coupang-5071236307"
+      },
+      {
+        "product": "coupang-7972887783"
+      },
+      {
+        "product": "coupang-9449097265"
+      },
+      {
+        "product": "coupang-9138580538"
+      },
+      {
+        "product": "coupang-8941555654"
+      },
+      {
+        "product": "coupang-8039976016"
+      },
+      {
+        "product": "coupang-6522962847"
+      },
+      {
+        "product": "coupang-9304924629"
+      },
+      {
+        "product": "coupang-6431129537"
+      },
+      {
+        "product": "coupang-8538355392"
+      },
+      {
+        "product": "coupang-7295797798"
+      },
+      {
+        "product": "coupang-9540841803"
+      },
+      {
+        "product": "coupang-8969464771"
+      },
+      {
+        "product": "coupang-2032551412"
+      },
+      {
+        "product": "coupang-7434490441"
+      },
+      {
+        "product": "coupang-8118316861"
+      },
+      {
+        "product": "coupang-113166378"
+      },
+      {
+        "product": "coupang-9612806766"
+      },
+      {
+        "product": "coupang-6279301093"
+      },
+      {
+        "product": "coupang-9704030238"
+      },
+      {
+        "product": "coupang-8266132700"
+      },
+      {
+        "product": "coupang-9740723213"
+      },
+      {
+        "product": "coupang-8215610823"
+      },
+      {
+        "product": "coupang-6304672048"
+      },
+      {
+        "product": "coupang-6786633262"
+      },
+      {
+        "product": "coupang-5567091641"
+      },
+      {
+        "product": "coupang-9724755552"
+      },
+      {
+        "product": "coupang-9081602559"
+      },
+      {
+        "product": "coupang-7951127185"
+      },
+      {
+        "product": "coupang-8366678245"
+      },
+      {
+        "product": "coupang-8618912"
+      },
+      {
+        "product": "coupang-8366713990"
+      },
+      {
+        "product": "coupang-9256900625"
+      },
+      {
+        "product": "coupang-7645527396"
+      },
+      {
+        "product": "coupang-6398611245"
+      },
+      {
+        "product": "coupang-9128818721"
+      },
+      {
+        "product": "coupang-8174334666"
+      },
+      {
+        "product": "coupang-9496377616"
+      },
+      {
+        "product": "coupang-8248006949"
+      },
+      {
+        "product": "coupang-6431129537"
+      },
+      {
+        "product": "coupang-9700457587"
+      },
+      {
+        "product": "coupang-8982575583"
+      },
+      {
+        "product": "coupang-8734722763"
+      },
+      {
+        "product": "coupang-7048515849"
+      },
+      {
+        "product": "coupang-8413085956"
+      },
+      {
+        "product": "coupang-8178947496"
+      },
+      {
+        "product": "coupang-8632355458"
+      },
+      {
+        "product": "coupang-5071236307"
+      },
+      {
+        "product": "coupang-7972887783"
+      },
+      {
+        "product": "coupang-9449097265"
+      },
+      {
+        "product": "coupang-8941555654"
+      },
+      {
+        "product": "coupang-9649923742"
+      },
+      {
+        "product": "coupang-8039976016"
+      },
+      {
+        "product": "coupang-9452404088"
+      },
+      {
+        "product": "coupang-6522962847"
+      },
+      {
+        "product": "coupang-9304924629"
+      },
+      {
+        "product": "coupang-9698561194"
+      },
+      {
+        "product": "coupang-8916071579"
+      },
+      {
+        "product": "coupang-6431129537"
+      },
+      {
+        "product": "coupang-7557076812"
+      },
+      {
+        "product": "coupang-7295797798"
+      },
+      {
+        "product": "coupang-281403973"
+      },
+      {
+        "product": "coupang-9540841803"
+      },
+      {
+        "product": "coupang-2032551412"
+      },
+      {
+        "product": "coupang-7434490441"
+      },
+      {
+        "product": "coupang-8118316861"
+      },
+      {
+        "product": "coupang-8855226"
+      },
+      {
+        "product": "coupang-6279301093"
+      },
+      {
+        "product": "coupang-9740723213"
+      },
+      {
+        "product": "coupang-8215610823"
+      },
+      {
+        "product": "coupang-6304672048"
+      },
+      {
+        "product": "coupang-5567091641"
+      },
+      {
+        "product": "coupang-8618506004"
+      },
+      {
+        "product": "coupang-9091522797"
+      },
+      {
+        "product": "coupang-9633859697"
+      },
+      {
+        "product": "coupang-6374922813"
+      },
+      {
+        "product": "coupang-7164345502"
+      },
+      {
+        "product": "coupang-6550908547"
+      },
+      {
+        "product": "coupang-8330725092"
+      },
+      {
+        "product": "coupang-6789548230"
+      },
+      {
+        "product": "coupang-1946659295"
+      },
+      {
+        "product": "coupang-4343134537"
+      },
+      {
+        "product": "coupang-8582731683"
+      },
+      {
+        "product": "coupang-7742021454"
+      },
+      {
+        "product": "coupang-6429602575"
+      },
+      {
+        "product": "coupang-8209844068"
+      },
+      {
+        "product": "coupang-8209850103"
+      },
+      {
+        "product": "coupang-7650005374"
+      },
+      {
+        "product": "coupang-6499998087"
+      },
+      {
+        "product": "coupang-8802041287"
+      },
+      {
+        "product": "coupang-106265"
+      },
+      {
+        "product": "coupang-1414809213"
+      },
+      {
+        "product": "coupang-9072524953"
+      },
+      {
+        "product": "coupang-7773825463"
+      },
+      {
+        "product": "coupang-9395735618"
+      },
+      {
+        "product": "coupang-8582731683"
+      },
+      {
+        "product": "coupang-9187340574"
+      },
+      {
+        "product": "coupang-8633754180"
+      },
+      {
+        "product": "coupang-189259849"
+      },
+      {
+        "product": "coupang-6148487160"
+      },
+      {
+        "product": "coupang-7022353211"
+      },
+      {
+        "product": "coupang-6492007298"
+      },
+      {
+        "product": "coupang-6687515620"
+      },
+      {
+        "product": "coupang-9291024760"
+      },
+      {
+        "product": "coupang-9088017324"
+      },
+      {
+        "product": "coupang-1407366400"
+      },
+      {
+        "product": "coupang-8207856682"
+      },
+      {
+        "product": "coupang-1601751214"
+      },
+      {
+        "product": "coupang-7800453299"
+      },
+      {
+        "product": "coupang-1176713569"
+      },
+      {
+        "product": "coupang-5449910664"
+      },
+      {
+        "product": "coupang-7397036159"
+      },
+      {
+        "product": "coupang-91830709"
+      },
+      {
+        "product": "coupang-91830709"
+      },
+      {
+        "product": "coupang-8085379688"
+      },
+      {
+        "product": "coupang-5307855301"
+      },
+      {
+        "product": "coupang-7353151170"
+      },
+      {
+        "product": "coupang-6610846086"
+      },
+      {
+        "product": "coupang-4310015590"
+      },
+      {
+        "product": "coupang-1912642276"
+      },
+      {
+        "product": "coupang-8633754180"
+      },
+      {
+        "product": "coupang-7152046383"
+      },
+      {
+        "product": "coupang-5054141272"
+      },
+      {
+        "product": "coupang-8729115745"
+      },
+      {
+        "product": "coupang-184630928"
+      },
+      {
+        "product": "coupang-7268757142"
+      },
+      {
+        "product": "coupang-9320256369"
+      },
+      {
+        "product": "bebesup-origin-wipes-cap"
+      },
+      {
+        "product": "coupang-6586372374"
+      },
+      {
+        "product": "coupang-9334963084"
+      },
+      {
+        "product": "coupang-5545887952"
+      },
+      {
+        "product": "coupang-8685879220"
+      },
+      {
+        "product": "coupang-7923609064"
+      },
+      {
+        "product": "coupang-46208003"
+      },
+      {
+        "product": "coupang-7458810098"
+      },
+      {
+        "product": "coupang-7677840315"
+      },
+      {
+        "product": "coupang-8466035436"
+      },
+      {
+        "product": "coupang-9597427089"
+      },
+      {
+        "product": "coupang-6854281548"
+      },
+      {
+        "product": "coupang-9699430550"
+      },
+      {
+        "product": "coupang-8631775229"
+      },
+      {
+        "product": "coupang-21569963"
+      },
+      {
+        "product": "coupang-4354956175"
+      },
+      {
+        "product": "coupang-9425934299"
+      },
+      {
+        "product": "coupang-8538107600"
+      },
+      {
+        "product": "coupang-6586372374"
+      },
+      {
+        "product": "coupang-8289078907"
+      },
+      {
+        "product": "coupang-9470020479"
+      },
+      {
+        "product": "coupang-252301180"
+      },
+      {
+        "product": "coupang-6854281548"
+      },
+      {
+        "product": "coupang-9344126652"
+      },
+      {
+        "product": "coupang-9334963084"
+      },
+      {
+        "product": "coupang-205065505"
+      },
+      {
+        "product": "coupang-7308156780"
+      },
+      {
+        "product": "coupang-5545887952"
+      },
+      {
+        "product": "coupang-7674733549"
+      },
+      {
+        "product": "coupang-8057228086"
+      },
+      {
+        "product": "coupang-8791905739"
+      },
+      {
+        "product": "coupang-7510979869"
+      },
+      {
+        "product": "coupang-6063894601"
+      },
+      {
+        "product": "coupang-7458810098"
+      },
+      {
+        "product": "coupang-111229591"
+      },
+      {
+        "product": "coupang-6667214098"
+      },
+      {
+        "product": "coupang-6903873562"
+      },
+      {
+        "product": "coupang-9055193080"
+      },
+      {
+        "product": "coupang-10440915"
+      },
+      {
+        "product": "coupang-204303837"
+      },
+      {
+        "product": "coupang-8289078907"
+      },
+      {
+        "product": "coupang-8024331960"
+      },
+      {
+        "product": "coupang-7870430619"
+      },
+      {
+        "product": "coupang-5509226394"
+      },
+      {
+        "product": "coupang-9624432354"
+      },
+      {
+        "product": "coupang-8746727694"
+      },
+      {
+        "product": "coupang-8161005570"
+      },
+      {
+        "product": "coupang-7404879484"
+      },
+      {
+        "product": "coupang-8137710437"
+      },
+      {
+        "product": "coupang-1271064981"
+      },
+      {
+        "product": "coupang-7230779632"
+      },
+      {
+        "product": "coupang-6528172171"
+      },
+      {
+        "product": "coupang-218520566"
+      },
+      {
+        "product": "coupang-4618503633"
+      },
+      {
+        "product": "coupang-7689270513"
+      },
+      {
+        "product": "coupang-130180788"
+      },
+      {
+        "product": "coupang-2233944989"
+      },
+      {
+        "product": "coupang-1074470755"
+      },
+      {
+        "product": "coupang-1232968322"
+      },
+      {
+        "product": "coupang-1354181605"
+      },
+      {
+        "product": "coupang-6201953316"
+      },
+      {
+        "product": "coupang-6258890122"
+      },
+      {
+        "product": "coupang-296352196"
+      },
+      {
+        "product": "coupang-6202348727"
+      },
+      {
+        "product": "coupang-4792356812"
+      },
+      {
+        "product": "coupang-5842439886"
+      },
+      {
+        "product": "coupang-7000118912"
+      },
+      {
+        "product": "coupang-7665795963"
+      },
+      {
+        "product": "coupang-1649813767"
+      },
+      {
+        "product": "coupang-7934832186"
+      },
+      {
+        "product": "coupang-166996432"
+      },
+      {
+        "product": "coupang-5842439886"
+      },
+      {
+        "product": "coupang-5186098054"
+      },
+      {
+        "product": "coupang-4778232644"
+      },
+      {
+        "product": "coupang-6854321814"
+      },
+      {
+        "product": "coupang-7217231257"
+      },
+      {
+        "product": "coupang-327206043"
+      },
+      {
+        "product": "coupang-7869554357"
+      },
+      {
+        "product": "coupang-8586474173"
+      },
+      {
+        "product": "coupang-6308597882"
+      },
+      {
+        "product": "coupang-7665795956"
+      },
+      {
+        "product": "coupang-111268977"
+      },
+      {
+        "product": "coupang-1628662667"
+      },
+      {
+        "product": "coupang-7319954910"
+      },
+      {
+        "product": "coupang-4697181154"
+      },
+      {
+        "product": "coupang-172859262"
+      },
+      {
+        "product": "coupang-296352196"
+      },
+      {
+        "product": "coupang-7025069249"
+      },
+      {
+        "product": "coupang-4792356812"
+      },
+      {
+        "product": "coupang-9689646495"
+      },
+      {
+        "product": "coupang-6121918362"
+      },
+      {
+        "product": "coupang-8112490930"
+      },
+      {
+        "product": "coupang-7742596202"
+      },
+      {
+        "product": "coupang-7757115239"
+      },
+      {
+        "product": "coupang-7689270513"
+      },
+      {
+        "product": "coupang-9350014883"
+      },
+      {
+        "product": "coupang-8990198850"
+      },
+      {
+        "product": "coupang-172859233"
+      },
+      {
+        "product": "coupang-9052582961"
+      },
+      {
+        "product": "coupang-7134558328"
+      },
+      {
+        "product": "coupang-8291072955"
+      },
+      {
+        "product": "coupang-9055230703"
+      },
+      {
+        "product": "coupang-8188344094"
+      },
+      {
+        "product": "coupang-7852115435"
+      },
+      {
+        "product": "coupang-7871935374"
+      },
+      {
+        "product": "coupang-7600179424"
+      },
+      {
+        "product": "coupang-6403395461"
+      },
+      {
+        "product": "coupang-7572829529"
+      },
+      {
+        "product": "coupang-6101620244"
+      },
+      {
+        "product": "coupang-6101620244"
+      },
+      {
+        "product": "coupang-170016366"
+      },
+      {
+        "product": "coupang-6885129342"
+      },
+      {
+        "product": "coupang-8274844249"
+      },
+      {
+        "product": "coupang-9533723114"
+      },
+      {
+        "product": "coupang-6784715012"
+      },
+      {
+        "product": "coupang-170016339"
+      },
+      {
+        "product": "coupang-1055968"
+      },
+      {
+        "product": "coupang-8291072955"
+      },
+      {
+        "product": "coupang-8582731394"
+      },
+      {
+        "product": "coupang-8776336017"
+      },
+      {
+        "product": "coupang-7180954892"
+      },
+      {
+        "product": "coupang-7660554607"
+      },
+      {
+        "product": "coupang-1402935103"
+      },
+      {
+        "product": "coupang-7271386589"
+      },
+      {
+        "product": "coupang-170016339"
+      },
+      {
+        "product": "coupang-7105099367"
+      },
+      {
+        "product": "coupang-5485317400"
+      },
+      {
+        "product": "coupang-1312816044"
+      },
+      {
+        "product": "coupang-5471859034"
+      },
+      {
+        "product": "coupang-9543060017"
+      },
+      {
+        "product": "coupang-8461453327"
+      },
+      {
+        "product": "coupang-8509182128"
+      },
+      {
+        "product": "coupang-9089518497"
+      },
+      {
+        "product": "coupang-286139632"
+      },
+      {
+        "product": "coupang-2140167813"
+      },
+      {
+        "product": "coupang-6403461534"
+      },
+      {
+        "product": "coupang-16495803"
+      },
+      {
+        "product": "coupang-8610944276"
+      },
+      {
+        "product": "coupang-6542739738"
+      },
+      {
+        "product": "coupang-283693738"
+      },
+      {
+        "product": "coupang-2068932759"
+      },
+      {
+        "product": "coupang-8463456921"
+      },
+      {
+        "product": "coupang-8760924032"
+      },
+      {
+        "product": "coupang-9473972086"
+      },
+      {
+        "product": "coupang-9407932009"
+      },
+      {
+        "product": "coupang-8520281997"
+      },
+      {
+        "product": "coupang-9735711313"
+      },
+      {
+        "product": "coupang-9407932009"
+      },
+      {
+        "product": "coupang-9535412530"
+      },
+      {
+        "product": "coupang-8510780911"
+      },
+      {
+        "product": "coupang-8750529335"
+      },
+      {
+        "product": "coupang-117235005"
+      },
+      {
+        "product": "coupang-9407932009"
+      },
+      {
+        "product": "coupang-9535412530"
+      },
+      {
+        "product": "coupang-9542460319"
+      },
+      {
+        "product": "coupang-9735711313"
+      },
+      {
+        "product": "coupang-26148164"
+      },
+      {
+        "product": "coupang-9769746722"
+      },
+      {
+        "product": "coupang-240416607"
+      },
+      {
+        "product": "coupang-9643335"
+      },
+      {
+        "product": "coupang-8750169401"
+      },
+      {
+        "product": "coupang-8589999357"
+      },
+      {
+        "product": "coupang-7232254932"
+      },
+      {
+        "product": "coupang-1352914251"
+      },
+      {
+        "product": "coupang-313510314"
+      },
+      {
+        "product": "coupang-8692753484"
+      },
+      {
+        "product": "coupang-2176489447"
+      },
+      {
+        "product": "coupang-1352914251"
+      },
+      {
+        "product": "coupang-8750169401"
+      },
+      {
+        "product": "coupang-8746903070"
+      },
+      {
+        "product": "coupang-9244127612"
+      },
+      {
+        "product": "coupang-9581129317"
+      },
+      {
+        "product": "coupang-8956883547"
+      },
+      {
+        "product": "coupang-8301421541"
+      },
+      {
+        "product": "coupang-8357716360"
+      },
+      {
+        "product": "coupang-9535392730"
+      },
+      {
+        "product": "coupang-9397789774"
+      },
+      {
+        "product": "coupang-2176489447"
+      },
+      {
+        "product": "coupang-7923665499"
+      },
+      {
+        "product": "coupang-1779388"
+      },
+      {
+        "product": "coupang-8411197151"
+      },
+      {
+        "product": "coupang-1779388"
+      },
+      {
+        "product": "coupang-9664526313"
+      },
+      {
+        "product": "coupang-9681575187"
+      },
+      {
+        "product": "coupang-9244127612"
+      },
+      {
+        "product": "coupang-8750529335"
+      },
+      {
+        "product": "coupang-9728263919"
+      },
+      {
+        "product": "coupang-8745109488"
+      },
+      {
+        "product": "coupang-8589999357"
+      },
+      {
+        "product": "coupang-9171706468"
+      },
+      {
+        "product": "coupang-8017796252"
+      },
+      {
+        "product": "coupang-9407932009"
+      },
+      {
+        "product": "coupang-8750362366"
+      },
+      {
+        "product": "coupang-8425473062"
+      },
+      {
+        "product": "coupang-130164876"
+      },
+      {
+        "product": "coupang-6671696651"
+      },
+      {
+        "product": "coupang-6408714556"
+      },
+      {
+        "product": "coupang-9150828084"
+      },
+      {
+        "product": "coupang-7104553961"
+      },
+      {
+        "product": "coupang-7370852457"
+      },
+      {
+        "product": "coupang-9068696519"
+      },
+      {
+        "product": "coupang-7812235201"
+      },
+      {
+        "product": "coupang-7828230571"
+      },
+      {
+        "product": "coupang-9150828084"
+      },
+      {
+        "product": "coupang-7755865565"
+      },
+      {
+        "product": "coupang-6991217590"
+      },
+      {
+        "product": "coupang-7012059398"
+      },
+      {
+        "product": "coupang-7178787283"
+      },
+      {
+        "product": "coupang-8636153512"
+      },
+      {
+        "product": "coupang-7295300799"
+      },
+      {
+        "product": "coupang-20163942"
+      },
+      {
+        "product": "coupang-1276717101"
+      },
+      {
+        "product": "coupang-2311796549"
+      },
+      {
+        "product": "coupang-9335007912"
+      },
+      {
+        "product": "coupang-220853174"
+      },
+      {
+        "product": "coupang-7310061586"
+      },
+      {
+        "product": "coupang-5732864713"
+      },
+      {
+        "product": "coupang-6296437697"
+      },
+      {
+        "product": "coupang-7642102654"
+      },
+      {
+        "product": "coupang-274935456"
+      },
+      {
+        "product": "coupang-8959256588"
+      },
+      {
+        "product": "coupang-9453346482"
+      },
+      {
+        "product": "coupang-8999956513"
+      },
+      {
+        "product": "coupang-7335194861"
+      },
+      {
+        "product": "coupang-5171607790"
+      },
+      {
+        "product": "coupang-7656138367"
+      },
+      {
+        "product": "coupang-8350616562"
+      },
+      {
+        "product": "coupang-8350616562"
+      },
+      {
+        "product": "coupang-6408714556"
+      },
+      {
+        "product": "coupang-8255331367"
+      },
+      {
+        "product": "coupang-8643897709"
+      },
+      {
+        "product": "coupang-8734178184"
+      },
+      {
+        "product": "coupang-8687681457"
+      },
+      {
+        "product": "coupang-8989222887"
+      },
+      {
+        "product": "coupang-5158825957"
+      },
+      {
+        "product": "coupang-9287063502"
+      },
+      {
+        "product": "coupang-7105319153"
+      },
+      {
+        "product": "coupang-8391768862"
+      },
+      {
+        "product": "coupang-1500049935"
+      },
+      {
+        "product": "coupang-8260782329"
+      },
+      {
+        "product": "coupang-9498283258"
+      },
+      {
+        "product": "coupang-9254396859"
+      },
+      {
+        "product": "coupang-8531682796"
+      },
+      {
+        "product": "coupang-8255331367"
+      },
+      {
+        "product": "coupang-9150828084"
+      },
+      {
+        "product": "coupang-9344838202"
+      },
+      {
+        "product": "coupang-6417202386"
+      },
+      {
+        "product": "coupang-6011227725"
+      },
+      {
+        "product": "coupang-9150828084"
+      },
+      {
+        "product": "coupang-6344753372"
+      },
+      {
+        "product": "coupang-4947594003"
+      },
+      {
+        "product": "coupang-9506325370"
+      },
+      {
+        "product": "coupang-6784715012"
+      },
+      {
+        "product": "coupang-310080038"
+      },
+      {
+        "product": "coupang-8915242678"
+      },
+      {
+        "product": "coupang-8729115745"
+      },
+      {
+        "product": "coupang-8371538377"
+      },
+      {
+        "product": "coupang-7842640108"
+      },
+      {
+        "product": "coupang-5732864713"
+      },
+      {
+        "product": "coupang-8412528497"
+      },
+      {
+        "product": "coupang-8082654809"
+      },
+      {
+        "product": "coupang-8498887873"
+      },
+      {
+        "product": "coupang-8999614825"
+      },
+      {
+        "product": "coupang-2119214381"
+      },
+      {
+        "product": "coupang-1796918840"
+      },
+      {
+        "product": "coupang-7900401137"
+      },
+      {
+        "product": "coupang-8921579137"
+      },
+      {
+        "product": "coupang-8602654934"
+      },
+      {
+        "product": "coupang-7900401137"
+      },
+      {
+        "product": "coupang-9157959912"
+      },
+      {
+        "product": "coupang-8989759590"
+      },
+      {
+        "product": "coupang-9643230405"
+      },
+      {
+        "product": "coupang-9126340912"
+      },
+      {
+        "product": "coupang-2111955991"
+      },
+      {
+        "product": "coupang-1628630781"
+      },
+      {
+        "product": "coupang-8584993909"
+      },
+      {
+        "product": "coupang-8987595223"
+      },
+      {
+        "product": "coupang-8192535363"
+      },
+      {
+        "product": "coupang-5047898639"
+      },
+      {
+        "product": "coupang-7772316248"
+      },
+      {
+        "product": "coupang-6135671310"
+      },
+      {
+        "product": "coupang-141088383"
+      },
+      {
+        "product": "coupang-286139632"
+      },
+      {
+        "product": "coupang-9643530810"
+      },
+      {
+        "product": "coupang-245670231"
+      },
+      {
+        "product": "coupang-8531682796"
+      },
+      {
+        "product": "coupang-237746555"
+      },
+      {
+        "product": "coupang-7804265558"
+      },
+      {
+        "product": "coupang-6828007704"
+      },
+      {
+        "product": "coupang-324788226"
+      },
+      {
+        "product": "coupang-283693738"
+      },
+      {
+        "product": "coupang-8528238769"
+      },
+      {
+        "product": "coupang-8409565251"
+      },
+      {
+        "product": "coupang-2068932759"
+      },
+      {
+        "product": "20261022-09-100-2"
+      },
+      {
+        "product": "coupang-8615130283"
+      },
+      {
+        "product": "coupang-9239525189"
+      },
+      {
+        "product": "coupang-108459480"
+      },
+      {
+        "product": "coupang-1686971"
+      },
+      {
+        "product": "coupang-8461160534"
+      },
+      {
+        "product": "coupang-7300635644"
+      },
+      {
+        "product": "coupang-9456947062"
+      },
+      {
+        "product": "coupang-10349028"
+      },
+      {
+        "product": "coupang-201860684"
+      },
+      {
+        "product": "coupang-8789487511"
+      },
+      {
+        "product": "coupang-7375457367"
+      },
+      {
+        "product": "coupang-8615130283"
+      },
+      {
+        "product": "coupang-9474749989"
+      },
+      {
+        "product": "coupang-66936708"
+      },
+      {
+        "product": "coupang-4802816"
+      },
+      {
+        "product": "coupang-7912980135"
+      },
+      {
+        "product": "coupang-6113370508"
+      },
+      {
+        "product": "coupang-9616144397"
+      },
+      {
+        "product": "coupang-8391635007"
+      },
+      {
+        "product": "coupang-8425193796"
+      },
+      {
+        "product": "coupang-7853935532"
+      },
+      {
+        "product": "coupang-8840066092"
+      },
+      {
+        "product": "coupang-7422500929"
+      },
+      {
+        "product": "coupang-201860684"
+      },
+      {
+        "product": "coupang-7300635644"
+      },
+      {
+        "product": "coupang-7912980214"
+      },
+      {
+        "product": "coupang-6810269534"
+      },
+      {
+        "product": "coupang-8463452569"
+      },
+      {
+        "product": "coupang-7440493172"
+      },
+      {
+        "product": "coupang-6408770997"
+      },
+      {
+        "product": "coupang-7912980413"
+      },
+      {
+        "product": "coupang-7657506775"
+      },
+      {
+        "product": "coupang-7251679199"
+      },
+      {
+        "product": "coupang-175968"
+      },
+      {
+        "product": "coupang-150878901"
+      },
+      {
+        "product": "coupang-8349843199"
+      },
+      {
+        "product": "coupang-146542247"
+      },
+      {
+        "product": "coupang-8405261953"
+      },
+      {
+        "product": "coupang-9768152581"
+      },
+      {
+        "product": "coupang-9103336967"
+      },
+      {
+        "product": "coupang-7912980214"
+      },
+      {
+        "product": "coupang-294787069"
+      },
+      {
+        "product": "coupang-9778531308"
+      },
+      {
+        "product": "coupang-1358025317"
+      },
+      {
+        "product": "coupang-7619492451"
+      },
+      {
+        "product": "coupang-8366321167"
+      },
+      {
+        "product": "coupang-9287038199"
+      },
+      {
+        "product": "coupang-186443832"
+      },
+      {
+        "product": "coupang-1951427832"
+      },
+      {
+        "product": "coupang-8665916031"
+      },
+      {
+        "product": "coupang-8997649551"
+      },
+      {
+        "product": "coupang-284331008"
+      },
+      {
+        "product": "coupang-4342561586"
+      },
+      {
+        "product": "coupang-6697311797"
+      },
+      {
+        "product": "coupang-9485367783"
+      },
+      {
+        "product": "coupang-8302258239"
+      },
+      {
+        "product": "coupang-6040877021"
+      },
+      {
+        "product": "coupang-9727747319"
+      },
+      {
+        "product": "coupang-9371549822"
+      },
+      {
+        "product": "coupang-8955440290"
+      },
+      {
+        "product": "coupang-8693615412"
+      },
+      {
+        "product": "coupang-8990029391"
+      },
+      {
+        "product": "coupang-330539939"
+      },
+      {
+        "product": "coupang-117235005"
+      },
+      {
+        "product": "coupang-5030951666"
+      },
+      {
+        "product": "coupang-9013836214"
+      },
+      {
+        "product": "coupang-9124369866"
+      },
+      {
+        "product": "coupang-21901316"
+      },
+      {
+        "product": "coupang-6939560673"
+      },
+      {
+        "product": "coupang-9057289679"
+      },
+      {
+        "product": "coupang-7908109026"
+      },
+      {
+        "product": "coupang-9021201367"
+      },
+      {
+        "product": "coupang-9517925337"
+      },
+      {
+        "product": "coupang-9574047492"
+      },
+      {
+        "product": "coupang-9373852382"
+      },
+      {
+        "product": "coupang-8699346595"
+      },
+      {
+        "product": "coupang-1154571"
+      },
+      {
+        "product": "coupang-53605410"
+      },
+      {
+        "product": "coupang-26148164"
+      },
+      {
+        "product": "coupang-5709777572"
+      },
+      {
+        "product": "coupang-1045012"
+      },
+      {
+        "product": "coupang-8314723903"
+      },
+      {
+        "product": "coupang-7650644818"
+      },
+      {
+        "product": "coupang-7510649270"
+      },
+      {
+        "product": "coupang-7257500972"
+      },
+      {
+        "product": "coupang-8463372387"
+      },
+      {
+        "product": "coupang-7419625153"
+      },
+      {
+        "product": "coupang-9052877425"
+      },
+      {
+        "product": "coupang-7090319886"
+      },
+      {
+        "product": "coupang-9643335"
+      },
+      {
+        "product": "coupang-9719392306"
+      },
+      {
+        "product": "coupang-9003925411"
+      },
+      {
+        "product": "coupang-7857946109"
+      },
+      {
+        "product": "coupang-9039802630"
+      },
+      {
+        "product": "coupang-9710345127"
+      },
+      {
+        "product": "coupang-7232254932"
+      },
+      {
+        "product": "coupang-8959255745"
+      },
+      {
+        "product": "coupang-9507530088"
+      },
+      {
+        "product": "coupang-8527502437"
+      },
+      {
+        "product": "coupang-9391860017"
+      },
+      {
+        "product": "coupang-5906085615"
+      },
+      {
+        "product": "coupang-6906051075"
+      },
+      {
+        "product": "coupang-7104553961"
+      },
+      {
+        "product": "coupang-9737354671"
+      },
+      {
+        "product": "coupang-8647990693"
+      },
+      {
+        "product": "coupang-8675053697"
+      },
+      {
+        "product": "coupang-6239512369"
+      },
+      {
+        "product": "coupang-7144500188"
+      },
+      {
+        "product": "coupang-6996809329"
+      },
+      {
+        "product": "coupang-2009816455"
+      },
+      {
+        "product": "coupang-9091557836"
+      },
+      {
+        "product": "coupang-8463371794"
+      },
+      {
+        "product": "coupang-7159361460"
+      },
+      {
+        "product": "coupang-9395163046"
+      },
+      {
+        "product": "coupang-81331794"
+      },
+      {
+        "product": "coupang-7272135076"
+      },
+      {
+        "product": "coupang-8388187314"
+      },
+      {
+        "product": "coupang-7405894509"
+      },
+      {
+        "product": "coupang-6784667843"
+      },
+      {
+        "product": "coupang-7989831516"
+      },
+      {
+        "product": "coupang-9053141046"
+      },
+      {
+        "product": "coupang-7604723347"
+      },
+      {
+        "product": "coupang-10000000578675"
+      },
+      {
+        "product": "coupang-8490141880"
+      },
+      {
+        "product": "coupang-9052582961"
+      },
+      {
+        "product": "coupang-10552023"
+      },
+      {
+        "product": "coupang-8765835567"
+      },
+      {
+        "product": "coupang-8765835567"
+      },
+      {
+        "product": "coupang-9509930958"
+      },
+      {
+        "product": "coupang-9124344692"
+      },
+      {
+        "product": "coupang-9052582961"
+      },
+      {
+        "product": "coupang-9699336690"
+      },
+      {
+        "product": "coupang-8693275579"
+      },
+      {
+        "product": "coupang-9509930958"
+      },
+      {
+        "product": "coupang-261192458"
+      },
+      {
+        "product": "coupang-6714209681"
+      },
+      {
+        "product": "coupang-8962814859"
+      },
+      {
+        "product": "coupang-8721388212"
+      },
+      {
+        "product": "coupang-5643570020"
+      },
+      {
+        "product": "coupang-8817362511"
+      },
+      {
+        "product": "coupang-307020051"
+      },
+      {
+        "product": "coupang-7751139469"
+      },
+      {
+        "product": "coupang-261192458"
+      },
+      {
+        "product": "coupang-6570687310"
+      },
+      {
+        "product": "coupang-5391887777"
+      },
+      {
+        "product": "coupang-8202208763"
+      },
+      {
+        "product": "coupang-5391887777"
+      },
+      {
+        "product": "coupang-9689635469"
+      },
+      {
+        "product": "coupang-7074592247"
+      },
+      {
+        "product": "coupang-6976505075"
+      },
+      {
+        "product": "coupang-1419414761"
+      },
+      {
+        "product": "coupang-9698948861"
+      },
+      {
+        "product": "coupang-9699021014"
+      },
+      {
+        "product": "coupang-9156272560"
+      },
+      {
+        "product": "coupang-9754779968"
+      },
+      {
+        "product": "coupang-9183482617"
+      },
+      {
+        "product": "coupang-9172341319"
+      },
+      {
+        "product": "coupang-9707319522"
+      },
+      {
+        "product": "coupang-324788226"
+      },
+      {
+        "product": "coupang-9039184892"
+      },
+      {
+        "product": "coupang-9692060054"
+      },
+      {
+        "product": "coupang-9688346664"
+      },
+      {
+        "product": "coupang-9629159043"
+      }
+    ],
+    "featured": "aliexpress-1005007340360989"
+  },
+  {
     "slug": "2026-10-27-deals",
     "kind": "deals",
     "date": "2026-10-27",
