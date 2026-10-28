@@ -940,7 +940,12 @@ writeFileSync(path('assets/search.json'), JSON.stringify(searchIndex));
 const NOT_IN_SITEMAP = new Set(['404.html', 'search.html', 'review.html',
   ...(site.adminPath ? [`${site.adminPath}.html`] : [])]);
 const urlOf = (k) => (k === 'index.html' ? '/' : k === 'tags/index.html' ? '/tags/' : `/${k.split('/').map(enc).join('/')}`);
-const sitemapKeys = [...pages.keys()].filter((k) => !NOT_IN_SITEMAP.has(k) && !(k.startsWith('p/') && !lastmod.has(k)));
+// 새 사이트가 며칠 만에 자동 생성 페이지 1,800개를 내밀면 구글이 '크롤링됨 - 색인 안 함'으로 미뤄 둔다.
+// 사이트맵에는 모아 보는 페이지만 싣는다. 상품 페이지는 그대로 두고 목록·태그 링크로 찾아가게 한다.
+// 상품이 1~2개인 태그는 상품 페이지와 다를 게 없어 같이 뺀다.
+const SITEMAP_MIN_TAG = 3;
+const thinTags = new Set([...productsByTag].filter(([, list]) => list.length < SITEMAP_MIN_TAG).map(([t]) => `tags/${t}.html`));
+const sitemapKeys = [...pages.keys()].filter((k) => !NOT_IN_SITEMAP.has(k) && !k.startsWith('p/') && !thinTags.has(k));
 writeFileSync(path('sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapKeys.map((k) =>
     `  <url><loc>${site.url}${urlOf(k)}</loc>${lastmod.get(k) ? `<lastmod>${lastmod.get(k)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`);
