@@ -49,6 +49,8 @@ git add -A && git commit -m "Daily deals YYYY-MM-DD" && git push
 | 일 | 누가 | 주기 |
 |---|---|---|
 | 인기 검색어로 쿠팡 검색 보충 (`scripts/trending.mjs`) | daily.sh | 매일 아침, 4개씩 돌아가며 |
+| 게시 상품 썸네일 다시 확인·숨김 (`scripts/images.mjs`) | daily.sh | 매 실행 |
+| 검색 노출 규칙 검사(5장) | daily.sh(빌드) | 매 실행, 어기면 push 안 함 |
 | 인기 검색어 목록(`site.json` → `trending`) 자체를 갈아끼우기 | 사람 | 상품이 안 붙는 키워드가 쌓이면 |
 | 링크프라이스 후보 파일 만들기 | 보류 | 상품 API 승인 후 |
 | daily.sh 실패 알림이 오면 로그를 보고 원인 보고 | 사람 | 필요 시 |
@@ -129,9 +131,20 @@ import가 아래 중 하나라도 걸리면 탈락시키고 `data/rejected.json`
 
 금지 단어가 새로 필요하면 `PROHIBITED`에 추가한다. 빌드도 같은 규칙으로 게시 상품을 다시 검사한다.
 
+**이미 올라간 상품의 썸네일**: import는 새 후보의 사진만 본다. 판매처가 나중에 사진을 내리면 빈 카드가 남으므로
+`scripts/images.mjs`가 매 실행마다 게시 상품 전체의 사진을 다시 연다. 404·이미지 아님은 바로 숨기고,
+429·5xx·시간 초과는 판매처가 잠깐 막은 것일 수 있어 3일 연속일 때만 숨긴다. 숨긴 상품은 `hiddenReason`이
+`썸네일 없음:`으로 시작하고, 사진이 다시 열리면(또는 import가 열리는 새 사진을 받으면) 자동으로 되살아난다.
+
 ## 5. 검색 노출(SEO)을 위해 할 일
 
 정렬 기본값: **제휴 링크 있는 상품 → 할인율·가격 인하·골드박스** 순. 생성기가 자동으로 하는 것: 페이지별 제목·설명, canonical, Open Graph, 상품 구조화 데이터(Product/Offer), 목록(ItemList), 경로(BreadcrumbList), 사이트 검색(SearchAction), `sitemap.xml`(lastmod 포함), `rss.xml`, 오래된 상품 noindex, 인기 검색어 랜딩 페이지(`/k/키워드.html`), 태그 페이지(`/tags/태그.html`), 품목별 FAQ(FAQPage).
+
+**빌드가 매번 검사하는 규칙** (어기면 빌드가 멈추고 push 하지 않는다):
+- 사이트맵에는 **모아 보는 페이지만** 싣는다 — 메인·오늘의 할인·카테고리·글·키워드·태그. 상품 페이지(`/p/`)는 사이트에 두되 사이트맵에서 뺀다. 새 사이트가 자동 생성 페이지를 한꺼번에 내밀면 구글이 "크롤링됨 - 색인 안 함"으로 미뤄 둔다(2026-10-28, 4일 만에 1,827개가 되어 유입 0).
+- 상품이 `publish.sitemapMinTag`(3)개 미만인 태그 페이지도 사이트맵에서 뺀다.
+- 사이트맵 주소는 `publish.sitemapMax`(400)개 이하. 넘으면 기준을 올리기 전에 얇은 페이지가 늘었는지부터 본다.
+- 사이트맵의 모든 페이지는 제목·설명·canonical(자기 주소)이 있고 noindex가 아니어야 하며, 제목이 서로 겹치면 안 된다.
 
 손으로 챙길 것:
 - **인기 검색어 갱신(주 1~2회)**: `data/site.json`의 `trending`(16개 안팎)을 네이버 데이터랩 쇼핑인사이트·쿠팡 검색 추이 등에서 생활용품 위주로 고른다. 상품이 1개 이상 매칭되는 키워드만 `/k/` 페이지가 생긴다. 키워드에 맞는 상품을 `coupang.mjs search 키워드`로 보충한다.
@@ -177,6 +190,7 @@ LINKPRICE_AFFILIATE_ID=A100...
 | `scripts/make-session.mjs` | 브라우저에서 복사한 cURL → 헤드리스용 로그인 세션 파일 |
 | `scripts/build.mjs` | 사이트 생성 |
 | `scripts/lib/rules.mjs` | 검수 규칙(금지 품목, 판매처, 이미지, 가격), 카테고리 추정·보정 |
+| `scripts/images.mjs` | 게시 상품 썸네일 재확인, 사진이 없어진 상품 숨김·되살림 |
 | `scripts/lib/keywords.mjs` | 상품명 → 태그 사전(품목·특징·대상). 제목·설명의 검색 키워드도 여기서 나온다 |
 | `scripts/lib/faq.mjs` | 품목별 자주 묻는 질문 |
 | `assets/styles.css`, `assets/app.js` | 디자인·검색·정렬·필터 |

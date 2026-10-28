@@ -942,10 +942,32 @@ const NOT_IN_SITEMAP = new Set(['404.html', 'search.html', 'review.html',
 const urlOf = (k) => (k === 'index.html' ? '/' : k === 'tags/index.html' ? '/tags/' : `/${k.split('/').map(enc).join('/')}`);
 // 새 사이트가 며칠 만에 자동 생성 페이지 1,800개를 내밀면 구글이 '크롤링됨 - 색인 안 함'으로 미뤄 둔다.
 // 사이트맵에는 모아 보는 페이지만 싣는다. 상품 페이지는 그대로 두고 목록·태그 링크로 찾아가게 한다.
-// 상품이 1~2개인 태그는 상품 페이지와 다를 게 없어 같이 뺀다.
-const SITEMAP_MIN_TAG = 3;
+// 상품이 몇 개 안 되는 태그는 상품 페이지와 다를 게 없어 같이 뺀다(site.json publish.sitemapMinTag).
+const SITEMAP_MIN_TAG = rules.sitemapMinTag ?? 3;
 const thinTags = new Set([...productsByTag].filter(([, list]) => list.length < SITEMAP_MIN_TAG).map(([t]) => `tags/${t}.html`));
 const sitemapKeys = [...pages.keys()].filter((k) => !NOT_IN_SITEMAP.has(k) && !k.startsWith('p/') && !thinTags.has(k));
+
+// 검색 노출 규칙. 사이트맵에 싣는 페이지는 제목·설명·canonical 이 있고 noindex 가 아니어야 한다.
+// 하나라도 어기면 push 하지 않는다 — 구글은 사이트맵과 페이지가 어긋나면 사이트맵 전체를 덜 믿는다.
+const seoErrors = [];
+const titles = new Map();
+for (const k of sitemapKeys) {
+  const html = pages.get(k);
+  const title = html.match(/<title>([^<]*)<\/title>/)?.[1].trim();
+  if (!title) seoErrors.push(`${k}: 제목 없음`);
+  else titles.set(title, [...(titles.get(title) || []), k]);
+  if (!/<meta name="description" content="[^"]+">/.test(html)) seoErrors.push(`${k}: 설명 없음`);
+  if (/<meta name="robots" content="noindex/.test(html)) seoErrors.push(`${k}: noindex 페이지가 사이트맵에 있음`);
+  const canon = html.match(/<link rel="canonical" href="([^"]+)">/)?.[1];
+  if (canon !== `${site.url}${urlOf(k)}`) seoErrors.push(`${k}: canonical 이 주소와 다름(${canon || '없음'})`);
+}
+for (const [t, ks] of titles) if (ks.length > 1) seoErrors.push(`제목 중복 "${t}": ${ks.join(', ')}`);
+if (sitemapKeys.length > rules.sitemapMax) seoErrors.push(`사이트맵 주소 ${sitemapKeys.length}개 — 상한 ${rules.sitemapMax}개(site.json publish.sitemapMax)를 넘음`);
+if (seoErrors.length) {
+  console.error(`빌드 중단: 검색 노출 규칙 위반 ${seoErrors.length}건 (AGENTS.md 5장)`);
+  for (const e of seoErrors.slice(0, 80)) console.error(`  - ${e}`);
+  process.exit(1);
+}
 writeFileSync(path('sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapKeys.map((k) =>
     `  <url><loc>${site.url}${urlOf(k)}</loc>${lastmod.get(k) ? `<lastmod>${lastmod.get(k)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`);

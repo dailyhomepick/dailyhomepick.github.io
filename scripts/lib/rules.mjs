@@ -188,6 +188,24 @@ export function imageProblem(url) {
   if (ICON_PATTERNS.some((re) => re.test(url))) return `상품 사진이 아닌 아이콘/로고 이미지: ${url.slice(0, 80)}`;
   return '';
 }
+// 썸네일이 지금 실제로 열리는지. temporary 는 판매처가 잠깐 막은 것(429·5xx·시간 초과)이라
+// 이것만으로 게시 중인 상품을 내리지 않는다. 새 후보는 temporary 여도 탈락시킨다.
+export async function checkImage(url) {
+  try {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 10000);
+    const res = await fetch(url, { signal: ctrl.signal, redirect: 'follow', headers: { 'User-Agent': 'Mozilla/5.0 DailyHomePickBot' } });
+    clearTimeout(t);
+    const type = res.headers.get('content-type') || '';
+    ctrl.abort();
+    if (!res.ok) return { problem: `이미지 응답 ${res.status}`, temporary: res.status === 429 || res.status >= 500 };
+    if (!type.startsWith('image/')) return { problem: `이미지가 아님(${type || '형식 없음'})`, temporary: false };
+    return { problem: '', temporary: false };
+  } catch (e) {
+    return { problem: `이미지 열기 실패(${e.name === 'AbortError' ? '시간 초과' : e.message})`, temporary: true };
+  }
+}
+export const THUMB_HIDDEN = '썸네일 없음';
 // Image proxies of other deal sites (e.g. Next.js /_next/image?url=...) → original image URL.
 export function unwrapImage(url) {
   try {

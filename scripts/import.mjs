@@ -15,7 +15,7 @@ import { basename, join, resolve } from 'node:path';
 import {
   prohibitedReason, parsePrice, discountOf, textProblem, isBlockedLink, isProductUrl,
   storeOf, networkOf, guessCategory, today, loadEnv, imageProblem, unwrapImage, outOfScope, daysBetween,
-  isSoloLiving,
+  isSoloLiving, checkImage, THUMB_HIDDEN,
 } from './lib/rules.mjs';
 import { loadMerchants, deeplinkFor } from './lib/linkprice.mjs';
 import { extractTags } from './lib/keywords.mjs';
@@ -48,19 +48,7 @@ const rejectedKeys = new Set(rejected.map((r) => r.key));
 
 async function imageOk(url) {
   if (flag('--no-images')) return '';
-  try {
-    const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 10000);
-    const res = await fetch(url, { signal: ctrl.signal, redirect: 'follow', headers: { 'User-Agent': 'Mozilla/5.0 DailyHomePickBot' } });
-    clearTimeout(t);
-    const type = res.headers.get('content-type') || '';
-    ctrl.abort();
-    if (!res.ok) return `이미지 응답 ${res.status}`;
-    if (!type.startsWith('image/')) return `이미지가 아님(${type || '형식 없음'})`;
-    return '';
-  } catch (e) {
-    return `이미지 열기 실패(${e.name === 'AbortError' ? '시간 초과' : e.message})`;
-  }
+  return (await checkImage(url)).problem;
 }
 
 // 자취템은 주 카테고리를 밀어내지 않고 뒤에 붙는다(주방이면서 자취템일 수 있다).
@@ -175,6 +163,11 @@ for (const file of inputs) {
         network: n.affiliateLink ? n.network : existing.network,
       });
       if (existing.status === 'expired') existing.status = 'published';
+      // 썸네일 때문에 내렸던 상품은 열리는 사진을 다시 받았을 때 되살린다.
+      if (existing.status === 'hidden' && existing.hiddenReason?.startsWith(THUMB_HIDDEN) && n.image) {
+        existing.status = 'published';
+        delete existing.hiddenReason;
+      }
       report.updated.push(existing.id);
       touchedIds.push(existing.id);
       continue;

@@ -106,6 +106,10 @@ else
 
   step "파트너스 링크 변환"
   node scripts/coupang.mjs deeplink || echo "  경고: 딥링크 변환 실패"
+
+  step "썸네일 확인"
+  # 사진이 내려간 게시 상품을 숨긴다. 실패해도 빌드는 계속한다(어제 상태로 남을 뿐).
+  node scripts/images.mjs || echo "  경고: 썸네일 확인 실패"
 fi
 
 step "실적 수집"

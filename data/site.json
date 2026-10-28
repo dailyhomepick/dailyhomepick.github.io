@@ -22,6 +22,8 @@
     "staleDays": 3,
     "expireDays": 21,
     "todayMax": 120,
+    "sitemapMinTag": 3,
+    "sitemapMax": 400,
     "subId": "dailyhomepick"
   },
   "trending": [
