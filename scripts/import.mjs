@@ -15,7 +15,7 @@ import { basename, join, resolve } from 'node:path';
 import {
   prohibitedReason, parsePrice, discountOf, textProblem, isBlockedLink, isProductUrl,
   storeOf, networkOf, guessCategory, today, loadEnv, imageProblem, unwrapImage, outOfScope, daysBetween,
-  isSoloLiving, checkImage, THUMB_HIDDEN,
+  isSoloLiving, checkImage, resolveImage, THUMB_HIDDEN,
 } from './lib/rules.mjs';
 import { loadMerchants, deeplinkFor } from './lib/linkprice.mjs';
 import { extractTags } from './lib/keywords.mjs';
@@ -128,6 +128,7 @@ for (const file of inputs) {
     const existing = (c.sourceId && bySource.get(c.sourceId)) || byLink.get(linkKey(c.link)) || byTitle.get(titleKey(c.title));
     if (!existing && rejectedKeys.has(key)) continue;
 
+    if (c.image && !flag('--no-images')) c.image = (await resolveImage(unwrapImage(c.image))).url;
     const r = review(c);
     if (r.problems.length) {
       report.rejected.push({ title: c.title, key, reasons: r.problems });

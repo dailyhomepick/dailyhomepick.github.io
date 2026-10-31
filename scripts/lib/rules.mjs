@@ -183,10 +183,36 @@ export function guessCategory(title = '', store = '') {
 // ads-partners.coupang.com 은 상품 사진이 아니라 제휴 배너로 리다이렉트한다(320x100 짜리).
 // 쿠팡 검색 API 가 productImage 로 이 주소를 주는 경우가 있어 막아 둔다.
 const ICON_PATTERNS = [/\/icons?\//i, /\/badges?\//i, /sprite/i, /placeholder/i, /no[_-]?image/i, /\/logo/i, /favicon/i, /rocket-(delivery|fresh)/i, /\/wow\.png/i, /\/event\.png/i, /\/image\/affiliate\//i, /ads-partners\.coupang\.com\/image\/(?!1\/)/i];
+// ads-partners.coupang.com/image1/ 은 진짜 상품 사진(coupangcdn)으로 넘겨주는 주소지만,
+// 광고 차단 목록(EasyList `||ads-partners.coupang.com^`)에 있어 차단기를 쓰는 방문자에게는
+// 빈 썸네일이 된다. 서버에서 열면 멀쩡해서 checkImage 로는 안 잡혔다(2026-10-31, 250개).
+// 저장 전에 resolveImage 로 넘어가는 곳의 주소로 바꾼다.
+const AD_BLOCKED_IMAGE = /^https:\/\/ads-partners\.coupang\.com\//i;
 export function imageProblem(url) {
   if (!url || !/^https:\/\//.test(url)) return `이미지 주소가 https 절대경로가 아님: ${String(url).slice(0, 60)}`;
   if (ICON_PATTERNS.some((re) => re.test(url))) return `상품 사진이 아닌 아이콘/로고 이미지: ${url.slice(0, 80)}`;
+  if (AD_BLOCKED_IMAGE.test(url)) return `광고 차단기에 막히는 이미지 주소(ads-partners): ${url.slice(0, 60)}`;
   return '';
+}
+// 광고 차단기에 막히는 주소면 리다이렉트를 따라가 실제 사진 주소를 돌려준다. 그 밖의 주소는 그대로.
+// 못 바꾸면 problem 을 채운다(temporary 는 checkImage 와 같은 뜻).
+export async function resolveImage(url) {
+  if (!url || !AD_BLOCKED_IMAGE.test(url)) return { url, problem: '', temporary: false };
+  try {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 10000);
+    const res = await fetch(url, { signal: ctrl.signal, redirect: 'follow', headers: { 'User-Agent': 'Mozilla/5.0 DailyHomePickBot' } });
+    clearTimeout(t);
+    const type = res.headers.get('content-type') || '';
+    ctrl.abort();
+    if (!res.ok) return { url, problem: `이미지 응답 ${res.status}`, temporary: res.status === 429 || res.status >= 500 };
+    if (!type.startsWith('image/')) return { url, problem: `이미지가 아님(${type || '형식 없음'})`, temporary: false };
+    const bad = imageProblem(res.url);
+    if (bad) return { url, problem: bad, temporary: false };
+    return { url: res.url, problem: '', temporary: false };
+  } catch (e) {
+    return { url, problem: `이미지 열기 실패(${e.name === 'AbortError' ? '시간 초과' : e.message})`, temporary: true };
+  }
 }
 // 썸네일이 지금 실제로 열리는지. temporary 는 판매처가 잠깐 막은 것(429·5xx·시간 초과)이라
 // 이것만으로 게시 중인 상품을 내리지 않는다. 새 후보는 temporary 여도 탈락시킨다.
