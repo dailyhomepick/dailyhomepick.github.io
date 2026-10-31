@@ -23,8 +23,8 @@ if (!hasKeys()) {
 }
 
 const MY_SUB = process.env.COUPANG_SUB_ID || '';
-// 텔레그램 채널 링크(scripts/telegram.mjs)도 이 사이트 실적이다. site 에 합치고 telegram 에 따로도 센다.
-const TG_SUB = 'dhptelegram';
+// 채널 링크(scripts/telegram.mjs, threads.mjs)도 이 사이트 실적이다. site 에 합치고 채널별로 따로도 센다.
+const CHANNEL_SUBS = { dhptelegram: 'telegram', dhpthreads: 'threads' };
 const days = Number(process.argv[2]) || 60;
 const ymd = (n) => new Date(Date.now() + 9 * 3600e3 - n * 86400e3).toISOString().slice(0, 10).replace(/-/g, '');
 const dash = (s) => `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`;
@@ -55,11 +55,11 @@ const blank = () => ({ clicks: 0, orders: 0, commission: 0, cancels: 0 });
 const byDate = new Map();
 const pick = (r, dateField) => {
   const d = dash(String(r[dateField] || r.date));
-  if (!byDate.has(d)) byDate.set(d, { date: d, site: blank(), other: blank(), telegram: blank() });
+  if (!byDate.has(d)) byDate.set(d, { date: d, site: blank(), other: blank(), telegram: blank(), threads: blank() });
   const row = byDate.get(d);
   const sub = String(r.subId || '');
   // subId 가 우리 것(사이트·텔레그램)이면 사이트 실적, 아니면 기타 경로.
-  if (sub === TG_SUB) return [row.site, row.telegram];
+  if (CHANNEL_SUBS[sub]) return [row.site, row[CHANNEL_SUBS[sub]]];
   return [MY_SUB && sub === MY_SUB ? row.site : row.other];
 };
 const add = (rows, k, v) => { for (const b of rows) b[k] += v; };
@@ -89,5 +89,6 @@ const sum = (where, k) => list.reduce((s, d) => s + (d[where]?.[k] || 0), 0);
 console.log(`실적 수집 (${list.length}일, subId=${MY_SUB || '(설정 없음)'})`);
 console.log(`  이 사이트 : 클릭 ${sum('site', 'clicks')} · 주문 ${sum('site', 'orders')} · 수수료 ${Math.round(sum('site', 'commission')).toLocaleString()}원`);
 console.log(`  └ 텔레그램 : 클릭 ${sum('telegram', 'clicks')} · 주문 ${sum('telegram', 'orders')} · 수수료 ${Math.round(sum('telegram', 'commission')).toLocaleString()}원`);
+console.log(`  └ 스레드   : 클릭 ${sum('threads', 'clicks')} · 주문 ${sum('threads', 'orders')} · 수수료 ${Math.round(sum('threads', 'commission')).toLocaleString()}원`);
 console.log(`  기타 경로 : 클릭 ${sum('other', 'clicks')} · 주문 ${sum('other', 'orders')} · 수수료 ${Math.round(sum('other', 'commission')).toLocaleString()}원`);
 console.log(`  저장: data/stats.json (누적 ${out.days.length}일, 오늘 ${today()})`);

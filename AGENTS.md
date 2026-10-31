@@ -52,6 +52,7 @@ git add -A && git commit -m "Daily deals YYYY-MM-DD" && git push
 | 게시 상품 썸네일 다시 확인·숨김 (`scripts/images.mjs`) | daily.sh | 매 실행 |
 | 검색 노출 규칙 검사(5장) | daily.sh(빌드) | 매 실행, 어기면 push 안 함 |
 | 텔레그램 채널에 진짜 인하 상품 올리기 (`scripts/telegram.mjs`) | cron(따로) | 매일 08:30·18:30 KST, 5개씩 |
+| 스레드에 같은 기준 상품 올리기 (`scripts/threads.mjs`, 고르는 기준은 `lib/deals.mjs`) | cron(따로) | 매일 09:00·19:00 KST, 3개씩 1분 간격 |
 | 인기 검색어 목록(`site.json` → `trending`) 자체를 갈아끼우기 | 사람 | 상품이 안 붙는 키워드가 쌓이면 |
 | 링크프라이스 후보 파일 만들기 | 보류 | 상품 API 승인 후 |
 | daily.sh 실패 알림이 오면 로그를 보고 원인 보고 | 사람 | 필요 시 |
@@ -171,6 +172,9 @@ COUPANG_ACCESS_KEY=...
 COUPANG_SECRET_KEY=...
 COUPANG_SUB_ID=dailyhomepick
 LINKPRICE_AFFILIATE_ID=A100...
+TELEGRAM_BOT_TOKEN=...
+TELEGRAM_CHANNEL_ID=@dailyhomepick
+THREADS_ACCESS_TOKEN=...   # 처음 한 번. 갱신된 토큰은 threads-token.json
 ```
 
 `.env`, `.env.*`, `data/inbox/`는 `.gitignore`에 있다. 그래도 커밋 전 `git diff --cached`에 키가 없는지 확인한다.
