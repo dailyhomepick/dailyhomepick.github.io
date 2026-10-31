@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T19:11:53.670Z",
+  "updatedAt": "2026-10-31T08:10:40.423Z",
   "source": "coupang-partners",
   "subId": "dailyhomepick",
   "note": "방문자 수는 포함되지 않는다. 쿠팡은 상품 클릭만 집계한다. site = 이 사이트(subId 일치), other = 다른 경로.",
@@ -167,6 +167,18 @@
         "orders": 0,
         "commission": 0,
         "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -182,6 +194,18 @@
         "orders": 2,
         "commission": 467,
         "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -194,6 +218,18 @@
       },
       "other": {
         "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
         "orders": 0,
         "commission": 0,
         "cancels": 0
@@ -212,6 +248,18 @@
         "orders": 0,
         "commission": 0,
         "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -226,6 +274,18 @@
         "clicks": 4,
         "orders": 9,
         "commission": 4202,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
         "cancels": 0
       }
     },
@@ -242,6 +302,18 @@
         "orders": 0,
         "commission": -1350,
         "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -254,6 +326,18 @@
       },
       "other": {
         "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
         "orders": 0,
         "commission": 0,
         "cancels": 0
@@ -272,6 +356,18 @@
         "orders": 0,
         "commission": 0,
         "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -287,6 +383,18 @@
         "orders": 0,
         "commission": -862,
         "cancels": 3
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -301,6 +409,18 @@
         "clicks": 1,
         "orders": 1,
         "commission": 174,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
         "cancels": 0
       }
     }

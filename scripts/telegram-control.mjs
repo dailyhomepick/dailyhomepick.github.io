@@ -49,6 +49,7 @@ const THREADS_API = 'https://graph.threads.net/v1.0';
 const tokenPath = join(homedir(), '.config/dailyhomepick/threads-token.json');
 const savedThreads = existsSync(tokenPath) ? JSON.parse(readFileSync(tokenPath, 'utf8')) : null;
 let threadsToken = savedThreads?.token || process.env.THREADS_ACCESS_TOKEN || '';
+const THREADS_SEARCH_LIMIT = 10;
 
 const HOOKS = {
   food: ['장 볼 때 참고하세요.', '냉장고 비었으면 지금 담아두기 좋아요.', '식비 아끼는 중이면 참고하세요.'],
@@ -329,6 +330,32 @@ async function getInsights(days = 7) {
   });
   const followers = await threadsApi('GET', `/${me.id}/threads_insights`, { metric: 'followers_count' });
   return { me, core: core.data || [], followers: followers.data || [] };
+}
+
+function formatSearchItems(items) {
+  return items.map((item, idx) => {
+    const text = String(item.text || '').replace(/\s+/g, ' ').trim();
+    const date = item.date ? new Date(item.date).toISOString() : '';
+    return `${idx + 1}. @${item.author || '?'} | ${date} | ${item.permalink || ''}\n   ${text.slice(0, 180)}`;
+  }).join('\n');
+}
+
+async function searchThreads(keyword, type = 'TOP') {
+  const q = String(keyword || '').trim();
+  if (!q) throw new Error('검색어가 필요합니다');
+  const fields = 'id,text,media_type,permalink,timestamp,username,has_replies,is_quote_post,is_reply';
+  const res = await threadsApi('GET', '/keyword_search', { q, search_type: type, fields, limit: String(THREADS_SEARCH_LIMIT) });
+  return {
+    query: q,
+    search_type: type,
+    data: (res.data || []).map((item) => ({
+      author: item.username || '',
+      text: item.text || '',
+      date: item.timestamp || '',
+      permalink: item.permalink || '',
+      id: item.id || '',
+    })),
+  };
 }
 
 async function handleCommand(message, state) {

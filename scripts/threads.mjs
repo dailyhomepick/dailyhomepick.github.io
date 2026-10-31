@@ -42,6 +42,9 @@ const dry = has('--dry');
 const check = has('--check');
 const replyList = has('--replies');
 const insights = has('--insights');
+const searchQuery = value('--search') || value('--keyword') || '';
+const searchType = (value('--search-type') || 'TOP').toUpperCase();
+const searchLimit = Math.max(1, Math.min(50, Number(value('--search-limit')) || 10));
 const PER_RUN = Number(value('--limit')) || 3;
 const INSIGHT_DAYS = Number(value('--days')) || 7;
 const REPLY_MEDIA = value('--media') || value('--media-id') || '';
@@ -163,6 +166,35 @@ async function getInsights(days = INSIGHT_DAYS) {
   return { me, core: core.data || [], followers: followers.data || [] };
 }
 
+function normalizeSearchResults(data = []) {
+  return data.map((item) => ({
+    id: item.id || '',
+    author: item.username || item.owner_username || item.author || '',
+    text: item.text || item.caption || '',
+    date: item.timestamp || item.created_time || item.created_at || '',
+    permalink: item.permalink || '',
+    media_type: item.media_type || '',
+    is_reply: Boolean(item.is_reply),
+    is_quote_post: Boolean(item.is_quote_post),
+    has_replies: Boolean(item.has_replies),
+  }));
+}
+
+async function searchThreads(keyword, type = 'TOP') {
+  const q = String(keyword || '').trim();
+  if (!q) throw new Error('검색어가 필요합니다');
+  const me = await getMe();
+  const fields = 'id,text,media_type,permalink,timestamp,username,has_replies,is_quote_post,is_reply';
+  const params = { q, search_type: type, fields, limit: String(searchLimit) };
+  const res = await api('GET', '/keyword_search', params);
+  return {
+    me,
+    query: q,
+    search_type: type,
+    data: normalizeSearchResults(res.data || []),
+  };
+}
+
 const date = today();
 const sent = loadSent('threads');
 
@@ -213,6 +245,26 @@ if (replyList || HIDE_REPLY_ID) {
       const who = r.username ? `@${r.username}` : '(unknown)';
       console.log(`- ${r.id} ${who} [${hidden}] ${formatSnippet(r.text)}`);
     }
+  }
+  process.exit(0);
+}
+
+if (searchQuery) {
+  if (!dry) await refreshToken();
+  try {
+    const result = await searchThreads(searchQuery, searchType === 'RECENT' ? 'RECENT' : 'TOP');
+    console.log(`Threads keyword search @${result.me.username} [${result.search_type}]`);
+    console.log(`query: ${result.query}`);
+    console.log(`count: ${result.data.length}`);
+    for (const [idx, item] of result.data.entries()) {
+      const body = formatSnippet(item.text, 180);
+      const dateText = item.date ? new Date(item.date).toISOString() : '';
+      console.log(`${idx + 1}. @${item.author || '?'} | ${dateText} | ${item.permalink || ''}`);
+      console.log(`   ${body}`);
+    }
+  } catch (e) {
+    console.error(`검색 실패: ${e.message}`);
+    process.exitCode = 1;
   }
   process.exit(0);
 }
