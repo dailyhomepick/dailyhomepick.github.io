@@ -15,7 +15,7 @@ import { basename, join, resolve } from 'node:path';
 import {
   prohibitedReason, parsePrice, discountOf, textProblem, isBlockedLink, isProductUrl,
   storeOf, networkOf, guessCategory, today, loadEnv, imageProblem, unwrapImage, outOfScope, daysBetween,
-  isSoloLiving, checkImage, resolveImage, THUMB_HIDDEN,
+  isSoloLiving, checkImage, resolveImage, fixedCategories, THUMB_HIDDEN,
 } from './lib/rules.mjs';
 import { loadMerchants, deeplinkFor } from './lib/linkprice.mjs';
 import { extractTags } from './lib/keywords.mjs';
@@ -163,6 +163,9 @@ for (const file of inputs) {
         affiliateLink: n.affiliateLink || existing.affiliateLink,
         network: n.affiliateLink ? n.network : existing.network,
       });
+      // 쿠팡이 준 카테고리 번호가 틀려 생수가 패션에 들어간 적이 있다. 갱신 때마다 제목으로 다시 본다.
+      const fixed = fixedCategories(existing);
+      if (fixed) existing.categories = fixed;
       if (existing.status === 'expired') existing.status = 'published';
       // 썸네일 때문에 내렸던 상품은 열리는 사진을 다시 받았을 때 되살린다.
       if (existing.status === 'hidden' && existing.hiddenReason?.startsWith(THUMB_HIDDEN) && n.image) {
