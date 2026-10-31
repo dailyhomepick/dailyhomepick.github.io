@@ -4,6 +4,9 @@
 //   node scripts/threads.mjs --dry      # 올릴 글만 출력(키 없어도 된다)
 //   node scripts/threads.mjs --limit=1  # 1개만(시험)
 //   node scripts/threads.mjs --check    # 토큰·계정 확인만
+//   node scripts/threads.mjs --insights  # 계정 성과 요약
+//   node scripts/threads.mjs --replies   # 최근 게시물 댓글 보기
+//   node scripts/threads.mjs --hide-reply=REPLY_ID --media=MEDIA_ID
 //
 // 키: ~/.config/dailyhomepick/env 의 THREADS_ACCESS_TOKEN(처음 한 번). 스레드 토큰은 60일이면 끝나서
 // 이 스크립트가 주기적으로 새로 받아 ~/.config/dailyhomepick/threads-token.json(권한 600)에 둔다.
@@ -25,20 +28,72 @@ import { hash } from './lib/store.mjs';
 
 loadEnv();
 setDefaultAutoSelectFamilyAttemptTimeout(5000);
-const dry = process.argv.includes('--dry');
-const check = process.argv.includes('--check');
-const PER_RUN = Number(process.argv.find((a) => a.startsWith('--limit='))?.slice(8)) || 3;
-const GAP_MS = 60_000;
-const REFRESH_DAYS = 7;
+
+const args = process.argv.slice(2);
+const has = (flag) => args.includes(flag);
+const value = (flag, fallback = '') => {
+  const hit = args.find((a) => a === flag || a.startsWith(`${flag}=`));
+  if (!hit) return fallback;
+  const idx = hit.indexOf('=');
+  return idx >= 0 ? hit.slice(idx + 1) : 'true';
+};
+
+const dry = has('--dry');
+const check = has('--check');
+const replyList = has('--replies');
+const insights = has('--insights');
+const PER_RUN = Number(value('--limit')) || 3;
+const INSIGHT_DAYS = Number(value('--days')) || 7;
+const REPLY_MEDIA = value('--media') || value('--media-id') || '';
+const HIDE_REPLY_ID = value('--hide-reply') || value('--reply-id') || '';
+
 export const THREADS_SUB_ID = 'dhpthreads';
 const API = 'https://graph.threads.net/v1.0';
-
 const tokenPath = join(homedir(), '.config/dailyhomepick/threads-token.json');
+const statePath = join(homedir(), '.local/state/dailyhomepick/threads-state.json');
 const saved = existsSync(tokenPath) ? JSON.parse(readFileSync(tokenPath, 'utf8')) : null;
 let token = saved?.token || process.env.THREADS_ACCESS_TOKEN || '';
 if (!dry && !token) {
   console.error('THREADS_ACCESS_TOKEN 이 env 에 없습니다 — 올리지 않음');
   process.exit(1);
+}
+
+function loadState() {
+  if (!existsSync(statePath)) return { posts: [] };
+  try {
+    const state = JSON.parse(readFileSync(statePath, 'utf8'));
+    if (!Array.isArray(state.posts)) state.posts = [];
+    return state;
+  } catch {
+    return { posts: [] };
+  }
+}
+
+function saveState(state) {
+  mkdirSync(dirnameSafe(statePath), { recursive: true });
+  writeFileSync(statePath, `${JSON.stringify({ ...state, updatedAt: new Date().toISOString() }, null, 2)}\n`, { mode: 0o600 });
+}
+
+function dirnameSafe(path) {
+  return path.slice(0, Math.max(path.lastIndexOf('/'), path.lastIndexOf('\\')) || 1);
+}
+
+function recentPosts(limit = 10) {
+  const state = loadState();
+  return [...(state.posts || [])].slice(-limit).reverse();
+}
+
+function formatSnippet(text, max = 120) {
+  return String(text || '').replace(/\s+/g, ' ').trim().slice(0, max);
+}
+
+function metricValue(entry) {
+  if (entry?.total_value && typeof entry.total_value.value !== 'undefined') return Number(entry.total_value.value) || 0;
+  if (Array.isArray(entry?.values) && entry.values.length) return entry.values.reduce((s, v) => s + (Number(v?.value) || 0), 0);
+  if (Array.isArray(entry?.link_total_values) && entry.link_total_values.length) {
+    return entry.link_total_values.reduce((s, v) => s + (Number(v?.value) || 0), 0);
+  }
+  return 0;
 }
 
 async function api(method, path, params = {}) {
@@ -62,7 +117,7 @@ async function api(method, path, params = {}) {
 
 // 60일짜리 토큰을 일주일에 한 번 새로 받는다(받은 지 하루가 지나야 갱신할 수 있다).
 async function refreshToken() {
-  if (saved && daysBetween(saved.refreshedAt, today()) < REFRESH_DAYS) return;
+  if (saved && daysBetween(saved.refreshedAt, today()) < 7) return;
   const q = new URLSearchParams({ grant_type: 'th_refresh_token', access_token: token });
   const res = await fetch(`https://graph.threads.net/refresh_access_token?${q}`, { signal: AbortSignal.timeout(30000) });
   const json = await res.json().catch(() => ({}));
@@ -76,13 +131,89 @@ async function refreshToken() {
   console.log(`  토큰 갱신(${Math.round(json.expires_in / 86400)}일)`);
 }
 
+async function getMe() {
+  return api('GET', '/me', { fields: 'id,username' });
+}
+
+async function getReplies(mediaId) {
+  const fields = 'id,text,username,hide_status,created_at,permalink';
+  try {
+    const res = await api('GET', `/${mediaId}/replies`, { fields });
+    return res.data || [];
+  } catch {
+    const res = await api('GET', `/${mediaId}/replies`);
+    return res.data || [];
+  }
+}
+
+async function hideReply(replyId, hide = true) {
+  return api('POST', `/${replyId}/manage_reply`, { hide: hide ? 'true' : 'false' });
+}
+
+async function getInsights(days = INSIGHT_DAYS) {
+  const me = await getMe();
+  const until = Math.floor(Date.now() / 1000);
+  const since = until - (days * 86400);
+  const core = await api('GET', `/${me.id}/threads_insights`, {
+    metric: 'views,likes,replies,reposts,quotes,clicks',
+    since: String(since),
+    until: String(until),
+  });
+  const followers = await api('GET', `/${me.id}/threads_insights`, { metric: 'followers_count' });
+  return { me, core: core.data || [], followers: followers.data || [] };
+}
+
 const date = today();
 const sent = loadSent('threads');
 
 if (check) {
-  const me = await api('GET', '/me', { fields: 'id,username' });
+  const me = await getMe();
   const lim = await api('GET', `/${me.id}/threads_publishing_limit`, { fields: 'quota_usage,config' });
-  console.log(`계정 @${me.username} · 24시간 게시 ${lim.data?.[0]?.quota_usage ?? '?'}/${lim.data?.[0]?.config?.quota_total ?? 250}`);
+  console.log(`계정 @${me.username} · 24시간 게시 ${lim.data?.[0]?.quota_usage ?? '?'} / ${lim.data?.[0]?.config?.quota_total ?? 250}`);
+  process.exit(0);
+}
+
+if (insights) {
+  if (!dry) await refreshToken();
+  const report = await getInsights(INSIGHT_DAYS);
+  console.log(`Threads 인사이트 @${report.me.username} (${INSIGHT_DAYS}일)`);
+  for (const item of report.core) {
+    console.log(`- ${item.name}: ${metricValue(item).toLocaleString('ko-KR')}`);
+  }
+  for (const item of report.followers) {
+    console.log(`- ${item.name}: ${metricValue(item).toLocaleString('ko-KR')}`);
+  }
+  process.exit(0);
+}
+
+if (replyList || HIDE_REPLY_ID) {
+  if (!dry) await refreshToken();
+  let mediaId = REPLY_MEDIA;
+  const state = loadState();
+  if (!mediaId) mediaId = state.posts?.at(-1)?.postId || '';
+  if (!mediaId) {
+    console.error('조회할 Threads 게시물이 없습니다. 먼저 게시를 1회 이상 실행해 주세요.');
+    process.exit(1);
+  }
+
+  if (HIDE_REPLY_ID) {
+    await hideReply(HIDE_REPLY_ID, true);
+    console.log(`댓글 숨김 완료: ${HIDE_REPLY_ID}`);
+    process.exit(0);
+  }
+
+  const replies = await getReplies(mediaId);
+  const post = state.posts?.find((p) => p.postId === mediaId);
+  console.log(`게시물: ${post?.title || post?.productId || mediaId}`);
+  if (!replies.length) {
+    console.log('댓글 없음');
+  } else {
+    for (const r of replies) {
+      const hidden = r.hide_status || 'VISIBLE';
+      const who = r.username ? `@${r.username}` : '(unknown)';
+      console.log(`- ${r.id} ${who} [${hidden}] ${formatSnippet(r.text)}`);
+    }
+  }
   process.exit(0);
 }
 
@@ -103,22 +234,22 @@ const HOOKS = {
 const shortName = (t) => t.replace(/^\[[^\]]*\]\s*/, '').split(',')[0].trim().slice(0, 40);
 const won0 = (n) => (n >= 10000 ? `${Math.floor(n / 10000)}만 원 넘게` : n >= 1000 ? `${Math.floor(n / 1000)}천 원 넘게` : `${n}원`);
 const feel = (d) => (d >= 45 ? '거의 반값 됐네요' : d >= 30 ? '꽤 많이 내렸네요' : d >= 20 ? '꽤 내렸네요' : '조금 내렸어요');
-function when(peakDate, date) {
-  const n = daysBetween(peakDate, date);
+function when(peakDate, day) {
+  const n = daysBetween(peakDate, day);
   return n <= 1 ? '어제' : n <= 5 ? '며칠 전' : n <= 8 ? '일주일 전' : `${md(peakDate)}`;
 }
 
 // 스레드는 서식이 없고 500자까지다. 같은 날 올리는 글끼리 모양이 겹치지 않게 i 를 섞는다.
-function text({ p, peak, drop }, date, i) {
-  const seed = parseInt(hash(p.id + date).slice(0, 6), 16) + i;
+function text({ p, peak, drop }, day, i) {
+  const seed = parseInt(hash(p.id + day).slice(0, 6), 16) + i;
   const cat = (p.categories || []).find((c) => HOOKS[c]) || 'living';
-  const month = Number(date.slice(5, 7));
+  const month = Number(day.slice(5, 7));
   const pool = cat === 'fashion' && (month >= 10 || month <= 2) ? HOOKS.winter : HOOKS[cat];
   const hook = pool[seed % pool.length];
   const name = shortName(p.title);
   const now = won(p.price.min);
   const was = won(peak.price);
-  const w = when(peak.date, date);
+  const w = when(peak.date, day);
   const forms = [
     `${name} ${now}\n${w}엔 ${was}이었는데 ${feel(drop)}.\n${hook}`,
     `${name} 찾던 분 있나요?\n${md(peak.date)} ${was} → 오늘 ${now}\n매일 가격 기록하다가 ${drop >= 20 ? '크게' : '조금'} 내려서 공유해요.`,
@@ -134,6 +265,7 @@ const replyText = (p, link) => `🔗 쿠팡에서 보기\n${link}\n\n가격 기�
 
 // 1) 글 상자를 만들고 2) 처리가 끝나면 3) 게시한다. 게시된 글을 돌려준다(댓글을 달 때 쓴다).
 async function publish(params) {
+  const me = await getMe();
   const box = await api('POST', `/${me.id}/threads`, params);
   for (let t = 0; t < 10; t++) {
     const st = await api('GET', `/${box.id}`, { fields: 'status,error_message' });
@@ -145,25 +277,51 @@ async function publish(params) {
 }
 
 if (!dry) await refreshToken();
-const me = dry ? null : await api('GET', '/me', { fields: 'id' });
+const me = dry ? null : await getMe();
 
 let ok = 0;
 for (const [i, x] of picks.entries()) {
-  if (dry) { console.log(`--- ${x.p.id}\n${text(x, date, i)}\n  └ 댓글: ${replyText(x.p, '(쿠팡 링크)').replace(/\n+/g, ' ')}\n`); continue; }
-  if (i) await new Promise((r) => setTimeout(r, GAP_MS));
+  if (dry) {
+    console.log(`--- ${x.p.id}\n${text(x, date, i)}\n  └ 댓글: ${replyText(x.p, '(쿠팡 링크)').replace(/\n+/g, ' ')}\n`);
+    continue;
+  }
+  if (i) await new Promise((r) => setTimeout(r, 60_000));
   try {
     const link = await channelLink(x.p, THREADS_SUB_ID);
     const post = await publish({ media_type: 'IMAGE', image_url: x.p.image, text: text(x, date, i) });
+    let reply = null;
+    let replyError = '';
+    try {
+      reply = await publish({ media_type: 'TEXT', text: replyText(x.p, link), reply_to_id: post.id });
+    } catch (e) {
+      replyError = e.message;
+      await new Promise((r) => setTimeout(r, 5000));
+      try {
+        reply = await publish({ media_type: 'TEXT', text: replyText(x.p, link), reply_to_id: post.id });
+      } catch (e2) {
+        replyError = e2.message;
+        console.error(`  댓글(링크) 실패(${x.p.id}): ${e2.message} — 손으로 달아야 함`);
+      }
+    }
+
+    const state = loadState();
+    state.posts.push({
+      date,
+      productId: x.p.id,
+      title: x.p.title,
+      postId: post.id,
+      replyId: reply?.id || '',
+      replyError,
+      price: x.p.price.min,
+      image: x.p.image,
+      store: x.p.store,
+      createdAt: new Date().toISOString(),
+    });
+    state.posts = state.posts.slice(-200);
+    saveState(state);
+
     sent[x.p.id] = { date, price: x.p.price.min };
     ok++;
-    // 링크는 내 댓글로. 실패하면 링크 없는 글이 되므로 한 번 더 해 보고, 그래도 안 되면 알린다.
-    try {
-      await publish({ media_type: 'TEXT', text: replyText(x.p, link), reply_to_id: post.id });
-    } catch {
-      await new Promise((r) => setTimeout(r, 5000));
-      await publish({ media_type: 'TEXT', text: replyText(x.p, link), reply_to_id: post.id })
-        .catch((e) => console.error(`  댓글(링크) 실패(${x.p.id}): ${e.message} — 손으로 달아야 함`));
-    }
   } catch (e) {
     console.error(`  올리기 실패(${x.p.id}): ${e.message}`);
   }
