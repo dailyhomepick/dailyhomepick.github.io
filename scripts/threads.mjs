@@ -186,12 +186,14 @@ async function searchThreads(keyword, type = 'TOP') {
   const me = await getMe();
   const fields = 'id,text,media_type,permalink,timestamp,username,has_replies,is_quote_post,is_reply';
   const params = { q, search_type: type, fields, limit: String(searchLimit) };
-  const res = await api('GET', '/keyword_search', params);
+  const raw = await api('GET', '/keyword_search', params);
+  const data = normalizeSearchResults(raw.data || []);
   return {
     me,
     query: q,
     search_type: type,
-    data: normalizeSearchResults(res.data || []),
+    raw,
+    data,
   };
 }
 
@@ -256,6 +258,7 @@ if (searchQuery) {
     console.log(`Threads keyword search @${result.me.username} [${result.search_type}]`);
     console.log(`query: ${result.query}`);
     console.log(`count: ${result.data.length}`);
+    console.log(`raw: ${JSON.stringify(result.raw).slice(0, 1200)}`);
     for (const [idx, item] of result.data.entries()) {
       const body = formatSnippet(item.text, 180);
       const dateText = item.date ? new Date(item.date).toISOString() : '';

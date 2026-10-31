@@ -34,6 +34,7 @@ const dry = args.includes('--dry');
 const seed = args.includes('--seed');
 const once = args.includes('--once') || seed;
 const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
+const TELEGRAM_CHANNEL_ID = process.env.TELEGRAM_CHANNEL_ID || '';
 if (!TELEGRAM_TOKEN) {
   console.error('TELEGRAM_BOT_TOKEN 이 env 에 없습니다 — 중지');
   process.exit(1);
@@ -229,7 +230,16 @@ function normalize(t) {
 
 function isOwnerAllowed(state, chatId, userId) {
   if (state.ownerChatId == null) return true;
-  return String(state.ownerChatId) === String(chatId) && String(state.ownerUserId) === String(userId);
+  if (String(state.ownerChatId) !== String(chatId)) return false;
+  if (state.ownerUserId == null) return true;
+  return String(state.ownerUserId) === String(userId);
+}
+
+function isOperatorChannel(chat) {
+  const want = String(TELEGRAM_CHANNEL_ID || '').replace(/^@/, '').toLowerCase();
+  const got = String(chat?.username || '').toLowerCase();
+  const id = String(chat?.id ?? '');
+  return (want && got === want) || (want && id === want);
 }
 
 async function buildDraft() {
@@ -356,6 +366,16 @@ async function searchThreads(keyword, type = 'TOP') {
       id: item.id || '',
     })),
   };
+}
+
+async function sendTelegram(text) {
+  if (!TELEGRAM_CHANNEL_ID) return false;
+  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+  const body = new URLSearchParams({ chat_id: TELEGRAM_CHANNEL_ID, text });
+  const res = await fetch(url, { method: 'POST', body, signal: AbortSignal.timeout(20000) });
+  const json = await res.json().catch(() => ({}));
+  if (!json.ok) throw new Error(json.description || 'telegram send failed');
+  return true;
 }
 
 async function handleCommand(message, state) {
@@ -569,13 +589,15 @@ async function main() {
   const updates = json.result || [];
   for (const update of updates) {
     state.offset = Number(update.update_id || 0) + 1;
-    if (update.message?.chat?.type !== 'private') continue;
-    if (!update.message?.text) continue;
+    const message = update.message || update.channel_post;
+    if (!message?.text) continue;
+    if (message.chat?.type !== 'private' && message.chat?.type !== 'channel') continue;
+    if (message.chat?.type === 'channel' && !isOperatorChannel(message.chat)) continue;
     try {
-      await handleCommand(update.message, state);
+      await handleCommand(message, state);
     } catch (e) {
       await tg('sendMessage', {
-        chat_id: update.message.chat.id,
+        chat_id: message.chat.id,
         text: `오류: ${e.message}`,
       });
     }
