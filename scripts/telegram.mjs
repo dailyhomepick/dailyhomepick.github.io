@@ -13,12 +13,16 @@
 // daily.sh 와 따로 cron 으로 돌아서, 저장소에 쓰면 push 가 엇갈린다.
 
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { setDefaultAutoSelectFamilyAttemptTimeout } from 'node:net';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { loadEnv, today, daysBetween, historyOf } from './lib/rules.mjs';
 import { readJson } from './lib/store.mjs';
 
 loadEnv();
+// 맥미니에서 api.telegram.org 연결에 0.5초 넘게 걸리는데, Node 는 주소 하나당 0.25초만 기다리고
+// 끊는다(IPv6 가 없어 IPv4 하나만 남는데도). 그래서 가끔이 아니라 아무 때나 ETIMEDOUT 이 났다.
+setDefaultAutoSelectFamilyAttemptTimeout(5000);
 const dry = process.argv.includes('--dry');
 const MIN_DROP = 10;
 const PER_RUN = Number(process.argv.find((a) => a.startsWith('--limit='))?.slice(8)) || 5;
@@ -87,7 +91,7 @@ async function channelLink(p) {
   }
 }
 
-// 맥미니에서 api.telegram.org 연결이 가끔 시간 초과된다. 연결 실패만 두 번 더 시도한다.
+// 그래도 연결이 실패하면 두 번 더 시도한다.
 async function tg(method, body, tries = 3) {
   let res;
   try {
