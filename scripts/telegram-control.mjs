@@ -24,6 +24,7 @@ import { join } from 'node:path';
 import { loadEnv, today, daysBetween } from './lib/rules.mjs';
 import { DISCLOSURE, pickDeals, loadSent, saveSent, channelLink, productUrl, won, md } from './lib/deals.mjs';
 import { hash } from './lib/store.mjs';
+import { buildOutreachDrafts, saveOutreachDrafts } from './lib/outreach.mjs';
 
 loadEnv();
 
@@ -393,6 +394,17 @@ async function handleCommand(message, state) {
     } catch (e) {
       await reply(`인사이트 조회 실패: ${e.message}`);
     }
+    return;
+  }
+
+  if (compact.includes('댓글유입') || compact.includes('유입댓글') || compact.includes('외부댓글') || compact.includes('댓글초안')) {
+    const drafts = buildOutreachDrafts({ count: 5 });
+    saveOutreachDrafts(drafts);
+    const lines = ['댓글 유입용 초안'];
+    for (const d of drafts) {
+      lines.push(`- ${d.productId}: ${d.message.replace(/\n+/g, ' | ')}`);
+    }
+    await reply(lines.join('\n'));
     return;
   }
 
