@@ -30,7 +30,8 @@ loadEnv();
 
 const args = process.argv.slice(2);
 const dry = args.includes('--dry');
-const once = args.includes('--once') || true;
+const seed = args.includes('--seed');
+const once = args.includes('--once') || seed;
 const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
 if (!TELEGRAM_TOKEN) {
   console.error('TELEGRAM_BOT_TOKEN 이 env 에 없습니다 — 중지');
@@ -41,6 +42,7 @@ const statePath = join(homedir(), '.local/state/dailyhomepick/telegram-control.j
 const threadsStatePath = join(homedir(), '.local/state/dailyhomepick/threads-state.json');
 const threadsSentPath = join(homedir(), '.local/state/dailyhomepick/threads-sent.json');
 const THREADS_SUB_ID = 'dhpthreads';
+const THREAD_SEED_INTERVAL_MS = 6 * 60 * 60 * 1000;
 const API = `https://api.telegram.org/bot${TELEGRAM_TOKEN}`;
 const THREADS_API = 'https://graph.threads.net/v1.0';
 const tokenPath = join(homedir(), '.config/dailyhomepick/threads-token.json');
@@ -61,7 +63,7 @@ const HOOKS = {
 
 function loadState() {
   if (!existsSync(statePath)) {
-    return { offset: 0, ownerChatId: null, ownerUserId: null, pendingKind: null, pendingQueue: [], lastPublished: null, lastApprovedOutreach: null };
+    return { offset: 0, ownerChatId: null, ownerUserId: null, pendingKind: null, pendingQueue: [], lastPublished: null, lastApprovedOutreach: null, lastThreadSeedAt: null };
   }
   try {
     const s = JSON.parse(readFileSync(statePath, 'utf8'));
@@ -76,9 +78,10 @@ function loadState() {
       pendingQueue,
       lastPublished: s.lastPublished ?? null,
       lastApprovedOutreach: s.lastApprovedOutreach ?? null,
+      lastThreadSeedAt: s.lastThreadSeedAt ?? null,
     };
   } catch {
-    return { offset: 0, ownerChatId: null, ownerUserId: null, pendingKind: null, pendingQueue: [], lastPublished: null, lastApprovedOutreach: null };
+    return { offset: 0, ownerChatId: null, ownerUserId: null, pendingKind: null, pendingQueue: [], lastPublished: null, lastApprovedOutreach: null, lastThreadSeedAt: null };
   }
 }
 
@@ -116,6 +119,25 @@ function selectIndices(text, max) {
 function draftSummary(d) {
   const line = String(d.text || d.message || '').split('\n').find(Boolean) || d.title || d.productId || '';
   return `${d.productId || '?'} · ${line.slice(0, 48)}`;
+}
+
+function shouldSeedThreads(state) {
+  const last = Number(new Date(state.lastThreadSeedAt || 0));
+  return !last || (Date.now() - last) >= THREAD_SEED_INTERVAL_MS;
+}
+
+async function seedThreadsDraft(state) {
+  const draft = await buildDraft();
+  if (!draft) return null;
+  state.lastThreadSeedAt = today();
+  state.pendingKind = 'threads';
+  state.pendingQueue = [draft];
+  saveState(state);
+  return draft;
+}
+
+function formatPendingQueue(state) {
+  return (state.pendingQueue || []).map((d, idx) => `${idx + 1}. ${draftSummary(d)}`).join('\n');
 }
 
 function escapeText(s) {
@@ -462,6 +484,16 @@ async function handleCommand(message, state) {
     return;
   }
 
+  if (compact.includes('예약') && compact.includes('스레드')) {
+    const seedAt = today();
+    state.lastThreadSeedAt = seedAt;
+    state.pendingKind = 'threads';
+    state.pendingQueue = [await buildDraft()];
+    saveState(state);
+    await reply(`주기 실행 기준으로 초안을 만들 준비를 했습니다. 마지막 생성일: ${seedAt}`);
+    return;
+  }
+
   if (compact.includes('현재상태') || compact.includes('상태')) {
     const pending = state.pending ? `대기 중 초안: ${state.pending.title}` : '대기 중 초안 없음';
     const registered = state.ownerChatId ? `운영자 chat_id: ${state.ownerChatId}` : '운영자 미등록';
@@ -476,6 +508,16 @@ async function main() {
   if (state.offset) params.set('offset', String(state.offset));
   if (dry) {
     console.log(JSON.stringify(state, null, 2));
+    return;
+  }
+
+  if (seed) {
+    if (!shouldSeedThreads(state)) {
+      console.log('seed skipped: interval not reached');
+      return;
+    }
+    const draft = await seedThreadsDraft(state);
+    console.log(draft ? `seeded: ${draftSummary(draft)}` : 'seed skipped: no draft');
     return;
   }
 
