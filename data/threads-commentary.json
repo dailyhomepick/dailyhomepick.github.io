@@ -8,29 +8,16 @@
       "url": "https://www.threads.net/@someone/post/abc123",
       "targetUrl": "https://www.threads.net/@someone/post/abc123",
       "targetLabel": "@someone post abc123",
-      "mode": "forum",
+      "mode": "friendly",
       "text": "저도 비슷한 걸 자주 보게 됩니다.\n대상: @someone post abc123\n한 번 정리해 두면 비교하기 편하더라고요.\n상세는 여기: https://dailyhomepick.github.io"
-    },
-    {
-      "kind": "reply-draft",
-      "index": 2,
-      "url": "https://www.threads.net/@someone2/post/def456",
-      "targetUrl": "https://www.threads.net/@someone2/post/def456",
-      "targetLabel": "@someone2 post def456",
-      "mode": "forum",
-      "text": "이런 주제는 늘 눈에 들어오네요.\n대상: @someone2 post def456\n같은 맥락이면 모아보는 게 좋습니다.\n정리해 둔 페이지: https://dailyhomepick.github.io"
     }
   ],
   "targets": [
     {
       "url": "https://www.threads.net/@someone/post/abc123",
       "siteLink": "https://dailyhomepick.github.io"
-    },
-    {
-      "url": "https://www.threads.net/@someone2/post/def456",
-      "siteLink": "https://dailyhomepick.github.io"
     }
   ],
-  "mode": "forum",
-  "sourceText": "https://www.threads.net/@someone/post/abc123 https://www.threads.net/@someone2/post/def456"
+  "mode": "friendly",
+  "sourceText": "https://www.threads.net/@someone/post/abc123"
 }

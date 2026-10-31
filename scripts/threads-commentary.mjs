@@ -10,7 +10,7 @@ const args = process.argv.slice(2);
 const modeArg = args.find((a) => a.startsWith('--mode='));
 const limitArg = args.find((a) => a.startsWith('--limit='));
 const textArg = args.find((a) => a.startsWith('--text='));
-const mode = modeArg ? modeArg.split('=')[1] : 'forum';
+const mode = modeArg ? modeArg.split('=')[1] : 'friendly';
 const limit = Number(limitArg?.split('=')[1]) || 8;
 const text = textArg ? textArg.slice('--text='.length) : '';
 

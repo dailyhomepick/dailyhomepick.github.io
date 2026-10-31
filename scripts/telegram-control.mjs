@@ -480,13 +480,14 @@ async function handleCommand(message, state) {
     const seedText = text.replace(/^(댓글유입|유입댓글|외부댓글|댓글초안)\s*/,'').trim();
     let batch;
     if (seedText) {
-      batch = buildReplyDraftsFromBatch(seedText, { mode: 'forum' });
+      batch = buildReplyDraftsFromBatch(seedText, { mode: 'friendly' });
     } else {
-      batch = buildFallbackDrafts({ count: 5, mode: 'forum' });
+      batch = buildFallbackDrafts({ count: 5, mode: 'friendly' });
     }
     const state = loadCommentaryState();
     saveCommentaryState({
       ...state,
+      mode: 'friendly',
       sourceText: seedText,
       keywords: batch.keywords || [],
       targets: batch.targets || [],

@@ -8,11 +8,18 @@ import { SITE } from './deals.mjs';
 
 const STATE_PATH = 'data/threads-commentary.json';
 
-function modePhrases(mode = 'forum') {
+function modePhrases(mode = 'friendly') {
   if (mode === 'threads') {
     return {
       lead: ['이건 그냥 지나치기 어렵네요.', '이런 건 바로 눈이 가죠.'],
       body: ['가격이나 체감 기준으로 보면 한 번 볼 만합니다.', '비슷한 걸 찾는 분들한테는 참고가 되겠네요.'],
+      tail: ['정리해 둔 페이지: {link}', '같은 기준으로 모아둔 페이지: {link}'],
+    };
+  }
+  if (mode === 'friendly') {
+    return {
+      lead: ['저도 이런 건 자주 보게 되더라고요.', '이런 건 보면 바로 눈이 가요.'],
+      body: ['가볍게 참고하기 좋고, 비교해 보면 더 편합니다.', '조금만 정리해 두면 나중에 보기 좋아요.'],
       tail: ['정리해 둔 페이지: {link}', '같은 기준으로 모아둔 페이지: {link}'],
     };
   }
@@ -53,7 +60,7 @@ function targetLabel(target) {
   return target.title || target.text || slugFromUrl(target.url || target.targetUrl || target.id || '');
 }
 
-function draftFromTarget(target, { mode = 'forum' } = {}) {
+function draftFromTarget(target, { mode = 'friendly' } = {}) {
   const theme = modePhrases(mode);
   const label = targetLabel(target);
   const link = target.siteLink || `${SITE}/`;
@@ -69,7 +76,7 @@ function draftFromTarget(target, { mode = 'forum' } = {}) {
   ].filter(Boolean).join('\n');
 }
 
-export function buildReplyDraftsFromBatch(batchText, { mode = 'forum', siteLink = `${SITE}/` } = {}) {
+export function buildReplyDraftsFromBatch(batchText, { mode = 'friendly', siteLink = `${SITE}/` } = {}) {
   const urls = extractUrls(batchText);
   const plain = String(batchText || '')
     .replace(/https?:\/\/[^\s)\]]+/g, ' ')
@@ -96,7 +103,7 @@ export function buildReplyDraftsFromBatch(batchText, { mode = 'forum', siteLink 
   };
 }
 
-export function buildFallbackDrafts({ count = 3, mode = 'forum' } = {}) {
+export function buildFallbackDrafts({ count = 3, mode = 'friendly' } = {}) {
   const site = readJson('data/site.json', {});
   const keywords = Array.isArray(site.trending) ? site.trending.slice(0, count) : [];
   const drafts = keywords.map((keyword, idx) => ({
@@ -116,7 +123,7 @@ export function saveCommentaryState(state) {
 }
 
 export function loadCommentaryState() {
-  return readJson(STATE_PATH, { updatedAt: null, mode: 'forum', sourceText: '', keywords: [], targets: [], drafts: [], approved: [] });
+  return readJson(STATE_PATH, { updatedAt: null, mode: 'friendly', sourceText: '', keywords: [], targets: [], drafts: [], approved: [] });
 }
 
 export function commentaryStatePath() {
