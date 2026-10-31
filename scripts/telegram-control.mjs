@@ -60,24 +60,62 @@ const HOOKS = {
 };
 
 function loadState() {
-  if (!existsSync(statePath)) return { offset: 0, ownerChatId: null, ownerUserId: null, pending: null, lastPublished: null };
+  if (!existsSync(statePath)) {
+    return { offset: 0, ownerChatId: null, ownerUserId: null, pendingKind: null, pendingQueue: [], lastPublished: null, lastApprovedOutreach: null };
+  }
   try {
     const s = JSON.parse(readFileSync(statePath, 'utf8'));
+    const pendingQueue = Array.isArray(s.pendingQueue)
+      ? s.pendingQueue
+      : (s.pending ? [s.pending] : []);
     return {
       offset: Number(s.offset) || 0,
       ownerChatId: s.ownerChatId ?? null,
       ownerUserId: s.ownerUserId ?? null,
-      pending: s.pending ?? null,
+      pendingKind: s.pendingKind ?? (pendingQueue.length ? 'threads' : null),
+      pendingQueue,
       lastPublished: s.lastPublished ?? null,
+      lastApprovedOutreach: s.lastApprovedOutreach ?? null,
     };
   } catch {
-    return { offset: 0, ownerChatId: null, ownerUserId: null, pending: null, lastPublished: null };
+    return { offset: 0, ownerChatId: null, ownerUserId: null, pendingKind: null, pendingQueue: [], lastPublished: null, lastApprovedOutreach: null };
   }
 }
 
 function saveState(state) {
   mkdirSync(join(homedir(), '.local/state/dailyhomepick'), { recursive: true });
   writeFileSync(statePath, `${JSON.stringify({ ...state, updatedAt: new Date().toISOString() }, null, 2)}\n`, { mode: 0o600 });
+}
+
+function pendingCount(state) {
+  return Array.isArray(state.pendingQueue) ? state.pendingQueue.length : 0;
+}
+
+function clearPending(state) {
+  state.pendingKind = null;
+  state.pendingQueue = [];
+}
+
+function selectIndices(text, max) {
+  const tail = String(text || '').replace(/^승인\s*/,'').trim();
+  if (!tail || /^(all|전체|모두)$/i.test(tail)) return Array.from({ length: max }, (_, i) => i + 1);
+  const out = new Set();
+  for (const part of tail.split(/[\s,]+/).filter(Boolean)) {
+    const range = part.match(/^(\d+)-(\d+)$/);
+    if (range) {
+      const a = Math.min(Number(range[1]), Number(range[2]));
+      const b = Math.max(Number(range[1]), Number(range[2]));
+      for (let n = a; n <= b; n++) out.add(n);
+      continue;
+    }
+    if (/^\d+$/.test(part)) out.add(Number(part));
+  }
+  return [...out].filter((n) => n >= 1 && n <= max).sort((a, b) => a - b);
+}
+
+function draftSummary(d) {
+  const line = String(d.text || d.message || '').split('\n').find(Boolean) || d.title || d.productId || '';
+  return `${d.productId || '?'} · ${line.slice(0, 48)}`;
 }
 
 function escapeText(s) {
@@ -301,9 +339,9 @@ async function handleCommand(message, state) {
   }
 
   if (compact.includes('취소')) {
-    state.pending = null;
+    clearPending(state);
     saveState(state);
-    await reply('대기 중인 Threads 초안을 취소했습니다.');
+    await reply('대기 중인 Threads/초안 작업을 취소했습니다.');
     return;
   }
 
@@ -313,7 +351,8 @@ async function handleCommand(message, state) {
       await reply('오늘 조건에 맞는 Threads 후보가 없습니다.');
       return;
     }
-    state.pending = draft;
+    state.pendingKind = 'threads';
+    state.pendingQueue = [draft];
     saveState(state);
     await reply([
       'Threads 초안입니다.',
@@ -323,27 +362,42 @@ async function handleCommand(message, state) {
       `링크: ${draft.link}`,
       `상품: ${draft.title}`,
       '',
-      '게시하려면 *승인* 이라고 답장해 주세요.',
+      '게시하려면 `승인` 또는 `승인 1` 이라고 답장해 주세요.',
     ].join('\n'));
     return;
   }
 
-  if (/^승인$/.test(compact) || compact.includes('게시승인') || compact.includes('발행승인') || compact.includes('올려줘')) {
-    if (!state.pending) {
-      await reply('대기 중인 초안이 없습니다. 먼저 “오늘 스레드 게시물 작성해 줘”라고 보내 주세요.');
+  if (/^승인(\s|$)/.test(compact) || compact.includes('게시승인') || compact.includes('발행승인') || compact.includes('올려줘')) {
+    if (!pendingCount(state)) {
+      await reply('대기 중인 초안이 없습니다. 먼저 요청해 주세요.');
       return;
     }
-    try {
-      await refreshThreadsToken();
-      const postId = await publishDraft(state.pending);
-      const title = state.pending.title;
-      state.lastPublished = { postId, productId: state.pending.productId, at: new Date().toISOString() };
-      state.pending = null;
-      saveState(state);
-      await reply(`게시했습니다: ${title}\nThreads ID: ${postId}`);
-    } catch (e) {
-      await reply(`게시 실패: ${e.message}`);
+    const indices = selectIndices(text, pendingCount(state));
+    if (!indices.length) {
+      await reply('승인할 번호를 찾지 못했습니다. 예: `승인 1 3` 또는 `승인 all`');
+      return;
     }
+
+    const draftList = state.pendingQueue;
+    const chosen = indices.map((n) => draftList[n - 1]).filter(Boolean);
+    const results = [];
+    for (const draft of chosen) {
+      try {
+        if (draft.mode === 'threads' || draft.postId || draft.replyText) {
+          await refreshThreadsToken();
+          const postId = await publishDraft(draft);
+          state.lastPublished = { postId, productId: draft.productId, at: new Date().toISOString() };
+          results.push(`게시 완료: ${draft.title} → ${postId}`);
+        } else {
+          results.push(`초안 확인만: ${draft.title}`);
+        }
+      } catch (e) {
+        results.push(`실패: ${draft.title} · ${e.message}`);
+      }
+    }
+    clearPending(state);
+    saveState(state);
+    await reply(results.join('\n'));
     return;
   }
 
