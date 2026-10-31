@@ -351,11 +351,13 @@ async function handleCommand(message, state) {
       'Threads 제어가 연결되었습니다.',
       '가능한 명령:',
       '- 오늘 스레드 게시물 작성해 줘',
-      '- 승인',
+      '- 승인 / 승인 1 3 / 승인 all',
       '- 취소',
       '- 댓글 보여줘',
       '- 댓글 숨겨줘 <reply_id>',
       '- 성과 알려줘',
+      '- 댓글유입 <대상 URL 또는 글 전문>',
+      '- 댓글초안',
     ];
     await reply(lines.join('\n'));
     return;
