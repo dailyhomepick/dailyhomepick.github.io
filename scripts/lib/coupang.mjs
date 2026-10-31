@@ -53,8 +53,9 @@ export const search = async (keyword, limit = 10) => {
   const data = await call('GET', `${BASE}/products/search${qs(`keyword=${encodeURIComponent(keyword)}`, `limit=${limit}`, sub())}`);
   return data?.productData || [];
 };
-export const deeplink = (urls) =>
-  call('POST', `${BASE}/deeplink`, { coupangUrls: urls, ...(process.env.COUPANG_SUB_ID ? { subId: process.env.COUPANG_SUB_ID } : {}) });
+// subId 를 주면 그 이름으로 만든다(텔레그램 채널처럼 사이트와 따로 셀 때).
+export const deeplink = (urls, subId = process.env.COUPANG_SUB_ID) =>
+  call('POST', `${BASE}/deeplink`, { coupangUrls: urls, ...(subId ? { subId } : {}) });
 
 // 실적 리포트. 날짜는 YYYYMMDD. 조회 기간 상한이 있으니 길면 나눠 부른다.
 // clicks/commission 은 날짜별 집계, orders/cancels 는 건별이다.

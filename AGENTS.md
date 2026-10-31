@@ -51,6 +51,7 @@ git add -A && git commit -m "Daily deals YYYY-MM-DD" && git push
 | 인기 검색어로 쿠팡 검색 보충 (`scripts/trending.mjs`) | daily.sh | 매일 아침, 4개씩 돌아가며 |
 | 게시 상품 썸네일 다시 확인·숨김 (`scripts/images.mjs`) | daily.sh | 매 실행 |
 | 검색 노출 규칙 검사(5장) | daily.sh(빌드) | 매 실행, 어기면 push 안 함 |
+| 텔레그램 채널에 진짜 인하 상품 올리기 (`scripts/telegram.mjs`) | cron(따로) | 매일 08:30·18:30 KST, 5개씩 |
 | 인기 검색어 목록(`site.json` → `trending`) 자체를 갈아끼우기 | 사람 | 상품이 안 붙는 키워드가 쌓이면 |
 | 링크프라이스 후보 파일 만들기 | 보류 | 상품 API 승인 후 |
 | daily.sh 실패 알림이 오면 로그를 보고 원인 보고 | 사람 | 필요 시 |
