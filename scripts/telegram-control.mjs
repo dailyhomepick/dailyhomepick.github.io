@@ -24,7 +24,7 @@ import { join } from 'node:path';
 import { loadEnv, today, daysBetween } from './lib/rules.mjs';
 import { DISCLOSURE, pickDeals, loadSent, saveSent, channelLink, productUrl, won, md } from './lib/deals.mjs';
 import { hash } from './lib/store.mjs';
-import { buildOutreachDrafts, saveOutreachDrafts } from './lib/outreach.mjs';
+import { buildCommentFlow, buildOutreachDrafts, saveOutreachDrafts } from './lib/outreach.mjs';
 
 loadEnv();
 

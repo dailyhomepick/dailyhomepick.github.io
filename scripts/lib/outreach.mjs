@@ -10,17 +10,32 @@ import { extractTags } from './keywords.mjs';
 const MAX_TITLE = 44;
 const defaultLanding = (p) => productUrl(p, 'outreach');
 
-const HOOKS = {
-  living: ['이런 건 집에 하나 있으면 계속 쓰게 되죠.', '생활용품은 필요할 때 바로 사두는 게 편하죠.'],
-  kitchen: ['주방 쪽은 한 번 바꾸면 체감이 크더라고요.', '주방템은 쓰임새가 좋아서 고민이 적어요.'],
-  solo: ['혼자 쓰는 집이면 이런 게 은근 유용합니다.', '자취템은 크기보다 실용성이 먼저더라고요.'],
-  pet: ['집사 입장에선 이런 건 바로 눈에 들어오죠.', '반려용품은 소모가 빨라서 미리 챙기면 편해요.'],
-  baby: ['육아용품은 타이밍 맞을 때 챙기는 게 좋죠.', '아기용품은 재구매 시점이 빨리 오더라고요.'],
-  electronics: ['전자제품은 사양 대비 가격을 같이 봐야 하죠.', '기능 대비 가격이 괜찮으면 바로 후보가 되더라고요.'],
-  food: ['식품은 맛보다도 가성비가 먼저 보이네요.', '먹는 건 금방 쓰이니 쟁여두기 좋죠.'],
-  beauty: ['이쪽은 쓰던 거 떨어질 때가 제일 아쉽죠.', '뷰티템은 보통 재구매 타이밍이 짧아요.'],
-  fashion: ['계절 바뀌면 이런 게 먼저 눈에 들어오죠.', '패션은 지금 시즌에 맞는지가 중요하죠.'],
-  default: ['할인폭이 괜찮아서 눈에 띄네요.', '이 정도면 한 번 볼 만합니다.'],
+const COMMENT_MODES = {
+  cafe: {
+    opener: ['저도 이런 거 볼 때 먼저 가격부터 봐요.', '이런 건 필요할 때 바로 써서 가격 괜찮으면 챙기게 되더라고요.'],
+    body: ['실사용 목적이면 이 정도면 괜찮아 보입니다.', '조건 맞으면 무난하게 보기 좋은 편이에요.'],
+    closer: ['정리해 둔 페이지: {link}', '같은 기준으로 묶어둔 페이지: {link}'],
+  },
+  blog: {
+    opener: ['관련해서 정리해 둔 게 있어서 공유합니다.', '비슷한 것 찾는 분들 있으면 참고용으로 남깁니다.'],
+    body: ['할인폭이 괜찮고, 가격 기준으로 보기엔 무난합니다.', '같은 옵션 기준으로 보면 지금 가격이 눈에 띄는 편이에요.'],
+    closer: ['정리해 둔 페이지: {link}', '가격 기준 모아둔 페이지: {link}'],
+  },
+  threads: {
+    opener: ['이건 가격 기준으로 볼 만하네요.', '요즘 같은 때 이런 건 바로 눈에 들어오죠.'],
+    body: ['할인폭이 좋아서 후보로 넣기 괜찮습니다.', '필요한 분들에겐 바로 쓸만한 쪽이에요.'],
+    closer: ['정리해 둔 페이지: {link}', '상세는 여기: {link}'],
+  },
+  forum: {
+    opener: ['저도 비슷한 걸 찾다가 확인한 건데요.', '궁금해서 조금 정리해 봤습니다.'],
+    body: ['이 정도면 비교해서 볼 만합니다.', '가격·용도 기준으로 보면 무난한 편이에요.'],
+    closer: ['정리해 둔 페이지: {link}', '링크는 여기입니다: {link}'],
+  },
+  default: {
+    opener: ['할인폭이 괜찮아서 눈에 띄네요.', '이 정도면 한 번 볼 만합니다.'],
+    body: ['가격 기준으로 보면 꽤 괜찮습니다.', '실용성 있는 쪽이면 참고할 만해요.'],
+    closer: ['정리해 둔 페이지: {link}', '상세는 여기: {link}'],
+  },
 };
 
 function compactTitle(title) {
@@ -56,25 +71,41 @@ export function selectOutreachProducts(products, count = 5) {
     .slice(0, count);
 }
 
-export function draftReply(p, { tone = 'default' } = {}) {
-  const cat = categoryOf(p);
-  const hook = HOOKS[cat] || HOOKS.default;
+function discountLabel(p) {
+  return p.discountRate ? `↓${p.discountRate}%` : '할인 중';
+}
+
+function priceLine(p) {
+  const now = won(p.price.min);
+  return p.originalPrice ? `${now} / 정가 ${won(p.originalPrice)}` : now;
+}
+
+function makeTagLine(p) {
+  const tags = extractTags(p).slice(0, 3);
+  return tags.length ? `#${tags.join(' #').replace(/\s+/g, '')}` : '';
+}
+
+function pickMode(mode) {
+  return COMMENT_MODES[mode] || COMMENT_MODES.default;
+}
+
+export function draftReply(p, { mode = 'default' } = {}) {
+  const theme = pickMode(mode);
   const title = compactTitle(p.title);
-  const price = won(p.price.min);
-  const discount = p.discountRate ? `↓${p.discountRate}%` : '할인 중';
-  const tags = extractTags(p).slice(0, 3).join(' · ');
   const landing = defaultLanding(p);
+  const tags = makeTagLine(p);
   const lines = [
-    `${title} ${discount}`,
-    `${price}${p.originalPrice ? ` / 정가 ${won(p.originalPrice)}` : ''}`,
-    hook[(title.length + price.length) % hook.length],
-    tags ? `#${tags.replace(/\s+/g, '')}` : '',
-    `정리해 둔 페이지: ${landing}`,
+    title,
+    theme.opener[(title.length + p.id.length) % theme.opener.length],
+    `${priceLine(p)} · ${discountLabel(p)}`,
+    theme.body[(title.length + String(p.price?.min || '').length) % theme.body.length],
+    tags,
+    theme.closer[(title.length + landing.length) % theme.closer.length].replace('{link}', landing),
   ].filter(Boolean);
   return lines.join('\n');
 }
 
-export function buildOutreachDrafts({ count = 5, tone = 'default' } = {}) {
+export function buildOutreachDrafts({ count = 5, mode = 'default' } = {}) {
   const products = readJson('data/products.json', []);
   const selected = selectOutreachProducts(products, count);
   return selected.map((p, idx) => ({
@@ -85,7 +116,8 @@ export function buildOutreachDrafts({ count = 5, tone = 'default' } = {}) {
     discountRate: p.discountRate || 0,
     categories: p.categories || [],
     landing: defaultLanding(p),
-    message: draftReply(p, { tone }),
+    message: draftReply(p, { mode }),
+    mode,
   }));
 }
 
@@ -94,4 +126,16 @@ export function saveOutreachDrafts(drafts, file = 'data/outreach-drafts.json') {
     updatedAt: new Date().toISOString(),
     drafts,
   });
+}
+
+export function buildCommentFlow({ mode = 'default' } = {}) {
+  return [
+    '1) 대상 글을 고른다.',
+    '2) 짧게 공감/정보/비교 포인트를 먼저 쓴다.',
+    '3) 판매 링크보다 먼저 가치 있는 한 줄을 둔다.',
+    '4) 사이트 링크는 맥락상 필요한 경우에만 붙인다.',
+    '5) 같은 문구를 반복하지 않는다.',
+    '6) 댓글은 초안만 자동 생성하고 최종 게시 전에는 확인한다.',
+    `7) 현재 톤: ${mode}`,
+  ];
 }

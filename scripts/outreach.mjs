@@ -4,21 +4,33 @@
 
 import { loadEnv } from './lib/rules.mjs';
 import { readJson, writeJson } from './lib/store.mjs';
-import { buildOutreachDrafts, saveOutreachDrafts } from './lib/outreach.mjs';
+import { buildCommentFlow, buildOutreachDrafts, saveOutreachDrafts } from './lib/outreach.mjs';
 
 loadEnv();
 
 const [cmd = 'draft', ...rest] = process.argv.slice(2);
 const countArg = rest.find((a) => /^--count=/.test(a));
+const modeArg = rest.find((a) => /^--mode=/.test(a));
 const count = Number(countArg?.split('=')[1]) || 5;
+const mode = modeArg?.split('=')[1] || 'default';
+
+if (cmd === 'flow') {
+  for (const line of buildCommentFlow({ mode })) console.log(line);
+  process.exit(0);
+}
 
 if (cmd === 'draft') {
-  const drafts = buildOutreachDrafts({ count });
+  const drafts = buildOutreachDrafts({ count, mode });
   saveOutreachDrafts(drafts);
   for (const d of drafts) {
     console.log(`--- ${d.productId}\n${d.message}\n`);
   }
   console.log(`초안 ${drafts.length}개 저장: data/outreach-drafts.json`);
+  process.exit(0);
+}
+
+if (cmd === 'flow') {
+  for (const line of buildCommentFlow({ mode })) console.log(line);
   process.exit(0);
 }
 
@@ -35,5 +47,5 @@ if (cmd === 'clear') {
   process.exit(0);
 }
 
-console.error('명령: draft | list | clear');
+console.error('명령: draft | flow | list | clear');
 process.exit(1);
