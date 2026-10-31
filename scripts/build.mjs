@@ -7,7 +7,7 @@ import { writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { readJson, path } from './lib/store.mjs';
 import {
-  textProblem, isBlockedLink, isProductUrl, prohibitedReason, discountOf, networkOf, today, daysBetween, imageProblem,
+  textProblem, isBlockedLink, isProductUrl, prohibitedReason, discountOf, networkOf, today, daysBetween, imageProblem, historyOf,
 } from './lib/rules.mjs';
 import { itemOf, MODIFIERS } from './lib/keywords.mjs';
 import { faqFor } from './lib/faq.mjs';
@@ -109,7 +109,7 @@ function priceParts(p) {
 }
 // Sort key in KRW; USD prices are roughly converted only for ordering.
 const priceKey = (p) => (p.price.currency === 'USD' ? p.price.min * 1400 : p.price.min);
-const lowestOf = (p) => Math.min(...(p.priceHistory || []).map((h) => h.price), p.price.min);
+const lowestOf = (p) => Math.min(...historyOf(p).map((h) => h.price), p.price.min);
 
 // 품목 안에서 몇 번째로 싼지. 같은 품목이 3개 이상 모였을 때만 센다.
 // 우리가 모아 둔 것들 사이의 순위일 뿐이라 문장에서도 그렇게 적는다.
@@ -147,7 +147,7 @@ function autoSummary(p) {
   }
 
   // 우리 기록으로 확인되는 변화. 판매처 페이지에는 없는 내용이다.
-  const hist = p.priceHistory || [];
+  const hist = historyOf(p);
   if (hist.length > 1) {
     const lo = Math.min(...hist.map((h) => h.price));
     const hi = Math.max(...hist.map((h) => h.price));
@@ -168,7 +168,7 @@ const img = (p, cls = '', eager = false) =>
 function buyButton(p, cls = 'btn btn-buy') {
   const href = buyHref(p);
   if (!href) return `<span class="${cls} is-disabled" aria-disabled="true">판매처 링크 준비 중</span>`;
-  return `<a class="${cls}" href="${esc(href)}" target="_blank" rel="sponsored nofollow noopener">${esc(p.store || '판매처')}에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
+  return `<a class="${cls}" href="${esc(href)}" target="_blank" rel="sponsored nofollow noopener" data-pid="${esc(p.id)}" data-store="${esc(p.store || '')}">${esc(p.store || '판매처')}에서 보기 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`;
 }
 
 // Discount from list price, or else the drop against our own recent price records.
@@ -675,9 +675,9 @@ for (const p of products) {
   const similar = [...productsByCategory.get(cat.slug)].filter((x) => x !== p).sort(byRate).slice(0, 4);
   const expired = !isListed(p);
   const stale = age(p) > rules.staleDays;
-  const history = (p.priceHistory || []).slice(-8).reverse();
+  const history = historyOf(p).slice(-8).reverse();
   const lowest = lowestOf(p);
-  const highest = Math.max(...(p.priceHistory || []).map((h) => h.price), p.price.min);
+  const highest = Math.max(...historyOf(p).map((h) => h.price), p.price.min);
   // 폭이 1.5배를 넘으면 같은 상품의 가격 변동이 아니라 다른 옵션이 섞인 것으로 본다.
   const reliable = history.length > 1 && highest <= lowest * 1.5;
   // 품목을 아는 상품에만 문답을 붙인다. 전부에 같은 걸 붙이면 중복 콘텐츠가 된다.

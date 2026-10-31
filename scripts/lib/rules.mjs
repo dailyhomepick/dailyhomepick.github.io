@@ -248,6 +248,16 @@ export async function checkImage(url) {
   }
 }
 export const THUMB_HIDDEN = '썸네일 없음';
+// 쿠팡은 같은 상품이라도 날마다 다른 옵션(묶음·용량)을 돌려준다. 하기스 기저귀가 대용량 56,900원 →
+// 중형 15,730원으로 바뀐 것을 "72% 인하"로 적은 적이 있다(2026-10-31). 그래서 가격 기록에
+// 옵션 번호(vendorItemId)를 적고 같은 옵션끼리만 비교한다. 쿠팡이 아닌 링크는 옵션을 모른다(undefined).
+export function optionOf(link = '') {
+  return /[?&]vendorItemId=(\d+)/.exec(link || '')?.[1];
+}
+export function historyOf(p) {
+  const opt = optionOf(p.affiliateLink || p.link);
+  return (p.priceHistory || []).filter((h) => h.option === opt);
+}
 // Image proxies of other deal sites (e.g. Next.js /_next/image?url=...) → original image URL.
 export function unwrapImage(url) {
   try {

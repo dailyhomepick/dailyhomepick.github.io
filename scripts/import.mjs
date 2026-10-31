@@ -15,7 +15,7 @@ import { basename, join, resolve } from 'node:path';
 import {
   prohibitedReason, parsePrice, discountOf, textProblem, isBlockedLink, isProductUrl,
   storeOf, networkOf, guessCategory, today, loadEnv, imageProblem, unwrapImage, outOfScope, daysBetween,
-  isSoloLiving, checkImage, resolveImage, fixedCategories, THUMB_HIDDEN,
+  isSoloLiving, checkImage, resolveImage, fixedCategories, optionOf, THUMB_HIDDEN,
 } from './lib/rules.mjs';
 import { loadMerchants, deeplinkFor } from './lib/linkprice.mjs';
 import { extractTags } from './lib/keywords.mjs';
@@ -147,14 +147,17 @@ for (const file of inputs) {
 
     if (existing) {
       // Price refresh: keep a short history so pages can show "최근 최저가" and price drops.
-      const recent = (existing.priceHistory || []).filter((h) => daysBetween(h.date, date) <= 30).map((h) => h.price);
+      // 옵션이 다른 기록은 다른 상품이라 비교하지 않는다(rules.mjs optionOf 참고).
+      const option = optionOf(n.affiliateLink || existing.affiliateLink || n.link);
+      const recent = (existing.priceHistory || [])
+        .filter((h) => h.option === option && daysBetween(h.date, date) <= 30).map((h) => h.price);
       const high = Math.max(0, ...recent);
       const drop = high > n.price.min ? Math.round(((high - n.price.min) / high) * 100) : 0;
       if (drop >= 3) existing.priceDropRate = drop;
       else delete existing.priceDropRate;
       const hist = (existing.priceHistory || []).filter((h) => h.date !== date);
       const last = hist.at(-1);
-      if (!last || last.price !== n.price.min) hist.push({ date, price: n.price.min });
+      if (!last || last.price !== n.price.min || last.option !== option) hist.push({ date, price: n.price.min, option });
       existing.priceHistory = hist.slice(-60);
       Object.assign(existing, {
         price: n.price, originalPrice: n.originalPrice, discountRate: n.discountRate, checkedAt: date,
@@ -180,7 +183,7 @@ for (const file of inputs) {
     const id = (n.sourceId || `${date.replace(/-/g, '')}-${hash(n.link)}`).toLowerCase().replace(/[^a-z0-9-]/g, '-');
     const product = {
       id, status: autoPublish ? 'published' : 'pending', addedAt: date, checkedAt: date,
-      ...n, priceHistory: [{ date, price: n.price.min }],
+      ...n, priceHistory: [{ date, price: n.price.min, option: optionOf(n.affiliateLink || n.link) }],
     };
     for (const k of Object.keys(product)) if (product[k] === undefined || product[k] === '') delete product[k];
     product.tags ??= [];

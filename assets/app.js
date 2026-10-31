@@ -8,6 +8,19 @@
     if (el.parentElement) el.parentElement.classList.add('img-missing');
   }, true);
 
+  // 판매처로 넘어가는 클릭을 GA4 에 남긴다. 쿠팡 실적은 클릭 수만 주고 어느 상품·어느 버튼인지
+  // 몰라서, 방문자가 와도 안 누르는 건지 아예 안 오는 건지 가를 수 없었다.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-pid]');
+    if (!a || typeof window.gtag !== 'function') return;
+    window.gtag('event', 'affiliate_click', {
+      product_id: a.dataset.pid,
+      store: a.dataset.store,
+      button: a.className.split(' ').pop(),
+      transport_type: 'beacon'
+    });
+  });
+
   // Keep the header search box filled with the current query.
   var params = new URLSearchParams(location.search);
   var q = (params.get('q') || '').trim();
