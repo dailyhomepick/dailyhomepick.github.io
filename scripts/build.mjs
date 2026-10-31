@@ -165,6 +165,10 @@ function autoSummary(p) {
 const img = (p, cls = '', eager = false) =>
   `<img class="${cls}" src="${esc(p.image)}" alt="${esc(p.title)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" referrerpolicy="no-referrer">`;
 
+// 텔레그램 채널(scripts/telegram.mjs 가 올린다). site.json 에 주소가 없으면 아무것도 안 그린다.
+const tgLink = (cls, text) => (site.telegram
+  ? `<a${cls ? ` class="${cls}"` : ''} href="${esc(site.telegram)}" target="_blank" rel="noopener">${esc(text)}</a>` : '');
+
 function buyButton(p, cls = 'btn btn-buy') {
   const href = buyHref(p);
   if (!href) return `<span class="${cls} is-disabled" aria-disabled="true">판매처 링크 준비 중</span>`;
@@ -290,6 +294,7 @@ ${body}
       <a href="/today.html">오늘의 할인</a>
       ${categories.map((c) => `<a href="${catHref(c.slug)}">${esc(c.title)}</a>`).join('')}
       <a href="/tags/">태그</a>
+      ${tgLink('', '텔레그램 할인 알림')}
       <a href="/rss.xml">RSS</a>
     </div>
   </div>
@@ -417,6 +422,7 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
       <div class="actions">
         <a class="btn btn-primary" href="/today.html">오늘의 할인 전체 보기</a>
         <a class="btn btn-ghost" href="#trending">인기 검색어</a>
+        ${tgLink('btn btn-ghost', '텔레그램 알림')}
       </div>
       <ul class="hero-points">
         <li>매일 판매처 가격 재확인</li>
@@ -699,6 +705,7 @@ for (const p of products) {
         ${(p.badges || []).length ? `<p class="pills">${p.badges.map((b) => `<span class="pill">${esc(b)}</span>`).join('')}</p>` : ''}
         ${buyButton(p, 'btn btn-buy btn-lg')}
       </div>
+      ${site.telegram ? `<p class="tg-cta">${tgLink('', '같은 옵션 기준으로 진짜 내린 할인만, 하루 두 번 텔레그램으로 받기 →')}</p>` : ''}
       ${specTable(p.specs)}
       ${reliable ? `<section class="price-log">
         <h2 class="h4">가격 기록</h2>

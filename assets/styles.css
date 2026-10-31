@@ -338,6 +338,9 @@ button, input, select { font: inherit; color: inherit; }
 .guide-body > p:not(.kicker):not(.verdict) { color: var(--ink-2); }
 .buy-box { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 8px; padding: 16px; border-radius: 14px; background: var(--surface-2); }
 .buy-box-col { flex-direction: column; align-items: stretch; gap: 8px; padding: 20px; }
+.tg-cta { margin: 10px 2px 0; font-size: 14px; }
+.tg-cta a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }
+.tg-cta a:hover { color: var(--ink); }
 .procon { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
 .box { padding: 14px 16px; border-radius: 12px; font-size: 14px; }
 .box strong { display: block; margin-bottom: 6px; }

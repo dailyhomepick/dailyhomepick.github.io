@@ -2,6 +2,7 @@
 //
 //   node scripts/telegram.mjs          # 보내기
 //   node scripts/telegram.mjs --dry    # 보낼 글만 출력(키 없어도 된다)
+//   node scripts/telegram.mjs --limit=1  # 1개만(시험 발송)
 //
 // 키: ~/.config/dailyhomepick/env 의 TELEGRAM_BOT_TOKEN, TELEGRAM_CHANNEL_ID(@채널이름 또는 -100...).
 // 봇은 채널 관리자로 넣어 둬야 한다. TELEGRAM_CHAT_ID(실패 알림용)와는 따로다.
@@ -20,7 +21,7 @@ import { readJson } from './lib/store.mjs';
 loadEnv();
 const dry = process.argv.includes('--dry');
 const MIN_DROP = 10;
-const PER_RUN = 5;
+const PER_RUN = Number(process.argv.find((a) => a.startsWith('--limit='))?.slice(8)) || 5;
 const RESEND_DAYS = 7;
 // 쿠팡 실적에서 채널 클릭을 사이트와 가르려고 링크를 이 subId 로 새로 만든다(stats.mjs 참고).
 export const TELEGRAM_SUB_ID = 'dhptelegram';
@@ -86,10 +87,19 @@ async function channelLink(p) {
   }
 }
 
-async function tg(method, body) {
-  const res = await fetch(`https://api.telegram.org/bot${token}/${method}`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
-  });
+// 맥미니에서 api.telegram.org 연결이 가끔 시간 초과된다. 연결 실패만 두 번 더 시도한다.
+async function tg(method, body, tries = 3) {
+  let res;
+  try {
+    res = await fetch(`https://api.telegram.org/bot${token}/${method}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+      signal: AbortSignal.timeout(20000),
+    });
+  } catch (e) {
+    if (tries <= 1) throw new Error(`${method} 연결 실패: ${e.cause?.code || e.name}`);
+    await new Promise((r) => setTimeout(r, 3000));
+    return tg(method, body, tries - 1);
+  }
   const json = await res.json().catch(() => ({}));
   if (!json.ok) throw new Error(`${method} ${res.status}: ${json.description || ''}`);
 }
