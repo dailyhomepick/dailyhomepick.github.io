@@ -25,6 +25,7 @@ import { loadEnv, today, daysBetween } from './lib/rules.mjs';
 import { DISCLOSURE, pickDeals, loadSent, saveSent, channelLink, productUrl, won, md } from './lib/deals.mjs';
 import { hash } from './lib/store.mjs';
 import { buildCommentFlow, buildOutreachDrafts, saveOutreachDrafts } from './lib/outreach.mjs';
+import { buildReplyDraftsFromBatch, buildFallbackDrafts, loadCommentaryState, saveCommentaryState, commentaryStatePath } from './lib/threads-commentary.mjs';
 
 loadEnv();
 
@@ -474,12 +475,23 @@ async function handleCommand(message, state) {
   }
 
   if (compact.includes('댓글유입') || compact.includes('유입댓글') || compact.includes('외부댓글') || compact.includes('댓글초안')) {
-    const drafts = buildOutreachDrafts({ count: 5 });
-    saveOutreachDrafts(drafts);
-    const lines = ['댓글 유입용 초안'];
-    for (const d of drafts) {
-      lines.push(`- ${d.productId}: ${d.message.replace(/\n+/g, ' | ')}`);
+    const seedText = text.replace(/^(댓글유입|유입댓글|외부댓글|댓글초안)\s*/,'').trim();
+    let batch;
+    if (seedText) {
+      batch = buildReplyDraftsFromBatch(seedText, { mode: 'forum' });
+    } else {
+      batch = buildFallbackDrafts({ count: 5, mode: 'forum' });
     }
+    const state = loadCommentaryState();
+    saveCommentaryState({
+      ...state,
+      sourceText: seedText,
+      keywords: batch.keywords || [],
+      targets: batch.targets || [],
+      drafts: batch.drafts || [],
+    });
+    const lines = ['댓글 유입용 초안'];
+    for (const d of batch.drafts || []) lines.push(`- ${d.targetLabel || d.keyword || d.url || d.index}: ${d.text.replace(/\n+/g, ' | ')}`);
     await reply(lines.join('\n'));
     return;
   }

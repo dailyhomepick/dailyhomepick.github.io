@@ -1,0 +1,30 @@
+{
+  "updatedAt": null,
+  "keywords": [
+    "물티슈",
+    "생수"
+  ],
+  "drafts": [
+    {
+      "kind": "reply-draft",
+      "index": 1,
+      "keyword": "물티슈",
+      "targetLabel": "물티슈",
+      "targetUrl": "https://dailyhomepick.github.io/k/물티슈",
+      "mode": "forum",
+      "text": "이런 주제는 늘 눈에 들어오네요.\n글 흐름은 물티슈\n한 번 정리해 두면 비교하기 편하더라고요.\n정리해 둔 페이지: https://dailyhomepick.github.io/k/물티슈"
+    },
+    {
+      "kind": "reply-draft",
+      "index": 2,
+      "keyword": "생수",
+      "targetLabel": "생수",
+      "targetUrl": "https://dailyhomepick.github.io/k/생수",
+      "mode": "forum",
+      "text": "이런 주제는 늘 눈에 들어오네요.\n글 흐름은 생수\n한 번 정리해 두면 비교하기 편하더라고요.\n정리해 둔 페이지: https://dailyhomepick.github.io/k/생수"
+    }
+  ],
+  "targets": [],
+  "mode": "forum",
+  "sourceText": ""
+}
