@@ -19,6 +19,7 @@
 //   - 토큰/인증코드는 로그에 남기지 않음
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { loadEnv, today, daysBetween } from './lib/rules.mjs';
@@ -103,18 +104,22 @@ function clearPending(state) {
 }
 
 function selectIndices(text, max) {
-  const tail = String(text || '').replace(/^승인\s*/,'').trim();
+  const tail = String(text || '')
+    .replace(/^(승인|approve|reply|발행|게시)/i, '')
+    .replace(/^\s+/, '')
+    .trim();
   if (!tail || /^(all|전체|모두)$/i.test(tail)) return Array.from({ length: max }, (_, i) => i + 1);
   const out = new Set();
   for (const part of tail.split(/[\s,]+/).filter(Boolean)) {
-    const range = part.match(/^(\d+)-(\d+)$/);
+    const range = part.match(/^(\d+)\s*-\s*(\d+)$/);
     if (range) {
       const a = Math.min(Number(range[1]), Number(range[2]));
       const b = Math.max(Number(range[1]), Number(range[2]));
       for (let n = a; n <= b; n++) out.add(n);
       continue;
     }
-    if (/^\d+$/.test(part)) out.add(Number(part));
+    const digits = part.match(/(\d+)/);
+    if (digits) out.add(Number(digits[1]));
   }
   return [...out].filter((n) => n >= 1 && n <= max).sort((a, b) => a - b);
 }
@@ -129,16 +134,6 @@ function shouldSeedThreads(state) {
   return !last || (Date.now() - last) >= THREAD_SEED_INTERVAL_MS;
 }
 
-async function seedThreadsDraft(state) {
-  const draft = await buildDraft();
-  if (!draft) return null;
-  state.lastThreadSeedAt = today();
-  state.pendingKind = 'threads';
-  state.pendingQueue = [draft];
-  saveState(state);
-  return draft;
-}
-
 function formatPendingQueue(state) {
   return (state.pendingQueue || []).map((d, idx) => `${idx + 1}. ${draftSummary(d)}`).join('\n');
 }
@@ -150,19 +145,15 @@ function escapeText(s) {
     .replace(/>/g, '&gt;');
 }
 
-async function tg(method, body) {
+function telegramCall(method, params = {}, post = false) {
   if (dry) {
-    console.log(`[dry] telegram ${method}: ${JSON.stringify(body).slice(0, 240)}`);
+    console.log(`[dry] telegram ${method}: ${JSON.stringify(params).slice(0, 240)}`);
     return { ok: true, result: {} };
   }
-  const res = await fetch(`${API}/${method}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-    signal: AbortSignal.timeout(20000),
-  });
-  const json = await res.json().catch(() => ({}));
-  if (!json.ok) throw new Error(`${method} ${res.status}: ${json.description || ''}`);
+  const script = `import json, sys, urllib.parse, urllib.request\nbase=${JSON.stringify(API)}\npayload=json.loads(sys.argv[1])\nmethod=payload['method']\nparams=payload.get('params', {})\npost=payload.get('post', False)\nurl=f"{base}/{method}"\nif post:\n    data=urllib.parse.urlencode(params).encode()\n    req=urllib.request.Request(url, data=data, method='POST')\n    req.add_header('Content-Type', 'application/x-www-form-urlencoded')\n    with urllib.request.urlopen(req, timeout=30) as r:\n        print(r.read().decode())\nelse:\n    if params:\n        url += '?' + urllib.parse.urlencode(params)\n    with urllib.request.urlopen(url, timeout=30) as r:\n        print(r.read().decode())`;
+  const out = execFileSync('python3', ['-c', script, JSON.stringify({ method, params, post })], { encoding: 'utf8' });
+  const json = JSON.parse(out);
+  if (!json.ok) throw new Error(`${method}: ${json.description || ''}`);
   return json;
 }
 
@@ -186,10 +177,6 @@ async function refreshThreadsToken() {
   threadsToken = json.access_token;
   mkdirSync(join(homedir(), '.config/dailyhomepick'), { recursive: true });
   writeFileSync(tokenPath, JSON.stringify({ token: threadsToken, refreshedAt: today(), expiresInDays: Math.round(json.expires_in / 86400) }), { mode: 0o600 });
-}
-
-function shortName(t) {
-  return String(t || '').replace(/^\[[^\]]*\]\s*/, '').split(',')[0].trim().slice(0, 40);
 }
 
 function feel(drop) {
@@ -226,6 +213,10 @@ const replyText = (p, link) => `🔗 쿠팡에서 보기\n${link}\n\n가격 기�
 
 function normalize(t) {
   return String(t || '').trim().replace(/\s+/g, '');
+}
+
+function shortName(t) {
+  return String(t || '').replace(/^\[[^\]]*\]\s*/, '').split(',')[0].trim().slice(0, 40);
 }
 
 function isOwnerAllowed(state, chatId, userId) {
@@ -370,12 +361,7 @@ async function searchThreads(keyword, type = 'TOP') {
 
 async function sendTelegram(text) {
   if (!TELEGRAM_CHANNEL_ID) return false;
-  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
-  const body = new URLSearchParams({ chat_id: TELEGRAM_CHANNEL_ID, text });
-  const res = await fetch(url, { method: 'POST', body, signal: AbortSignal.timeout(20000) });
-  const json = await res.json().catch(() => ({}));
-  if (!json.ok) throw new Error(json.description || 'telegram send failed');
-  return true;
+  return telegramCall('sendMessage', { chat_id: TELEGRAM_CHANNEL_ID, text }, true);
 }
 
 async function handleCommand(message, state) {
@@ -384,14 +370,17 @@ async function handleCommand(message, state) {
   const text = String(message.text || '').trim();
   const compact = normalize(text);
 
-  if (!state.ownerChatId && message.chat.type === 'private') {
-    state.ownerChatId = chatId;
-    state.ownerUserId = userId;
-    saveState(state);
+  if (message.chat.type === 'private') {
+    const channelOwner = state.ownerChatId != null && String(state.ownerChatId).startsWith('-100');
+    if (!state.ownerChatId || channelOwner || !state.ownerUserId) {
+      state.ownerChatId = chatId;
+      state.ownerUserId = userId;
+      saveState(state);
+    }
   }
   if (!isOwnerAllowed(state, chatId, userId)) return;
 
-  const reply = (msg, extra = {}) => tg('sendMessage', { chat_id: chatId, text: msg, ...extra });
+  const reply = (msg, extra = {}) => telegramCall('sendMessage', { chat_id: chatId, text: msg, ...extra }, true);
 
   if (/^(\/start|\/help|도움|도움말|등록|연결)$/i.test(text) || compact.includes('쓰레드연결')) {
     const lines = [
@@ -417,11 +406,37 @@ async function handleCommand(message, state) {
     return;
   }
 
-  if (compact.includes('승인') && !/^승인(\s|$)/.test(compact)) {
-    // ignore unrelated phrases containing '승인'
+  if ((compact.includes('승인') || compact.includes('reply') || compact.includes('발행') || compact.includes('게시')) && pendingCount(state)) {
+    const indices = selectIndices(text, pendingCount(state));
+    if (!indices.length) {
+      await reply('승인할 번호를 찾지 못했습니다. 예: `승인 1 3` 또는 `승인 all`');
+      return;
+    }
+
+    const draftList = state.pendingQueue;
+    const chosen = indices.map((n) => draftList[n - 1]).filter(Boolean);
+    const results = [];
+    for (const draft of chosen) {
+      try {
+        if (draft.mode === 'threads' || draft.postId || draft.replyText) {
+          await refreshThreadsToken();
+          const postId = await publishDraft(draft);
+          state.lastPublished = { postId, productId: draft.productId, at: new Date().toISOString() };
+          results.push(`게시 완료: ${draft.title || draft.targetLabel || draft.url || ''} → ${postId}`);
+        } else {
+          results.push(`초안 확인만: ${draft.title || draft.targetLabel || draft.url || ''}`);
+        }
+      } catch (e) {
+        results.push(`실패: ${draft.title || draft.targetLabel || draft.url || ''} · ${e.message}`);
+      }
+    }
+    clearPending(state);
+    saveState(state);
+    await reply(results.join('\n'));
+    return;
   }
 
-  if (compact.includes('승인') || /^승인(\s|$)/.test(compact) || compact.includes('게시승인') || compact.includes('발행승인') || compact.includes('올려줘')) {
+  if (compact.includes('승인') && !pendingCount(state)) {
     const draft = await buildDraft();
     if (!draft) {
       await reply('오늘 조건에 맞는 Threads 후보가 없습니다.');
@@ -438,7 +453,7 @@ async function handleCommand(message, state) {
       `링크: ${draft.link}`,
       `상품: ${draft.title}`,
       '',
-      '게시하려면 `승인` 또는 `승인 1` 이라고 답장해 주세요.',
+      '게시하려면 `승인 1` 또는 `승인 all` 이라고 답장해 주세요.',
     ].join('\n'));
     return;
   }
@@ -570,13 +585,6 @@ async function handleCommand(message, state) {
 
 async function main() {
   const state = loadState();
-  const params = new URLSearchParams({ timeout: '20', limit: '50' });
-  if (state.offset) params.set('offset', String(state.offset));
-  if (dry) {
-    console.log(JSON.stringify(state, null, 2));
-    return;
-  }
-
   if (seed) {
     if (!shouldSeedThreads(state)) {
       console.log('seed skipped: interval not reached');
@@ -584,32 +592,29 @@ async function main() {
     }
     const commentary = loadCommentaryState();
     const drafts = Array.isArray(commentary.drafts) ? commentary.drafts.filter(Boolean) : [];
-    const draft = drafts[0] || null;
-    if (draft) {
+    const batch = drafts.slice(0, 10);
+    if (batch.length) {
       state.lastThreadSeedAt = today();
       state.pendingKind = 'threads-replies';
-      state.pendingQueue = [draft];
+      state.pendingQueue = batch;
       saveState(state);
-      const lines = [
-        'Threads 다른 사람 글 댓글 후보가 준비됐습니다.',
-        `1. ${draft.targetLabel || draft.author || draft.url || ''}`,
-        '',
-        draft.text,
-        '',
-        `대상: ${draft.url || draft.targetUrl || ''}`,
-        '승인하려면 `승인 all` 또는 `승인 1`',
-      ];
+      const lines = ['Threads 다른 사람 글 댓글 후보 10개'];
+      for (const [idx, draft] of batch.entries()) {
+        lines.push(`${idx + 1}. ${draft.targetLabel || draft.author || draft.url || ''}`);
+        lines.push(draft.text);
+        lines.push(`대상: ${draft.url || draft.targetUrl || ''}`);
+        lines.push('');
+      }
+      lines.push('승인하려면 `승인 all` 또는 `승인 1 3 5`');
       await sendTelegram(lines.join('\n'));
-      console.log(`seeded: ${draftSummary(draft)}`);
+      console.log(`seeded: ${batch.map(draftSummary).join(' | ')}`);
     } else {
       console.log('seed skipped: no commentary draft');
     }
     return;
   }
 
-  const res = await fetch(`${API}/getUpdates?${params}`, { signal: AbortSignal.timeout(30000) });
-  const json = await res.json().catch(() => ({}));
-  if (!json.ok) throw new Error(`getUpdates ${res.status}: ${json.description || ''}`);
+  const json = telegramCall('getUpdates', { timeout: '20', limit: '50', ...(state.offset ? { offset: String(state.offset) } : {}) }, false);
   const updates = json.result || [];
   for (const update of updates) {
     state.offset = Number(update.update_id || 0) + 1;
@@ -620,10 +625,10 @@ async function main() {
     try {
       await handleCommand(message, state);
     } catch (e) {
-      await tg('sendMessage', {
+      await telegramCall('sendMessage', {
         chat_id: message.chat.id,
         text: `오류: ${e.message}`,
-      });
+      }, true);
     }
   }
   saveState(state);
