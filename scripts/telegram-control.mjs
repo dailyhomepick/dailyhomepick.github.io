@@ -44,7 +44,7 @@ const statePath = join(homedir(), '.local/state/dailyhomepick/telegram-control.j
 const threadsStatePath = join(homedir(), '.local/state/dailyhomepick/threads-state.json');
 const threadsSentPath = join(homedir(), '.local/state/dailyhomepick/threads-sent.json');
 const THREADS_SUB_ID = 'dhpthreads';
-const THREAD_SEED_INTERVAL_MS = 6 * 60 * 60 * 1000;
+const THREAD_SEED_INTERVAL_MS = 3 * 60 * 60 * 1000;
 const API = `https://api.telegram.org/bot${TELEGRAM_TOKEN}`;
 const THREADS_API = 'https://graph.threads.net/v1.0';
 const tokenPath = join(homedir(), '.config/dailyhomepick/threads-token.json');
@@ -417,7 +417,11 @@ async function handleCommand(message, state) {
     return;
   }
 
-  if (compact.includes('오늘') && compact.includes('스레드') && (compact.includes('작성') || compact.includes('게시') || compact.includes('써줘'))) {
+  if (compact.includes('승인') && !/^승인(\s|$)/.test(compact)) {
+    // ignore unrelated phrases containing '승인'
+  }
+
+  if (compact.includes('승인') || /^승인(\s|$)/.test(compact) || compact.includes('게시승인') || compact.includes('발행승인') || compact.includes('올려줘')) {
     const draft = await buildDraft();
     if (!draft) {
       await reply('오늘 조건에 맞는 Threads 후보가 없습니다.');
@@ -578,8 +582,28 @@ async function main() {
       console.log('seed skipped: interval not reached');
       return;
     }
-    const draft = await seedThreadsDraft(state);
-    console.log(draft ? `seeded: ${draftSummary(draft)}` : 'seed skipped: no draft');
+    const commentary = loadCommentaryState();
+    const drafts = Array.isArray(commentary.drafts) ? commentary.drafts.filter(Boolean) : [];
+    const draft = drafts[0] || null;
+    if (draft) {
+      state.lastThreadSeedAt = today();
+      state.pendingKind = 'threads-replies';
+      state.pendingQueue = [draft];
+      saveState(state);
+      const lines = [
+        'Threads 다른 사람 글 댓글 후보가 준비됐습니다.',
+        `1. ${draft.targetLabel || draft.author || draft.url || ''}`,
+        '',
+        draft.text,
+        '',
+        `대상: ${draft.url || draft.targetUrl || ''}`,
+        '승인하려면 `승인 all` 또는 `승인 1`',
+      ];
+      await sendTelegram(lines.join('\n'));
+      console.log(`seeded: ${draftSummary(draft)}`);
+    } else {
+      console.log('seed skipped: no commentary draft');
+    }
     return;
   }
 
