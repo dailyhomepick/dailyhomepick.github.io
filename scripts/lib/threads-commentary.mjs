@@ -3,10 +3,14 @@
 // The safe path is: user provides a batch of target URLs or a single batch message,
 // the script drafts natural replies, and Telegram approval decides what gets used.
 
-import { readJson, writeJson } from './store.mjs';
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
+import { homedir } from 'node:os';
+import { join } from 'node:path';
+import { path as repoPath, readJson } from './store.mjs';
 import { SITE } from './deals.mjs';
 
-const STATE_PATH = 'data/threads-commentary.json';
+const LEGACY_STATE_PATH = 'data/threads-commentary.json';
+const STATE_PATH = join(homedir(), '.local/state/dailyhomepick/threads-commentary.json');
 
 function modePhrases(mode = 'friendly') {
   const variants = {
@@ -143,11 +147,22 @@ export function buildFallbackDrafts({ count = 3, mode = 'friendly' } = {}) {
 }
 
 export function saveCommentaryState(state) {
-  writeJson(STATE_PATH, { updatedAt: new Date().toISOString(), ...state });
+  mkdirSync(join(homedir(), '.local/state/dailyhomepick'), { recursive: true });
+  writeFileSync(STATE_PATH, `${JSON.stringify({ updatedAt: new Date().toISOString(), ...state }, null, 2)}\n`, { mode: 0o600 });
+}
+
+function migrateLegacyState() {
+  const legacy = repoPath(LEGACY_STATE_PATH);
+  if (!existsSync(STATE_PATH) && existsSync(legacy)) {
+    mkdirSync(join(homedir(), '.local/state/dailyhomepick'), { recursive: true });
+    renameSync(legacy, STATE_PATH);
+  }
 }
 
 export function loadCommentaryState() {
-  return readJson(STATE_PATH, { updatedAt: null, mode: 'friendly', sourceText: '', keywords: [], targets: [], drafts: [], approved: [] });
+  migrateLegacyState();
+  if (!existsSync(STATE_PATH)) return { updatedAt: null, mode: 'friendly', sourceText: '', keywords: [], targets: [], drafts: [], approved: [] };
+  return JSON.parse(readFileSync(STATE_PATH, 'utf8'));
 }
 
 export function commentaryStatePath() {

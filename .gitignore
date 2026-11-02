@@ -1,4 +1,5 @@
 data/inbox/
+data/threads-commentary.json
 .env
 .env.*
 *.local
