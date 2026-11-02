@@ -566,7 +566,7 @@ async function handleCommand(message, state) {
   }
 
   if (compact.includes('예약') && compact.includes('스레드')) {
-    const seedAt = today();
+    const seedAt = new Date().toISOString();
     state.lastThreadSeedAt = seedAt;
     state.pendingKind = 'threads';
     state.pendingQueue = [await buildDraft()];
@@ -594,7 +594,7 @@ async function main() {
     const drafts = Array.isArray(commentary.drafts) ? commentary.drafts.filter(Boolean) : [];
     const batch = drafts.slice(0, 10);
     if (batch.length) {
-      state.lastThreadSeedAt = today();
+      state.lastThreadSeedAt = new Date().toISOString();
       state.pendingKind = 'threads-replies';
       state.pendingQueue = batch;
       saveState(state);
