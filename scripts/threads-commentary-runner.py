@@ -102,8 +102,9 @@ def draft_from_target(target, mode='forum'):
     label = target.get('label') or target.get('title') or target.get('text') or slug_from_url(target.get('url', ''))
     link = target.get('siteLink') or f'{SITE}/'
     text = trim_text(target.get('text') or '')
-    body = theme['body'][(len(label) + len(text)) % len(theme['body'])]
-    tail = theme['tail'][(len(label) + len(link)) % len(theme['tail'])].replace('{link}', link)
+    phrase = theme[(len(label) + len(text)) % len(theme)]
+    body = phrase['body']
+    tail = phrase['tail'].replace('{link}', link)
     return '\n'.join(x for x in [f'글 흐름은 {text}' if text else f'대상: {label}', body, tail] if x)
 
 

@@ -89,8 +89,9 @@ function draftFromTarget(target, { mode = 'friendly' } = {}) {
   const theme = modePhrases(mode);
   const label = targetLabel(target);
   const link = target.siteLink || `${SITE}/`;
-  const mid = theme.body[(label.length + (target.text || '').length) % theme.body.length];
-  const tail = theme.tail[(label.length + link.length) % theme.tail.length].replace('{link}', link);
+  const phrase = theme[(label.length + (target.text || '').length) % theme.length];
+  const mid = phrase.body;
+  const tail = phrase.tail.replace('{link}', link);
   const context = trimText(target.text || '', 90);
   return [
     context ? `글 흐름은 ${context}` : `대상: ${label}`,
