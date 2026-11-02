@@ -33,6 +33,7 @@ loadEnv();
 const args = process.argv.slice(2);
 const dry = args.includes('--dry');
 const seed = args.includes('--seed');
+const forceSeed = args.includes('--force-seed');
 const once = args.includes('--once') || seed;
 const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
 const TELEGRAM_CHANNEL_ID = process.env.TELEGRAM_CHANNEL_ID || '';
@@ -301,6 +302,45 @@ async function publishDraft(draft) {
   return post.id;
 }
 
+const SHORTCODE_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+
+function shortcodeToMediaId(shortcode) {
+  const code = String(shortcode || '').trim().split('?')[0].split('/').filter(Boolean).at(-1) || '';
+  if (!code || /^\d+$/.test(code)) return code;
+  let value = 0n;
+  for (const ch of code) {
+    const idx = SHORTCODE_ALPHABET.indexOf(ch);
+    if (idx < 0) return code;
+    value = value * 64n + BigInt(idx);
+  }
+  return value.toString();
+}
+
+function extractThreadsTargetId(url) {
+  const s = String(url || '');
+  const m = s.match(/\/post\/([A-Za-z0-9_-]+)/i);
+  return shortcodeToMediaId(m ? m[1] : s);
+}
+
+async function publishReplyDraft(draft) {
+  const me = await threadsApi('GET', '/me', { fields: 'id' });
+  const replyToId = extractThreadsTargetId(draft.targetUrl || draft.url || '');
+  if (!replyToId) throw new Error('대상 Threads ID를 찾지 못했습니다');
+  const box = await threadsApi('POST', `/${me.id}/threads`, {
+    media_type: 'TEXT',
+    text: draft.text,
+    reply_to_id: replyToId,
+  });
+  for (let tries = 0; tries < 10; tries++) {
+    const st = await threadsApi('GET', `/${box.id}`, { fields: 'status,error_message' });
+    if (st.status === 'FINISHED') break;
+    if (st.status === 'ERROR') throw new Error(`처리 실패: ${st.error_message || ''}`);
+    await new Promise((r) => setTimeout(r, 3000));
+  }
+  const post = await threadsApi('POST', `/${me.id}/threads_publish`, { creation_id: box.id });
+  return post.id || box.id;
+}
+
 function dirname(path) {
   return path.slice(0, Math.max(path.lastIndexOf('/'), path.lastIndexOf('\\')) || 1);
 }
@@ -418,7 +458,11 @@ async function handleCommand(message, state) {
     const results = [];
     for (const draft of chosen) {
       try {
-        if (draft.mode === 'threads' || draft.postId || draft.replyText) {
+        if (draft.targetUrl || draft.url) {
+          await refreshThreadsToken();
+          const postId = await publishReplyDraft(draft);
+          results.push(`댓글 완료: ${draft.title || draft.targetLabel || draft.url || ''} → ${postId}`);
+        } else if (draft.mode === 'threads' || draft.postId || draft.replyText) {
           await refreshThreadsToken();
           const postId = await publishDraft(draft);
           state.lastPublished = { postId, productId: draft.productId, at: new Date().toISOString() };
@@ -453,7 +497,7 @@ async function handleCommand(message, state) {
       `링크: ${draft.link}`,
       `상품: ${draft.title}`,
       '',
-      '게시하려면 `승인 1` 또는 `승인 all` 이라고 답장해 주세요.',
+      '자동 발행 모드로 초안을 저장했습니다.',
     ].join('\n'));
     return;
   }
@@ -586,7 +630,7 @@ async function handleCommand(message, state) {
 async function main() {
   const state = loadState();
   if (seed) {
-    if (!shouldSeedThreads(state)) {
+    if (!forceSeed && !shouldSeedThreads(state)) {
       console.log('seed skipped: interval not reached');
       return;
     }

@@ -359,6 +359,19 @@ async function publish(params) {
   return api('POST', `/${me.id}/threads_publish`, { creation_id: box.id });
 }
 
+const SHORTCODE_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+function shortcodeToMediaId(shortcode) {
+  const code = String(shortcode || '').trim().split('?')[0].split('/').filter(Boolean).at(-1) || '';
+  if (!code || /^\d+$/.test(code)) return code;
+  let value = 0n;
+  for (const ch of code) {
+    const idx = SHORTCODE_ALPHABET.indexOf(ch);
+    if (idx < 0) return code;
+    value = value * 64n + BigInt(idx);
+  }
+  return value.toString();
+}
+
 if (!dry && !acquireRunLock()) {
   console.log('스레드: 이미 실행 중 — 건너뜀');
   process.exit(0);
