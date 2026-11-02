@@ -18,7 +18,7 @@
 // 고지 문구는 본문 끝에 둔다 — 공정위 추천·보증 지침은 본문 첫머리나 끝에 구분해 적으라고 하고,
 // 댓글에만 두는 건 인정되지 않는다. "써 봤다" 같은 체험 문장은 쓰지 않는다(써 보지 않았다).
 
-import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync, openSync, closeSync, unlinkSync } from 'node:fs';
 import { setDefaultAutoSelectFamilyAttemptTimeout } from 'node:net';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
@@ -199,6 +199,34 @@ async function searchThreads(keyword, type = 'TOP') {
 
 const date = today();
 const sent = loadSent('threads');
+const runLockPath = join(homedir(), '.local/state/dailyhomepick/threads.run.lock');
+let runLockFd = null;
+function acquireRunLock() {
+  mkdirSync(dirnameSafe(runLockPath), { recursive: true });
+  for (let tries = 0; tries < 2; tries++) {
+    try {
+      runLockFd = openSync(runLockPath, 'wx', 0o600);
+      writeFileSync(runLockFd, `${process.pid}\n${new Date().toISOString()}\n`);
+      return true;
+    } catch (e) {
+      if (e?.code !== 'EEXIST') throw e;
+      const stamp = readFileSync(runLockPath, 'utf8').split('\n')[1] || '';
+      const age = Date.now() - Date.parse(stamp || 0);
+      if (tries === 0 && Number.isFinite(age) && age > 30 * 60 * 1000) {
+        try { unlinkSync(runLockPath); } catch {}
+        continue;
+      }
+      return false;
+    }
+  }
+  return false;
+}
+function releaseRunLock() {
+  if (runLockFd === null) return;
+  try { closeSync(runLockFd); } catch {}
+  try { unlinkSync(runLockPath); } catch {}
+  runLockFd = null;
+}
 
 if (check) {
   const me = await getMe();
@@ -331,56 +359,66 @@ async function publish(params) {
   return api('POST', `/${me.id}/threads_publish`, { creation_id: box.id });
 }
 
-if (!dry) await refreshToken();
-const me = dry ? null : await getMe();
+if (!dry && !acquireRunLock()) {
+  console.log('스레드: 이미 실행 중 — 건너뜀');
+  process.exit(0);
+}
+try {
+  if (!dry) await refreshToken();
+  const me = dry ? null : await getMe();
 
-let ok = 0;
-for (const [i, x] of picks.entries()) {
-  if (dry) {
-    console.log(`--- ${x.p.id}\n${text(x, date, i)}\n  └ 댓글: ${replyText(x.p, '(쿠팡 링크)').replace(/\n+/g, ' ')}\n`);
-    continue;
-  }
-  if (i) await new Promise((r) => setTimeout(r, 60_000));
-  try {
-    const link = await channelLink(x.p, THREADS_SUB_ID);
-    const post = await publish({ media_type: 'IMAGE', image_url: x.p.image, text: text(x, date, i) });
-    let reply = null;
-    let replyError = '';
+  let ok = 0;
+  for (const [i, x] of picks.entries()) {
+    if (dry) {
+      console.log(`--- ${x.p.id}\n${text(x, date, i)}\n  └ 댓글: ${replyText(x.p, '(쿠팡 링크)').replace(/\n+/g, ' ')}\n`);
+      continue;
+    }
+    if (i) await new Promise((r) => setTimeout(r, 60_000));
     try {
-      reply = await publish({ media_type: 'TEXT', text: replyText(x.p, link), reply_to_id: post.id });
-    } catch (e) {
-      replyError = e.message;
-      await new Promise((r) => setTimeout(r, 5000));
+      const link = await channelLink(x.p, THREADS_SUB_ID);
+      const post = await publish({ media_type: 'IMAGE', image_url: x.p.image, text: text(x, date, i) });
+      let reply = null;
+      let replyError = '';
       try {
         reply = await publish({ media_type: 'TEXT', text: replyText(x.p, link), reply_to_id: post.id });
-      } catch (e2) {
-        replyError = e2.message;
-        console.error(`  댓글(링크) 실패(${x.p.id}): ${e2.message} — 손으로 달아야 함`);
+      } catch (e) {
+        replyError = e.message;
+        await new Promise((r) => setTimeout(r, 5000));
+        try {
+          reply = await publish({ media_type: 'TEXT', text: replyText(x.p, link), reply_to_id: post.id });
+        } catch (e2) {
+          replyError = e2.message;
+          console.error(`  댓글(링크) 실패(${x.p.id}): ${e2.message} — 손으로 달아야 함`);
+        }
       }
+
+      const state = loadState();
+      state.posts.push({
+        date,
+        productId: x.p.id,
+        title: x.p.title,
+        postId: post.id,
+        replyId: reply?.id || '',
+        replyError,
+        price: x.p.price.min,
+        image: x.p.image,
+        store: x.p.store,
+        createdAt: new Date().toISOString(),
+      });
+      state.posts = state.posts.slice(-200);
+      saveState(state);
+
+      sent[x.p.id] = { date, price: x.p.price.min };
+      saveSent('threads', sent, date);
+      ok++;
+    } catch (e) {
+      console.error(`  올리기 실패(${x.p.id}): ${e.message}`);
+      sent[x.p.id] = { date, price: x.p.price.min };
+      saveSent('threads', sent, date);
     }
-
-    const state = loadState();
-    state.posts.push({
-      date,
-      productId: x.p.id,
-      title: x.p.title,
-      postId: post.id,
-      replyId: reply?.id || '',
-      replyError,
-      price: x.p.price.min,
-      image: x.p.image,
-      store: x.p.store,
-      createdAt: new Date().toISOString(),
-    });
-    state.posts = state.posts.slice(-200);
-    saveState(state);
-
-    sent[x.p.id] = { date, price: x.p.price.min };
-    ok++;
-  } catch (e) {
-    console.error(`  올리기 실패(${x.p.id}): ${e.message}`);
   }
-}
 
-if (!dry) saveSent('threads', sent, date);
-console.log(`스레드: 후보 ${picks.length}개${dry ? ' (미리보기)' : ` · 올림 ${ok}`}`);
+  console.log(`스레드: 후보 ${picks.length}개${dry ? ' (미리보기)' : ` · 올림 ${ok}`}`);
+} finally {
+  releaseRunLock();
+}
