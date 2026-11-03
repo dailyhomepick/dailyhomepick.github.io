@@ -149,7 +149,7 @@ function escapeText(s) {
 function telegramCall(method, params = {}, post = false) {
   if (dry) {
     console.log(`[dry] telegram ${method}: ${JSON.stringify(params).slice(0, 240)}`);
-    return { ok: true, result: {} };
+    return method === 'getUpdates' ? { ok: true, result: [] } : { ok: true, result: {} };
   }
   const script = `import json, sys, urllib.parse, urllib.request\nbase=${JSON.stringify(API)}\npayload=json.loads(sys.argv[1])\nmethod=payload['method']\nparams=payload.get('params', {})\npost=payload.get('post', False)\nurl=f"{base}/{method}"\nif post:\n    data=urllib.parse.urlencode(params).encode()\n    req=urllib.request.Request(url, data=data, method='POST')\n    req.add_header('Content-Type', 'application/x-www-form-urlencoded')\n    with urllib.request.urlopen(req, timeout=30) as r:\n        print(r.read().decode())\nelse:\n    if params:\n        url += '?' + urllib.parse.urlencode(params)\n    with urllib.request.urlopen(url, timeout=30) as r:\n        print(r.read().decode())`;
   const out = execFileSync('python3', ['-c', script, JSON.stringify({ method, params, post })], { encoding: 'utf8' });
@@ -518,16 +518,20 @@ async function handleCommand(message, state) {
     const results = [];
     for (const draft of chosen) {
       try {
-        if (draft.mode === 'threads' || draft.postId || draft.replyText) {
+        if (draft.kind === 'reply-draft' || state.pendingKind === 'threads-replies') {
+          await refreshThreadsToken();
+          const replyId = await publishReplyDraft(draft);
+          results.push(`댓글 완료: ${draft.targetLabel || draft.author || draft.url || '대상'} → ${replyId}`);
+        } else if (draft.mode === 'threads' || draft.postId || draft.replyText) {
           await refreshThreadsToken();
           const postId = await publishDraft(draft);
           state.lastPublished = { postId, productId: draft.productId, at: new Date().toISOString() };
           results.push(`게시 완료: ${draft.title} → ${postId}`);
         } else {
-          results.push(`초안 확인만: ${draft.title}`);
+          results.push(`초안 확인만: ${draft.title || draft.targetLabel || draft.url}`);
         }
       } catch (e) {
-        results.push(`실패: ${draft.title} · ${e.message}`);
+        results.push(`실패: ${draft.title || draft.targetLabel || draft.url} · ${e.message}`);
       }
     }
     clearPending(state);
