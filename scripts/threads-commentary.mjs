@@ -15,6 +15,10 @@ const limit = Number(limitArg?.split('=')[1]) || 8;
 const text = textArg ? textArg.slice('--text='.length) : '';
 
 const state = loadCommentaryState();
+if (!text.trim() && Array.isArray(state.drafts) && state.drafts.some((d) => d?.targetUrl && /threads\.(com|net)|threads\.com/i.test(d.targetUrl))) {
+  console.log(`기존 Threads 댓글 초안 ${state.drafts.length}개 유지: ${commentaryStatePath()}`);
+  process.exit(0);
+}
 const batch = text.trim()
   ? buildReplyDraftsFromBatch(text, { mode })
   : buildFallbackDrafts({ count: limit, mode });
