@@ -11,6 +11,9 @@
 // 기간 전체를 다시 받아 같은 날짜를 덮어쓴다.
 // 방문자 수는 여기 없다 — 쿠팡은 "상품을 눌러 쿠팡으로 넘어간 클릭"만 센다.
 
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { homedir } from 'node:os';
+import { join, dirname } from 'node:path';
 import { loadEnv, today } from './lib/rules.mjs';
 import { readJson, writeJson } from './lib/store.mjs';
 
@@ -70,6 +73,26 @@ for (const r of orders) add(pick(r, 'orderDate'), 'orders', 1);
 for (const r of cancels) add(pick(r, 'cancelDate'), 'cancels', 1);
 
 const list = [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
+
+// subId 별 원본 집계는 저장소 밖에 따로 둔다(다른 채널 subId 가 공개 저장소에 남지 않게).
+// 스레드 운영판(~/threads-diary/stats.mjs)이 읽는다.
+{
+  const subPath = join(homedir(), '.local/state/dailyhomepick/coupang-by-sub.json');
+  const bySub = new Map();
+  const cell = (r, dateField) => {
+    const d = dash(String(r[dateField] || r.date)), sub = String(r.subId || '') || '(없음)';
+    if (!bySub.has(d)) bySub.set(d, {});
+    return (bySub.get(d)[sub] ||= blank());
+  };
+  for (const r of clicks) cell(r, 'date').clicks += Number(r.click || 0);
+  for (const r of commission) cell(r, 'date').commission += Number(r.commission || 0);
+  for (const r of orders) cell(r, 'orderDate').orders += 1;
+  for (const r of cancels) cell(r, 'cancelDate').cancels += 1;
+  const old = existsSync(subPath) ? JSON.parse(readFileSync(subPath, 'utf8')) : { days: {} };
+  for (const [d, v] of bySub) old.days[d] = v;
+  mkdirSync(dirname(subPath), { recursive: true });
+  writeFileSync(subPath, JSON.stringify({ updatedAt: new Date().toISOString(), days: old.days }));
+}
 
 // 기존 파일과 합친다. 같은 날짜는 새 값으로 갈음한다(쿠팡이 과거를 고칠 수 있다).
 const prev = readJson('data/stats.json') || { days: [] };

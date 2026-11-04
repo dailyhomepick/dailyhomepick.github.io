@@ -1,9 +1,495 @@
 {
-  "updatedAt": "2026-11-03T23:11:27.132Z",
+  "updatedAt": "2026-11-04T10:10:47.642Z",
   "source": "coupang-partners",
   "subId": "dailyhomepick",
   "note": "방문자 수는 포함되지 않는다. 쿠팡은 상품 클릭만 집계한다. site = 이 사이트(subId 일치), other = 다른 경로.",
   "days": [
+    {
+      "date": "2026-07-01",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 2,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-02",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 129,
+        "orders": 63,
+        "commission": 21473,
+        "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-03",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 26,
+        "orders": 32,
+        "commission": 14760,
+        "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-04",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 2,
+        "orders": 1,
+        "commission": 129,
+        "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-05",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 2,
+        "orders": 0,
+        "commission": -810,
+        "cancels": 2
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-06",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": -1510,
+        "cancels": 2
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-07",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-08",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": -360,
+        "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-09",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": -1710,
+        "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-11",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-12",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-20",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": -195,
+        "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-21",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 83,
+        "orders": 12,
+        "commission": 3152,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 68,
+        "orders": 43,
+        "commission": 15975,
+        "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-23",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 0,
+        "orders": 1,
+        "commission": 420,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-24",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": -176,
+        "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-26",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": -296,
+        "cancels": 1
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-07-27",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 2,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
     {
       "date": "2026-07-28",
       "site": {
@@ -17,6 +503,18 @@
         "orders": 9,
         "commission": 1893,
         "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -29,6 +527,18 @@
       },
       "other": {
         "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
         "orders": 0,
         "commission": 0,
         "cancels": 0
@@ -47,6 +557,18 @@
         "orders": 0,
         "commission": 0,
         "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -61,6 +583,18 @@
         "clicks": 14,
         "orders": 4,
         "commission": 1550,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
         "cancels": 0
       }
     },
@@ -77,6 +611,18 @@
         "orders": 1,
         "commission": 370,
         "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -89,6 +635,18 @@
       },
       "other": {
         "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
         "orders": 0,
         "commission": 0,
         "cancels": 0
@@ -107,6 +665,18 @@
         "orders": 0,
         "commission": 0,
         "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -119,6 +689,18 @@
       },
       "other": {
         "clicks": 2,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
         "orders": 0,
         "commission": 0,
         "cancels": 0
@@ -137,6 +719,18 @@
         "orders": 2,
         "commission": 323,
         "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
       }
     },
     {
@@ -149,6 +743,18 @@
       },
       "other": {
         "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
         "orders": 0,
         "commission": 0,
         "cancels": 0
