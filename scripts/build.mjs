@@ -104,6 +104,7 @@ function longDate(iso) {
   return `${y}년 ${m}월 ${d}일 (${wd})`;
 }
 
+const mdK = (iso) => { const [, m, d] = iso.split('-').map(Number); return `${m}월 ${d}일`; };
 function priceParts(p) {
   const pr = p.price;
   if (pr.text) return { main: pr.text, sub: '' };
@@ -135,11 +136,10 @@ const priceOf = (p) => (typeof p.price === 'object' ? p.price?.min : p.price) ||
 
 function autoSummary(p) {
   if (p.summary) return p.summary;
-  const parts = [`${p.store || '판매처'}에서 ${priceParts(p).main}`];
-  if (p.discountRate) parts.push(`정가 대비 ${p.discountRate}% 할인`);
-  else if (p.priceDropRate) parts.push(`최근 기록보다 ${p.priceDropRate}% 내린 가격`);
-  if (p.badges?.length) parts.push(p.badges.join('·'));
-  const out = [`${parts.join(', ')}에 판매 중입니다.`];
+  // 가격 변동률은 바로 아래 따로 나오므로 소개 문장엔 판매처·가격·배송만 쓴다(2026-11-13 문구 정리).
+  const ship = (p.badges || []).includes('로켓배송') ? '로켓배송' : (p.badges || []).includes('무료배송') ? '무료배송' : '';
+  const out = [`현재 ${p.store || '판매처'}에서 ${priceParts(p).main}에 판매 중${ship ? `이며, ${ship}이 가능합니다.` : '입니다.'}`];
+  if (isGoldbox(p)) out.push('골드박스 특가 상품입니다.');
 
   // 같은 품목끼리 비교. 1등과 꼴찌만 말하면 밋밋하니 위치를 그대로 적는다.
   const r = priceRank.get(p.id);
@@ -158,7 +158,7 @@ function autoSummary(p) {
       const prev = hist[hist.length - 2];
       const now = priceOf(p);
       const diff = prev ? now - prev.price : 0;
-      if (diff < 0) out.push(`${shortDate(prev.date)}보다 ${Math.round((-diff / prev.price) * 100)}% 내렸습니다.`);
+      if (diff < 0) out.push(`직전 확인가(${mdK(prev.date)})보다 ${won(-diff)} 저렴합니다.`);
       else if (now === lo) out.push(`${hist.length}번 확인한 중 가장 낮은 가격입니다.`);
     }
   }
@@ -182,13 +182,13 @@ function buyButton(p, cls = 'btn btn-buy') {
 const rateOf = (p) => p.discountRate || p.priceDropRate || 0;
 const isGoldbox = (p) => (p.badges || []).includes('골드박스');
 const rateChip = (p, cls = 'chip-rate') => (p.discountRate ? `<span class="${cls}">${p.discountRate}%</span>`
-  : p.priceDropRate ? `<span class="${cls} is-drop" title="최근 기록 대비 인하">↓${p.priceDropRate}%</span>`
+  : p.priceDropRate ? `<span class="${cls} is-drop" title="최근 30일 최고가 대비">↓${p.priceDropRate}%</span>`
   : isGoldbox(p) ? `<span class="${cls} is-deal">특가</span>` : '');
 
 function priceBlock(p, cls = 'price') {
   const { main, sub } = priceParts(p);
   const rate = p.discountRate ? `<span class="rate">${p.discountRate}%</span>`
-    : p.priceDropRate ? `<span class="rate rate-drop" title="최근 기록 대비 인하">↓${p.priceDropRate}%</span>` : '';
+    : p.priceDropRate ? `<span class="rate rate-drop" title="최근 30일 최고가 대비">↓${p.priceDropRate}%</span>` : '';
   return `<div class="${cls}">${rate}<strong>${esc(main)}</strong>${sub ? `<span class="price-sub">${esc(sub)}</span>` : ''}${p.originalPrice ? `<del>${money(p.originalPrice, p.price.currency)}</del>` : ''}</div>`;
 }
 
@@ -253,7 +253,7 @@ function signal(p) {
   const { low, dayDrop, prev } = insightOf(p);
   if (low) return `<p class="signal"><span class="hl">최근 ${low.windowDays}일 최저</span></p>`;
   // 내린 폭(%)은 가격 옆에 이미 나오므로, 여기엔 무엇에서 내렸는지만 적는다.
-  if (dayDrop >= DAY_MIN_DROP) return `<p class="signal">${shortDate(prev.date)} ${won(prev.price)}에서 내림</p>`;
+  if (dayDrop >= DAY_MIN_DROP) return `<p class="signal">${mdK(prev.date)}보다 <span class="hl">${won(prev.price - insightOf(p).hist.at(-1).price)} 저렴해요</span></p>`;
   return '';
 }
 
@@ -305,7 +305,7 @@ function layout({ title, description, path: pagePath, body, active = '', image =
   const url = site.url + pagePath;
   const nav = [
     `<a class="nav-today" href="/today.html"${active === 'today' ? ' aria-current="page"' : ''}><span class="dot" aria-hidden="true"></span>오늘의 할인</a>`,
-    `<a href="/drops.html"${active === 'drops' ? ' aria-current="page"' : ''}>오늘 내린 가격</a>`,
+    `<a href="/drops.html"${active === 'drops' ? ' aria-current="page"' : ''}>오늘 가격이 내려간 상품</a>`,
     `<a href="/lows.html"${active === 'lows' ? ' aria-current="page"' : ''}>최저가</a>`,
     `<a href="/themes/"${active === 'themes' ? ' aria-current="page"' : ''}>기획전</a>`,
     ...categories.map((c) => `<a href="${catHref(c.slug)}"${active === c.slug ? ' aria-current="page"' : ''}>${esc(c.name)}</a>`),
@@ -360,7 +360,7 @@ ${body}
   <div class="wrap footer-grid">
     <div>
       <a class="logo logo-sm" href="/"><span>${esc(site.name)}</span></a>
-      <p class="muted">${esc(site.tagline)}. 매일 판매처 가격을 다시 확인하고, 할인율이 높은 상품부터 보여줍니다.</p>
+      <p class="muted">생활용품부터 가전까지, 매일 확인한 할인 정보를 한곳에 모았어요.</p>
     </div>
     <div class="footer-links">
       <a href="/today.html">오늘의 할인</a>
@@ -492,7 +492,7 @@ const lastmod = new Map();
 const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(file, mod); };
 
 // Home
-// 순서(2026-11-13 기현님): 오늘의 최저가 그래프 → 오늘 내린 가격 → 최근 최저가 → 기획전 → 할인 TOP → 카테고리 → (작게) 인기 검색어.
+// 순서(2026-11-13 기현님): 오늘의 최저가 그래프 → 오늘 내린 가격 → 최근 최저가 → 기획전 → 할인 TOP → 카테고리 → (작게) 추천 검색어.
 {
   const top = todayDeals.slice(0, 8);
   const lead = lows[0] || drops.find((p) => insightOf(p).hist.length >= 3) || top[0];
@@ -505,8 +505,8 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
   ${grid(list)}
 </section>`;
   }).join('\n');
-  const headline = li?.low ? `오늘, <span class="hl">최근 ${li.low.windowDays}일 중<br>가장 싼</span> 상품이 나왔어요`
-    : li?.dayDrop ? `오늘 <span class="hl">값이 확 떨어진</span><br>상품부터 보여드려요` : '매일 가격을 기록해서<br><span class="hl">진짜 내린 날</span>만 알려드려요';
+  const headline = li?.low ? `최근 ${li.low.windowDays}일 중<br><span class="hl">오늘이 가장 저렴해요</span>`
+    : li?.dayDrop ? `오늘 <span class="hl">가격이 많이<br>내려갔어요</span>` : '매일 확인한 가격으로<br><span class="hl">내려간 상품</span>을 모았어요';
   const leadNote = li?.low ? `최근 ${li.low.windowDays}일 최고 ${won(li.low.hi)}보다 ${li.low.drop}% 낮고, 직전 최저 ${won(li.low.prevLo)}보다도 쌉니다.`
     : li?.dayDrop ? `${shortDate(li.prev.date)} ${won(li.prev.price)}에서 ${li.dayDrop}% 내렸습니다.` : '';
 
@@ -516,10 +516,10 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
     <div class="hero2-copy">
       <p class="eyebrow">${longDate(lastChecked)} 가격 확인</p>
       <h1>${headline}</h1>
-      <p class="lead">같은 옵션의 가격을 매일 기록합니다. 쇼핑몰 표시 할인율이 아니라, 기록으로 확인한 진짜 인하만 앞에 둡니다.</p>
+      <p class="lead">같은 옵션의 가격을 매일 비교해, 실제로 가격이 내려간 상품을 먼저 보여드려요.</p>
       <div class="actions">
-        <a class="btn btn-mint" href="/lows.html">최근 최저가 ${lows.length}개</a>
-        <a class="btn btn-line" href="/drops.html">오늘 내린 가격 ${drops.length}개</a>
+        <a class="btn btn-mint" href="/lows.html">최근 최저가 상품 ${lows.length}개</a>
+        <a class="btn btn-line" href="/drops.html">가격이 내려간 상품 ${drops.length}개</a>
       </div>
     </div>
     <div class="hero2-card">
@@ -530,7 +530,7 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
         ${leadNote ? `<p>${esc(leadNote)}</p>` : ''}
       </div>
       ${bigChart(lead)}
-      <div class="hc-foot"><a class="link-more" href="${productHref(lead)}">가격 기록 전체 →</a>${buyButton(lead, 'btn btn-buy')}</div>
+      <div class="hc-foot"><a class="link-more" href="${productHref(lead)}">가격 변동 보기 →</a>${buyButton(lead, 'btn btn-buy')}</div>
     </div>
   </div>
 </section>
@@ -538,7 +538,7 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
 ${drops.length ? `<section class="section">
   <div class="wrap">
     <div class="section-head">
-      <div><p class="kicker">바로 앞 기록보다 ${DAY_MIN_DROP}% 이상</p><h2>오늘 값이 확 떨어진 상품</h2></div>
+      <div><p class="kicker">직전 확인 가격보다 ${DAY_MIN_DROP}% 이상 저렴해요</p><h2>오늘 가격이 많이 내려갔어요</h2></div>
       <a class="link-more" href="/drops.html">${drops.length}개 전체 →</a>
     </div>
     ${grid(drops.slice(0, 8))}
@@ -548,7 +548,7 @@ ${drops.length ? `<section class="section">
 ${lows.length >= 3 ? `<section class="section section-alt">
   <div class="wrap">
     <div class="section-head">
-      <div><p class="kicker">기록 7일 이상 · 같은 옵션 기준</p><h2>최근 최저가를 찍은 상품</h2></div>
+      <div><p class="kicker">같은 옵션 가격 기록 7일 이상</p><h2>최근 기록 중 가장 저렴해요</h2></div>
       <a class="link-more" href="/lows.html">${lows.length}개 전체 →</a>
     </div>
     ${grid(lows.slice(0, 8))}
@@ -557,7 +557,7 @@ ${lows.length >= 3 ? `<section class="section section-alt">
 
 ${openThemes.length ? `<section class="section">
   <div class="wrap">
-    <div class="section-head"><div><p class="kicker">${Number(lastChecked.slice(5, 7))}월에 맞춰 바뀌는</p><h2>지금 기획전</h2></div><a class="link-more" href="/themes/">전체 기획전 →</a></div>
+    <div class="section-head"><div><p class="kicker">기획전</p><h2>${Number(lastChecked.slice(5, 7))}월에 필요한 상품을 모았어요</h2></div><a class="link-more" href="/themes/">전체 기획전 →</a></div>
     <div class="theme-list">${openThemes.slice(0, 4).map(themeCard).join('')}</div>
   </div>
 </section>` : ''}
@@ -582,7 +582,7 @@ ${openThemes.length ? `<section class="section">
 
 <section class="section section-tight">
   <div class="wrap find-more">
-    <div><h2 class="h4">많이 찾는 검색어</h2>${trendingChips()}</div>
+    <div><h2 class="h4">추천 검색어</h2>${trendingChips()}</div>
     <div><h2 class="h4">태그</h2>${tagChips(tagsSorted.slice(0, 16).map(([t]) => t))}<a class="link-more" href="/tags/">전체 태그 →</a></div>
     ${disclosure(top)}
   </div>
@@ -606,17 +606,17 @@ ${openThemes.length ? `<section class="section">
 </div>`,
   }), lastChecked);
   listPage('drops.html', {
-    title: `오늘 가격 내린 상품 ${drops.length}개 (${shortDate(lastChecked)})`, h1: '오늘 내린 가격', active: 'drops',
+    title: `오늘 가격이 내려간 상품 ${drops.length}개 (${shortDate(lastChecked)})`, h1: '오늘 가격이 내려간 상품', active: 'drops',
     kicker: `${longDate(lastChecked)} 확인`,
-    lead: `같은 옵션의 바로 앞 기록보다 ${DAY_MIN_DROP}% 이상 싸진 상품입니다. 많이 내린 순서로 보여드려요.`,
+    lead: `같은 옵션의 직전 확인 가격보다 ${DAY_MIN_DROP}% 이상 저렴해진 상품이에요. 많이 내려간 순서로 보여드려요.`,
     desc: `${longDate(lastChecked)} 기준, 같은 옵션 가격 기록으로 확인한 가격 인하 상품 ${drops.length}개. 내린 폭이 큰 순서.`,
     list: drops, empty: '오늘은 앞 기록보다 크게 내린 상품이 없습니다. 내일 다시 확인해요.',
   });
   listPage('lows.html', {
-    title: `최근 30일 최저가 상품 ${lows.length}개 (${shortDate(lastChecked)})`, h1: '최근 최저가', active: 'lows',
+    title: `최근 최저가 상품 ${lows.length}개 (${shortDate(lastChecked)})`, h1: '최근 최저가', active: 'lows',
     kicker: `${longDate(lastChecked)} 확인`,
-    lead: '같은 옵션 가격 기록이 7일 이상 쌓인 상품 중, 오늘 값이 기록상 가장 낮고 기간 최고가보다 5% 이상 싼 상품입니다. 기록이 30일이 안 되면 실제 기록 일수로 표시합니다.',
-    desc: `${longDate(lastChecked)} 기준, 가격 기록상 최근 30일 중 가장 싸진 상품 ${lows.length}개.`,
+    lead: '같은 옵션 가격 기록이 7일 이상 쌓인 상품 중, 오늘 가격이 기록상 가장 낮고 기간 최고가보다 5% 이상 저렴한 상품이에요. 기간은 최대 30일이며, 기록이 그보다 짧으면 실제 기록 일수로 표시해요.',
+    desc: `${longDate(lastChecked)} 기준, 같은 옵션 가격 기록(최대 30일) 중 오늘이 가장 저렴한 상품 ${lows.length}개.`,
     list: lows, empty: '오늘은 기록상 최저가가 된 상품이 없습니다.',
   });
   add('themes/index.html', layout({
@@ -817,11 +817,11 @@ for (const [kw, list] of keywordPages) {
     path: kwHref(kw),
     body: `
 <div class="wrap">
-  ${breadcrumb([['홈', '/'], ['인기 검색어', '/#trending'], [kw, kwHref(kw)]])}
-  <header class="page-head"><p class="kicker">인기 검색어</p><h1>${esc(kw)} 할인</h1><p class="lead">${longDate(lastChecked)} 기준으로 가격을 확인한 ${esc(kw)} 할인 상품입니다.</p></header>
+  ${breadcrumb([['홈', '/'], ['추천 검색어', '/#trending'], [kw, kwHref(kw)]])}
+  <header class="page-head"><p class="kicker">추천 검색어</p><h1>${esc(kw)} 할인</h1><p class="lead">${longDate(lastChecked)} 기준으로 가격을 확인한 ${esc(kw)} 할인 상품입니다.</p></header>
   ${sortBar(list.length, { def: 'rate-desc' })}${grid(list, ' data-sortable')}
   ${disclosure(list)}
-  <section class="section-tight"><h2 class="h3">다른 인기 검색어</h2>${trendingChips()}</section>
+  <section class="section-tight"><h2 class="h3">다른 추천 검색어</h2>${trendingChips()}</section>
 </div>`,
     image: list[0].image, head: itemListLd(list),
   }), list[0].checkedAt);
@@ -858,7 +858,7 @@ for (const p of products) {
         ${(p.badges || []).length ? `<p class="pills">${p.badges.map((b) => `<span class="pill">${esc(b)}</span>`).join('')}</p>` : ''}
         ${buyButton(p, 'btn btn-buy btn-lg')}
       </div>
-      ${site.telegram ? `<p class="tg-cta">${tgLink('', '같은 옵션 기준으로 진짜 내린 할인만, 하루 두 번 텔레그램으로 받기 →')}</p>` : ''}
+      ${site.telegram ? `<p class="tg-cta">${tgLink('', '가격이 내려간 상품을 하루 두 번 텔레그램으로 받아보세요 →')}</p>` : ''}
       ${specTable(p.specs)}
       ${reliable ? `<section class="price-log">
         <h2 class="h4">가격 기록</h2>
@@ -868,7 +868,7 @@ for (const p of products) {
           const prev = history[i + 1];
           const diff = prev ? h.price - prev.price : 0;
           const pct = prev && prev.price ? Math.round((diff / prev.price) * 100) : 0;
-          const move = !prev || !diff ? '' : `<em class="${diff < 0 ? 'down' : 'up'}">${diff < 0 ? '↓' : '↑'}${Math.abs(pct)}%</em>`;
+          const move = !prev || !diff ? '' : `<em class="${diff < 0 ? 'down' : 'up'}">${diff < 0 ? '↓' : '↑'}${Math.abs(pct) >= 1 ? `${Math.abs(pct)}%` : money(Math.abs(diff), p.price.currency)}</em>`;
           return `<li><span>${shortDate(h.date)}</span><b>${money(h.price, p.price.currency)}${h.price === lowest ? ' <i>최저</i>' : ''}</b>${move}</li>`;
         }).join('')}</ol>
       </section>` : ''}
@@ -928,7 +928,7 @@ add('search.html', layout({
   <header class="page-head"><h1 data-search-title>검색</h1><p class="lead" data-search-status>상품명, 브랜드, 카테고리, 태그로 찾을 수 있어요.</p></header>
   <div class="grid" data-search-results></div>
   <div data-search-empty hidden>
-    <p class="empty">검색 결과가 없습니다. 인기 검색어나 태그를 눌러보세요.</p>
+    <p class="empty">검색 결과가 없습니다. 추천 검색어나 태그를 눌러보세요.</p>
     ${trendingChips()}
   </div>
 </div>`,
