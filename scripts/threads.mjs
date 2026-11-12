@@ -24,7 +24,7 @@ import { setDefaultAutoSelectFamilyAttemptTimeout } from 'node:net';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { loadEnv, today, daysBetween } from './lib/rules.mjs';
-import { DISCLOSURE, SITE, won, productUrl, loadSent, saveSent, pickLows, channelLink } from './lib/deals.mjs';
+import { DISCLOSURE, SITE, won, loadSent, saveSent, pickLows, channelLink } from './lib/deals.mjs';
 import { chartHtml, renderPng } from './lib/pricechart.mjs';
 import { execFileSync } from 'node:child_process';
 import { readdirSync } from 'node:fs';
@@ -357,7 +357,9 @@ async function waitPublic(url) {
   }
   return false;
 }
-const replyText = (p, link) => `🔗 쿠팡에서 보기\n${link}\n\n가격 기록: ${productUrl(p, 'threads')}`;
+// 댓글엔 쿠팡 링크 하나만. 스레드가 링크 미리보기(상품 사진)를 붙이므로 본문엔 상품 사진을 다시 넣지 않는다
+// (2026-11-12 기현님: 글 사진과 댓글 미리보기가 겹쳐 보여 보기 안 좋다).
+const replyText = (p, link) => `쿠팡에서 보기 👉 ${link}`;
 
 // 1) 글 상자를 만들고 2) 처리가 끝나면 3) 게시한다. 게시된 글을 돌려준다(댓글을 달 때 쓴다).
 async function publish(params) {
@@ -393,6 +395,7 @@ async function publishImages(urls, body, topic) {
 async function publishImagesOnce(urls, body, topic) {
   const me = await getMe();
   const tag = topic ? { topic_tag: topic } : {};
+  if (urls.length === 1) return publish({ media_type: 'IMAGE', image_url: urls[0], text: body, ...tag });
   try {
     const kids = [];
     for (const u of urls) {
@@ -442,7 +445,7 @@ try {
       const link = await channelLink(x.p, THREADS_SUB_ID);
       const chartUrl = publishChart(x);
       if (!(await waitPublic(chartUrl))) throw new Error(`그래프 주소가 안 열림: ${chartUrl}`);
-      const post = await publishImages([chartUrl, x.p.image], text(x), topicOf(x.p));
+      const post = await publishImages([chartUrl], text(x), topicOf(x.p));
       let reply = null;
       let replyError = '';
       try {
