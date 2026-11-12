@@ -304,7 +304,14 @@ if (searchQuery) {
   process.exit(0);
 }
 
-const picks = pickLows(sent, PER_RUN, date);
+// 하루 최대 2개(2026-11-12 기현님). 오늘 이미 올린 만큼 뺀다.
+const DAILY_MAX = 2;
+const postedToday = loadState().posts.filter((x) => x.date === date && x.kind === 'low').length;
+const picks = pickLows(sent, Math.max(0, Math.min(PER_RUN, DAILY_MAX - postedToday)), date);
+
+// 주제 태그는 늘 하나 붙인다(카테고리로 고름). 태그가 거절되면 태그 없이 다시 올린다.
+const TOPIC = { food: '장보기', kitchen: '주방템', living: '살림템', 'solo-living': '자취템', beauty: '뷰티', baby: '육아템', pet: '반려동물', electronics: '전자기기', fashion: '패션', overseas: '해외직구' };
+const topicOf = (p) => TOPIC[(p.categories || []).find((c) => TOPIC[c])] || '최저가';
 
 // 글(2026-11-12 기현님과 정함): "최근 N일 중 가장 싼 날" 하나만, 가격 그래프 그림과 함께.
 // 숫자는 전부 같은 옵션 가격 기록에서 나온다. 덧붙이는 감상·체험 문장은 쓰지 않는다.
@@ -374,8 +381,18 @@ async function waitBox(id) {
   }
 }
 // 그림 여러 장(그래프 → 상품 사진). 실패하면 그래프 한 장으로 올린다.
-async function publishImages(urls, body) {
+async function publishImages(urls, body, topic) {
+  try {
+    return await publishImagesOnce(urls, body, topic);
+  } catch (e) {
+    if (!topic) throw e;
+    console.error(`  주제 태그(${topic}) 실패: ${e.message} — 태그 없이 다시`);
+    return publishImagesOnce(urls, body, '');
+  }
+}
+async function publishImagesOnce(urls, body, topic) {
   const me = await getMe();
+  const tag = topic ? { topic_tag: topic } : {};
   try {
     const kids = [];
     for (const u of urls) {
@@ -383,12 +400,12 @@ async function publishImages(urls, body) {
       await waitBox(k.id);
       kids.push(k.id);
     }
-    const box = await api('POST', `/${me.id}/threads`, { media_type: 'CAROUSEL', children: kids.join(','), text: body });
+    const box = await api('POST', `/${me.id}/threads`, { media_type: 'CAROUSEL', children: kids.join(','), text: body, ...tag });
     await waitBox(box.id);
     return await api('POST', `/${me.id}/threads_publish`, { creation_id: box.id });
   } catch (e) {
     console.error(`  여러 장 실패: ${e.message} — 그래프 한 장으로`);
-    return publish({ media_type: 'IMAGE', image_url: urls[0], text: body });
+    return publish({ media_type: 'IMAGE', image_url: urls[0], text: body, ...tag });
   }
 }
 
@@ -417,7 +434,7 @@ try {
   for (const [i, x] of picks.entries()) {
     if (dry) {
       const png = publishChart(x);
-      console.log(`--- ${x.p.id}\n${text(x)}\n  └ 그림: ${png}\n  └ 댓글: ${replyText(x.p, '(쿠팡 링크)').replace(/\n+/g, ' ')}\n`);
+      console.log(`--- ${x.p.id} #${topicOf(x.p)}\n${text(x)}\n  └ 그림: ${png}\n  └ 댓글: ${replyText(x.p, '(쿠팡 링크)').replace(/\n+/g, ' ')}\n`);
       continue;
     }
     if (i) await new Promise((r) => setTimeout(r, 60_000));
@@ -425,7 +442,7 @@ try {
       const link = await channelLink(x.p, THREADS_SUB_ID);
       const chartUrl = publishChart(x);
       if (!(await waitPublic(chartUrl))) throw new Error(`그래프 주소가 안 열림: ${chartUrl}`);
-      const post = await publishImages([chartUrl, x.p.image], text(x));
+      const post = await publishImages([chartUrl, x.p.image], text(x), topicOf(x.p));
       let reply = null;
       let replyError = '';
       try {
@@ -452,6 +469,8 @@ try {
         price: x.now,
         image: x.p.image,
         chart: chartUrl,
+        kind: 'low',
+        topic: topicOf(x.p),
         store: x.p.store,
         createdAt: new Date().toISOString(),
       });

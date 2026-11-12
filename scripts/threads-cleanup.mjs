@@ -1,7 +1,7 @@
 // 데일리홈픽 스레드 계정의 지난 글(과 내 댓글)을 지운다. 2026-11-12 "30일 최저가" 방식으로 바꾸며 만듦.
 //
 //   node scripts/threads-cleanup.mjs --before=2026-11-13          # 지울 목록만 보기
-//   node scripts/threads-cleanup.mjs --before=2026-11-13 --yes    # 실제로 지우기
+//   node scripts/threads-cleanup.mjs --before=2026-11-13 --yes    # 실제로 지우기(--gap=초, 기본 15)
 //   node scripts/threads-cleanup.mjs --auth                       # 삭제 권한이 든 토큰 받는 주소 출력
 //   node scripts/threads-cleanup.mjs --auth '<돌아온 주소>'          # 그 주소로 토큰 저장(터미널에서 직접)
 //
@@ -106,7 +106,7 @@ for (const x of [...posts, ...replies]) {
     if (!/does not exist|Unsupported|not found/i.test(e.message)) console.error(`  ${x.id} 실패: ${e.message}`);
     if (/limit/i.test(e.message)) break;
   }
-  await new Promise((r) => setTimeout(r, 1500));
+  await new Promise((r) => setTimeout(r, (Number(opt('gap')) || 15) * 1000));
 }
 const left = posts.length + replies.length - n;
 console.log(`지움 ${n}개${left > 0 ? ` · 남은 것 최대 ${left}개(내일 다시 실행)` : ''}`);
