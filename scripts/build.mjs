@@ -243,9 +243,9 @@ function bigChart(p) {
 }
 function themeCard(t) {
   const n = t.items.filter((p) => insightOf(p).low || insightOf(p).dayDrop >= DAY_MIN_DROP).length;
-  return `<a class="theme-card" href="${themeHref(t)}">
+  return `<a class="theme-card" href="${t.href || themeHref(t)}">
   <div class="theme-thumbs">${t.items.slice(0, 3).map((p) => `<span>${img(p)}</span>`).join('')}</div>
-  <div class="theme-body"><strong>${esc(t.title)}</strong><p>${esc(t.desc)}</p><span class="theme-meta">${t.items.length}개${n ? ` · <span class="hl">오늘 내린 ${n}개</span>` : ''}</span></div>
+  <div class="theme-body"><strong>${esc(t.title)}</strong><p>${esc(t.desc)}</p><span class="theme-meta">${t.items.length}개${n ? ` · <span class="hl">오늘 가격 내려간 ${n}개</span>` : ''}</span></div>
 </a>`;
 }
 // 카드에 붙는 한 줄: 기록상 최저가거나 바로 앞 기록보다 내렸을 때만.
@@ -305,11 +305,11 @@ function layout({ title, description, path: pagePath, body, active = '', image =
   const url = site.url + pagePath;
   const nav = [
     `<a class="nav-today" href="/today.html"${active === 'today' ? ' aria-current="page"' : ''}><span class="dot" aria-hidden="true"></span>오늘의 할인</a>`,
-    `<a href="/drops.html"${active === 'drops' ? ' aria-current="page"' : ''}>오늘 가격이 내려간 상품</a>`,
+    `<a href="/drops.html"${active === 'drops' ? ' aria-current="page"' : ''}>가격 내려간 상품</a>`,
     `<a href="/lows.html"${active === 'lows' ? ' aria-current="page"' : ''}>최저가</a>`,
     `<a href="/themes/"${active === 'themes' ? ' aria-current="page"' : ''}>기획전</a>`,
-    ...categories.map((c) => `<a href="${catHref(c.slug)}"${active === c.slug ? ' aria-current="page"' : ''}>${esc(c.name)}</a>`),
-    `<a href="/tags/"${active === 'tags' ? ' aria-current="page"' : ''}>태그</a>`,
+    // 카테고리 10개를 다 늘어놓으면 메뉴가 너무 길다(2026-11-13 기현님) → 카테고리 모음 페이지 하나로.
+    `<a href="/categories/"${active === 'cats' || categoryBySlug.has(active) ? ' aria-current="page"' : ''}>카테고리</a>`,
   ].join('');
   const v = site.verification || {};
   return `<!doctype html>
@@ -742,6 +742,21 @@ ${content}
 }
 
 // Categories
+// 카테고리 모음(상단 메뉴 '카테고리'). 카드 모양은 기획전과 같다.
+add('categories/index.html', layout({
+  title: '카테고리', description: '생활·주방·식품·뷰티 등 카테고리별로 매일 가격을 확인한 할인 상품을 모았어요.',
+  path: '/categories/', active: 'cats',
+  body: `
+<div class="wrap">
+  ${breadcrumb([['홈', '/'], ['카테고리', '/categories/']])}
+  <header class="page-head"><p class="kicker">${longDate(lastChecked)} 기준</p><h1>카테고리</h1><p class="lead">카테고리별로 매일 확인한 할인 상품을 모았어요.</p></header>
+  <div class="theme-list">${categories.map((c) => {
+    const list = [...productsByCategory.get(c.slug)].sort(bySignal);
+    if (!list.length) return '';
+    return themeCard({ slug: c.slug, title: c.title, desc: `${c.name} 할인 상품 ${list.length}개`, items: list, href: catHref(c.slug) });
+  }).join('')}</div>
+</div>`,
+}), lastChecked);
 for (const c of categories) {
   const list = [...productsByCategory.get(c.slug)].sort(byRate);
   const related = posts.filter((post) => post.items.some((i) => productById.get(i.product).categories.includes(c.slug)));
