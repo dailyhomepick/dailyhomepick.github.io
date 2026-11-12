@@ -11,16 +11,18 @@ import {
 } from './lib/rules.mjs';
 import { itemOf, MODIFIERS } from './lib/keywords.mjs';
 import { faqFor } from './lib/faq.mjs';
+import { insight, DAY_MIN_DROP } from './lib/insight.mjs';
 
 const site = readJson('data/site.json');
 const categories = readJson('data/categories.json');
 const allProducts = readJson('data/products.json');
+const themes = readJson('data/themes.json');
 const allPosts = readJson('data/posts.json').sort((a, b) => b.date.localeCompare(a.date));
 const rules = site.publish;
 const TODAY = today();
 
 const ASSET_VERSION = Date.now().toString(36);
-const GENERATED_DIRS = ['posts', 'categories', 'tags', 'p', 'k'];
+const GENERATED_DIRS = ['posts', 'categories', 'tags', 'p', 'k', 'themes'];
 const warnings = [];
 const errors = [];
 
@@ -88,6 +90,7 @@ const kwHref = (k) => `/k/${enc(kwSlug(k))}.html`;
 const productHref = (p) => `/p/${p.id}.html`;
 const catHref = (slug) => `/categories/${slug}.html`;
 const postHref = (post) => `/posts/${post.slug}.html`;
+const themeHref = (t) => `/themes/${t.slug}.html`;
 const buyHref = (p) => p.affiliateLink || p.link || '';
 const jsonLd = (obj) => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
 
@@ -189,6 +192,71 @@ function priceBlock(p, cls = 'price') {
   return `<div class="${cls}">${rate}<strong>${esc(main)}</strong>${sub ? `<span class="price-sub">${esc(sub)}</span>` : ''}${p.originalPrice ? `<del>${money(p.originalPrice, p.price.currency)}</del>` : ''}</div>`;
 }
 
+// ---------- 가격 그래프 ----------
+// 같은 옵션 기록(lib/insight.mjs)으로만 그린다. 기록이 없는 날은 앞 값에서 계단으로 잇는다.
+const insightCache = new Map();
+const insightOf = (p) => {
+  if (!insightCache.has(p.id)) insightCache.set(p.id, insight(p, lastChecked));
+  return insightCache.get(p.id);
+};
+function stepPath(hist, X, Y) {
+  let d = `M${X(hist[0].date).toFixed(1)},${Y(hist[0].price).toFixed(1)}`;
+  for (const h of hist.slice(1)) d += ` H${X(h.date).toFixed(1)} V${Y(h.price).toFixed(1)}`;
+  return d;
+}
+function spark(p) {
+  const { hist } = insightOf(p);
+  if (hist.length < 3) return '';
+  const W = 160, H = 36, pad = 4;
+  const lo = Math.min(...hist.map((h) => h.price)), hi = Math.max(...hist.map((h) => h.price));
+  const span = Math.max(hi - lo, 1), days = Math.max(daysBetween(hist[0].date, hist.at(-1).date), 1);
+  const X = (d) => pad + (daysBetween(hist[0].date, d) / days) * (W - pad * 2);
+  const Y = (v) => pad + ((hi - v) / span) * (H - pad * 2);
+  const end = hist.at(-1);
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="최근 ${days}일 가격 흐름 · 최저 ${won(lo)} · 최고 ${won(hi)}"><path d="${stepPath(hist, X, Y)}" fill="none" stroke="currentColor" stroke-width="1.6" vector-effect="non-scaling-stroke"/><circle cx="${X(end.date).toFixed(1)}" cy="${Y(end.price).toFixed(1)}" r="3.2" class="spark-end"/></svg>`;
+}
+// 큰 그래프(홈 첫 화면·상품 페이지). 가로 점선은 기간 최고와 직전 최저.
+function bigChart(p) {
+  const { hist, low } = insightOf(p);
+  if (hist.length < 3) return '';
+  const W = 640, H = 260, L = 8, R = 8, T = 18, B = 34;
+  const lo = Math.min(...hist.map((h) => h.price)), hi = Math.max(...hist.map((h) => h.price));
+  const span = Math.max(hi - lo, hi * 0.04);
+  const top = hi + span * 0.15, bottom = lo - span * 0.25;
+  const days = Math.max(daysBetween(hist[0].date, hist.at(-1).date), 1);
+  const X = (d) => L + (daysBetween(hist[0].date, d) / days) * (W - L - R);
+  const Y = (v) => T + ((top - v) / (top - bottom)) * (H - T - B);
+  const line = stepPath(hist, X, Y);
+  const end = hist.at(-1);
+  const guide = (v) => `<line x1="${L}" x2="${W - R}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" class="bc-guide"/>`;
+  const mid = hist[Math.floor(hist.length / 2)].date;
+  const ticks = [[hist[0].date, 'start'], [mid, 'middle'], [end.date, 'end']]
+    .map(([d, a]) => `<text x="${X(d).toFixed(1)}" y="${H - 10}" text-anchor="${a}" class="bc-tick">${shortDate(d)}</text>`).join('');
+  return `<svg class="bigchart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(p.title)} 최근 ${days}일 가격 그래프. 최고 ${won(hi)}, 최저 ${won(lo)}, ${shortDate(end.date)} ${won(end.price)}">
+  ${guide(hi)}${low ? guide(low.prevLo) : ''}
+  <path d="${line} V${H - B} H${X(hist[0].date).toFixed(1)} Z" class="bc-area"/>
+  <path d="${line}" class="bc-line"/>
+  ${hist.slice(0, -1).map((h) => `<circle cx="${X(h.date).toFixed(1)}" cy="${Y(h.price).toFixed(1)}" r="3" class="bc-dot"/>`).join('')}
+  <circle cx="${X(end.date).toFixed(1)}" cy="${Y(end.price).toFixed(1)}" r="8" class="bc-end"/>
+  ${ticks}
+</svg>`;
+}
+function themeCard(t) {
+  const n = t.items.filter((p) => insightOf(p).low || insightOf(p).dayDrop >= DAY_MIN_DROP).length;
+  return `<a class="theme-card" href="${themeHref(t)}">
+  <div class="theme-thumbs">${t.items.slice(0, 3).map((p) => `<span>${img(p)}</span>`).join('')}</div>
+  <div class="theme-body"><strong>${esc(t.title)}</strong><p>${esc(t.desc)}</p><span class="theme-meta">${t.items.length}개${n ? ` · <span class="hl">오늘 내린 ${n}개</span>` : ''}</span></div>
+</a>`;
+}
+// 카드에 붙는 한 줄: 기록상 최저가거나 바로 앞 기록보다 내렸을 때만.
+function signal(p) {
+  const { low, dayDrop, prev } = insightOf(p);
+  if (low) return `<p class="signal"><span class="hl">최근 ${low.windowDays}일 최저</span></p>`;
+  // 내린 폭(%)은 가격 옆에 이미 나오므로, 여기엔 무엇에서 내렸는지만 적는다.
+  if (dayDrop >= DAY_MIN_DROP) return `<p class="signal">${shortDate(prev.date)} ${won(prev.price)}에서 내림</p>`;
+  return '';
+}
+
 function card(p, order = 0) {
   const cat = categoryBySlug.get(p.categories[0]);
   const stale = age(p) > rules.staleDays;
@@ -197,7 +265,9 @@ function card(p, order = 0) {
   <div class="card-body">
     <p class="card-meta"><a class="card-cat" href="${catHref(cat.slug)}">${esc(cat.name)}</a>${p.store ? `<span>${esc(p.store)}</span>` : ''}</p>
     <h3 class="card-title"><a href="${productHref(p)}">${esc(p.title)}</a></h3>
+    ${signal(p)}
     ${priceBlock(p)}
+    ${spark(p)}
     <div class="card-foot">${(p.badges || []).slice(0, 2).map((b) => `<span class="pill">${esc(b)}</span>`).join('')}<span class="checked${stale ? ' is-stale' : ''}">${shortDate(p.checkedAt)} 확인</span></div>
     ${buyButton(p, 'btn btn-buy btn-sm')}
   </div>
@@ -235,6 +305,9 @@ function layout({ title, description, path: pagePath, body, active = '', image =
   const url = site.url + pagePath;
   const nav = [
     `<a class="nav-today" href="/today.html"${active === 'today' ? ' aria-current="page"' : ''}><span class="dot" aria-hidden="true"></span>오늘의 할인</a>`,
+    `<a href="/drops.html"${active === 'drops' ? ' aria-current="page"' : ''}>오늘 내린 가격</a>`,
+    `<a href="/lows.html"${active === 'lows' ? ' aria-current="page"' : ''}>최저가</a>`,
+    `<a href="/themes/"${active === 'themes' ? ' aria-current="page"' : ''}>기획전</a>`,
     ...categories.map((c) => `<a href="${catHref(c.slug)}"${active === c.slug ? ' aria-current="page"' : ''}>${esc(c.name)}</a>`),
     `<a href="/tags/"${active === 'tags' ? ' aria-current="page"' : ''}>태그</a>`,
   ].join('');
@@ -257,8 +330,7 @@ ${v.naver ? `<meta name="naver-site-verification" content="${esc(v.naver)}">\n` 
 <meta property="og:description" content="${esc(description || site.description)}">
 <meta property="og:url" content="${esc(url)}">
 ${image ? `<meta property="og:image" content="${esc(image)}">\n` : ''}<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#111318" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="${esc(site.name)}" href="/rss.xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -340,6 +412,27 @@ const lastChecked = listed.reduce((m, p) => (p.checkedAt > m ? p.checkedAt : m),
 const checkedLast = listed.filter((p) => p.checkedAt === lastChecked).sort(byRate);
 const todayDeals = (checkedLast.length ? checkedLast : [...listed].sort(byNewest)).slice(0, rules.todayMax);
 
+// 오늘 값이 바로 앞 기록보다 내린 상품, 최근 N일 최저가가 된 상품(같은 옵션 기록 기준, lib/insight.mjs).
+const drops = checkedLast.filter((p) => insightOf(p).dayDrop >= DAY_MIN_DROP)
+  .sort((a, b) => insightOf(b).dayDrop - insightOf(a).dayDrop || byRate(a, b));
+const lows = checkedLast.filter((p) => insightOf(p).low)
+  .sort((a, b) => insightOf(b).low.drop - insightOf(a).low.drop || byRate(a, b));
+const signalScore = (p) => (insightOf(p).low ? 200 + insightOf(p).low.drop : 0) + insightOf(p).dayDrop * 3;
+const bySignal = (a, b) => signalScore(b) - signalScore(a) || byRate(a, b);
+
+// 기획전: data/themes.json 의 주제 달력. 기간(from~to, 해를 넘겨도 됨) 안의 시즌 주제를 먼저,
+// 모자라면 상시 주제로 채운다. 상품은 이름에 낱말이 있거나 카테고리가 맞으면 들어간다. 4개 미만이면 열지 않는다.
+const THEME_MIN = 4;
+const md4 = lastChecked.slice(5);
+const inSeason = (t) => (t.from <= t.to ? t.from <= md4 && md4 <= t.to : md4 >= t.from || md4 <= t.to);
+const squashK = (x) => String(x).toLowerCase().replace(/\s+/g, '');
+const themeItems = (t) => listed.filter((p) => (t.categories || []).some((c) => p.categories.includes(c))
+  || (t.words || []).some((w) => squashK(p.title).includes(squashK(w)))).sort(bySignal);
+const openThemes = themes.filter((t) => t.always || inSeason(t))
+  .map((t) => ({ ...t, items: themeItems(t) }))
+  .filter((t) => t.items.length >= THEME_MIN)
+  .sort((a, b) => (a.always ? 1 : 0) - (b.always ? 1 : 0));
+
 // Keyword landing pages: trending terms + popular tags, only when they match products.
 const keywordPages = new Map();
 for (const kw of site.trending || []) {
@@ -399,59 +492,77 @@ const lastmod = new Map();
 const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(file, mod); };
 
 // Home
+// 순서(2026-11-13 기현님): 오늘의 최저가 그래프 → 오늘 내린 가격 → 최근 최저가 → 기획전 → 할인 TOP → 카테고리 → (작게) 인기 검색어.
 {
-  const top = todayDeals.slice(0, 12);
-  const lead = top[0];
-  const mosaic = top.slice(1, 5);
+  const top = todayDeals.slice(0, 8);
+  const lead = lows[0] || drops.find((p) => insightOf(p).hist.length >= 3) || top[0];
+  const li = lead ? insightOf(lead) : null;
   const catRows = categories.map((c) => {
-    const list = [...productsByCategory.get(c.slug)].sort(byRate).slice(0, 4);
+    const list = [...productsByCategory.get(c.slug)].sort(bySignal).slice(0, 4);
     if (!list.length) return '';
     return `<section class="cat-row">
   <div class="section-head"><div><h3>${esc(c.title)}</h3></div><a class="link-more" href="${catHref(c.slug)}">${productsByCategory.get(c.slug).length}개 전체 →</a></div>
   ${grid(list)}
 </section>`;
   }).join('\n');
+  const headline = li?.low ? `오늘, <span class="hl">최근 ${li.low.windowDays}일 중<br>가장 싼</span> 상품이 나왔어요`
+    : li?.dayDrop ? `오늘 <span class="hl">값이 확 떨어진</span><br>상품부터 보여드려요` : '매일 가격을 기록해서<br><span class="hl">진짜 내린 날</span>만 알려드려요';
+  const leadNote = li?.low ? `최근 ${li.low.windowDays}일 최고 ${won(li.low.hi)}보다 ${li.low.drop}% 낮고, 직전 최저 ${won(li.low.prevLo)}보다도 쌉니다.`
+    : li?.dayDrop ? `${shortDate(li.prev.date)} ${won(li.prev.price)}에서 ${li.dayDrop}% 내렸습니다.` : '';
 
   const body = lead ? `
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="kicker"><span class="dot" aria-hidden="true"></span>${longDate(lastChecked)} 가격 확인</p>
-      <h1>매일 가격을 확인한<br>할인 상품, 할인율 높은 순으로</h1>
-      <p class="lead">쿠팡 골드박스와 주요 쇼핑몰 특가를 매일 다시 확인해서, 지금 할인 중인 생활용품만 모았습니다.</p>
+<section class="hero-band">
+  <div class="wrap hero2">
+    <div class="hero2-copy">
+      <p class="eyebrow">${longDate(lastChecked)} 가격 확인</p>
+      <h1>${headline}</h1>
+      <p class="lead">같은 옵션의 가격을 매일 기록합니다. 쇼핑몰 표시 할인율이 아니라, 기록으로 확인한 진짜 인하만 앞에 둡니다.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="/today.html">오늘의 할인 전체 보기</a>
-        <a class="btn btn-ghost" href="#trending">인기 검색어</a>
-        ${tgLink('btn btn-ghost', '텔레그램 알림')}
+        <a class="btn btn-mint" href="/lows.html">최근 최저가 ${lows.length}개</a>
+        <a class="btn btn-line" href="/drops.html">오늘 내린 가격 ${drops.length}개</a>
       </div>
-      <ul class="hero-points">
-        <li>매일 판매처 가격 재확인</li>
-        <li>할인율·최근 최저가 표시</li>
-        <li>성인·주류 등 제외</li>
-      </ul>
     </div>
-    <div class="hero-visual">
-      <a class="hero-lead" href="${productHref(lead)}">
-        <span class="hero-lead-img">${img(lead, '', true)}</span>
-        <span class="hero-lead-body">
-          <span class="badge">${rateOf(lead) ? '오늘 할인율 1위' : '오늘의 특가'}</span>
-          <strong>${esc(lead.title)}</strong>
-          ${priceBlock(lead)}
-        </span>
-      </a>
-      <div class="hero-mosaic">${mosaic.map((p) => `<a href="${productHref(p)}" title="${esc(p.title)}">${img(p)}${rateChip(p)}</a>`).join('')}</div>
+    <div class="hero2-card">
+      <a class="hc-head" href="${productHref(lead)}">${img(lead, 'hc-thumb', true)}<strong>${esc(lead.title)}</strong></a>
+      <div class="hc-price">
+        ${li?.low ? `<span class="badge">최근 ${li.low.windowDays}일 최저가</span>` : li?.dayDrop ? `<span class="badge">오늘 ${li.dayDrop}% 내림</span>` : ''}
+        <b>${esc(priceParts(lead).main)}</b>
+        ${leadNote ? `<p>${esc(leadNote)}</p>` : ''}
+      </div>
+      ${bigChart(lead)}
+      <div class="hc-foot"><a class="link-more" href="${productHref(lead)}">가격 기록 전체 →</a>${buyButton(lead, 'btn btn-buy')}</div>
     </div>
   </div>
 </section>
 
-<section class="section section-tight-top" id="trending">
+${drops.length ? `<section class="section">
   <div class="wrap">
-    <div class="section-head"><div><h2>인기 검색어</h2></div></div>
-    ${trendingChips()}
+    <div class="section-head">
+      <div><p class="kicker">바로 앞 기록보다 ${DAY_MIN_DROP}% 이상</p><h2>오늘 값이 확 떨어진 상품</h2></div>
+      <a class="link-more" href="/drops.html">${drops.length}개 전체 →</a>
+    </div>
+    ${grid(drops.slice(0, 8))}
   </div>
-</section>
+</section>` : ''}
 
-<section class="section">
+${lows.length >= 3 ? `<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div><p class="kicker">기록 7일 이상 · 같은 옵션 기준</p><h2>최근 최저가를 찍은 상품</h2></div>
+      <a class="link-more" href="/lows.html">${lows.length}개 전체 →</a>
+    </div>
+    ${grid(lows.slice(0, 8))}
+  </div>
+</section>` : ''}
+
+${openThemes.length ? `<section class="section">
+  <div class="wrap">
+    <div class="section-head"><div><p class="kicker">${Number(lastChecked.slice(5, 7))}월에 맞춰 바뀌는</p><h2>지금 기획전</h2></div><a class="link-more" href="/themes/">전체 기획전 →</a></div>
+    <div class="theme-list">${openThemes.slice(0, 4).map(themeCard).join('')}</div>
+  </div>
+</section>` : ''}
+
+<section class="section section-alt">
   <div class="wrap">
     <div class="section-head">
       <div><p class="kicker">할인율 높은 순</p><h2>오늘의 할인 TOP</h2></div>
@@ -461,7 +572,7 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
   </div>
 </section>
 
-<section class="section section-alt">
+<section class="section">
   <div class="wrap">
     <div class="section-head"><div><h2>카테고리별 할인</h2></div></div>
     <div class="cat-chips">${categories.map((c) => `<a href="${catHref(c.slug)}">${esc(c.title)}<span>${productsByCategory.get(c.slug).length}</span></a>`).join('')}</div>
@@ -469,17 +580,10 @@ const add = (file, html, mod) => { pages.set(file, html); if (mod) lastmod.set(f
   </div>
 </section>
 
-${posts.length ? `<section class="section">
-  <div class="wrap">
-    <div class="section-head"><div><h2>날짜별 할인 모음</h2></div></div>
-    <div class="post-list">${posts.slice(0, 6).map(postCard).join('\n')}</div>
-  </div>
-</section>` : ''}
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head"><div><h2>많이 찾는 태그</h2></div><a class="link-more" href="/tags/">전체 태그 →</a></div>
-    ${tagChips(tagsSorted.slice(0, 20).map(([t]) => t))}
+<section class="section section-tight">
+  <div class="wrap find-more">
+    <div><h2 class="h4">많이 찾는 검색어</h2>${trendingChips()}</div>
+    <div><h2 class="h4">태그</h2>${tagChips(tagsSorted.slice(0, 16).map(([t]) => t))}<a class="link-more" href="/tags/">전체 태그 →</a></div>
     ${disclosure(top)}
   </div>
 </section>` : '<div class="wrap"><p class="empty">곧 첫 할인 상품이 올라옵니다.</p></div>';
@@ -488,6 +592,55 @@ ${posts.length ? `<section class="section">
     potentialAction: { '@type': 'SearchAction', target: `${site.url}/search.html?q={search_term_string}`, 'query-input': 'required name=search_term_string' },
   });
   add('index.html', layout({ title: '', path: '/', body, image: lead?.image, head }), lastChecked);
+}
+
+// 오늘 내린 가격 · 최근 최저가 · 기획전
+{
+  const listPage = (file, { title, h1, kicker, lead, list, active, empty, desc }) => add(file, layout({
+    title, description: desc, path: `/${file}`, active, image: list[0]?.image, head: itemListLd(list),
+    body: `
+<div class="wrap">
+  ${breadcrumb([['홈', '/'], [h1, `/${file}`]])}
+  <header class="page-head"><p class="kicker">${kicker}</p><h1>${h1}</h1><p class="lead">${lead}</p></header>
+  ${list.length ? `${sortBar(list.length)}${grid(list, ' data-sortable')}${disclosure(list)}` : `<p class="empty">${empty}</p>`}
+</div>`,
+  }), lastChecked);
+  listPage('drops.html', {
+    title: `오늘 가격 내린 상품 ${drops.length}개 (${shortDate(lastChecked)})`, h1: '오늘 내린 가격', active: 'drops',
+    kicker: `${longDate(lastChecked)} 확인`,
+    lead: `같은 옵션의 바로 앞 기록보다 ${DAY_MIN_DROP}% 이상 싸진 상품입니다. 많이 내린 순서로 보여드려요.`,
+    desc: `${longDate(lastChecked)} 기준, 같은 옵션 가격 기록으로 확인한 가격 인하 상품 ${drops.length}개. 내린 폭이 큰 순서.`,
+    list: drops, empty: '오늘은 앞 기록보다 크게 내린 상품이 없습니다. 내일 다시 확인해요.',
+  });
+  listPage('lows.html', {
+    title: `최근 30일 최저가 상품 ${lows.length}개 (${shortDate(lastChecked)})`, h1: '최근 최저가', active: 'lows',
+    kicker: `${longDate(lastChecked)} 확인`,
+    lead: '같은 옵션 가격 기록이 7일 이상 쌓인 상품 중, 오늘 값이 기록상 가장 낮고 기간 최고가보다 5% 이상 싼 상품입니다. 기록이 30일이 안 되면 실제 기록 일수로 표시합니다.',
+    desc: `${longDate(lastChecked)} 기준, 가격 기록상 최근 30일 중 가장 싸진 상품 ${lows.length}개.`,
+    list: lows, empty: '오늘은 기록상 최저가가 된 상품이 없습니다.',
+  });
+  add('themes/index.html', layout({
+    title: '기획전', description: '계절과 시기에 맞춰 바뀌는 데일리홈픽 기획전. 김장·난방·명절 등 주제별로 가격 기록과 함께 모았습니다.',
+    path: '/themes/', active: 'themes',
+    body: `
+<div class="wrap">
+  ${breadcrumb([['홈', '/'], ['기획전', '/themes/']])}
+  <header class="page-head"><p class="kicker">${longDate(lastChecked)} 기준</p><h1>기획전</h1><p class="lead">시기에 맞는 주제가 자동으로 열리고 닫힙니다. 상품은 매일 다시 확인한 가격으로 채웁니다.</p></header>
+  <div class="theme-list">${openThemes.map(themeCard).join('')}</div>
+</div>`,
+  }), lastChecked);
+  for (const t of openThemes) {
+    add(`themes/${t.slug}.html`, layout({
+      title: `${t.title} 할인 모음 (${shortDate(lastChecked)})`, description: `${t.desc} ${longDate(lastChecked)} 기준 ${t.items.length}개.`.slice(0, 155),
+      path: themeHref(t), active: 'themes', image: t.items[0]?.image, head: itemListLd(t.items),
+      body: `
+<div class="wrap">
+  ${breadcrumb([['홈', '/'], ['기획전', '/themes/'], [t.title, themeHref(t)]])}
+  <header class="page-head"><p class="kicker">기획전${t.always ? '' : ` · ${Number(t.from.slice(0, 2))}월 ${Number(t.from.slice(3))}일 ~ ${Number(t.to.slice(0, 2))}월 ${Number(t.to.slice(3))}일`}</p><h1>${esc(t.title)}</h1><p class="lead">${esc(t.desc)} 가격이 내린 상품을 먼저 보여드려요.</p></header>
+  ${sortBar(t.items.length)}${grid(t.items, ' data-sortable')}${disclosure(t.items)}
+</div>`,
+    }), lastChecked);
+  }
 }
 
 // Today's deals
@@ -709,6 +862,7 @@ for (const p of products) {
       ${specTable(p.specs)}
       ${reliable ? `<section class="price-log">
         <h2 class="h4">가격 기록</h2>
+        ${bigChart(p)}
         <p class="muted small">데일리홈픽이 판매처 가격을 다시 확인한 기록입니다. 최저 ${money(lowest, p.price.currency)} · 최고 ${money(highest, p.price.currency)} · ${history.length}회 확인</p>
         <ol class="price-log-list">${history.map((h, i) => {
           const prev = history[i + 1];
@@ -946,7 +1100,7 @@ writeFileSync(path('assets/search.json'), JSON.stringify(searchIndex));
 
 const NOT_IN_SITEMAP = new Set(['404.html', 'search.html', 'review.html',
   ...(site.adminPath ? [`${site.adminPath}.html`] : [])]);
-const urlOf = (k) => (k === 'index.html' ? '/' : k === 'tags/index.html' ? '/tags/' : `/${k.split('/').map(enc).join('/')}`);
+const urlOf = (k) => (k === 'index.html' ? '/' : k.endsWith('/index.html') ? `/${k.slice(0, -'index.html'.length)}` : `/${k.split('/').map(enc).join('/')}`);
 // 새 사이트가 며칠 만에 자동 생성 페이지 1,800개를 내밀면 구글이 '크롤링됨 - 색인 안 함'으로 미뤄 둔다.
 // 사이트맵에는 모아 보는 페이지만 싣는다. 상품 페이지는 그대로 두고 목록·태그 링크로 찾아가게 한다.
 // 상품이 몇 개 안 되는 태그는 상품 페이지와 다를 게 없어 같이 뺀다(site.json publish.sitemapMinTag).
