@@ -1,8 +1,10 @@
-// 진짜로 값이 내린 상품을 스레드(Threads) 계정에 올린다. 고르는 기준은 lib/deals.mjs(텔레그램과 같다).
+// "최근 30일 중 가장 싼 날"이 된 상품을 가격 그래프와 함께 스레드(Threads) 계정에 올린다(2026-11-12~).
+// 고르는 기준은 lib/deals.mjs pickLows, 그림은 lib/pricechart.mjs → charts/ 에 push 한 뒤 공개 주소로 올린다.
+// 한 번에 1개(하루 2번 실행). 지난 방식(값 내린 상품 3개씩)은 노출이 막혀 그만뒀다.
 //
 //   node scripts/threads.mjs            # 올리기
 //   node scripts/threads.mjs --dry      # 올릴 글만 출력(키 없어도 된다)
-//   node scripts/threads.mjs --limit=1  # 1개만(시험)
+//   node scripts/threads.mjs --limit=2  # 2개까지
 //   node scripts/threads.mjs --check    # 토큰·계정 확인만
 //   node scripts/threads.mjs --insights  # 계정 성과 요약
 //   node scripts/threads.mjs --replies   # 최근 게시물 댓글 보기
@@ -12,7 +14,6 @@
 // 이 스크립트가 주기적으로 새로 받아 ~/.config/dailyhomepick/threads-token.json(권한 600)에 둔다.
 // 그 뒤로는 이 파일이 env 값보다 앞선다.
 //
-// 텔레그램보다 적게(한 번 3개) 올리고 사이를 띄운다. 링크 글을 한꺼번에 몰아 올리면 스팸으로 보인다.
 //
 // 글 모양(2026-10-31 기현님과 정함): 본문은 사람이 쓴 것 같은 짧은 말 + 사진, 쿠팡 링크는 내 댓글로.
 // 고지 문구는 본문 끝에 둔다 — 공정위 추천·보증 지침은 본문 첫머리나 끝에 구분해 적으라고 하고,
@@ -23,7 +24,10 @@ import { setDefaultAutoSelectFamilyAttemptTimeout } from 'node:net';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { loadEnv, today, daysBetween } from './lib/rules.mjs';
-import { DISCLOSURE, won, md, productUrl, loadSent, saveSent, pickDeals, channelLink } from './lib/deals.mjs';
+import { DISCLOSURE, SITE, won, productUrl, loadSent, saveSent, pickLows, channelLink } from './lib/deals.mjs';
+import { chartHtml, renderPng } from './lib/pricechart.mjs';
+import { execFileSync } from 'node:child_process';
+import { readdirSync } from 'node:fs';
 import { hash } from './lib/store.mjs';
 
 loadEnv();
@@ -45,7 +49,7 @@ const insights = has('--insights');
 const searchQuery = value('--search') || value('--keyword') || '';
 const searchType = (value('--search-type') || 'TOP').toUpperCase();
 const searchLimit = Math.max(1, Math.min(50, Number(value('--search-limit')) || 10));
-const PER_RUN = Number(value('--limit')) || 3;
+const PER_RUN = Number(value('--limit')) || 1;
 const INSIGHT_DAYS = Number(value('--days')) || 7;
 const REPLY_MEDIA = value('--media') || value('--media-id') || '';
 const HIDE_REPLY_ID = value('--hide-reply') || value('--reply-id') || '';
@@ -300,49 +304,51 @@ if (searchQuery) {
   process.exit(0);
 }
 
-const picks = pickDeals(sent, PER_RUN, date);
+const picks = pickLows(sent, PER_RUN, date);
 
-// 본문 문장 재료. 가격·날짜는 실제 기록만 쓰고, 덧붙이는 말은 카테고리에 맞는 일반적인 한 줄이다.
-const HOOKS = {
-  food: ['장 볼 때 참고하세요.', '냉장고 비었으면 지금 담아두기 좋아요.', '식비 아끼는 중이면 참고하세요.'],
-  kitchen: ['주방용품 떨어질 때 된 분들 참고하세요.', '이럴 때 쟁여두면 한동안 걱정 없어요.'],
-  living: ['생필품은 쌀 때 쟁여두는 게 이득이에요.', '다 써가는 분들은 참고하세요.'],
-  beauty: ['다 써가는 분들은 참고하세요.', '쓰던 제품이면 이번에 채워두기 좋아요.'],
-  baby: ['아기 키우는 집이면 참고하세요.', '육아용품은 쌀 때 챙겨두는 게 이득이에요.'],
-  pet: ['집사분들 참고하세요.', '반려동물 용품 떨어질 때 된 분들 참고하세요.'],
-  electronics: ['필요했던 분들은 이번에 보세요.', '살까 말까 했던 분들 참고하세요.'],
-  fashion: ['필요했던 분들은 참고하세요.'],
-  winter: ['슬슬 추워지니 하나 챙겨두면 좋을 듯.', '겨울 준비 중이면 참고하세요.'],
-};
+// 글(2026-11-12 기현님과 정함): "최근 N일 중 가장 싼 날" 하나만, 가격 그래프 그림과 함께.
+// 숫자는 전부 같은 옵션 가격 기록에서 나온다. 덧붙이는 감상·체험 문장은 쓰지 않는다.
 const shortName = (t) => t.replace(/^\[[^\]]*\]\s*/, '').split(',')[0].trim().slice(0, 40);
-const won0 = (n) => (n >= 10000 ? `${Math.floor(n / 10000)}만 원 넘게` : n >= 1000 ? `${Math.floor(n / 1000)}천 원 넘게` : `${n}원`);
-const feel = (d) => (d >= 45 ? '거의 반값 됐네요' : d >= 30 ? '꽤 많이 내렸네요' : d >= 20 ? '꽤 내렸네요' : '조금 내렸어요');
-function when(peakDate, day) {
-  const n = daysBetween(peakDate, day);
-  return n <= 1 ? '어제' : n <= 5 ? '며칠 전' : n <= 8 ? '일주일 전' : `${md(peakDate)}`;
+function text({ p, now, prevLo, hi, drop, windowDays }) {
+  return [
+    shortName(p.title),
+    `최근 ${windowDays}일 중 오늘이 가장 싸요.`,
+    `${windowDays}일 최고 ${won(hi)} → 오늘 ${won(now)} (${drop}% ↓)`,
+    `직전 최저는 ${won(prevLo)}이었어요.`,
+    '',
+    DISCLOSURE,
+  ].join('\n').slice(0, 500);
 }
 
-// 스레드는 서식이 없고 500자까지다. 같은 날 올리는 글끼리 모양이 겹치지 않게 i 를 섞는다.
-function text({ p, peak, drop }, day, i) {
-  const seed = parseInt(hash(p.id + day).slice(0, 6), 16) + i;
-  const cat = (p.categories || []).find((c) => HOOKS[c]) || 'living';
-  const month = Number(day.slice(5, 7));
-  const pool = cat === 'fashion' && (month >= 10 || month <= 2) ? HOOKS.winter : HOOKS[cat];
-  const hook = pool[seed % pool.length];
-  const name = shortName(p.title);
-  const now = won(p.price.min);
-  const was = won(peak.price);
-  const w = when(peak.date, day);
-  const forms = [
-    `${name} ${now}\n${w}엔 ${was}이었는데 ${feel(drop)}.\n${hook}`,
-    `${name} 찾던 분 있나요?\n${md(peak.date)} ${was} → 오늘 ${now}\n매일 가격 기록하다가 ${drop >= 20 ? '크게' : '조금'} 내려서 공유해요.`,
-    `${hook}\n${name}\n${was} → ${now}`,
-    `${name} ${now}\n${w} ${was}보다 ${won0(peak.price - p.price.min)} 싸졌어요.\n같은 옵션끼리 비교한 가격이에요.`,
-    `${name}\n${w}엔 ${was}, 오늘은 ${now}.\n${hook}`,
-  ];
-  // 이름이 길면 "…찾던 분 있나요?"가 어색해서 묻는 모양은 짧은 이름에만 쓴다.
-  if (name.length > 16) forms.splice(1, 1);
-  return `${forms[seed % forms.length]}\n\n${DISCLOSURE}`.slice(0, 500);
+// 그래프 그림을 저장소 charts/ 에 넣고 바로 push 한다. 스레드는 공개 주소의 그림만 받는다.
+// cron 이 daily.lock 을 잡고 돌려서 daily.sh 의 push 와 겹치지 않는다. 30일 지난 그림은 지운다.
+const CHART_DIR = 'charts';
+function git(...a) { return execFileSync('git', a, { stdio: 'pipe', encoding: 'utf8' }); }
+function publishChart(x) {
+  const name = `${x.p.id}-${date}.png`;
+  const html = chartHtml({ name: shortName(x.p.title), image: x.p.image, hist: x.hist, date, windowDays: x.windowDays });
+  // 미리보기(--dry)는 저장소 밖에 그린다. 저장소에 두면 daily.sh 가 올려 버린다.
+  if (dry) return renderPng(html, join(homedir(), '.local/state/dailyhomepick/chart-preview', name));
+  mkdirSync(CHART_DIR, { recursive: true });
+  renderPng(html, `${CHART_DIR}/${name}`);
+  for (const f of readdirSync(CHART_DIR)) {
+    const d = /-(\d{4}-\d{2}-\d{2})\.png$/.exec(f)?.[1];
+    if (d && daysBetween(d, date) > 30) unlinkSync(`${CHART_DIR}/${f}`);
+  }
+  git('add', '-A', CHART_DIR);
+  git('commit', '-q', '-m', `Threads chart ${date} ${x.p.id}`);
+  try { git('push', '-q', 'origin', 'HEAD:main'); } catch { git('pull', '--rebase', '-q'); git('push', '-q', 'origin', 'HEAD:main'); }
+  return `${SITE}/${CHART_DIR}/${name}`;
+}
+async function waitPublic(url) {
+  for (let t = 0; t < 30; t++) {
+    try {
+      const r = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(10000) });
+      if (r.ok && /image/.test(r.headers.get('content-type') || '')) return true;
+    } catch {}
+    await new Promise((r) => setTimeout(r, 10_000));
+  }
+  return false;
 }
 const replyText = (p, link) => `🔗 쿠팡에서 보기\n${link}\n\n가격 기록: ${productUrl(p, 'threads')}`;
 
@@ -357,6 +363,33 @@ async function publish(params) {
     await new Promise((r) => setTimeout(r, 3000));
   }
   return api('POST', `/${me.id}/threads_publish`, { creation_id: box.id });
+}
+
+async function waitBox(id) {
+  for (let t = 0; t < 10; t++) {
+    const st = await api('GET', `/${id}`, { fields: 'status,error_message' });
+    if (st.status === 'FINISHED') return;
+    if (st.status === 'ERROR') throw new Error(`처리 실패: ${st.error_message || ''}`);
+    await new Promise((r) => setTimeout(r, 3000));
+  }
+}
+// 그림 여러 장(그래프 → 상품 사진). 실패하면 그래프 한 장으로 올린다.
+async function publishImages(urls, body) {
+  const me = await getMe();
+  try {
+    const kids = [];
+    for (const u of urls) {
+      const k = await api('POST', `/${me.id}/threads`, { media_type: 'IMAGE', image_url: u, is_carousel_item: 'true' });
+      await waitBox(k.id);
+      kids.push(k.id);
+    }
+    const box = await api('POST', `/${me.id}/threads`, { media_type: 'CAROUSEL', children: kids.join(','), text: body });
+    await waitBox(box.id);
+    return await api('POST', `/${me.id}/threads_publish`, { creation_id: box.id });
+  } catch (e) {
+    console.error(`  여러 장 실패: ${e.message} — 그래프 한 장으로`);
+    return publish({ media_type: 'IMAGE', image_url: urls[0], text: body });
+  }
 }
 
 const SHORTCODE_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
@@ -383,13 +416,16 @@ try {
   let ok = 0;
   for (const [i, x] of picks.entries()) {
     if (dry) {
-      console.log(`--- ${x.p.id}\n${text(x, date, i)}\n  └ 댓글: ${replyText(x.p, '(쿠팡 링크)').replace(/\n+/g, ' ')}\n`);
+      const png = publishChart(x);
+      console.log(`--- ${x.p.id}\n${text(x)}\n  └ 그림: ${png}\n  └ 댓글: ${replyText(x.p, '(쿠팡 링크)').replace(/\n+/g, ' ')}\n`);
       continue;
     }
     if (i) await new Promise((r) => setTimeout(r, 60_000));
     try {
       const link = await channelLink(x.p, THREADS_SUB_ID);
-      const post = await publish({ media_type: 'IMAGE', image_url: x.p.image, text: text(x, date, i) });
+      const chartUrl = publishChart(x);
+      if (!(await waitPublic(chartUrl))) throw new Error(`그래프 주소가 안 열림: ${chartUrl}`);
+      const post = await publishImages([chartUrl, x.p.image], text(x));
       let reply = null;
       let replyError = '';
       try {
@@ -413,20 +449,21 @@ try {
         postId: post.id,
         replyId: reply?.id || '',
         replyError,
-        price: x.p.price.min,
+        price: x.now,
         image: x.p.image,
+        chart: chartUrl,
         store: x.p.store,
         createdAt: new Date().toISOString(),
       });
       state.posts = state.posts.slice(-200);
       saveState(state);
 
-      sent[x.p.id] = { date, price: x.p.price.min };
+      sent[x.p.id] = { date, price: x.now };
       saveSent('threads', sent, date);
       ok++;
     } catch (e) {
       console.error(`  올리기 실패(${x.p.id}): ${e.message}`);
-      sent[x.p.id] = { date, price: x.p.price.min };
+      sent[x.p.id] = { date, price: x.now };
       saveSent('threads', sent, date);
     }
   }

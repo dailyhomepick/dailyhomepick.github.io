@@ -53,6 +53,39 @@ export function pickDeals(sent, limit, date = today()) {
     .slice(0, limit);
 }
 
+// 스레드용(2026-11-12 기현님과 정함): "최근 30일 중 가장 싼 날"에만 올린다.
+// - 같은 옵션 기록이 오늘 말고 LOW_MIN_DAYS 일 이상 있어야 한다(기록 이틀로 "최저가"라고 하지 않는다).
+// - 오늘 값이 그 기간 이전 기록 전부보다 싸고(같으면 아님), 기간 최고가보다 LOW_MIN_DROP% 이상 낮아야 한다.
+// - 보낸 상품은 그보다 더 내려야 다시 올린다.
+// 기록이 30일이 안 되는 동안은 windowDays 가 실제 기록 일수가 되고 글에도 그 숫자를 쓴다.
+const LOW_MIN_DAYS = 7;
+const LOW_MIN_DROP = 5;
+export function pickLows(sent, limit, date = today()) {
+  return readJson('data/products.json')
+    .filter((p) => p.status === 'published' && p.checkedAt === date && p.network === 'coupang' && p.affiliateLink)
+    .map((p) => {
+      const hist = historyOf(p).filter((h) => h.date <= date && daysBetween(h.date, date) <= 30)
+        .sort((a, b) => (a.date < b.date ? -1 : 1));
+      const nowRec = hist.findLast((h) => h.date === date);
+      const prev = hist.filter((h) => h.date < date);
+      if (!nowRec || new Set(prev.map((h) => h.date)).size < LOW_MIN_DAYS) return null;
+      const now = nowRec.price;
+      const prevLo = Math.min(...prev.map((h) => h.price));
+      const hi = Math.max(...prev.map((h) => h.price));
+      if (!(now < prevLo)) return null;
+      const drop = Math.round(((hi - now) / hi) * 100);
+      if (drop < LOW_MIN_DROP) return null;
+      // 하루에 기록이 여럿이면 그날 마지막 값만 그래프에 쓴다.
+      const byDay = new Map(hist.map((h) => [h.date, h]));
+      const windowDays = Math.min(30, daysBetween(prev[0].date, date));
+      return { p, now, prevLo, hi, drop, windowDays, hist: [...byDay.values()] };
+    })
+    .filter(Boolean)
+    .filter(({ p, now }) => !sent[p.id] || now < sent[p.id].price)
+    .sort((a, b) => b.drop - a.drop)
+    .slice(0, limit);
+}
+
 // 채널용 파트너스 링크. 쿠팡 실적에서 채널 클릭을 사이트와 가르려고 채널마다 subId 를 따로 쓴다
 // (stats.mjs CHANNEL_SUBS). 못 만들면 사이트 링크를 그대로 쓴다(수익은 같고 집계만 섞인다).
 export async function channelLink(p, subId) {
