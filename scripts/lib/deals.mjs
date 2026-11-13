@@ -10,7 +10,7 @@ import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { today, daysBetween, historyOf } from './rules.mjs';
 import { readJson } from './store.mjs';
-import { insight } from './insight.mjs';
+import { insight, DAY_MIN_DROP } from './insight.mjs';
 
 export const SITE = 'https://dailyhomepick.github.io';
 export const DISCLOSURE = '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
@@ -66,6 +66,23 @@ export function pickLows(sent, limit, date = today()) {
     .filter(Boolean)
     .filter(({ p, now }) => !sent[p.id] || now < sent[p.id].price)
     .sort((a, b) => b.drop - a.drop)
+    .slice(0, limit);
+}
+
+// 최근 최저가가 없는 날 대신 올릴 "직전 확인가보다 많이 내려간 상품"(2026-11-13 기현님).
+// 같은 옵션 기록 3일 이상(그래프가 선이 되게), 직전 확인가보다 DAY_MIN_DROP% 이상 내린 것, 7일 안에 보낸 상품은 더 내렸을 때만.
+export function pickDrops(sent, limit, date = today()) {
+  return readJson('data/products.json')
+    .filter((p) => p.status === 'published' && p.checkedAt === date && p.network === 'coupang' && p.affiliateLink)
+    .map((p) => {
+      const { hist, dayDrop, prev } = insight(p, date);
+      if (!prev || dayDrop < DAY_MIN_DROP || hist.length < 3) return null;
+      const now = hist.at(-1).price;
+      return { p, hist, now, dayDrop, fell: { date: prev.date, price: prev.price, pct: dayDrop }, windowDays: Math.max(1, daysBetween(hist[0].date, date)) };
+    })
+    .filter(Boolean)
+    .filter(({ p, now }) => !sent[p.id] || daysBetween(sent[p.id].date, date) >= 7 || now < sent[p.id].price)
+    .sort((a, b) => b.dayDrop - a.dayDrop || b.hist.length - a.hist.length)
     .slice(0, limit);
 }
 

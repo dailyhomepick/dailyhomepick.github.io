@@ -25,7 +25,8 @@ function addDays(d, n) {
 }
 
 // hist: [{date, price}] 같은 옵션, 날짜 오름차순, 마지막이 오늘.
-export function chartHtml({ name, image, hist, date, windowDays = 30 }) {
+// fell 이 있으면 "직전가보다 내려간 상품"(최저가는 아닐 수 있음) 그림: 배지·설명·점선을 직전 가격 기준으로 바꾼다.
+export function chartHtml({ name, image, hist, date, windowDays = 30, fell = null }) {
   const W = 1080, H = 1350;
   const start = addDays(date, -30);
   const pts = hist.filter((h) => h.date >= start && h.date <= date);
@@ -37,8 +38,9 @@ export function chartHtml({ name, image, hist, date, windowDays = 30 }) {
 
   // 그래프 영역
   const gx = 110, gy = 640, gw = 880, gh = 470;
-  const span = Math.max(hi - now, hi * 0.04);
-  const top = hi + span * 0.18, bottom = now - span * 0.22;
+  const lo = Math.min(...pts.map((h) => h.price));
+  const span = Math.max(hi - lo, hi * 0.04);
+  const top = hi + span * 0.18, bottom = lo - span * 0.22;
   const first = pts[0].date;
   const days = Math.max(daysBetween(first, date), 1);
   const X = (d) => gx + (daysBetween(first, d) / days) * gw;
@@ -62,7 +64,7 @@ export function chartHtml({ name, image, hist, date, windowDays = 30 }) {
     <rect x="${gx}" y="${gy}" width="${gw}" height="${gh}" fill="none"/>
     <line x1="${gx}" x2="${gx + gw}" y1="${gy + gh}" y2="${gy + gh}" stroke="#e2e2e2" stroke-width="2"/>
     ${guide(hi)}
-    ${prevLo !== hi ? guide(prevLo) : ''}
+    ${fell ? (fell.price !== hi ? guide(fell.price) : '') : prevLo !== hi ? guide(prevLo) : ''}
     <path d="${area}" fill="url(#g)"/>
     <path d="${path}" fill="none" stroke="#0a0a0a" stroke-width="5" stroke-linejoin="round"/>
     ${dots}
@@ -88,9 +90,11 @@ export function chartHtml({ name, image, hist, date, windowDays = 30 }) {
   </style></head><body>
   ${svg}
   <div class="head"><img class="thumb" src="${esc(image)}"><div class="name">${esc(name)}</div></div>
-  <div class="badge">최근 ${windowDays}일 최저가</div>
+  ${fell ? `<div class="badge">${md(fell.date)}보다 ${won(fell.price - now)} 내림</div>
   <div class="price">${won(now)}</div>
-  <div class="sub">${windowDays}일 최고 ${won(hi)}보다 <b>${drop}% 낮음</b> · 직전 최저 ${won(prevLo)}</div>
+  <div class="sub">${md(fell.date)} ${won(fell.price)} → 오늘 <b>${fell.pct}% 내림</b> · ${windowDays}일 최고 ${won(hi)}</div>` : `<div class="badge">최근 ${windowDays}일 최저가</div>
+  <div class="price">${won(now)}</div>
+  <div class="sub">${windowDays}일 최고 ${won(hi)}보다 <b>${drop}% 낮음</b> · 직전 최저 ${won(prevLo)}</div>`}
   <div class="foot"><span><b>데일리홈픽</b> 가격 기록 · 같은 옵션 기준</span><span>${md(date)} 기준 · 가격은 바뀔 수 있어요</span></div>
   </body></html>`;
 }

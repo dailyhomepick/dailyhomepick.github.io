@@ -24,7 +24,7 @@ import { setDefaultAutoSelectFamilyAttemptTimeout } from 'node:net';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { loadEnv, today, daysBetween } from './lib/rules.mjs';
-import { DISCLOSURE, SITE, won, loadSent, saveSent, pickLows, channelLink } from './lib/deals.mjs';
+import { DISCLOSURE, SITE, won, loadSent, saveSent, pickLows, pickDrops, channelLink } from './lib/deals.mjs';
 import { chartHtml, renderPng } from './lib/pricechart.mjs';
 import { execFileSync } from 'node:child_process';
 import { readdirSync } from 'node:fs';
@@ -306,17 +306,32 @@ if (searchQuery) {
 
 // 하루 최대 2개(2026-11-12 기현님). 오늘 이미 올린 만큼 뺀다.
 const DAILY_MAX = 2;
-const postedToday = loadState().posts.filter((x) => x.date === date && x.kind === 'low').length;
-const picks = pickLows(sent, Math.max(0, Math.min(PER_RUN, DAILY_MAX - postedToday)), date);
+const todayPosts = loadState().posts.filter((x) => x.date === date && (x.kind === 'low' || x.kind === 'drop'));
+const room = Math.max(0, Math.min(PER_RUN, DAILY_MAX - todayPosts.length));
+let picks = pickLows(sent, room, date).map((x) => ({ ...x, kind: 'low' }));
+// 최저가 상품이 없으면 직전 확인가보다 많이 내려간 상품 1개(하루 1개까지, 2026-11-13 기현님).
+if (!picks.length && room && !todayPosts.some((x) => x.kind === 'drop')) {
+  picks = pickDrops(sent, 1, date).map((x) => ({ ...x, kind: 'drop' }));
+}
 
-// 주제 태그는 늘 하나 붙인다(카테고리로 고름). 태그가 거절되면 태그 없이 다시 올린다.
+// 주제 태그는 늘 하나 붙인다(카테고리로 고름). 실패해도 태그 없이 올리지 않는다.
 const TOPIC = { food: '장보기', kitchen: '주방템', living: '살림템', 'solo-living': '자취템', beauty: '뷰티', baby: '육아템', pet: '반려동물', electronics: '전자기기', fashion: '패션', overseas: '해외직구' };
 const topicOf = (p) => TOPIC[(p.categories || []).find((c) => TOPIC[c])] || '최저가';
 
 // 글(2026-11-12 기현님과 정함): "최근 N일 중 가장 싼 날" 하나만, 가격 그래프 그림과 함께.
 // 숫자는 전부 같은 옵션 가격 기록에서 나온다. 덧붙이는 감상·체험 문장은 쓰지 않는다.
 const shortName = (t) => t.replace(/^\[[^\]]*\]\s*/, '').split(',')[0].trim().slice(0, 40);
-function text({ p, now, prevLo, hi, drop, windowDays }) {
+const mdK = (iso) => { const [, m, d] = iso.split('-').map(Number); return `${m}월 ${d}일`; };
+function text({ p, now, prevLo, hi, drop, windowDays, kind, fell }) {
+  if (kind === 'drop') {
+    return [
+      shortName(p.title),
+      `직전 확인가(${mdK(fell.date)})보다 ${won(fell.price - now)} 내려갔어요.`,
+      `${won(fell.price)} → 오늘 ${won(now)} (${fell.pct}% ↓)`,
+      '',
+      DISCLOSURE,
+    ].join('\n').slice(0, 500);
+  }
   return [
     shortName(p.title),
     `최근 ${windowDays}일 중 오늘이 가장 싸요.`,
@@ -333,7 +348,7 @@ const CHART_DIR = 'charts';
 function git(...a) { return execFileSync('git', a, { stdio: 'pipe', encoding: 'utf8' }); }
 function publishChart(x) {
   const name = `${x.p.id}-${date}.png`;
-  const html = chartHtml({ name: shortName(x.p.title), image: x.p.image, hist: x.hist, date, windowDays: x.windowDays });
+  const html = chartHtml({ name: shortName(x.p.title), image: x.p.image, hist: x.hist, date, windowDays: x.windowDays, fell: x.kind === 'drop' ? x.fell : null });
   // 미리보기(--dry)는 저장소 밖에 그린다. 저장소에 두면 daily.sh 가 올려 버린다.
   if (dry) return renderPng(html, join(homedir(), '.local/state/dailyhomepick/chart-preview', name));
   mkdirSync(CHART_DIR, { recursive: true });
@@ -387,9 +402,10 @@ async function publishImages(urls, body, topic) {
   try {
     return await publishImagesOnce(urls, body, topic);
   } catch (e) {
-    if (!topic) throw e;
-    console.error(`  주제 태그(${topic}) 실패: ${e.message} — 태그 없이 다시`);
-    return publishImagesOnce(urls, body, '');
+    // 태그 없이는 올리지 않는다(2026-11-13 기현님). 30초 뒤 같은 태그로 한 번 더.
+    console.error(`  주제 태그(${topic}) 게시 실패: ${e.message} — 30초 뒤 다시`);
+    await new Promise((r) => setTimeout(r, 30000));
+    return publishImagesOnce(urls, body, topic || '최저가');
   }
 }
 async function publishImagesOnce(urls, body, topic) {
@@ -472,7 +488,7 @@ try {
         price: x.now,
         image: x.p.image,
         chart: chartUrl,
-        kind: 'low',
+        kind: x.kind,
         topic: topicOf(x.p),
         store: x.p.store,
         createdAt: new Date().toISOString(),
