@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T23:11:26.459Z",
+  "updatedAt": "2026-11-13T10:10:49.597Z",
   "source": "coupang-partners",
   "subId": "dailyhomepick",
   "note": "방문자 수는 포함되지 않는다. 쿠팡은 상품 클릭만 집계한다. site = 이 사이트(subId 일치), other = 다른 경로.",
@@ -1059,6 +1059,33 @@
     },
     {
       "date": "2026-11-09",
+      "site": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "other": {
+        "clicks": 1,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "telegram": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      },
+      "threads": {
+        "clicks": 0,
+        "orders": 0,
+        "commission": 0,
+        "cancels": 0
+      }
+    },
+    {
+      "date": "2026-11-12",
       "site": {
         "clicks": 0,
         "orders": 0,
