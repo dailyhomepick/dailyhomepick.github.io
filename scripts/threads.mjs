@@ -359,7 +359,7 @@ function publishChart(x) {
   }
   git('add', '-A', CHART_DIR);
   git('commit', '-q', '-m', `Threads chart ${date} ${x.p.id}`);
-  try { git('push', '-q', 'origin', 'HEAD:main'); } catch { git('pull', '--rebase', '-q'); git('push', '-q', 'origin', 'HEAD:main'); }
+  try { git('push', '-q', 'origin', 'HEAD:main'); } catch { git('pull', '--rebase', '--autostash', '-q'); git('push', '-q', 'origin', 'HEAD:main'); }
   return `${SITE}/${CHART_DIR}/${name}`;
 }
 async function waitPublic(url) {

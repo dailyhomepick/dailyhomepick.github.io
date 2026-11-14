@@ -75,7 +75,7 @@ echo
 echo "===== $(date '+%F %T') daily run ====="
 
 step "git pull"
-git pull --ff-only || fail "git pull 실패 (로컬에 커밋 안 된 변경이 있거나 브랜치가 갈라짐)"
+git pull --ff-only --autostash || fail "git pull 실패 (로컬에 커밋 안 된 변경이 있거나 브랜치가 갈라짐)"
 
 IMPORT_OUT=""
 if [ "$STATS_ONLY" = 1 ]; then
@@ -138,7 +138,7 @@ else
   [ "$STATS_ONLY" = 1 ] && MSG="Refresh stats $(date '+%F %H:%M')"
   git commit -q -m "$MSG" || fail "커밋 실패"
   if ! git push -q origin HEAD:main; then
-    git pull --rebase -q && git push -q origin HEAD:main || fail "push 실패"
+    git pull --rebase --autostash -q && git push -q origin HEAD:main || fail "push 실패"
   fi
 fi
 

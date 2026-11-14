@@ -47,7 +47,7 @@ const sub = () => (process.env.COUPANG_SUB_ID ? `subId=${encodeURIComponent(proc
 const qs = (...parts) => { const q = parts.filter(Boolean).join('&'); return q ? `?${q}` : ''; };
 
 export const goldbox = () => call('GET', `${BASE}/products/goldbox${qs(sub())}`);
-export const bestCategory = (categoryId, limit = 50) =>
+export const bestCategory = (categoryId, limit = 100) =>
   call('GET', `${BASE}/products/bestcategories/${categoryId}${qs(`limit=${limit}`, sub())}`);
 export const search = async (keyword, limit = 10) => {
   const data = await call('GET', `${BASE}/products/search${qs(`keyword=${encodeURIComponent(keyword)}`, `limit=${limit}`, sub())}`);
