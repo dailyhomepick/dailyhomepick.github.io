@@ -119,6 +119,8 @@ if [ "$STATS_ONLY" = 1 ]; then
 else
   node scripts/stats.mjs || echo "  경고: 실적 수집 실패"
 fi
+# 링크프라이스 실적(운영판 수익 탭). 실패해도 계속한다.
+node scripts/linkprice-stats.mjs || echo "  경고: 링크프라이스 실적 수집 실패"
 
 step "빌드"
 BUILD_OUT="$(node scripts/build.mjs 2>&1)" || { echo "$BUILD_OUT"; fail "빌드가 규칙 위반으로 중단됨 — push 안 함"; }
